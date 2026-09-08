@@ -1,0 +1,79 @@
+﻿Sticky
+"M12
+
+What is the current application doing?"
+"M13
+
+What is the current application architecture?"
+"M14
+
+What is the microservices inventory?"
+"M15
+
+Are the microservices run across namespaces?"
+"M16
+
+How many replicas per service?"
+"M17
+
+What throughput does the current application support?"
+"M18
+
+What is the approximate pod density per cluster?"
+"M19
+
+How many OpenShift clusters are there, and at what version?"
+"M20
+
+Is an application contained in one OpenShift cluster in one data centre?"
+"M21
+
+Is sticky session required to pin a session to a specific replica?"
+"M22
+
+Are any non-HTTP protocols used between services — messaging, TCP, gRPC?"
+"M23
+
+Do any applications use protocols the mesh handles poorly — long-lived TCP, gRPC streaming, databases?"
+"M24
+
+Is a distributed cache used?"
+"M25
+
+Is connection pooling implemented today?"
+"M26
+
+Are there retry or timeout patterns between microservices now, and what values are used?"
+"M27
+
+What levers are currently used for incident management within containerised applications?"
+"A241
+
+What are the current and projected request rate and p99 latency for the Digi 2.0 services?"
+"A242
+
+What is the east-west to north-south traffic ratio?"
+"A243
+
+How many distinct services will communicate inside the mesh at drop 1, and at scale?"
+"A244
+
+Which services call out to mainframe, third-party or partner systems?"
+"A245
+
+Which services are latency-sensitive enough that an extra proxy hop is a concern?"
+"A246
+
+Are there workloads using host networking, or requiring NET_ADMIN, that constrain mesh onboarding?"
+"A247
+
+Are there StatefulSets, batch jobs or Kubernetes Jobs that need special mesh handling?"
+"A248
+
+Do any services rely on acme IP visibility, and how is that preserved through the mesh?"
+"A249
+
+Are there VM or non-OpenShift workloads that must join the mesh?"
+"A250
+
+How are services discovered and addressed today — Kubernetes Service DNS, or something else?"

@@ -1,0 +1,73 @@
+﻿Sticky
+"26
+
+How many OpenShift clusters will Dev Hub interact with?"
+"27
+
+How many clusters, and where does each RHDH instance run?"
+"28
+
+Number of clusters — PE Sandbox or e-dev? Prod instance in a non-prod cluster?"
+"29
+
+Is running the production RHDH instance in a non-prod cluster acceptable to risk and security?"
+"30
+
+What OpenShift version will Dev Hub be installed on?"
+"31
+
+Is the environment connected, proxied or disconnected?"
+"32
+
+Will RHDH provision dev workspaces?"
+"33
+
+Are there any dependent systems yet to be operational?"
+"34
+
+What blockers may prevent Dev Hub deployment?"
+"35
+
+What network, firewall or proxy changes will be needed, and what is the lead time?"
+"36
+
+Which integrations need network egress or firewall changes?"
+"37
+
+How will RHDH be reached — internal only, VPN, VDI, or internet-facing?"
+"A21
+
+What is the node topology, and on which worker pool should RHDH be scheduled?"
+"A22
+
+Are there taints, tolerations, node selectors or dedicated infrastructure nodes RHDH must use?"
+"A23
+
+What resource quotas and limit ranges apply in the target namespace?"
+"A24
+
+Which pod security admission profile applies, and can RHDH and all its plugins run under restricted-v2?"
+"A25
+
+Which storage classes are available, and which support ReadWriteMany?"
+"A26
+
+Is ODF the only object storage, and what is the process to provision a bucket and credentials?"
+"A27
+
+What is the ingress capacity, and is per-route rate limiting applied?"
+"A28
+
+Is automatic sidecar injection enabled anywhere that would affect the RHDH namespace?"
+"A29
+
+What is the cluster autoscaling behaviour, and could it evict RHDH pods?"
+"A30
+
+What maintenance windows and node reboot patterns must RHDH tolerate?"
+"A31
+
+What API server and etcd load budget applies — could the Kubernetes plugin's polling be a concern?"
+"A32
+
+Is ARO a candidate host for RHDH, or is it on-premises only?"

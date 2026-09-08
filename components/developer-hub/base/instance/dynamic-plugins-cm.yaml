@@ -1,0 +1,231 @@
+---
+# Dynamic plugins for RHDH 1.9 (Backstage 1.45.x).
+# Bundled plugins:  ./dynamic-plugins/dist/<name>               (shipped inside the RHDH image)
+# OCI plugins:      oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/<name>:<tag>
+# Third-party OCI:  oci://ghcr.io/backstage/backstage-plugin-<name>:<tag>
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dynamic-plugins-rhdh
+  namespace: rhdh
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: developer-hub
+data:
+  dynamic-plugins.yaml: |
+    includes:
+      - dynamic-plugins.default.yaml
+
+    plugins:
+
+      # ════════════════════════════════════════════════════════════════════════
+      # KUBERNETES / OPENSHIFT
+      # ════════════════════════════════════════════════════════════════════════
+      - package: ./dynamic-plugins/dist/backstage-plugin-kubernetes-backend-dynamic
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-plugin-kubernetes
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-community-plugin-topology
+        disabled: false
+
+      # ════════════════════════════════════════════════════════════════════════
+      # TEKTON
+      # ════════════════════════════════════════════════════════════════════════
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-tekton:bs_1.45.3__3.33.3
+        disabled: false
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              backstage-community.plugin-tekton:
+                mountPoints:
+                  - config:
+                      if:
+                        allOf:
+                          - isTektonCIAvailable
+                      layout:
+                        gridColumn: 1 / -1
+                        gridRowStart: 1
+                    importName: TektonCI
+                    mountPoint: entity.page.ci/cards
+
+      # ════════════════════════════════════════════════════════════════════════
+      # CI/CD — JENKINS
+      # ════════════════════════════════════════════════════════════════════════
+      - package: ./dynamic-plugins/dist/backstage-community-plugin-jenkins-backend-dynamic
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-community-plugin-jenkins
+        disabled: false
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              backstage-community.plugin-jenkins:
+                mountPoints:
+                  - mountPoint: entity.page.ci/cards
+                    importName: EntityJenkinsContent
+                    config:
+                      layout:
+                        gridColumn: 1 / -1
+                      if:
+                        allOf:
+                          - isJenkinsAvailable
+
+      # ════════════════════════════════════════════════════════════════════════
+      # AUTH — MICROSOFT ENTRA ID (additional OIDC provider)
+      # ════════════════════════════════════════════════════════════════════════
+      - package: ./dynamic-plugins/dist/backstage-plugin-auth-backend-module-microsoft-provider-dynamic
+        disabled: false
+
+      # MS Graph — sync users + security groups from Entra ID into catalog
+      - package: ./dynamic-plugins/dist/backstage-community-plugin-catalog-backend-module-msgraph-dynamic
+        disabled: false
+
+      # ════════════════════════════════════════════════════════════════════════
+      # AUTH — KEYCLOAK (primary OIDC + user/group catalog sync)
+      # ════════════════════════════════════════════════════════════════════════
+      - package: ./dynamic-plugins/dist/backstage-community-plugin-catalog-backend-module-keycloak-dynamic
+        disabled: false
+
+      # ════════════════════════════════════════════════════════════════════════
+      # GITOPS — ARGOCD
+      # ════════════════════════════════════════════════════════════════════════
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/roadiehq-backstage-plugin-argo-cd-backend:bs_1.45.3__4.6.0
+        disabled: false
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-argocd:bs_1.45.3__2.4.4
+        disabled: false
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/roadiehq-scaffolder-backend-argocd:bs_1.45.3__1.8.1
+        disabled: false
+
+      # ════════════════════════════════════════════════════════════════════════
+      # SOURCE CONTROL — BITBUCKET (primary SCM for Acme)
+      # ════════════════════════════════════════════════════════════════════════
+      - package: ./dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-bitbucket-cloud-dynamic
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-bitbucket-cloud-dynamic
+        disabled: false
+      # Bitbucket Server (on-prem) scaffolder module
+      - package: ./dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-bitbucket-server-dynamic
+        disabled: false
+
+      # ════════════════════════════════════════════════════════════════════════
+      # SOURCE CONTROL — GITHUB (secondary, for open-source mirrors)
+      # ════════════════════════════════════════════════════════════════════════
+      - package: ./dynamic-plugins/dist/backstage-plugin-github-actions
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-plugin-github-issues
+        disabled: false
+
+      # ════════════════════════════════════════════════════════════════════════
+      # API DOCS — OpenAPI / AsyncAPI viewer
+      # Used for IBM APIC specs and any service OpenAPI definitions
+      # ════════════════════════════════════════════════════════════════════════
+      - package: ./dynamic-plugins/dist/backstage-plugin-api-docs
+        disabled: false
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              backstage.plugin-api-docs:
+                mountPoints:
+                  - mountPoint: entity.page.api/cards
+                    importName: EntityApiDefinitionCard
+                    config:
+                      layout:
+                        gridColumn: 1 / -1
+
+      # ════════════════════════════════════════════════════════════════════════
+      # DOCS — TECHDOCS
+      # ════════════════════════════════════════════════════════════════════════
+      - package: ./dynamic-plugins/dist/backstage-plugin-techdocs-backend-dynamic
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-plugin-techdocs
+        disabled: false
+
+      # ════════════════════════════════════════════════════════════════════════
+      # QUALITY — SONARQUBE
+      # ════════════════════════════════════════════════════════════════════════
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-sonarqube:bs_1.45.3__0.21.0
+        disabled: false
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-sonarqube-backend:bs_1.45.3__0.15.0
+        disabled: false
+
+      # ════════════════════════════════════════════════════════════════════════
+      # SECURITY — SNYK
+      # Displays vulnerability scan results from Snyk on component pages.
+      # Annotation required on catalog-info.yaml: snyk.io/org-name + snyk.io/project-ids
+      # ════════════════════════════════════════════════════════════════════════
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-snyk:bs_1.45.3__2.3.0
+        disabled: false
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              backstage-community.plugin-snyk:
+                mountPoints:
+                  - mountPoint: entity.page.security/cards
+                    importName: SnykEntityComponent
+                    config:
+                      layout:
+                        gridColumn: 1 / -1
+                      if:
+                        allOf:
+                          - isSnykAvailable
+
+      # ════════════════════════════════════════════════════════════════════════
+      # PROJECT MANAGEMENT — JIRA
+      # Shows linked Jira issues on component pages.
+      # Annotation: jira/project-key, jira/component
+      # ════════════════════════════════════════════════════════════════════════
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/roadiehq-backstage-plugin-jira:bs_1.45.3__2.6.1
+        disabled: false
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              roadiehq.backstage-plugin-jira:
+                mountPoints:
+                  - mountPoint: entity.page.overview/cards
+                    importName: EntityJiraOverviewCard
+                    config:
+                      layout:
+                        gridColumn: 1 / -1
+                      if:
+                        allOf:
+                          - isJiraAvailable
+
+      # ════════════════════════════════════════════════════════════════════════
+      # ARTIFACT MANAGEMENT — ARTIFACTORY (JFrog)
+      # Shows artifact versions published to Artifactory on component pages.
+      # Annotation: jfrog-artifactory/image-name
+      # ════════════════════════════════════════════════════════════════════════
+      - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-artifactory:bs_1.45.3__0.3.0
+        disabled: false
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              backstage-community.plugin-artifactory:
+                mountPoints:
+                  - mountPoint: entity.page.image-registry/cards
+                    importName: ArtifactoryPage
+                    config:
+                      layout:
+                        gridColumn: 1 / -1
+                      if:
+                        allOf:
+                          - isArtifactoryAvailable
+
+      # ════════════════════════════════════════════════════════════════════════
+      # NOTIFICATIONS
+      # ════════════════════════════════════════════════════════════════════════
+      - package: ./dynamic-plugins/dist/backstage-plugin-notifications
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-plugin-notifications-backend-dynamic
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-plugin-signals
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-plugin-signals-backend-dynamic
+        disabled: false
+
+      # ════════════════════════════════════════════════════════════════════════
+      # RBAC
+      # ════════════════════════════════════════════════════════════════════════
+      - package: ./dynamic-plugins/dist/backstage-plugin-rbac-backend-dynamic
+        disabled: false
+      - package: ./dynamic-plugins/dist/backstage-plugin-rbac
+        disabled: false

@@ -1,0 +1,73 @@
+﻿Sticky
+"108
+
+Which software templates are needed at launch, beyond Java Spring Boot and Node?"
+"109
+
+What should a template create — repo, pipeline, namespace, catalogue entry, or all of them?"
+"110
+
+What must a new service have on day one to be compliant?"
+"111
+
+Are there mandated internal libraries or SDKs that templates must include?"
+"112
+
+What default security guardrails go into templates?"
+"113
+
+Who owns and maintains templates once they exist?"
+"114
+
+How will template changes reach services already generated from them?"
+"115
+
+May teams deviate from a golden path, and through what process?"
+"116
+
+Are there existing reference apps or starter repos to build templates from?"
+"117
+
+How will template usage be measured?"
+"A98
+
+What is the full sequence of steps a template must perform for the Java Spring Boot archetype?"
+"A99
+
+What is the full sequence of steps a template must perform for the Node archetype?"
+"A100
+
+Which Git service account creates repositories, and what permissions does it hold?"
+"A101
+
+How are repository ownership, branch protection and required reviewers set at creation time?"
+"A102
+
+Should the template create the Jenkins job or folder, and by what mechanism?"
+"A103
+
+Should the template create the namespace, resource quota and network policy?"
+"A104
+
+Should the template register the Argo CD application?"
+"A105
+
+Should the template raise a Jira ticket or a change record?"
+"A106
+
+Which parameters must the user supply, and which are derived or looked up from another system?"
+"A107
+
+How are the credentials used during scaffolding supplied and protected?"
+"A108
+
+How will templates be tested, and is there a CI pipeline for the templates themselves?"
+"A109
+
+How are templates versioned, and may a team pin to an earlier version?"
+"A110
+
+What is the expected — and maximum acceptable — end-to-end scaffolding duration?"
+"A111
+
+What happens on partial failure: is scaffolding idempotent, or is manual cleanup required?"

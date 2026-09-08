@@ -1,0 +1,34 @@
+﻿Sticky
+"M120
+
+Who operates the mesh control plane after go-live, and do they have Istio skills today?"
+"M121
+
+What does a mesh-related production incident look like, and who is on call for it?"
+"A359
+
+Which team operates the mesh, and is it the same team that operates RHDH?"
+"A360
+
+What Istio skills exist today, and what training is planned before go-live?"
+"A361
+
+What runbooks are required — control plane down, certificate expiry, policy blocking traffic, gateway failure?"
+"A362
+
+What is the on-call rota and severity matrix for mesh incidents?"
+"A363
+
+What diagnostic tooling and access will L1 and L2 support have?"
+"A364
+
+What is the escalation path to Red Hat for mesh issues, and who may raise cases?"
+"A365
+
+How will mesh configuration changes flow through the change management process?"
+"A366
+
+What is the mesh capacity and health review cadence?"
+"A367
+
+Which mesh subscriptions and entitlements are in place?"

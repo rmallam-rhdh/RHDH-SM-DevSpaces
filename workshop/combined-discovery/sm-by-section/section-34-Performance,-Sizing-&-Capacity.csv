@@ -1,0 +1,31 @@
+﻿Sticky
+"M112
+
+What is the acceptable latency and resource overhead from the mesh?"
+"M113
+
+What cluster storage is available for mesh telemetry?"
+"A342
+
+What latency budget is acceptable per proxy hop, and has it been measured?"
+"A343
+
+What CPU and memory overhead per pod or per node is budgeted for the data plane?"
+"A344
+
+What is the control plane sizing at the expected service and endpoint count?"
+"A345
+
+Has a baseline performance test been run before mesh onboarding, for comparison?"
+"A346
+
+What load test will validate the mesh under peak Digi 2.0 traffic?"
+"A347
+
+What is the impact on node capacity planning, given n-2 capacity is maintained?"
+"A348
+
+How will mesh resource consumption be monitored, and charged back if at all?"
+"A349
+
+How does the mesh behave under node pressure or eviction?"

@@ -1,0 +1,15 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: nonprod-dc2-lending-dev
+  description: Lending team dev namespace on Non-Prod DC-2
+  annotations:
+    acme.io/cluster: nonprod-dc2
+    acme.io/environment: dev
+    acme.io/openshift-api: https://api.nonprod-dc2.CLUSTER_BASE_DOMAIN:6443
+    acme.io/devspaces-url: https://devspaces.apps.nonprod-dc2.CLUSTER_BASE_DOMAIN
+spec:
+  type: kubernetes-namespace
+  owner: group:team-lending
+  system: acme-platform

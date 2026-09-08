@@ -1,0 +1,78 @@
+﻿Sticky
+"Recap Day 2
+
+Review Day 2 RHDH decisions and outstanding plugin items."
+"Plugins deep dive
+(Plugins)
+
+Continue plugin auth, permissions, and integration endpoints if outstanding."
+"Exposure model
+(Architecture)
+
+Internal only vs external; domain, Route, and TLS approach."
+"TechDocs storage
+(Architecture)
+
+Local builder vs object storage; Confluence migration scope."
+"Catalog population
+(Architecture)
+
+Manual catalog-info, SCM discovery, or bulk import — ownership model."
+"Entra OIDC
+(IAM & RBAC)
+
+Authentication model, claims, and Entra app registration ownership."
+"Personas & groups
+(IAM & RBAC)
+
+Personas, Entra group mapping, MFA/session requirements."
+"Admin & break-glass
+(IAM & RBAC)
+
+RHDH admin access and break-glass when IdP is unavailable."
+"Plugin governance gate
+(Security)
+
+Who approves new plugins; security review for community plugins."
+"Secrets & token scope
+(Security)
+
+Vault/CyberArk/ESO; integration credential rotation; privilege escalation risk."
+"SLA & PostgreSQL
+(HA & resilience)
+
+Availability SLA; PostgreSQL choice (in-cluster vs bank service); HA approach."
+"Replicas & DR
+(HA & resilience)
+
+Replica count, sizing, DR RTO/RPO, upgrade test instance."
+"Branding & homepage
+(Branding & UX)
+
+Theming, homepage, dashboards, developer UX expectations."
+"RHDH monitoring
+(Observability)
+
+Audit logs, telemetry, monitoring, and Splunk forwarding for RHDH."
+"DevSpaces sizing
+(DevSpaces)
+
+Sizing and capacity planning for developer workspaces."
+"PE ownership & RAID
+(Operating model)
+
+Platform engineering ownership, RACI, risks, assumptions, dependencies."
+"Cluster placement
+(Architecture)
+
+Which cluster(s) host RHDH — dev, non-prod, prod topology."
+"Operator install
+(Architecture)
+
+RHDH Operator install model — GitOps-managed Backstage CR."
+"Dev Hub close-out
+
+Decisions, open questions, owners, next steps — **RHDH discovery complete**."
+"Parking lot
+
+RHDH items for design / implementation phase."

@@ -1,0 +1,28 @@
+﻿Sticky
+"A368
+
+What is the phased onboarding plan — which namespaces, in what order, and over what period?"
+"A369
+
+What is the rollback plan for a namespace that fails onboarding?"
+"A370
+
+How will an application be validated as working correctly after mesh onboarding?"
+"A371
+
+What non-functional tests are required before the first production namespace joins?"
+"A372
+
+Will a data centre failover test be performed with the mesh in place?"
+"A373
+
+What are the go/no-go criteria for enabling strict mTLS in production?"
+"A374
+
+Which existing components are decommissioned as the mesh takes over, and when?"
+"A375
+
+What is the communication and enablement plan for application teams?"
+"A376
+
+What is the hypercare arrangement after the first production onboarding?"

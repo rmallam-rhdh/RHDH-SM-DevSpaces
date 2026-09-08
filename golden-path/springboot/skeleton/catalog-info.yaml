@@ -1,0 +1,30 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${{ values.appName }}
+  description: ${{ values.appDescription }}
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    gitlab.com/project-slug: ${{ values.repoOwner }}/${{ values.appName }}
+    argocd/app-name: ${{ values.appName }}-dev
+    jenkins.io/job-full-name: ${{ values.repoOwner }}/${{ values.appName }}
+    sonarqube.org/project-key: ${{ values.sonarProject }}
+    quay.io/repository-slug: acme/${{ values.appName }}
+    acme.io/cluster: ${{ values.targetCluster }}
+    backstage.io/kubernetes-namespace: ${{ values.targetNamespace }}
+    # OpenShift Dev Spaces — factory URL opens VS Code + Git workspace from repo devfile.yaml
+    acme.io/devfile-path: devfile.yaml
+    acme.io/devspaces-url: ${{ values.devSpacesBaseUrl }}
+    acme.io/devspaces-factory-url: ${{ values.devSpacesBaseUrl }}/dashboard/#/load/workspace/factory?url=https://bitbucket.org/${{ values.bitbucketWorkspace }}/${{ values.appName }}&devfilePath=devfile.yaml
+  tags:
+    - java
+    - spring-boot
+    - gradle
+spec:
+  type: service
+  lifecycle: experimental
+  owner: group:platform-team
+  system: acme-platform
+  providesApis: []
+  dependsOn: []

@@ -1,0 +1,48 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${{ values.appName }}
+  description: ${{ values.appDescription }}
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    gitlab.com/project-slug: ${{ values.repoOwner }}/${{ values.appName }}
+    argocd/app-name: ${{ values.appName }}-dev
+    jenkins.io/job-full-name: ${{ values.repoOwner }}/${{ values.appName }}
+    sonarqube.org/project-key: ${{ values.sonarProject }}
+    quay.io/repository-slug: acme/${{ values.appName }}
+    acme.io/cluster: ${{ values.targetCluster }}
+    backstage.io/kubernetes-namespace: ${{ values.targetNamespace }}
+    acme.io/devfile-path: devfile.yaml
+    acme.io/devspaces-url: ${{ values.devSpacesBaseUrl }}
+    acme.io/devspaces-factory-url: ${{ values.devSpacesBaseUrl }}/dashboard/#/load/workspace/factory?url=https://bitbucket.org/${{ values.bitbucketWorkspace }}/${{ values.appName }}&devfilePath=devfile.yaml
+  tags:
+    - nodejs
+    - ${{ values.nodeFramework }}
+spec:
+  type: service
+  lifecycle: experimental
+  owner: group:platform-team
+  system: acme-platform
+  providesApis:
+    {% if values.exposeOpenApi %}
+    - ${{ values.appName }}-api
+    {% endif %}
+  dependsOn: []
+---
+{% if values.exposeOpenApi %}
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: ${{ values.appName }}-api
+  description: OpenAPI spec for ${{ values.apiTitle }}
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: group:platform-team
+  system: acme-platform
+  definition:
+    $text: ./openapi.yaml
+{% endif %}

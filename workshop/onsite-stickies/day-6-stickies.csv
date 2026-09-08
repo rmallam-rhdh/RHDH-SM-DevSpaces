@@ -1,0 +1,78 @@
+﻿Sticky
+"Recap Days 3–5
+
+Summary of mesh foundation, security, and connectivity decisions."
+"Kiali consumers
+(Observability)
+
+Who uses Kiali daily? Which namespaces visible per team?"
+"Service graph & metrics
+(Observability)
+
+Kiali graph, Prometheus/Grafana mesh metrics — who consumes?"
+"Tracing backend
+(Observability)
+
+Jaeger / Tempo / Zipkin / Datadog / Dynatrace / none for Phase 1."
+"Security logging events
+(Splunk)
+
+Access logs, AuthZ DENY, mTLS failures, policy-change audit, egress blocks."
+"HEC & retention
+(Splunk)
+
+Splunk HEC/index ownership and retention for mesh events."
+"Control plane ownership
+(Day-2)
+
+Who owns istiod, ztunnel, waypoint upgrades?"
+"On-call & runbooks
+(Day-2)
+
+On-call model and runbooks for mesh incidents."
+"Upgrade strategy
+(Day-2)
+
+Auto vs manual vs pinned upgrades for mesh components."
+"Developer model
+(Developer UX)
+
+Transparent vs aware vs full-owner of mesh config."
+"Golden-path auto-enrol
+(Developer UX)
+
+Should new namespaces auto-enrol in ambient via golden path?"
+"Risk register
+(Risks)
+
+Lateral movement, impersonation, egress, policy drift, non-enrolled workloads."
+"Assumptions & constraints
+(Risks)
+
+Security assumptions and design constraints to carry into build."
+"Evidence map
+(Splunk)
+
+Control → evidence mapping (Git, logs, ticket) for compliance."
+"Enrolment spec
+(Developer UX)
+
+Golden-path spec: labels and objects required to enrol a new namespace."
+"Consumer map
+(Observability)
+
+Who uses which tool (Kiali, Grafana, Splunk) and for what decision."
+"Namespace policy ownership
+(Day-2)
+
+Who owns namespace-level policies vs platform control plane."
+"Operating model
+(Deliverable)
+
+Day-2 RACI + observability model + evidence catalogue."
+"SM close-out
+
+Decision log, open items, owners, design phase kick-off — **SM discovery complete**."
+"Parking lot
+
+Mesh ops items for implementation phase."

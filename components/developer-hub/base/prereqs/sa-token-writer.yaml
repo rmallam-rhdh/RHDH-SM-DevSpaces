@@ -1,0 +1,101 @@
+---
+# ConfigMap — shell script that reads the rhdh SA token and writes it to Vault.
+# The Job below mounts this and runs it once after the namespace is created.
+# Vault path written: kv/secrets/rhdh/kube-sa-token (property: value)
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sa-token-writer
+  namespace: rhdh
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: developer-hub
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+data:
+  write-token.sh: |
+    #!/bin/bash
+    set -euo pipefail
+
+    VAULT_ADDR="${VAULT_ADDR:-http://vault.vault:8200}"
+    VAULT_ROLE="${VAULT_ROLE:-rhdh-role}"
+    SA_TOKEN_PATH="/var/run/secrets/kubernetes.io/serviceaccount/token"
+    KUBE_CA_PATH="/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"
+    KUBE_API="${KUBE_API:-https://kubernetes.default.svc}"
+
+    echo "Authenticating to Vault using Kubernetes auth..."
+    SA_TOKEN=$(cat "$SA_TOKEN_PATH")
+    VAULT_TOKEN=$(curl -sf \
+      --request POST \
+      --data "{\"jwt\": \"$SA_TOKEN\", \"role\": \"$VAULT_ROLE\"}" \
+      "$VAULT_ADDR/v1/auth/kubernetes/login" | jq -r '.auth.client_token')
+
+    echo "Writing kube-sa-token to Vault..."
+    curl -sf \
+      --header "X-Vault-Token: $VAULT_TOKEN" \
+      --request POST \
+      --data "{\"data\": {\"value\": \"$SA_TOKEN\"}}" \
+      "$VAULT_ADDR/v1/kv/data/secrets/rhdh/kube-sa-token"
+
+    echo "Writing kube-api-url to Vault..."
+    curl -sf \
+      --header "X-Vault-Token: $VAULT_TOKEN" \
+      --request POST \
+      --data "{\"data\": {\"value\": \"$KUBE_API\"}}" \
+      "$VAULT_ADDR/v1/kv/data/secrets/rhdh/kube-api-url"
+
+    # Write CA data (base64 encoded)
+    CA_DATA=$(base64 -w 0 "$KUBE_CA_PATH")
+    curl -sf \
+      --header "X-Vault-Token: $VAULT_TOKEN" \
+      --request POST \
+      --data "{\"data\": {\"value\": \"$CA_DATA\"}}" \
+      "$VAULT_ADDR/v1/kv/data/secrets/rhdh/kube-ca-data"
+
+    echo "All tokens written successfully."
+---
+# Job — runs once to bootstrap the Vault secrets for the Kubernetes plugin.
+# It re-runs on pod restart so the token stays fresh (SA tokens rotate).
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sa-token-writer
+  namespace: rhdh
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: developer-hub
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+spec:
+  template:
+    spec:
+      serviceAccountName: default
+      restartPolicy: OnFailure
+      containers:
+        - name: writer
+          image: registry.access.redhat.com/ubi9/ubi-minimal:latest
+          command: ["/bin/bash", "/scripts/write-token.sh"]
+          env:
+            - name: VAULT_ADDR
+              value: "http://vault.vault:8200"
+            - name: VAULT_ROLE
+              value: "rhdh-role"
+            - name: KUBE_API
+              value: "https://kubernetes.default.svc"
+          volumeMounts:
+            - name: scripts
+              mountPath: /scripts
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+      volumes:
+        - name: scripts
+          configMap:
+            name: sa-token-writer
+            defaultMode: 0755

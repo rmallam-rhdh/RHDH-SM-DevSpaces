@@ -1,0 +1,58 @@
+﻿Sticky
+"M1
+
+Why Service Mesh — what problem is it solving that OpenShift networking does not?"
+"M2
+
+What are the primary business drivers for adopting Service Mesh — zero-trust and compliance, dynamic traffic routing, end-to-end observability, resilience?"
+"M3
+
+Which of mTLS, traffic management, observability or policy is the primary driver?"
+"M4
+
+What are the most important outcomes, and what are the priorities?"
+"M5
+
+What are the challenges of the current application without a service mesh?"
+"M6
+
+Are there particular production issues that require Service Mesh to solve?"
+"M7
+
+Which applications go into the mesh first, and is that the same set as the RHDH pilot?"
+"M8
+
+Is mesh adoption mandatory for new services, or opt-in?"
+"M9
+
+Does a service get enrolled into the mesh automatically at creation, or opt in later?"
+"M10
+
+Has the ambient preference been tested with the Digi 2.0 workloads specifically?"
+"M11
+
+Which existing workloads will be onboarded beyond Digi 2.0, and on what timeline?"
+"A233
+
+Which specific capability gaps does the mesh close that the API Gateway and OpenShift Routes cannot?"
+"A234
+
+Is there a documented business case for the mesh, separate from the RHDH business case?"
+"A235
+
+What is the target percentage of workloads in the mesh at 6, 12 and 24 months?"
+"A236
+
+Which workloads are explicitly excluded from the mesh, and why?"
+"A237
+
+What is the minimum viable mesh capability set for Digi 2.0 drop 1?"
+"A238
+
+Is there an agreed definition of ""mesh-onboarded"" that a service must meet?"
+"A239
+
+Who owns the decision to enrol a namespace into the mesh?"
+"A240
+
+What is the exit strategy if the mesh does not deliver — can workloads be removed cleanly?"

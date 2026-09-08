@@ -1,0 +1,52 @@
+﻿Sticky
+"19
+
+How many developers will be onboarded in the pilot?"
+"20
+
+Number of initial teams — what is the scaling plan?"
+"21
+
+Ownership model if more than one team — app / services / APIs / environments?"
+"22
+
+What is the team's skill level in OpenShift?"
+"23
+
+What are the three things developers complain about most?"
+"24
+
+What is the expected concurrent user load on RHDH?"
+"25
+
+Development ecosystems — languages / services / team skills in those languages and OCP?"
+"A11
+
+What is the expected peak concurrent user count at pilot, at 12 months and at full scale?"
+"A12
+
+Where are users located, and are offshore or partner users in scope?"
+"A13
+
+Will contractors, vendors or partners need access, and under which identity source?"
+"A14
+
+What is the expected API request volume against the RHDH backend, and the read/write ratio?"
+"A15
+
+How many catalogue entities are expected at pilot, at 12 months and at steady state?"
+"A16
+
+How many template executions per week are expected?"
+"A17
+
+What accessibility standard must RHDH meet — WCAG 2.1 AA or other?"
+"A18
+
+Which browsers and versions must be supported, and is there a managed browser policy?"
+"A19
+
+Are there device constraints — VDI, locked-down laptops, or mobile access?"
+"A20
+
+Which languages or locales must the interface support?"

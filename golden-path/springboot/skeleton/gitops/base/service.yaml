@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${{ values.appName }}
+  labels:
+    app.kubernetes.io/name: ${{ values.appName }}
+spec:
+  selector:
+    app.kubernetes.io/name: ${{ values.appName }}
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+    - name: management
+      port: 8081
+      targetPort: management

@@ -1,0 +1,74 @@
+﻿Sticky
+"Recap Day 2
+
+Brief recap of RHDH Day 2 — mesh-relevant decisions only."
+"Architecture locked
+(DECIDED)
+
+Ambient · mTLS · Waypoint · shared ingress gateway · OSSM 3 — do not re-debate."
+"PoC learnings
+(Mesh topology)
+
+Preferences and learnings from the earlier Service Mesh PoC."
+"Namespace & tenancy
+(Mesh topology)
+
+Shared responsibility model between Platform Engineering and app teams."
+"Phase 1 namespaces
+(Rollout)
+
+Which services/namespaces enrol in Phase 1?"
+"Rollout sequence
+(Rollout)
+
+eDev → Non-Prod → Prod sequence and pilot app for validation."
+"Exclusion list
+(Rollout)
+
+Namespaces or workloads explicitly excluded from mesh."
+"Future expansion
+(Rollout)
+
+Single vs multiple control plane and data plane expansion plans."
+"mTLS posture
+(mTLS)
+
+STRICT scope — all traffic, east-west only, or selective namespaces."
+"Migration path
+(mTLS)
+
+PERMISSIVE → STRICT migration approach and timeline."
+"Certificate / PKI lifecycle
+(PKI)
+
+Mesh CA vs Vault vs cert-manager + enterprise CA (ADCS/EJBCA/Venafi)."
+"Rotation & ownership
+(PKI)
+
+Rotation periods, PKI inventory visibility, who owns CA ops."
+"Ingress model today
+(Ingress)
+
+Routes / NGINX / F5 / Istio GW / Gateway API — current state."
+"Shared gateway & TLS
+(Ingress)
+
+Keep Routes + mesh? TLS termination point; internal vs external exposure."
+"Egress policy level
+(Egress)
+
+Controlled egress required? All / selective (PCI) / none."
+"Egress controls
+(Egress)
+
+ServiceEntry allowlists, DNS filtering, TLS inspection, DLP, external endpoints."
+"Day 3 decisions
+
+Capture foundation decisions for Days 4–6."
+"Mesh GitOps
+(GitOps)
+
+Are mesh policies managed via OpenShift GitOps (Argo CD)?"
+"Parking lot
+
+Mesh topics deferred to design phase."

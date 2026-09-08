@@ -1,0 +1,27 @@
+---
+# CheCluster — OpenShift Dev Spaces control plane (dashboard, gateway, dev workspace controller).
+# Workspaces are started per-repo from devfile.yaml (scaffolded by golden-path templates).
+apiVersion: org.eclipse.che/v2
+kind: CheCluster
+metadata:
+  name: devspaces
+  namespace: openshift-devspaces
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: devspaces
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  components: {}
+  devEnvironments:
+    defaultEditor: che-code
+    defaultNamespace:
+      autoProvision: true
+      template: openshift-devspaces-{userid}
+    disableContainerBuildCapabilities: false
+    maxNumberOfWorkspacesPerUser: 3
+    storage:
+      pvc:
+        pvcStrategy: per-user
+  networking: {}

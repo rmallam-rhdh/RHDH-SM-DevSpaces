@@ -1,0 +1,25 @@
+---
+# Waypoint proxy — enables L7 AuthorizationPolicy enforcement for the rhdh namespace
+# in ambient mode. Without a waypoint, ztunnel handles L4 only (IP+port policies).
+# With a waypoint, HTTP-level policies (path, header, method matching) are enforced.
+#
+# Uses Kubernetes Gateway API (gateway.networking.k8s.io) — required for ambient waypoints.
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: rhdh-waypoint
+  namespace: rhdh
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: developer-hub
+    # This label tells Istio to use this Gateway as a waypoint for the namespace.
+    istio.io/waypoint-for: namespace
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  gatewayClassName: istio-waypoint
+  listeners:
+    - name: mesh
+      port: 15008
+      protocol: HBONE   # HBONE = HTTP-Based Overlay Network Encapsulation (ambient tunnel)

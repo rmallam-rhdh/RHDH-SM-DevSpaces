@@ -1,0 +1,93 @@
+---
+# ArgoCD AppProject — scopes what repos and namespaces this GitOps project manages.
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: acme
+  namespace: openshift-gitops
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: Acme Platform GitOps Project
+  sourceRepos:
+    - https://github.com/rmallam/RHDH-SM-DevSpaces   # <-- update to your repo URL
+    - https://charts.openshift.io
+  destinations:
+    - namespace: openshift-operators
+      server: https://kubernetes.default.svc
+    - namespace: istio-system
+      server: https://kubernetes.default.svc
+    - namespace: istio-cni
+      server: https://kubernetes.default.svc
+    - namespace: ztunnel
+      server: https://kubernetes.default.svc
+    - namespace: rhdh
+      server: https://kubernetes.default.svc
+    - namespace: openshift-devspaces
+      server: https://kubernetes.default.svc
+    - namespace: openshift-gitops
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    # Operators
+    - group: operators.coreos.com
+      kind: OperatorGroup
+    - group: operators.coreos.com
+      kind: Subscription
+    - group: operators.coreos.com
+      kind: ClusterServiceVersion
+    # Sail Operator (OSSM3)
+    - group: sailoperator.io
+      kind: Istio
+    - group: sailoperator.io
+      kind: IstioCNI
+    - group: sailoperator.io
+      kind: ZTunnel
+    # Istio mesh CRs
+    - group: networking.istio.io
+      kind: Gateway
+    - group: networking.istio.io
+      kind: VirtualService
+    - group: networking.istio.io
+      kind: DestinationRule
+    - group: security.istio.io
+      kind: PeerAuthentication
+    - group: security.istio.io
+      kind: AuthorizationPolicy
+    # Kiali
+    - group: kiali.io
+      kind: Kiali
+    # OpenShift Dev Spaces
+    - group: org.eclipse.che
+      kind: CheCluster
+    # RHDH
+    - group: rhdh.redhat.com
+      kind: Backstage
+    # External Secrets
+    - group: external-secrets.io
+      kind: ExternalSecret
+    # Kubernetes Gateway API (for waypoint proxy)
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+    # Core
+    - group: ""
+      kind: Namespace
+    - group: ""
+      kind: ConfigMap
+    - group: ""
+      kind: Secret
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+    - group: route.openshift.io
+      kind: Route
+  namespaceResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  roles:
+    - name: acme-deployer
+      description: Full sync rights for CI/CD pipelines
+      policies:
+        - p, proj:acme:acme-deployer, applications, *, acme/*, allow
+      groups:
+        - acme-platform-team

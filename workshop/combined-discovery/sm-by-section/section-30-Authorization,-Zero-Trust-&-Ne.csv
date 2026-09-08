@@ -1,0 +1,61 @@
+﻿Sticky
+"M73
+
+Are authorisation policies required between services, and who authors them?"
+"M74
+
+Does the application require L7 authorisation policies?"
+"M75
+
+Are service network flow restrictions — zero trust — required?"
+"M76
+
+What existing OpenShift or network policies are in place, especially default-deny?"
+"M77
+
+If NetworkPolicy default-deny stays alongside AuthorizationPolicy, who debugs a blocked call?"
+"M78
+
+Is NetworkPolicy being removed, or kept as defence in depth?"
+"M79
+
+Which layer is authoritative when NetworkPolicy and AuthorizationPolicy disagree?"
+"M80
+
+Who authors AuthorizationPolicies — the platform team or application teams?"
+"M81
+
+What is the review process for a new AuthorizationPolicy?"
+"M82
+
+What is the break-glass procedure to bypass the mesh during an incident?"
+"A301
+
+What is the authorisation policy model — default-deny at mesh level, or allow-list per namespace?"
+"A302
+
+What is the naming and structure convention for AuthorizationPolicy resources?"
+"A303
+
+Where do authorisation policies live in Git, and who approves a change?"
+"A304
+
+How is an authorisation policy tested before it reaches production?"
+"A305
+
+What tooling will show the effective policy for a given call path?"
+"A306
+
+How are policy denials logged, and can a developer self-serve the diagnosis?"
+"A307
+
+Is JWT or end-user token validation required at the mesh layer, and against which issuer?"
+"A308
+
+Are there requirements to authorise on request path, method or header, not just service identity?"
+"A309
+
+What is the sequencing plan — NetworkPolicy first, then AuthorizationPolicy, or both together?"
+"A310
+
+Who owns the decision to remove NetworkPolicy, and what evidence is required first?"

@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+# Fallback pre-push hook — runs unit tests before push (Sonar/Snyk still gate on PR).
+set -e
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$ROOT"
+exec ./scripts/quality-gate.sh

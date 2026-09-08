@@ -1,0 +1,31 @@
+﻿Sticky
+"A201
+
+Will the RBAC plugin be enabled from day one?"
+"A202
+
+Will permission policies be held in a file in Git, or in the database and edited through the UI?"
+"A203
+
+Which roles are required, and what does each permit?"
+"A204
+
+Which Entra groups map to which RHDH roles?"
+"A205
+
+Are conditional policies required — for example, a user may only run templates for systems their group owns?"
+"A206
+
+Who may register and unregister catalogue entities?"
+"A207
+
+Who may execute each template, and are any restricted to specific teams?"
+"A208
+
+Who administers RBAC, and is that separated from platform administration?"
+"A209
+
+Are permission changes audited, and where do those records go?"
+"A210
+
+What is the default posture for a user with no explicit role — read-only, or no access?"

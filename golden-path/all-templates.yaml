@@ -1,0 +1,47 @@
+---
+# Backstage catalog location — imports all Acme golden-path templates.
+# This file is referenced in app-config-rhdh.yaml under catalog.locations.
+#
+# Golden Path structure (2 templates per archetype = 4 total):
+#
+#   Spring Boot:
+#     1. acme-springboot-app-code       → creates source code repo in Bitbucket
+#     2. acme-springboot-release-pipeline → creates Jenkins pipeline + GitOps repo
+#
+#   Node.js:
+#     1. acme-nodejs-app-code           → creates source code repo in Bitbucket
+#     2. acme-nodejs-release-pipeline   → creates Jenkins pipeline + GitOps repo
+#
+# Workflow for a new developer:
+#   Step 1: Run App Code template     → get a working repo with skeleton + catalog entry
+#   Step 2: Run Release Pipeline template → get CI/CD + GitOps + ArgoCD apps
+#
+# Policy-as-Code integration:
+#   - App Code template labels namespace with acme.io/mesh-enroll=true
+#   - Kyverno auto-enrolls namespace in ambient mesh + injects STRICT PeerAuthentication
+#   - devfile.yaml in each repo → OpenShift Dev Spaces (VS Code + Git) on eDev cluster
+#   - _shared/governance/ → pre-commit hooks, PR template, CONTRIBUTING.md (all app-code repos)
+#   - Platform installs Dev Spaces via components/devspaces (Argo CD)
+#   - Release pipeline enforces image digest + Cosign signature in production
+#   - Jira change ticket annotation required by Kyverno release gate policy
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: acme-golden-path-templates
+  description: Acme platform-approved golden path templates — all code and policy driven
+  tags:
+    - golden-path
+    - acme
+    - policy-as-code
+spec:
+  targets:
+    # ── Spring Boot ──────────────────────────────────────────────────────────
+    - ./springboot/template-app-code.yaml
+    - ./springboot/template-release-pipeline.yaml
+
+    # ── Node.js ──────────────────────────────────────────────────────────────
+    - ./nodejs/template-app-code.yaml
+    - ./nodejs/template-release-pipeline.yaml
+
+    # ── Catalog — namespace picker options for scaffolder forms ──────────────
+    - ./catalog/location.yaml

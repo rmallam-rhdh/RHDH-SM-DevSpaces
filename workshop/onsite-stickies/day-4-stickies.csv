@@ -1,0 +1,74 @@
+﻿Sticky
+"Recap Day 3
+
+Review PKI, ingress, egress, and Phase 1 rollout list."
+"Trust domain design
+(Trust domain)
+
+Single trust domain vs per-env vs per-cluster — InfoSec view."
+"Tenancy model
+(Tenancy)
+
+Hard deny-all vs soft vs hybrid tenancy between namespaces/teams."
+"Service identity (SPIFFE)
+(Identity)
+
+One ServiceAccount per service; SPIFFE format; identity in AuthZ policies."
+"Deny-all default?
+(AuthZ)
+
+Is deny-all the platform baseline for AuthorizationPolicy?"
+"Policy ownership
+(AuthZ)
+
+Platform-owned vs team-owned vs policy-as-code (Kyverno + team extensions)."
+"Policy granularity
+(AuthZ)
+
+Namespace-level vs service-level vs method/path-level rules."
+"Pilot app access matrix
+(Access matrix)
+
+For pilot app(s): who may call whom — source × destination grid."
+"Lateral movement walkthrough
+(Blast radius)
+
+Compromised frontend / API / batch job — what can it reach?"
+"Acceptable blast radius
+(Blast radius)
+
+Required policy granularity to limit lateral movement."
+"Impersonation mitigations
+(Governance)
+
+Strict K8s RBAC, Kyverno deny wrong SA, PSA restricted."
+"AuthZ change process
+(Governance)
+
+Who can change AuthZ? GitOps-only vs emergency change?"
+"Policy audit
+(Governance)
+
+Audit of policy changes — Splunk / Git / ticket evidence."
+"Governance RACI
+(Governance)
+
+Propose → approve → deploy → audit swimlane for mesh policies."
+"SA naming standard
+(Identity)
+
+Naming convention for ServiceAccounts — one per service, no shared default."
+"Kyverno baseline
+(Governance)
+
+Role of Kyverno policy-as-code alongside mesh AuthorizationPolicy."
+"Access & governance pack
+(Deliverable)
+
+End-of-day deliverable: signed access matrix + governance RACI."
+"Day 4 open items
+
+Open questions and owners before Day 5."
+"Parking lot
+
+AuthZ detail deferred to design phase."

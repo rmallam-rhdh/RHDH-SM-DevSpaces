@@ -1,0 +1,86 @@
+---
+# RHDH Branding and Custom Homepage configuration.
+# app-config section: app.branding + homepage plugin config.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config-rhdh-branding
+  namespace: rhdh
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: developer-hub
+data:
+  app-config-branding.yaml: |
+
+    app:
+      title: Acme Developer Hub
+      baseUrl: https://rhdh.apps.${CLUSTER_BASE_DOMAIN}
+
+      # ── Custom branding ───────────────────────────────────────────────────
+      branding:
+        fullLogo: https://rhdh.apps.${CLUSTER_BASE_DOMAIN}/assets/acme-logo-full.svg
+        iconLogo: https://rhdh.apps.${CLUSTER_BASE_DOMAIN}/assets/acme-icon.svg
+        theme:
+          light:
+            primaryColor: "#D5002B"          # Acme Red
+            headerColor1: "#D5002B"
+            headerColor2: "#8B0019"
+            navigationIndicatorColor: "#D5002B"
+          dark:
+            primaryColor: "#FF4D6D"
+            headerColor1: "#8B0019"
+            headerColor2: "#4D000F"
+            navigationIndicatorColor: "#FF4D6D"
+
+    # ── Custom homepage ───────────────────────────────────────────────────────
+    # Uses the @backstage/plugin-home quickstart cards.
+    # Developers land on a curated page that links to:
+    #   - Golden path templates (create a new service)
+    #   - Existing catalog
+    #   - Docs / Learning Paths
+    #   - Jira board
+    #   - ArgoCD
+    homepage:
+      clocks:
+        - label: Auckland
+          timezone: Pacific/Auckland
+        - label: Sydney
+          timezone: Australia/Sydney
+        - label: UTC
+          timezone: UTC
+      links:
+        - title: Create a New Service
+          url: /create
+          icon: scaffolder
+        - title: Service Catalog
+          url: /catalog
+          icon: catalog
+        - title: API Explorer
+          url: /api-docs
+          icon: docs
+        - title: TechDocs
+          url: /docs
+          icon: docs
+        - title: Learning Paths
+          url: /learning-paths
+          icon: school
+        - title: Jira Board
+          url: ${JIRA_BASE_URL}/jira/software/projects
+          icon: dashboard
+        - title: ArgoCD
+          url: https://openshift-gitops-server-openshift-gitops.apps.${CLUSTER_BASE_DOMAIN}
+          icon: gitops
+        - title: SonarQube
+          url: https://sonarqube.${CLUSTER_BASE_DOMAIN}
+          icon: quality
+        - title: Jenkins
+          url: ${JENKINS_BASE_URL}
+          icon: dashboard
+
+      announcements:
+        - title: "Welcome to Acme Developer Hub"
+          content: >
+            This is your internal developer portal. Use the Golden Path templates to
+            create new services — they include CI/CD pipelines, service mesh enrollment,
+            and security scanning out of the box.
+          category: platform

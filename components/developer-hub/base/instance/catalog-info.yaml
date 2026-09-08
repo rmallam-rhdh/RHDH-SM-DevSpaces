@@ -1,0 +1,74 @@
+---
+# Backstage catalog entity for the Developer Hub instance itself.
+# Applied as a ConfigMap and mounted so RHDH self-registers at startup.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rhdh-catalog-info
+  namespace: rhdh
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: developer-hub
+data:
+  catalog-info.yaml: |
+    ---
+    apiVersion: backstage.io/v1alpha1
+    kind: System
+    metadata:
+      name: acme-platform
+      description: Acme Internal Developer Platform
+      tags:
+        - platform
+        - openshift
+        - service-mesh
+    spec:
+      owner: group:platform-team
+
+    ---
+    apiVersion: backstage.io/v1alpha1
+    kind: Component
+    metadata:
+      name: developer-hub
+      description: Red Hat Developer Hub — Acme internal developer portal
+      annotations:
+        # Kubernetes plugin — matches backstage.io/kubernetes-id label on the deployment
+        backstage.io/kubernetes-id: developer-hub
+        # ArgoCD plugin — shows the ArgoCD app managing RHDH
+        argocd/app-name: openshift-developer-hub
+        argocd/app-namespace: openshift-gitops
+        # TechDocs
+        backstage.io/techdocs-ref: dir:.
+      tags:
+        - platform
+        - developer-hub
+        - service-mesh
+        - gitops
+    spec:
+      type: service
+      lifecycle: production
+      owner: group:platform-team
+      system: acme-platform
+      dependsOn:
+        - resource:default/openshift-cluster
+        - component:default/service-mesh
+
+    ---
+    apiVersion: backstage.io/v1alpha1
+    kind: Component
+    metadata:
+      name: service-mesh
+      description: OpenShift Service Mesh 3 (Sail Operator, ambient mode) — mTLS and traffic management
+      annotations:
+        backstage.io/kubernetes-id: service-mesh
+        argocd/app-name: openshift-service-mesh
+        argocd/app-namespace: openshift-gitops
+      tags:
+        - platform
+        - istio
+        - ambient-mesh
+        - security
+    spec:
+      type: service
+      lifecycle: production
+      owner: group:platform-team
+      system: acme-platform

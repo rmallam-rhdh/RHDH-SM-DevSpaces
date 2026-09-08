@@ -1,0 +1,85 @@
+﻿Sticky
+"1
+
+Why an IDP, and why now? What specifically is broken today?"
+"2
+
+What is the cost of the status quo — what happens if nothing changes?"
+"3
+
+Who is the executive sponsor and what outcome are they accountable for?"
+"4
+
+Is this funded as a project with an end date, or as an ongoing product?"
+"5
+
+What are the expectations and success criteria for the engagement?"
+"6
+
+What are the outcomes and deliverables?"
+"7
+
+What does success look like at the end of the pilot, versus at scale?"
+"8
+
+What are the pilot exit criteria, and who signs them off?"
+"9
+
+Which teams are the pilot candidates, and why those?"
+"10
+
+Which parts of CLIENT are in scope, and which are explicitly out?"
+"11
+
+What is explicitly out of scope for this engagement?"
+"12
+
+Which decisions are already made and not open for discussion?"
+"13
+
+Is adoption mandated, incentivised, or opt-in?"
+"14
+
+What is the big picture — where does Developer Hub sit relative to Service Mesh, OpenShift and the existing toolchain?"
+"15
+
+Has a previous platform or portal attempt been made at CLIENT? What happened?"
+"16
+
+Is there an existing developer portal or IDP in place, even partially?"
+"17
+
+How can we make developers use the IDP over their existing flow? What is the driver?"
+"18
+
+What developer journeys are the highest priority for Dev Hub? (marked: to be completed offline)"
+"A1
+
+Is there an architecture decision record (ADR) process, and will RHDH design decisions be recorded in it?"
+"A2
+
+What is the target state at 12 and 24 months — how many services, teams and templates in the catalogue?"
+"A3
+
+Is there an existing platform-engineering strategy or enterprise architecture standard this design must conform to?"
+"A4
+
+Who holds design-authority sign-off, and which artefacts do they require — HLD, LLD, security pattern?"
+"A5
+
+What is the architecture review board cadence, and the lead time to secure approval?"
+"A6
+
+What is the appetite for customisation versus staying close to product defaults?"
+"A7
+
+Are there prior Backstage or portal proofs-of-concept whose learnings or assets apply?"
+"A8
+
+Is RHDH intended to be the single engineering entry point, or one portal among several?"
+"A9
+
+Which discovery items must be closed before detailed design can begin?"
+"A10
+
+What is the definition of done for the design phase, and who accepts it?"

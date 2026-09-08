@@ -1,0 +1,73 @@
+﻿Sticky
+"96
+
+Confirm required plugins — Jenkins, Kubernetes, SonarQube, Snyk, Jira, Artifactory, Git."
+"97
+
+Is an API Connect plugin needed?"
+"98
+
+Which plugins are required at launch versus aspirational?"
+"99
+
+Is the Jenkins plugin required, and what should it surface?"
+"100
+
+Is the Jira plugin required, and scoped to which projects?"
+"101
+
+Is SonarQube integration required on the component page?"
+"102
+
+Is Snyk integration required, and who acts on the findings shown?"
+"103
+
+Is Artifactory integration required for artefact visibility?"
+"104
+
+Is the Kubernetes / OpenShift plugin required to show workload status?"
+"105
+
+Are any required plugins community-only, unsupported, or absent?"
+"106
+
+Is custom plugin or custom action development in scope, and who maintains it?"
+"107
+
+How will RHDH be branded and themed for CLIENT?"
+"A86
+
+For each integration, what is the endpoint, authentication method, service account and owning team?"
+"A87
+
+What should the Jenkins plugin surface on a component page — latest status only, or full build history?"
+"A88
+
+Does the Kubernetes plugin need access to every cluster, and by what authentication method?"
+"A89
+
+Which label convention links a running workload to its catalogue component?"
+"A90
+
+Is Argo CD integration required, and against which instances?"
+"A91
+
+Is Tekton / OpenShift Pipelines integration required in addition to Jenkins?"
+"A92
+
+Is ServiceNow or another change-management integration required?"
+"A93
+
+Is Confluence or another wiki integration required alongside TechDocs?"
+"A94
+
+Is API Connect the source of truth for APIs, and does it expose a consumable API?"
+"A95
+
+Should Dynatrace or Splunk data be surfaced on the component page?"
+"A96
+
+What is the availability, rate limit and maintenance window of each upstream system?"
+"A97
+
+What should the user see when an integration is unavailable?"

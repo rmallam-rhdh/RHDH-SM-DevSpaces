@@ -1,0 +1,17 @@
+---
+# PeerAuthentication — enforce STRICT mTLS at the namespace level.
+# In ambient mode ztunnel enforces this at L4; the waypoint enforces it at L7.
+# STRICT means only mesh-authenticated workloads can reach pods in this namespace.
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: rhdh-strict-mtls
+  namespace: rhdh
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: developer-hub
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  mtls:
+    mode: STRICT

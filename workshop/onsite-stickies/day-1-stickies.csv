@@ -1,0 +1,78 @@
+﻿Sticky
+"Agenda & ground rules
+(Kick-off)
+
+Set agenda, goals, attendees, and workshop ground rules for the full onsite week."
+"Decision owners
+(Kick-off)
+
+Name decision owners for platform, identity, security, app teams, and delivery sponsor."
+"6-month success
+(Success & adoption)
+
+What does success look like for Developer Hub and the platform in 6 months?"
+"Exec sponsor & adoption
+(Success & adoption)
+
+Who is the exec sponsor? Is adoption mandated, incentivised, or opt-in?"
+"Pain points
+(Success & adoption)
+
+Top developer and platform pain points driving this initiative."
+"Application architecture
+(Digi 2.0 landscape)
+
+High-level Digi 2.0 application architecture — services, systems, deployment patterns."
+"Scale & team topology
+(Digi 2.0 landscape)
+
+Number of services, teams, streams, and how platform onboarding works today."
+"Developer onboarding
+(Digi 2.0 landscape)
+
+How long does it take a new developer to become productive and deploy?"
+"Release overview
+(Digi 2.0 landscape)
+
+High-level development and release overview across the programme."
+"Pilot teams
+(Digi 2.0 landscape)
+
+Which teams are in scope for Phase 1 / pilot — and why those?"
+"Source control
+(SCM & CI/CD)
+
+Authoritative SCM — Git, Bitbucket, repos, branching model."
+"CI/CD tooling
+(SCM & CI/CD)
+
+Jenkins, Tekton, and other CI/CD tools used to build and deploy."
+"Release cadence
+(SCM & CI/CD)
+
+Current release frequency and friction points."
+"Deployment & promotion
+(SCM & CI/CD)
+
+Deployment method and environment promotion (eDev → Non-Prod → Prod)."
+"In scope / out of scope
+(Scope)
+
+What is in scope for this engagement — and explicitly out?"
+"RHDH + SM big picture
+(Scope)
+
+Where Developer Hub, Service Mesh, and OpenShift sit in the toolchain (MBPM context)."
+"Clusters in scope
+(Scope)
+
+Which OpenShift clusters and environments are in scope?"
+"Discovery exit criteria
+
+What must be decided before detailed design can start?"
+"Day 1 open items
+
+Capture open questions, owners, and offline actions before Day 2."
+"Parking lot
+
+Items deferred to later days or remote sessions."

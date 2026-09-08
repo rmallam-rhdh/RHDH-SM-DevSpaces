@@ -1,0 +1,20 @@
+---
+# Kyverno Policy Engine — OLM subscription via community-operators.
+# Kyverno enforces governance policies (mesh enrollment, resource limits,
+# label requirements, security posture) without manual patching.
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: kyverno-operator
+  namespace: openshift-operators
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: policy-as-code
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  channel: stable
+  installPlanApproval: Automatic
+  name: kyverno-operator
+  source: community-operators
+  sourceNamespace: openshift-marketplace

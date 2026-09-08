@@ -1,0 +1,37 @@
+﻿Sticky
+"A169
+
+Will RHDH be exposed by an OpenShift Route, an Ingress, or through the external load balancer?"
+"A170
+
+What is the target FQDN, and who owns the DNS record and its change process?"
+"A171
+
+Is TLS terminated at the edge, re-encrypted, or passed through to the pod?"
+"A172
+
+Which CA issues the RHDH certificate, and is cert-manager available for renewal?"
+"A173
+
+What is the certificate request and renewal lead time?"
+"A174
+
+Which proxy settings are required for RHDH egress, and what belongs in NO_PROXY?"
+"A175
+
+Which outbound destinations must be allow-listed — Bitbucket, Jenkins, Jira, Artifactory, Entra, Graph, npm?"
+"A176
+
+Is there a TLS-inspecting proxy whose CA must be injected into the RHDH trust store?"
+"A177
+
+How is the cluster-wide trust bundle injected into RHDH pods?"
+"A178
+
+Is session affinity required at the load balancer when running multiple replicas?"
+"A179
+
+Do any plugins require WebSocket or server-sent events, and does the ingress path support them?"
+"A180
+
+What are the ingress idle and request timeouts, and are they sufficient for long-running template executions?"

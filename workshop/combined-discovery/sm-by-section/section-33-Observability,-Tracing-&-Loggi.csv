@@ -1,0 +1,82 @@
+﻿Sticky
+"M97
+
+What observability does the mesh need — Kiali, distributed tracing, metrics — and where do they land?"
+"M98
+
+Is Kiali a planned visualisation for observability?"
+"M99
+
+Is tracing already in use, and which backend — Tempo, Jaeger, or a commercial APM?"
+"M100
+
+What is required for distributed tracing — Envoy access logs, object storage?"
+"M101
+
+Distributed tracing needs application-level context propagation — who instruments the applications?"
+"M102
+
+Does Dynatrace already propagate trace headers, or is that new work?"
+"M103
+
+Where do traces land, and what is the retention?"
+"M104
+
+Envoy access logs are high volume — what is the Splunk ingest cost at full adoption?"
+"M105
+
+Which system owns mesh telemetry — Splunk, Dynatrace, Grafana, or RHACM?"
+"M106
+
+Does RHACM observability already collect Istio metrics, or is that additional?"
+"M107
+
+What is required for application metrics and user workload monitoring?"
+"M108
+
+Are there application custom metrics that need to be monitored?"
+"M109
+
+Should Perses built-in custom dashboards be considered?"
+"M110
+
+Is centralised observability required?"
+"M111
+
+What central logging stack supports mesh observability?"
+"A330
+
+Which mesh metrics will be retained, at what cardinality, and for how long?"
+"A331
+
+Is Prometheus federation or RHACM observability the collection path for mesh metrics?"
+"A332
+
+What sampling rate is required for distributed tracing, and is head or tail sampling used?"
+"A333
+
+Which tracing backend is authoritative — Tempo, Jaeger or Dynatrace — and is there duplication?"
+"A334
+
+Which trace header format will be standard — W3C traceparent or B3 — and does Dynatrace agree?"
+"A335
+
+Which services must be instrumented for context propagation, and who does that work?"
+"A336
+
+Will Envoy access logs be enabled everywhere, sampled, or only on demand?"
+"A337
+
+What is the estimated Splunk ingest volume and cost from mesh logs at full adoption?"
+"A338
+
+Which dashboards and alerts are required for mesh health, and who owns them?"
+"A339
+
+Will Kiali be exposed to application teams, and with what authentication and RBAC?"
+"A340
+
+What is the retention and storage sizing for mesh telemetry in ODF?"
+"A341
+
+How will golden signals per service be surfaced to developers — in Kiali, Grafana, or RHDH?"

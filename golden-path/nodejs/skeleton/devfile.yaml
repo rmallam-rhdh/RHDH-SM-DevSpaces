@@ -1,0 +1,89 @@
+schemaVersion: 2.2.0
+metadata:
+  name: ${{ values.appName }}
+  version: 1.0.0
+  description: Acme golden-path Dev Spaces workspace — VS Code, Git, Node ${{ values.nodeVersion }}
+  attributes:
+    metadata.openshift.io/scopes: ['devspaces']
+
+components:
+  - name: che-code
+    attributes:
+      app.kubernetes.io/component: che-code
+      app.kubernetes.io/part-of: che.eclipse.org
+      che.code/editor/che-code: latest
+    type: cheEditor
+
+  - name: tools
+    container:
+      image: quay.io/devfile/universal-developer-image:ubi9-latest
+      memoryLimit: 3Gi
+      memoryRequest: 1Gi
+      cpuLimit: "2"
+      cpuRequest: 500m
+      mountSources: true
+      sourceMapping: /projects
+      env:
+        - name: NODEJS_VERSION
+          value: "${{ values.nodeVersion }}"
+      endpoints:
+        - name: api
+          targetPort: ${{ values.port }}
+          exposure: public
+          secure: true
+          protocol: https
+
+projects:
+  - name: ${{ values.appName }}
+    git:
+      remotes:
+        origin: https://bitbucket.org/${{ values.bitbucketWorkspace }}/${{ values.appName }}.git
+      checkoutFrom:
+        remote: origin
+        revision: main
+
+commands:
+  - id: install
+    exec:
+      component: tools
+      commandLine: npm ci
+      workingDir: ${PROJECTS_ROOT}/${{ values.appName }}
+      group:
+        kind: build
+        isDefault: true
+
+  - id: test
+    exec:
+      component: tools
+      commandLine: npm test
+      workingDir: ${PROJECTS_ROOT}/${{ values.appName }}
+      group:
+        kind: test
+        isDefault: true
+
+  - id: run
+    exec:
+      component: tools
+      commandLine: npm run dev
+      workingDir: ${PROJECTS_ROOT}/${{ values.appName }}
+      group:
+        kind: run
+        isDefault: true
+
+  - id: lint
+    exec:
+      component: tools
+      commandLine: ./scripts/quality-gate.sh --lint-only
+      workingDir: ${PROJECTS_ROOT}/${{ values.appName }}
+
+  - id: install-hooks
+    exec:
+      component: tools
+      commandLine: ./scripts/install-git-hooks.sh
+      workingDir: ${PROJECTS_ROOT}/${{ values.appName }}
+
+  - id: quality-gate
+    exec:
+      component: tools
+      commandLine: ./scripts/quality-gate.sh
+      workingDir: ${PROJECTS_ROOT}/${{ values.appName }}

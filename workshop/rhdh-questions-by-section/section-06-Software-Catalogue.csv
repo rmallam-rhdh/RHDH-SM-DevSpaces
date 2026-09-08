@@ -1,0 +1,88 @@
+﻿Sticky
+"62
+
+What is the initial set of apps / systems to appear in Developer Hub?"
+"63
+
+For the initial set of apps, what is the app architecture? (intent: capture component relationships)"
+"64
+
+How will the catalogue be populated — discovery, registration, or bulk import?"
+"65
+
+Who owns catalogue items?"
+"66
+
+What is the unit of ownership — service, application, product, or system?"
+"67
+
+Will the catalogue be authoritative, or a view over an existing system of record?"
+"68
+
+Is there an existing application inventory or CMDB, and how accurate is it?"
+"69
+
+What metadata must every catalogue component carry?"
+"70
+
+How will catalogue entries be kept accurate as services change?"
+"71
+
+Should the catalogue include systems not on OpenShift — VMs, mainframe, SaaS?"
+"A55
+
+Which entity kinds will be used — Component, System, Domain, API, Resource, Group, User?"
+"A56
+
+What is the CLIENT definition of a System, and of a Domain?"
+"A57
+
+What is the entity naming convention, and does an existing service-naming standard apply?"
+"A58
+
+Will the catalogue use namespaces, and along which axis — team, domain or environment?"
+"A59
+
+Which component types are permitted — service, website, library, mobile-app?"
+"A60
+
+Which lifecycle values are permitted, and who is authorised to set them?"
+"A61
+
+Will APIs be catalogued, and what is the source of truth — API Connect, or OpenAPI in the repository?"
+"A62
+
+Will infrastructure resources — databases, queues, buckets — be catalogued, and by whom?"
+"A63
+
+Which standard annotations must every component carry — Jira project, Jenkins job, SonarQube key, Argo CD app, workload selector?"
+"A64
+
+Which catalogue providers will be used — Bitbucket discovery, Microsoft Graph, static locations?"
+"A65
+
+What is the catalogue refresh interval, and what load does discovery place on Bitbucket?"
+"A66
+
+Where must catalog-info.yaml live in a repository, and is that enforced by template?"
+"A67
+
+What happens when catalog-info.yaml is invalid or missing — who is notified, and how?"
+"A68
+
+Are custom entity processors or validators required to enforce mandatory metadata?"
+"A69
+
+Will the catalogue be seeded by bulk import, and from which source?"
+"A70
+
+Is a two-way sync with a CMDB or ServiceNow required?"
+"A71
+
+How will systems not on OpenShift — VMs, mainframe, SaaS — be modelled in practice?"
+"A72
+
+What is the process to retire an entity, and who arbitrates ownership disputes?"
+"A73
+
+How will unowned or orphaned entities be detected and chased?"

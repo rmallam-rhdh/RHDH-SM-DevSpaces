@@ -1,0 +1,14 @@
+---
+# Namespace — labelled for Kyverno auto-mesh-enrollment.
+# Kyverno policy "auto-enroll-ambient-mesh" detects acme.io/mesh-enroll=true
+# and automatically adds istio.io/dataplane-mode=ambient.
+# Kyverno policy "inject-default-peer-authentication" then generates a STRICT
+# PeerAuthentication in this namespace — zero-trust by default, no runbooks needed.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ${{ values.devNamespace }}
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    acme.io/mesh-enroll: "true"          # Kyverno auto-enrolls in ambient mesh
+    acme.io/env: dev

@@ -1,0 +1,31 @@
+﻿Sticky
+"A223
+
+Which RHDH environments are needed for testing, and are they funded and scheduled?"
+"A224
+
+What is the non-functional test plan — load, soak and failover?"
+"A225
+
+What load profile will be simulated, and against which acceptance thresholds?"
+"A226
+
+Will a DR failover test be performed before go-live, and who signs it off?"
+"A227
+
+What are the UAT scenarios, and who performs them?"
+"A228
+
+What are the go-live criteria, and which forum gives go/no-go?"
+"A229
+
+What is the cutover plan, and what is the fallback if it fails?"
+"A230
+
+What is the communications and enablement plan for users at launch?"
+"A231
+
+Which existing tools or portals are decommissioned at cutover, and on what date?"
+"A232
+
+What is the post-go-live hypercare period, and who staffs it?"

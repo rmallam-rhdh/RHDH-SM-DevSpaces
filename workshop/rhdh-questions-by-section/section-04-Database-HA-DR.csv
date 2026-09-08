@@ -1,0 +1,67 @@
+﻿Sticky
+"38
+
+What is the storage/database for RHDH?"
+"39
+
+External PostgreSQL — endpoint and URL? Is the external pgsql HA?"
+"40
+
+What is the external PostgreSQL endpoint, and is it HA?"
+"41
+
+Is there an external DB service to leverage?"
+"42
+
+What are the latency requirements on the database? (raised by CLIENT)"
+"43
+
+What storage and database sizing does RHDH need?"
+"44
+
+How will the RHDH PostgreSQL database be backed up and restored — and is restore tested?"
+"45
+
+What are the HA requirements for RHDH?"
+"46
+
+What SLA / SLO will RHDH commit to?"
+"47
+
+What is the DR requirement for RHDH, and what are the RTO and RPO?"
+"48
+
+Is a non-production RHDH instance needed to test upgrades and plugin changes?"
+"49
+
+What is the RHDH upgrade cadence, and who owns it?"
+"A33
+
+Which PostgreSQL version and extensions are available, and do they meet the RHDH supported matrix?"
+"A34
+
+Will the database be operator-managed in-cluster or external, and what drives that decision?"
+"A35
+
+What connection limits, pooling behaviour and TLS mode apply to the database?"
+"A36
+
+What is the expected database growth rate, and what headroom is required?"
+"A37
+
+What is the backup schedule and retention, and who executes a restore?"
+"A38
+
+Has a full restore been tested end to end, and what RTO was measured?"
+"A39
+
+Is the database replicated across data centres, and is failover automatic or manual?"
+"A40
+
+If the database is lost, can the catalogue be rebuilt from Git — and what would not be recoverable?"
+"A41
+
+What is the database patching window, and can RHDH tolerate that outage?"
+"A42
+
+Are there separate databases per RHDH environment, and how are credentials rotated?"

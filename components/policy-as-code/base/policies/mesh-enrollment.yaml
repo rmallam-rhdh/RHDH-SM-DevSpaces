@@ -1,0 +1,97 @@
+---
+# POLICY: auto-enroll-ambient-mesh
+# ─────────────────────────────────────────────────────────────────────────────
+# Automatically adds the istio.io/dataplane-mode=ambient label to any namespace
+# that has the acme.io/mesh-enroll=true label.
+#
+# Golden path templates apply this namespace label so developers don't have
+# to think about mesh enrollment — it happens automatically.
+#
+# Usage in catalog-info.yaml or namespace YAML:
+#   labels:
+#     acme.io/mesh-enroll: "true"
+#
+# This is Policy-as-Code: no manual patching, no runbooks — the policy enforces it.
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: auto-enroll-ambient-mesh
+  annotations:
+    policies.kyverno.io/title: Auto-Enrol Namespace in Ambient Mesh
+    policies.kyverno.io/category: Service Mesh
+    policies.kyverno.io/severity: medium
+    policies.kyverno.io/description: >
+      Any namespace labelled acme.io/mesh-enroll=true is automatically
+      enrolled in the OSSM3 ambient mesh by adding istio.io/dataplane-mode=ambient.
+      This removes the need for manual mesh enrollment and ensures all platform
+      workloads are transparently mTLS-protected.
+spec:
+  rules:
+    - name: add-ambient-label
+      match:
+        any:
+          - resources:
+              kinds: [Namespace]
+              selector:
+                matchLabels:
+                  acme.io/mesh-enroll: "true"
+      mutate:
+        patchStrategicMerge:
+          metadata:
+            labels:
+              istio.io/dataplane-mode: ambient
+---
+# POLICY: require-mesh-enroll-label
+# ─────────────────────────────────────────────────────────────────────────────
+# Audit-mode policy: reports any non-system namespace that has workloads but
+# is NOT enrolled in the ambient mesh. Does NOT block — it generates a report.
+# This gives platform teams visibility of "shadow" namespaces outside the mesh.
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: audit-mesh-enrollment
+  annotations:
+    policies.kyverno.io/title: Audit Mesh Enrollment
+    policies.kyverno.io/category: Service Mesh
+    policies.kyverno.io/severity: low
+    policies.kyverno.io/description: >
+      Generates a PolicyReport for namespaces that have Deployments but lack
+      the istio.io/dataplane-mode=ambient label. Platform teams can use the
+      report to identify non-compliant workloads without blocking deployments.
+spec:
+  validationFailureAction: Audit
+  rules:
+    - name: check-ambient-label
+      match:
+        any:
+          - resources:
+              kinds: [Namespace]
+              namespaceSelector:
+                matchExpressions:
+                  - key: kubernetes.io/metadata.name
+                    operator: NotIn
+                    values:
+                      - kube-system
+                      - kube-public
+                      - kube-node-lease
+                      - openshift
+                      - openshift-operators
+                      - openshift-gitops
+                      - openshift-monitoring
+                      - istio-system
+                      - istio-cni
+                      - ztunnel
+                      - kyverno
+                      - rhdh
+                      - vault
+                      - external-secrets
+                      - istio-mesh-tools
+      validate:
+        message: >
+          Namespace {{ request.object.metadata.name }} has workloads but is not
+          enrolled in the ambient mesh. Add label acme.io/mesh-enroll=true
+          to auto-enrol, or add istio.io/dataplane-mode=ambient manually.
+        pattern:
+          metadata:
+            labels:
+              istio.io/dataplane-mode: ambient

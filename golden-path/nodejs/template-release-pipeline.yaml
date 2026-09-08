@@ -1,0 +1,242 @@
+---
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: acme-nodejs-release-pipeline
+  title: "Node.js App — Release Pipeline"
+  description: >
+    [Step 2 of 2] Creates the Jenkins CI/CD pipeline + GitOps manifests for a Node.js app.
+    Includes Kyverno policy-driven namespace enrollment, image signing, and Jira release gates.
+  tags:
+    - nodejs
+    - recommended
+    - golden-path
+    - release-pipeline
+spec:
+  owner: group:platform-team
+  type: service
+
+  parameters:
+    - title: Application Reference
+      required: [appName, bitbucketWorkspace]
+      properties:
+        appName:
+          title: Application Name
+          type: string
+          pattern: '^[a-z][a-z0-9-]{2,48}[a-z0-9]$'
+          ui:autofocus: true
+        bitbucketWorkspace:
+          title: Bitbucket Workspace
+          type: string
+          default: acme
+
+    - title: Environments
+      required: [targetCluster]
+      properties:
+        targetCluster:
+          title: Non-Prod data centre
+          type: string
+          default: nonprod-dc1
+          enum:
+            - nonprod-dc1
+            - nonprod-dc2
+          enumNames:
+            - "Non-Prod DC-1"
+            - "Non-Prod DC-2"
+        deployToBothDcs:
+          title: Also deploy to the other Non-Prod DC
+          type: boolean
+          default: false
+        devReplicas:
+          title: Dev Replicas
+          type: integer
+          default: 2
+        prodReplicas:
+          title: Prod Replicas
+          type: integer
+          default: 3
+        port:
+          title: Application Port
+          type: integer
+          default: 3000
+        cpuRequest:
+          title: CPU Request
+          type: string
+          default: "100m"
+        memoryRequest:
+          title: Memory Request
+          type: string
+          default: "256Mi"
+        cpuLimit:
+          title: CPU Limit
+          type: string
+          default: "500m"
+        memoryLimit:
+          title: Memory Limit
+          type: string
+          default: "512Mi"
+      dependencies:
+        targetCluster:
+          oneOf:
+            - title: Non-Prod DC-1
+              properties:
+                targetCluster:
+                  enum: [nonprod-dc1]
+                devNamespace:
+                  title: Dev namespace
+                  type: string
+                  ui:field: EntityPicker
+                  ui:options:
+                    allowedKinds:
+                      - Resource
+                    catalogFilter:
+                      - kind: Resource
+                        spec.type: kubernetes-namespace
+                        metadata.annotations.acme.io/cluster: nonprod-dc1
+                        metadata.annotations.acme.io/environment: dev
+                prodNamespace:
+                  title: Prod namespace (pre-prod)
+                  type: string
+                  ui:field: EntityPicker
+                  ui:options:
+                    allowedKinds:
+                      - Resource
+                    catalogFilter:
+                      - kind: Resource
+                        spec.type: kubernetes-namespace
+                        metadata.annotations.acme.io/cluster: nonprod-dc1
+                        metadata.annotations.acme.io/environment: prod
+              required: [devNamespace, prodNamespace]
+            - title: Non-Prod DC-2
+              properties:
+                targetCluster:
+                  enum: [nonprod-dc2]
+                devNamespace:
+                  title: Dev namespace
+                  type: string
+                  ui:field: EntityPicker
+                  ui:options:
+                    allowedKinds:
+                      - Resource
+                    catalogFilter:
+                      - kind: Resource
+                        spec.type: kubernetes-namespace
+                        metadata.annotations.acme.io/cluster: nonprod-dc2
+                        metadata.annotations.acme.io/environment: dev
+                prodNamespace:
+                  title: Prod namespace (pre-prod)
+                  type: string
+                  ui:field: EntityPicker
+                  ui:options:
+                    allowedKinds:
+                      - Resource
+                    catalogFilter:
+                      - kind: Resource
+                        spec.type: kubernetes-namespace
+                        metadata.annotations.acme.io/cluster: nonprod-dc2
+                        metadata.annotations.acme.io/environment: prod
+              required: [devNamespace, prodNamespace]
+
+    - title: Jenkins & Quality
+      required: [jenkinsFolder]
+      properties:
+        jenkinsFolder:
+          title: Jenkins Folder
+          type: string
+          default: acme
+        enableSonar:
+          title: SonarQube quality gate
+          type: boolean
+          default: true
+        enableSnyk:
+          title: Snyk security scan
+          type: boolean
+          default: true
+        enableCosign:
+          title: Cosign image signing
+          type: boolean
+          default: true
+        artifactoryRepo:
+          title: Artifactory Repository
+          type: string
+          default: acme-docker
+        requireJiraTicket:
+          title: Require Jira change ticket for production
+          type: boolean
+          default: true
+
+  steps:
+    - id: fetch-pipeline-skeleton
+      name: Fetch Pipeline Skeleton
+      action: fetch:template
+      input:
+        url: ./pipeline-skeleton
+        values:
+          appName: ${{ parameters.appName }}
+          bitbucketWorkspace: ${{ parameters.bitbucketWorkspace }}
+          targetCluster: ${{ parameters.targetCluster }}
+          devNamespace: ${{ parameters.devNamespace | parseEntityRef | pick('name') }}
+          prodNamespace: ${{ parameters.prodNamespace | parseEntityRef | pick('name') }}
+          deployToBothDcs: ${{ parameters.deployToBothDcs }}
+          devReplicas: ${{ parameters.devReplicas }}
+          prodReplicas: ${{ parameters.prodReplicas }}
+          port: ${{ parameters.port }}
+          cpuRequest: ${{ parameters.cpuRequest }}
+          memoryRequest: ${{ parameters.memoryRequest }}
+          cpuLimit: ${{ parameters.cpuLimit }}
+          memoryLimit: ${{ parameters.memoryLimit }}
+          jenkinsFolder: ${{ parameters.jenkinsFolder }}
+          enableSonar: ${{ parameters.enableSonar }}
+          enableSnyk: ${{ parameters.enableSnyk }}
+          enableCosign: ${{ parameters.enableCosign }}
+          artifactoryRepo: ${{ parameters.artifactoryRepo }}
+          requireJiraTicket: ${{ parameters.requireJiraTicket }}
+
+    - id: publish-gitops-repo
+      name: Publish GitOps Manifests to Bitbucket
+      action: publish:bitbucketCloud
+      input:
+        repoUrl: "bitbucket.org?workspace=${{ parameters.bitbucketWorkspace }}&repo=${{ parameters.appName }}-gitops"
+        description: GitOps manifests for ${{ parameters.appName }}
+        defaultBranch: main
+        repoVisibility: private
+
+    - id: create-argocd-dev
+      name: Create ArgoCD Application (dev)
+      action: argocd:create-resources
+      input:
+        appName: ${{ parameters.appName }}-dev
+        argoInstance: acme-argocd
+        namespace: ${{ parameters.devNamespace | parseEntityRef | pick('name') }}
+        repoUrl: https://bitbucket.org/${{ parameters.bitbucketWorkspace }}/${{ parameters.appName }}-gitops.git
+        path: overlays/dev
+        labelValue: ${{ parameters.appName }}
+
+    - id: create-argocd-prod
+      name: Create ArgoCD Application (prod)
+      action: argocd:create-resources
+      input:
+        appName: ${{ parameters.appName }}-prod
+        argoInstance: acme-argocd
+        namespace: ${{ parameters.prodNamespace | parseEntityRef | pick('name') }}
+        repoUrl: https://bitbucket.org/${{ parameters.bitbucketWorkspace }}/${{ parameters.appName }}-gitops.git
+        path: overlays/prod
+        labelValue: ${{ parameters.appName }}
+
+    - id: create-jenkins-pipeline
+      name: Create Jenkins Pipeline
+      action: jenkins:create-job
+      input:
+        jobName: ${{ parameters.appName }}
+        folder: ${{ parameters.jenkinsFolder }}
+        bitbucketWorkspace: ${{ parameters.bitbucketWorkspace }}
+        repoSlug: ${{ parameters.appName }}
+
+  output:
+    links:
+      - title: GitOps Repository
+        url: ${{ steps['publish-gitops-repo'].output.remoteUrl }}
+        icon: github
+      - title: Jenkins Pipeline
+        url: ${JENKINS_BASE_URL}/job/${{ parameters.jenkinsFolder }}/job/${{ parameters.appName }}
+        icon: dashboard

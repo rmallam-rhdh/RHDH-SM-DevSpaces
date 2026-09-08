@@ -1,0 +1,39 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  # ── Namespace (with ambient mesh label) ────────────────────────────────────
+  - namespace.yaml
+
+  # ── Operator ───────────────────────────────────────────────────────────────
+  - operator/operatorgroup.yaml
+  - operator/subscription.yaml
+
+  # ── Prereqs (wave 0-1, must exist before operator installs) ───────────────
+  - prereqs/cluster-role-binding-admin.yaml
+  - prereqs/sa-token-writer.yaml
+
+  # ── Developer Hub Instance ─────────────────────────────────────────────────
+  - instance/app-config-cm.yaml
+  - instance/branding-cm.yaml            # custom theme (Acme red), homepage links, clocks
+  - instance/catalog-info.yaml           # self-registers Developer Hub + Service Mesh in catalog
+  - instance/dynamic-plugins-cm.yaml
+  - instance/secret-env.yaml             # ExternalSecret → Vault → rhdh-secrets
+  - instance/rbac.yaml
+  - instance/backstage.yaml
+
+  # ── Service Mesh Integration (OSSM3 / Sail Operator ambient mode) ──────────
+  # NOTE: ServiceMeshMember CR does NOT exist in OSSM3/Sail Operator.
+  #       Namespace enrolment is via the istio.io/dataplane-mode=ambient label above.
+  - service-mesh/waypoint.yaml           # L7 waypoint proxy (Kubernetes Gateway API)
+  - service-mesh/peer-authentication.yaml
+  - service-mesh/destination-rule.yaml
+  - service-mesh/gateway.yaml            # Istio Gateway for external ingress
+  - service-mesh/virtual-service.yaml
+  - service-mesh/authorization-policy.yaml
+  - service-mesh/route-mesh-ingress.yaml # OpenShift Route → istio-ingressgateway
+
+commonLabels:
+  app.kubernetes.io/managed-by: openshift-gitops
+  app.kubernetes.io/part-of: acme-platform

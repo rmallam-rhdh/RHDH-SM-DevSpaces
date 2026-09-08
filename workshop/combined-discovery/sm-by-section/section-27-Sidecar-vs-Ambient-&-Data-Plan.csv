@@ -1,0 +1,52 @@
+﻿Sticky
+"M45
+
+Sidecar or ambient mode?"
+"M46
+
+Ambient gives mTLS and L4 authz via ztunnel — which policies need an L7 waypoint?"
+"M47
+
+What is the resource budget for ztunnel per node, and for waypoints per namespace?"
+"M48
+
+Session stickiness needs consistent-hash load balancing, which is L7 — does that force waypoints for those applications?"
+"M49
+
+At 250 pods per cluster, what does ambient save versus sidecar in practice?"
+"M50
+
+What is the fallback if ambient does not meet a requirement — can sidecar and ambient be mixed?"
+"M51
+
+How will applications be onboarded into the mesh — namespace label, per-workload, or template?"
+"A269
+
+Which OSSM release makes ambient generally available, and does that timeline align with Digi 2.0 drop 1?"
+"A270
+
+Is ambient mode supported by Red Hat on OVN-Kubernetes in the target version?"
+"A271
+
+Which namespaces will need an L7 waypoint on day one, and for which capabilities?"
+"A272
+
+How is waypoint capacity sized and scaled — per namespace, or per service account?"
+"A273
+
+What is the ztunnel resource footprint per node at 250 pods, and is that budgeted?"
+"A274
+
+How does ambient interact with the existing default-deny NetworkPolicy?"
+"A275
+
+Is there a migration path from ambient to sidecar, or the reverse, for an individual namespace?"
+"A276
+
+How is the mesh data plane restarted or drained during node maintenance?"
+"A277
+
+What is the pod startup impact — must applications tolerate proxy readiness ordering?"
+"A278
+
+How is traffic captured for pods that start before ztunnel is ready on a node?"

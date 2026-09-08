@@ -1,0 +1,32 @@
+---
+# DestinationRule — applied by the waypoint proxy for L7 resilience policies.
+# Host must match the Service name that the RHDH operator creates: backstage-<CR-name>.
+# With CR name "acme" the service is "backstage-acme".
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: backstage-dr
+  namespace: rhdh
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: developer-hub
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  host: backstage-acme.rhdh.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+    connectionPool:
+      http:
+        http2MaxRequests: 1000
+        maxRequestsPerConnection: 10
+        h2UpgradePolicy: UPGRADE
+      tcp:
+        maxConnections: 100
+        connectTimeout: 30ms
+    outlierDetection:
+      consecutive5xxErrors: 5
+      interval: 10s
+      baseEjectionTime: 30s
+      maxEjectionPercent: 50

@@ -1,0 +1,28 @@
+---
+# Root "App of Apps" — synced manually once to bootstrap everything else.
+# kubectl apply -f bootstrap/root-app.yaml -n openshift-gitops
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: acme-gitops
+  namespace: openshift-gitops
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/rmallam/RHDH-SM-DevSpaces   # <-- update to your repo URL
+    targetRevision: main
+    path: argocd/apps
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: openshift-gitops
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

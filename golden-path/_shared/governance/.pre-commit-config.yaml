@@ -1,0 +1,29 @@
+# Acme golden-path — local quality gates before commit/push.
+# Install: ./scripts/install-git-hooks.sh   (or: pre-commit install && pre-commit install --hook-type pre-push)
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+        args: [--unsafe]
+      - id: check-added-large-files
+        args: [--maxkb=1024]
+      - id: detect-private-key
+
+  - repo: local
+    hooks:
+      - id: acme-lint
+        name: Acme lint (quality-gate --lint-only)
+        entry: bash scripts/quality-gate.sh --lint-only
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+      - id: acme-unit-tests
+        name: Acme unit tests (quality-gate)
+        entry: bash scripts/quality-gate.sh
+        language: system
+        pass_filenames: false
+        stages: [pre-push]

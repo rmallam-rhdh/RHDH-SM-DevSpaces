@@ -1,0 +1,31 @@
+﻿Sticky
+"M95
+
+How will egress from the mesh to external systems be controlled?"
+"M96
+
+Is egress control required?"
+"A322
+
+Which external endpoints must mesh workloads reach, and will they be registered as ServiceEntries?"
+"A323
+
+Will an egress gateway be used to give a stable source IP for firewall allow-listing?"
+"A324
+
+How does mesh egress interact with the corporate proxy and TLS inspection?"
+"A325
+
+Is TLS origination at the egress gateway required, or does the application originate TLS?"
+"A326
+
+How are external service certificates validated, and where is that trust bundle held?"
+"A327
+
+What is the policy for undeclared egress — blocked, or allowed and logged?"
+"A328
+
+Who approves a new external destination, and how long does it take?"
+"A329
+
+How is egress traffic metered, given the ARO cloud egress cost concern?"

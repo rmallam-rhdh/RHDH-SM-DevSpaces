@@ -1,0 +1,164 @@
+---
+# POLICY: require-resource-limits
+# ─────────────────────────────────────────────────────────────────────────────
+# All containers in mesh-enrolled namespaces must declare CPU and memory limits.
+# Prevents resource starvation and ensures ztunnel can schedule alongside pods.
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-resource-limits
+  annotations:
+    policies.kyverno.io/title: Require Resource Limits
+    policies.kyverno.io/category: Workload Governance
+    policies.kyverno.io/severity: medium
+    policies.kyverno.io/description: >
+      All containers must declare CPU and memory requests and limits.
+      Applied in Audit mode by default; switch to Enforce for stricter posture.
+spec:
+  validationFailureAction: Audit
+  background: true
+  rules:
+    - name: check-container-resources
+      match:
+        any:
+          - resources:
+              kinds: [Pod]
+              namespaceSelector:
+                matchLabels:
+                  acme.io/mesh-enroll: "true"
+      validate:
+        message: >
+          Container {{ request.object.metadata.name }} must set resources.requests
+          and resources.limits for both cpu and memory.
+        pattern:
+          spec:
+            containers:
+              - resources:
+                  requests:
+                    memory: "?*"
+                    cpu: "?*"
+                  limits:
+                    memory: "?*"
+                    cpu: "?*"
+---
+# POLICY: require-standard-labels
+# ─────────────────────────────────────────────────────────────────────────────
+# Enforces the kubernetes recommended label set on all Deployments and StatefulSets.
+# These labels are used by the Kubernetes plugin in Developer Hub to locate resources.
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-standard-labels
+  annotations:
+    policies.kyverno.io/title: Require Standard Labels
+    policies.kyverno.io/category: Workload Governance
+    policies.kyverno.io/severity: low
+    policies.kyverno.io/description: >
+      All Deployments and StatefulSets in mesh-enrolled namespaces must have
+      app.kubernetes.io/name and backstage.io/kubernetes-id labels so the
+      Developer Hub Kubernetes plugin can discover and link them to catalog entities.
+spec:
+  validationFailureAction: Audit
+  background: true
+  rules:
+    - name: check-deployment-labels
+      match:
+        any:
+          - resources:
+              kinds: [Deployment, StatefulSet]
+              namespaceSelector:
+                matchLabels:
+                  acme.io/mesh-enroll: "true"
+      validate:
+        message: >
+          {{ request.object.kind }} {{ request.object.metadata.name }} must have
+          labels: app.kubernetes.io/name and backstage.io/kubernetes-id.
+        pattern:
+          metadata:
+            labels:
+              app.kubernetes.io/name: "?*"
+              backstage.io/kubernetes-id: "?*"
+---
+# POLICY: disallow-privileged-containers
+# ─────────────────────────────────────────────────────────────────────────────
+# No container in a mesh-enrolled namespace may run as privileged.
+# Enforced (not just audited) — this is a hard security requirement.
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: disallow-privileged-containers
+  annotations:
+    policies.kyverno.io/title: Disallow Privileged Containers
+    policies.kyverno.io/category: Security
+    policies.kyverno.io/severity: high
+    policies.kyverno.io/description: >
+      Privileged containers bypass Linux security boundaries and can escape the
+      ambient mesh mTLS guarantees. This policy blocks privileged workloads in
+      all mesh-enrolled namespaces.
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: check-privileged
+      match:
+        any:
+          - resources:
+              kinds: [Pod]
+              namespaceSelector:
+                matchLabels:
+                  acme.io/mesh-enroll: "true"
+      validate:
+        message: Privileged containers are not allowed in mesh-enrolled namespaces.
+        pattern:
+          spec:
+            =(initContainers):
+              - =(securityContext):
+                  =(privileged): "false"
+            containers:
+              - =(securityContext):
+                  =(privileged): "false"
+---
+# POLICY: inject-default-peer-authentication
+# ─────────────────────────────────────────────────────────────────────────────
+# When a new namespace is enrolled in the ambient mesh, automatically create a
+# STRICT PeerAuthentication policy in that namespace. This ensures mTLS is
+# enforced from the moment the namespace is created — zero-trust by default.
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: inject-default-peer-authentication
+  annotations:
+    policies.kyverno.io/title: Auto-Create PeerAuthentication (STRICT mTLS)
+    policies.kyverno.io/category: Service Mesh
+    policies.kyverno.io/severity: high
+    policies.kyverno.io/description: >
+      When a namespace is labelled acme.io/mesh-enroll=true, Kyverno
+      automatically generates a STRICT PeerAuthentication CR in that namespace.
+      This enforces mTLS for all workloads without requiring developers to
+      manually create Istio resources.
+spec:
+  rules:
+    - name: create-peer-authentication
+      match:
+        any:
+          - resources:
+              kinds: [Namespace]
+              selector:
+                matchLabels:
+                  acme.io/mesh-enroll: "true"
+      generate:
+        apiVersion: security.istio.io/v1beta1
+        kind: PeerAuthentication
+        name: default-strict-mtls
+        namespace: "{{request.object.metadata.name}}"
+        synchronize: true
+        data:
+          metadata:
+            labels:
+              app.kubernetes.io/managed-by: kyverno
+              app.kubernetes.io/part-of: acme-platform
+            annotations:
+              policies.kyverno.io/generated-by: inject-default-peer-authentication
+          spec:
+            mtls:
+              mode: STRICT

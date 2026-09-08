@@ -1,0 +1,109 @@
+﻿Sticky
+"72
+
+Walk through the current release flow / SDLC for Java (MBPM)."
+"73
+
+Walk through the current release flow / SDLC for Node (MBPM)."
+"74
+
+Walk through the existing microservices lifecycle end to end, from dev to prod."
+"75
+
+What is the current CI/CD setup, and how many separate instances exist?"
+"76
+
+Which source control system is authoritative — Git, Bitbucket, or both?"
+"77
+
+Confirm the application archetypes — Java Spring Boot and Node. Anything else in the estate?"
+"78
+
+Which Spring Boot and Node versions are supported, and who decides upgrades?"
+"79
+
+Confirm the full tool inventory and the version of each."
+"80
+
+Who maintains Jenkins pipeline definitions today — central team or each app team?"
+"81
+
+Are pipelines standardised, or copied per team?"
+"82
+
+Is Jenkins staying, or is Tekton / OpenShift Pipelines in scope?"
+"83
+
+How is a new namespace or environment requested today, and how long does it take?"
+"84
+
+How long does it take to go from a new repo to running in production today?"
+"85
+
+How long before a new developer makes their first production commit?"
+"86
+
+Where do build dependencies come from — internet, Artifactory proxy, or air-gapped mirror?"
+"87
+
+Is GitOps in use — Argo CD or Flux — and at what maturity?"
+"88
+
+Helm, Kustomize, or both?"
+"89
+
+Will application config live with the code, or in a separate repo?"
+"90
+
+How are database schema migrations handled during deployment?"
+"91
+
+How are secrets managed and injected into workloads today?"
+"92
+
+What environments exist between a developer laptop and production?"
+"93
+
+What triggers promotion between environments — automatic, approval, or scheduled?"
+"94
+
+Who approves a production deployment, and can it be automated?"
+"95
+
+What is the rollback strategy, and has it been tested?"
+"A74
+
+Which Bitbucket product and version is in use — Cloud, Server or Data Center?"
+"A75
+
+What API rate limits and token types apply to Bitbucket, and can webhooks be registered?"
+"A76
+
+What is the branching model, and is it consistent across teams?"
+"A77
+
+What is the Bitbucket project and repository naming structure?"
+"A78
+
+Which Jenkins version and plugin set is in use, and is it multi-master?"
+"A79
+
+How does Jenkins authenticate to OpenShift, Artifactory and Bitbucket today?"
+"A80
+
+Are build agents ephemeral on OpenShift, or static VMs?"
+"A81
+
+What artefact types are produced, and what versioning scheme applies?"
+"A82
+
+Which registries hold images, and what is the promotion path between them?"
+"A83
+
+How are base images sourced, patched and approved?"
+"A84
+
+What are the average and p95 build durations today?"
+"A85
+
+Which pipeline stages are manual approvals, and who approves them?"

@@ -1,0 +1,55 @@
+---
+openapi: "3.1.0"
+info:
+  title: "${{ values.apiTitle }}"
+  version: "${{ values.apiVersion }}"
+  description: "${{ values.appDescription }}"
+  contact:
+    name: Acme Platform Team
+    email: platform@acme.example.com
+servers:
+  - url: "https://${{ values.appName }}.apps.{clusterDomain}"
+    variables:
+      clusterDomain:
+        default: "cluster.example.com"
+paths:
+  /health:
+    get:
+      summary: Health check
+      operationId: healthCheck
+      tags: [Health]
+      responses:
+        "200":
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+  /api/${{ values.apiVersion }}/example:
+    get:
+      summary: Example endpoint
+      operationId: getExample
+      tags: [Example]
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        "401":
+          description: Unauthorized
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

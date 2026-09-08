@@ -1,0 +1,70 @@
+﻿Sticky
+"M83
+
+What traffic management is needed — canary, mirroring, retries, circuit breaking, fault injection?"
+"M84
+
+What traffic management strategy is specifically required for the application?"
+"M85
+
+What are the traffic pattern requirements?"
+"M86
+
+What is required for blue/green and canary release?"
+"M87
+
+What circuit breaker configuration is required?"
+"M88
+
+Who tunes outlier detection — badly set circuit breakers eject healthy pods?"
+"M89
+
+What timeout and retry mechanism is required?"
+"M90
+
+Are retries safe for every service, or do some endpoints need idempotency first?"
+"M91
+
+Which timeout and retry defaults go in the Golden Path, and can teams override them?"
+"M92
+
+Does Argo Rollouts drive the canary, and who operates it?"
+"M93
+
+What CD deployment checks are required?"
+"M94
+
+Is chaos engineering adopted in the SDLC today, and will it be in future?"
+"A311
+
+What default timeout, retry and circuit-breaker values are proposed, and on what basis?"
+"A312
+
+Which services are non-idempotent and must have retries disabled?"
+"A313
+
+What is the canary promotion process — manual, metric-driven, or fully automated?"
+"A314
+
+Which metrics gate a canary promotion, and what are the thresholds?"
+"A315
+
+Is traffic mirroring required in production, and how is mirrored traffic isolated from real state?"
+"A316
+
+Is fault injection required, and is it restricted to non-production?"
+"A317
+
+How does mesh-level traffic shifting interact with the external load balancer and GLB failover?"
+"A318
+
+How does session stickiness survive a canary or blue/green shift?"
+"A319
+
+What is the rollback trigger and time budget for a failed canary?"
+"A320
+
+Does Argo Rollouts or Flagger need to be introduced, and who owns it?"
+"A321
+
+How will resilience configuration be validated — chaos experiments, load tests, or both?"

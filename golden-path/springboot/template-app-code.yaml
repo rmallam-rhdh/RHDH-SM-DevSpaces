@@ -1,0 +1,226 @@
+---
+# Template Type 1: APPLICATION CODE
+# Creates the source code repository skeleton for a Spring Boot microservice.
+# Publishes to Bitbucket, registers in catalog, wires to Jira project.
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: acme-springboot-app-code
+  title: "Spring Boot App — Application Code"
+  description: >
+    [Step 1 of 2] Creates the Spring Boot source code repository with:
+    - Java 21 / Spring Boot 3.x skeleton (REST API + Actuator + OpenAPI)
+    - Gradle build (build.gradle.kts, wrapper, Spotless, SonarQube plugin)
+    - devfile.yaml for OpenShift Dev Spaces (VS Code, Git, Gradle, quality-gate commands)
+    - pre-commit / pre-push hooks + Bitbucket PR template
+    - Dockerfile + .dockerignore
+    - SonarQube + Snyk quality gates configured
+    - Jira project linked
+    - Backstage catalog-info.yaml pre-wired
+    Run "Spring Boot App — Release Pipeline" next to create the CI/CD pipeline.
+  tags:
+    - java
+    - spring-boot
+    - gradle
+    - recommended
+    - golden-path
+    - app-code
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  owner: group:platform-team
+  type: service
+
+  parameters:
+    - title: Application Details
+      required: [appName, appDescription, groupId, jiraProjectKey]
+      properties:
+        appName:
+          title: Application Name
+          type: string
+          description: Lowercase kebab-case (e.g. payments-api)
+          pattern: '^[a-z][a-z0-9-]{2,48}[a-z0-9]$'
+          ui:autofocus: true
+        appDescription:
+          title: Description
+          type: string
+        groupId:
+          title: Gradle Group ID
+          type: string
+          default: com.acme
+          description: Java package / Gradle group (e.g. com.acme.payments)
+        javaVersion:
+          title: Java Version
+          type: string
+          default: "21"
+          enum: ["21", "17"]
+        springBootVersion:
+          title: Spring Boot Version
+          type: string
+          default: "3.4.0"
+        jiraProjectKey:
+          title: Jira Project Key
+          type: string
+          description: Jira project that owns this component (e.g. PAY, CORE)
+        snykOrgSlug:
+          title: Snyk Organisation Slug
+          type: string
+          description: Your team's Snyk org slug for vulnerability scanning
+        sonarProjectKey:
+          title: SonarQube Project Key
+          type: string
+          description: Leave blank to auto-generate from appName
+
+    - title: Repository
+      required: [bitbucketWorkspace]
+      properties:
+        bitbucketWorkspace:
+          title: Bitbucket Workspace
+          type: string
+          default: acme
+          description: Bitbucket Cloud workspace or Bitbucket Server project key
+        bitbucketProject:
+          title: Bitbucket Project (Server only)
+          type: string
+          description: Leave blank for Bitbucket Cloud
+        repoVisibility:
+          title: Repository Visibility
+          type: string
+          default: private
+          enum: [private, public]
+
+    - title: Deployment Target
+      required: [targetCluster]
+      properties:
+        targetCluster:
+          title: Non-Prod data centre
+          type: string
+          description: OpenShift cluster where this service will run
+          default: nonprod-dc1
+          enum:
+            - nonprod-dc1
+            - nonprod-dc2
+          enumNames:
+            - "Non-Prod DC-1"
+            - "Non-Prod DC-2"
+        enrollInMesh:
+          title: Enrol in Service Mesh
+          type: boolean
+          default: true
+          description: "Adds acme.io/mesh-enroll=true → Kyverno auto-creates mTLS policy"
+      dependencies:
+        targetCluster:
+          oneOf:
+            - title: Non-Prod DC-1
+              properties:
+                targetCluster:
+                  enum: [nonprod-dc1]
+                targetNamespace:
+                  title: Target namespace
+                  type: string
+                  description: Pick a pre-provisioned namespace from the platform catalog
+                  ui:field: EntityPicker
+                  ui:options:
+                    allowedKinds:
+                      - Resource
+                    catalogFilter:
+                      - kind: Resource
+                        spec.type: kubernetes-namespace
+                        metadata.annotations.acme.io/cluster: nonprod-dc1
+                        metadata.annotations.acme.io/environment: dev
+              required: [targetNamespace]
+            - title: Non-Prod DC-2
+              properties:
+                targetCluster:
+                  enum: [nonprod-dc2]
+                targetNamespace:
+                  title: Target namespace
+                  type: string
+                  description: Pick a pre-provisioned namespace from the platform catalog
+                  ui:field: EntityPicker
+                  ui:options:
+                    allowedKinds:
+                      - Resource
+                    catalogFilter:
+                      - kind: Resource
+                        spec.type: kubernetes-namespace
+                        metadata.annotations.acme.io/cluster: nonprod-dc2
+                        metadata.annotations.acme.io/environment: dev
+              required: [targetNamespace]
+
+    - title: Dev Spaces
+      properties:
+        devSpacesBaseUrl:
+          title: OpenShift Dev Spaces URL
+          type: string
+          description: Dev Spaces dashboard for the selected DC (no trailing slash)
+          default: https://devspaces.apps.nonprod-dc1.CLUSTER_BASE_DOMAIN
+          ui:help: Use nonprod-dc1 or nonprod-dc2 hostname to match targetCluster
+
+  steps:
+    - id: fetch-skeleton
+      name: Fetch Spring Boot Skeleton
+      action: fetch:template
+      input:
+        url: ./skeleton
+        values:
+          appName: ${{ parameters.appName }}
+          appDescription: ${{ parameters.appDescription }}
+          groupId: ${{ parameters.groupId }}
+          javaVersion: ${{ parameters.javaVersion }}
+          springBootVersion: ${{ parameters.springBootVersion }}
+          jiraProjectKey: ${{ parameters.jiraProjectKey }}
+          snykOrgSlug: ${{ parameters.snykOrgSlug or "acme" }}
+          sonarProjectKey: ${{ parameters.sonarProjectKey or parameters.appName }}
+          bitbucketWorkspace: ${{ parameters.bitbucketWorkspace }}
+          targetCluster: ${{ parameters.targetCluster }}
+          targetNamespace: ${{ parameters.targetNamespace | parseEntityRef | pick('name') }}
+          enrollInMesh: ${{ parameters.enrollInMesh }}
+          devSpacesBaseUrl: ${{ parameters.devSpacesBaseUrl }}
+
+    - id: fetch-governance
+      name: Fetch pre-commit hooks and PR template
+      action: fetch:template
+      input:
+        url: ../_shared/governance
+        values: {}
+
+    - id: publish-bitbucket
+      name: Publish to Bitbucket
+      action: publish:bitbucketCloud
+      input:
+        repoUrl: "bitbucket.org?workspace=${{ parameters.bitbucketWorkspace }}&project=${{ parameters.bitbucketProject }}&repo=${{ parameters.appName }}"
+        description: ${{ parameters.appDescription }}
+        defaultBranch: main
+        repoVisibility: ${{ parameters.repoVisibility }}
+
+    - id: create-jira-component
+      name: Link Jira Component
+      action: jira:create-component
+      input:
+        projectKey: ${{ parameters.jiraProjectKey }}
+        name: ${{ parameters.appName }}
+        description: ${{ parameters.appDescription }}
+        assigneeAccountId: ""
+
+    - id: register
+      name: Register in Backstage Catalog
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps['publish-bitbucket'].output.repoContentsUrl }}
+        catalogInfoPath: /catalog-info.yaml
+
+  output:
+    links:
+      - title: Source Repository (Bitbucket)
+        url: ${{ steps['publish-bitbucket'].output.remoteUrl }}
+        icon: github
+      - title: Open in Catalog
+        icon: catalog
+        entityRef: ${{ steps['register'].output.entityRef }}
+      - title: Open in OpenShift Dev Spaces
+        url: ${{ parameters.devSpacesBaseUrl }}/dashboard/#/load/workspace/factory?url=${{ steps['publish-bitbucket'].output.remoteUrl }}&devfilePath=devfile.yaml
+        icon: catalog
+      - title: "Next: Create Release Pipeline"
+        url: /create?filters[kind]=Template&filters[tags]=release-pipeline&filters[tags]=spring-boot
+        icon: scaffolder

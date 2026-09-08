@@ -1,0 +1,64 @@
+﻿Sticky
+"135
+
+Who owns Developer Hub (and the mesh) after go-live, as a named team?"
+"136
+
+Does that team exist, or must it be formed or hired?"
+"137
+
+How many engineers, at what seniority, will run the platform?"
+"138
+
+What is the support model and on-call arrangement for RHDH and the mesh?"
+"139
+
+Will the platform have a product owner and roadmap, or take tickets?"
+"140
+
+How will platform capability requests be raised and prioritised?"
+"141
+
+Who will champion the platform inside each area?"
+"142
+
+What training and enablement will developers receive?"
+"143
+
+How will developer feedback be gathered and acted on?"
+"144
+
+What skills exist today, and what gaps must be filled before handover?"
+"145
+
+What existing tools will be decommissioned, and who decides?"
+"146
+
+Will existing services be migrated onto the platform, or only new ones?"
+"A129
+
+What is the RACI across platform, security, identity, network and application teams for RHDH?"
+"A130
+
+What are the L1, L2 and L3 support tiers, and who staffs each?"
+"A131
+
+What are the handover acceptance criteria from Red Hat to CLIENT?"
+"A132
+
+Which documentation set must exist at handover — HLD, LLD, runbooks, operational guide?"
+"A133
+
+What is the knowledge-transfer plan and schedule?"
+"A134
+
+Which Red Hat subscriptions and entitlements are in place, and do they cover the target user count?"
+"A135
+
+What is the product lifecycle and support window for the target RHDH version?"
+"A136
+
+What is the process to onboard a new team onto the platform, and how long should it take?"
+"A137
+
+Which activities are self-service, and which require the platform team?"

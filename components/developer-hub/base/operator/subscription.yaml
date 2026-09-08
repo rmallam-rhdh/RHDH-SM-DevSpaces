@@ -1,0 +1,19 @@
+---
+# Red Hat Developer Hub Operator.
+# Channel fast-1.9 matches the version running on reference clusters with OSSM3.
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: rhdh
+  namespace: rhdh
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: developer-hub
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  channel: fast-1.9
+  installPlanApproval: Automatic
+  name: rhdh
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace

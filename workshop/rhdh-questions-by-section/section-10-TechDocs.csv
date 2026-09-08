@@ -1,0 +1,37 @@
+﻿Sticky
+"118
+
+Where are TechDocs stored and rendered from?"
+"119
+
+Is object storage available for the TechDocs backend, and is it in scope?"
+"120
+
+Where does documentation live today, and will it migrate?"
+"121
+
+Who owns documentation quality and keeps it current?"
+"122
+
+Will docs-as-code be mandatory for services in the catalogue?"
+"A112
+
+Will TechDocs use the local builder, or an external build-and-publish pipeline?"
+"A113
+
+Which bucket will hold generated documentation, and what lifecycle policy applies?"
+"A114
+
+May the mkdocs build reach the internet for plugins and themes, or must these be mirrored?"
+"A115
+
+What documentation structure and template must a new service follow?"
+"A116
+
+Will architecture diagrams be embedded, and in which format?"
+"A117
+
+Who reviews documentation, and is it part of the definition of done?"
+"A118
+
+How much Confluence content is in scope for migration, and who owns that migration?"

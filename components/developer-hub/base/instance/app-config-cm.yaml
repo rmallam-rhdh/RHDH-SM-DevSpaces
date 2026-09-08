@@ -1,0 +1,371 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config-rhdh
+  namespace: rhdh
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: developer-hub
+data:
+  app-config.yaml: |
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # APP / BACKEND
+    # ─────────────────────────────────────────────────────────────────────────
+    app:
+      title: Acme Developer Hub
+      baseUrl: https://rhdh.apps.${CLUSTER_BASE_DOMAIN}
+
+    organization:
+      name: Acme
+
+    backend:
+      baseUrl: https://rhdh.apps.${CLUSTER_BASE_DOMAIN}
+      listen:
+        port: 7007
+        host: 0.0.0.0
+      cors:
+        origin: https://rhdh.apps.${CLUSTER_BASE_DOMAIN}
+        methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
+        credentials: true
+      auth:
+        externalAccess:
+          - type: static
+            options:
+              token: ${BACKEND_SECRET}
+              subject: api-clients
+      csp:
+        upgrade-insecure-requests: false
+        img-src:
+          - "'self'"
+          - "data:"
+          - https://avatars.githubusercontent.com
+          - https://api.dicebear.com
+      database:
+        acme: better-sqlite3
+        connection: ':memory:'    # switch to PostgreSQL in production overlay
+      reading:
+        allow:
+          - host: "*.acme.example.com"
+          - host: "github.com"
+          - host: "api.github.com"
+          - host: "gitlab-gitlab.apps.${CLUSTER_BASE_DOMAIN}"
+          - host: "${BITBUCKET_SERVER_HOST}"
+          - host: "bitbucket.org"
+          - host: "app.snyk.io"
+          - host: "${JIRA_BASE_URL}"
+          - host: "${ARTIFACTORY_BASE_URL}"
+          - host: "openshift-gitops-server-openshift-gitops.apps.${CLUSTER_BASE_DOMAIN}"
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # AUTHENTICATION
+    # Primary:  Keycloak OIDC (matches existing cluster SSO)
+    # Secondary: Microsoft Entra ID + GitHub
+    # ─────────────────────────────────────────────────────────────────────────
+    signInPage: oidc
+
+    auth:
+      environment: production
+      session:
+        secret: ${BACKEND_SECRET}
+      providers:
+        # Keycloak — primary SSO
+        oidc:
+          production:
+            prompt: login
+            metadataUrl: https://keycloak.${CLUSTER_BASE_DOMAIN}/realms/backstage/.well-known/openid-configuration
+            clientId: ${OAUTH_CLIENT_ID}
+            clientSecret: ${OAUTH_CLIENT_SECRET}
+            signIn:
+              resolvers:
+                - resolver: preferredUsernameMatchingUserEntityName
+                - resolver: emailMatchingUserEntityProfileEmail
+
+        # Microsoft Entra ID — optional additional provider
+        microsoft:
+          production:
+            clientId: ${AZURE_CLIENT_ID}
+            clientSecret: ${AZURE_CLIENT_SECRET}
+            tenantId: ${AZURE_TENANT_ID}
+            domainHint: acme.example.com
+            signIn:
+              resolvers:
+                - resolver: emailMatchingUserEntityProfileEmail
+
+        # GitHub — optional additional provider
+        github:
+          production:
+            clientId: ${GITHUB_OAUTH_CLIENT_ID}
+            clientSecret: ${GITHUB_OAUTH_CLIENT_SECRET}
+            signIn:
+              resolvers:
+                - resolver: usernameMatchingUserEntityName
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # INTEGRATIONS
+    # ─────────────────────────────────────────────────────────────────────────
+    integrations:
+      # Bitbucket Cloud (primary SCM)
+      bitbucketCloud:
+        - username: ${BITBUCKET_USERNAME}
+          appPassword: ${BITBUCKET_APP_PASSWORD}
+
+      # Bitbucket Server (on-prem, if applicable)
+      bitbucketServer:
+        - host: ${BITBUCKET_SERVER_HOST}
+          token: ${BITBUCKET_SERVER_TOKEN}
+
+      github:
+        - host: github.com
+          token: ${GITHUB_TOKEN}
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # CATALOG
+    # ─────────────────────────────────────────────────────────────────────────
+    catalog:
+      rules:
+        - allow: [Component, System, API, Group, User, Resource, Location, Template, Domain]
+
+      providers:
+        # Keycloak user/group sync (primary identity source)
+        keycloakOrg:
+          default:
+            baseUrl: https://keycloak.${CLUSTER_BASE_DOMAIN}
+            realm: backstage
+            loginRealm: backstage
+            clientId: ${KEYCLOAK_PLUGIN_CLIENT_ID}
+            clientSecret: ${KEYCLOAK_PLUGIN_CLIENT_SECRET}
+            schedule:
+              frequency: { minutes: 5 }
+              timeout: { minutes: 3 }
+              initialDelay: { seconds: 15 }
+
+        # Entra ID user/group sync via MS Graph (additional identity source)
+        microsoftGraphOrg:
+          acme:
+            tenantId: ${AZURE_TENANT_ID}
+            clientId: ${AZURE_CLIENT_ID}
+            clientSecret: ${AZURE_CLIENT_SECRET}
+            userFilter: "accountEnabled eq true"
+            groupFilter: "securityEnabled eq true"
+            schedule:
+              frequency: { hours: 1 }
+              timeout: { minutes: 50 }
+
+      locations:
+        # Self-registration — the platform components (Developer Hub, Service Mesh)
+        - type: file
+          target: /opt/app-root/src/catalog-info.yaml
+          rules:
+            - allow: [Component, System, Resource]
+        - type: url
+          target: https://github.com/rmallam/RHDH-SM-DevSpaces/blob/main/golden-path/all-templates.yaml
+          rules:
+            - allow: [Template]
+        - type: url
+          target: https://github.com/rmallam/RHDH-SM-DevSpaces/blob/main/golden-path/catalog/location.yaml
+          rules:
+            - allow: [Component, System, API]
+        # Acme Golden Path Templates (Spring Boot + Node.js)
+        - type: url
+          target: https://github.com/rmallam/RHDH-SM-DevSpaces/blob/main/golden-path/all-templates.yaml
+          rules:
+            - allow: [Template, Location, Resource]
+        # IBM API Connect — import OpenAPI specs exported from APIC as YAML files
+        # Add individual API spec locations here, e.g.:
+        # - type: url
+        #   target: ${APIC_BASE_URL}/api-spec/acme-payments-api.yaml
+        #   rules:
+        #     - allow: [API]
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # KUBERNETES
+    # ─────────────────────────────────────────────────────────────────────────
+    kubernetes:
+      serviceLocatorMethod:
+        type: multiTenant
+      clusterLocatorMethods:
+        - type: config
+          clusters:
+            - name: acme-openshift
+              url: ${KUBE_API_URL}
+              authProvider: serviceAccount
+              serviceAccountToken: ${KUBE_SA_TOKEN}
+              caData: ${KUBE_CA_DATA}
+              skipTLSVerify: false
+              customResources:
+                # Tekton
+                - group: tekton.dev
+                  apiVersion: v1
+                  plural: pipelineruns
+                - group: tekton.dev
+                  apiVersion: v1
+                  plural: taskruns
+                # OpenShift
+                - group: route.openshift.io
+                  apiVersion: v1
+                  plural: routes
+                # ArgoCD
+                - group: argoproj.io
+                  apiVersion: v1alpha1
+                  plural: applications
+                # Sail Operator (OSSM3 control plane)
+                - group: sailoperator.io
+                  apiVersion: v1
+                  plural: istios
+                # Istio networking — visible on component pages
+                - group: networking.istio.io
+                  apiVersion: v1beta1
+                  plural: virtualservices
+                - group: networking.istio.io
+                  apiVersion: v1beta1
+                  plural: destinationrules
+                - group: networking.istio.io
+                  apiVersion: v1beta1
+                  plural: gateways
+                # Istio security — visible on component pages
+                - group: security.istio.io
+                  apiVersion: v1beta1
+                  plural: peerauthentications
+                - group: security.istio.io
+                  apiVersion: v1beta1
+                  plural: authorizationpolicies
+                # Kubernetes Gateway API (waypoint proxy)
+                - group: gateway.networking.k8s.io
+                  apiVersion: v1
+                  plural: gateways
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # JENKINS
+    # ─────────────────────────────────────────────────────────────────────────
+    jenkins:
+      instances:
+        - name: acme-jenkins
+          baseUrl: ${JENKINS_BASE_URL}
+          username: ${JENKINS_USERNAME}
+          apiKey: ${JENKINS_API_TOKEN}
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # ARGOCD
+    # ─────────────────────────────────────────────────────────────────────────
+    argocd:
+      appLocatorMethods:
+        - type: config
+          instances:
+            - name: acme-argocd
+              url: https://openshift-gitops-server-openshift-gitops.apps.${CLUSTER_BASE_DOMAIN}
+              token: ${ARGOCD_TOKEN}
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # TECHDOCS
+    # ─────────────────────────────────────────────────────────────────────────
+    techdocs:
+      builder: local
+      generator:
+        runIn: local
+      publisher:
+        type: local   # switch to awsS3 when S3 bucket is provisioned
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # SONARQUBE
+    # ─────────────────────────────────────────────────────────────────────────
+    sonarqube:
+      baseUrl: https://sonarqube.${CLUSTER_BASE_DOMAIN}
+      apiKey: ${SONARQUBE_API_KEY}
+      authType: Bearer
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # SNYK (security scanning)
+    # Annotation on catalog entity: snyk.io/org-name, snyk.io/project-ids
+    # ─────────────────────────────────────────────────────────────────────────
+    snyk:
+      baseUrl: https://app.snyk.io/api/v1
+      orgSlug: ${SNYK_ORG_SLUG}
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # JIRA
+    # Annotation on catalog entity: jira/project-key, jira/component
+    # ─────────────────────────────────────────────────────────────────────────
+    jira:
+      baseUrl: ${JIRA_BASE_URL}
+      token: ${JIRA_TOKEN}
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # ARTIFACTORY (JFrog)
+    # Annotation on catalog entity: jfrog-artifactory/image-name
+    # ─────────────────────────────────────────────────────────────────────────
+    artifactory:
+      baseUrl: ${ARTIFACTORY_BASE_URL}
+      experimentalAnnotations: true
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # PROXY ENDPOINTS
+    # IBM API Connect: no native plugin — expose APIC Management REST API as a
+    # backend proxy so the frontend can fetch API definitions and render them
+    # via backstage-plugin-api-docs.
+    # ─────────────────────────────────────────────────────────────────────────
+    proxy:
+      endpoints:
+        # IBM API Connect Management REST API
+        /apic/api:
+          target: ${APIC_BASE_URL}
+          changeOrigin: true
+          secure: true
+          headers:
+            X-IBM-Acme-Id: ${APIC_API_KEY}
+            Accept: application/json
+          allowedHeaders: ['Authorization', 'Content-Type', 'Accept']
+          allowedMethods: ['GET']
+
+        # Jenkins REST API (used by Jenkins plugin frontend)
+        /jenkins/api:
+          target: ${JENKINS_BASE_URL}
+          changeOrigin: true
+          headers:
+            Authorization: Basic ${JENKINS_BASIC_AUTH_B64}
+
+        # Snyk REST API (used by Snyk plugin frontend)
+        /snyk:
+          target: https://app.snyk.io/api/v1
+          changeOrigin: true
+          headers:
+            Authorization: token ${SNYK_TOKEN}
+            Content-Type: application/json
+          allowedMethods: ['GET']
+
+        # Jira REST API (used by Jira plugin frontend)
+        /jira/api:
+          target: ${JIRA_BASE_URL}
+          changeOrigin: true
+          headers:
+            Authorization: Bearer ${JIRA_TOKEN}
+            Accept: application/json
+          allowedMethods: ['GET']
+
+        # Artifactory REST API
+        /artifactory:
+          target: ${ARTIFACTORY_BASE_URL}
+          changeOrigin: true
+          headers:
+            Authorization: Bearer ${ARTIFACTORY_TOKEN}
+          allowedMethods: ['GET']
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # RBAC / PERMISSIONS
+    # ─────────────────────────────────────────────────────────────────────────
+    permission:
+      enabled: true
+      rbac:
+        admin:
+          users:
+            - name: user:default/platform-admin
+          groups:
+            - name: group:default/platform-team
+        pluginsWithPermission:
+          - kubernetes
+          - jenkins
+          - argocd
+          - catalog
+          - techdocs
+          - sonarqube

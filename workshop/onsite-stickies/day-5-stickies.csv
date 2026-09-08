@@ -1,0 +1,74 @@
+﻿Sticky
+"Recap Day 4
+
+Review trust domain, AuthZ model, and access matrix."
+"Waypoint scope
+(Waypoint)
+
+Which Phase 1 namespaces get a waypoint? (not all)"
+"L7 requirements
+(L7)
+
+Path AuthZ, JWT, header routing — which apps need L7?"
+"L4 vs L7 decision
+(L7)
+
+Is L4 (ztunnel) enough for most apps, with waypoint only where needed?"
+"Traffic Phase 1 scope
+(Traffic)
+
+Retries, timeouts, canary — in Phase 1 or backlog?"
+"Resilience tooling
+(Traffic)
+
+Mesh-native weights vs Argo Rollouts / Flagger."
+"Patterns to prove
+(Traffic)
+
+Which traffic/resilience patterns to prove in Non-Prod first?"
+"Shared ingress gateway
+(Ingress)
+
+Confirm one shared gateway in istio-system; host-based routing."
+"Corp TLS
+(Ingress)
+
+Corporate TLS on ingress — termination and cert ownership."
+"Ingress catalogue
+(Ingress)
+
+App, hostname, TLS owner — catalogue of north-south entry points."
+"Prod vs Non-Prod baseline
+(Prod)
+
+Three-column table: eDev · Non-Prod · Prod mesh standards."
+"STRICT mTLS in Prod
+(Prod)
+
+Prod-only STRICT mTLS and tighter AuthZ."
+"PCI / APRA / NZISM
+(Compliance)
+
+Compliance notes affecting mesh config in Prod zones."
+"Multi-cluster stance
+(Multi-cluster)
+
+In scope now or Phase 2? Services spanning clusters?"
+"Rate limiting & mirroring
+(Traffic)
+
+Per-route rate limit and traffic mirroring — Phase 1 or backlog?"
+"SOC2 / zone isolation
+(Compliance)
+
+SOC2 and PCI zone isolation requirements for mesh boundaries."
+"Connectivity & readiness pack
+(Deliverable)
+
+End-of-day deliverable: waypoint list + Prod table + traffic backlog."
+"Day 5 open items
+
+Open questions before Day 6."
+"Parking lot
+
+Traffic/compliance items for Phase 2."

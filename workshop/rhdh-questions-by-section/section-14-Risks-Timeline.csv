@@ -1,0 +1,34 @@
+﻿Sticky
+"153
+
+What are the immovable dates, and what drives them?"
+"154
+
+What dependencies exist on other teams or programmes?"
+"155
+
+Is there a change freeze calendar the platform must respect?"
+"156
+
+What could stop this initiative, and how likely is it?"
+"157
+
+Who else should we be talking to that we have not yet met?"
+"158
+
+What have we not asked that we should have?"
+"A143
+
+What is the dependency on the Safe Secure identity stream, and its committed delivery date?"
+"A144
+
+What is the dependency on ARO environment readiness, and what is the fallback?"
+"A145
+
+What is the dependency on the hardware order, and what happens if it slips?"
+"A146
+
+Which decisions are currently blocking design, and by when are they needed?"
+"A147
+
+What is the contingency if the internal PostgreSQL service is withdrawn?"

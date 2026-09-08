@@ -1,0 +1,73 @@
+﻿Sticky
+"50
+
+How will users authenticate into Developer Hub?"
+"51
+
+What is the RHDH authentication and authorisation model — RBAC plugin, or custom?"
+"52
+
+Which Entra ID OIDC claims are available, and which will drive authorisation?"
+"53
+
+What are the personas for the permission model?"
+"54
+
+Are there existing Entra ID groups matching those personas, or must new ones be created?"
+"55
+
+How are Entra ID group names structured, and can they map to catalogue ownership?"
+"56
+
+Is group membership synchronised into RHDH, and at what frequency?"
+"57
+
+Should users see only their own components, or the entire catalogue?"
+"58
+
+Is MFA required for Developer Hub access, and for which actions?"
+"59
+
+Who approves access, and does it integrate with the joiner–mover–leaver process?"
+"60
+
+Is access recertification required, and at what frequency?"
+"61
+
+How are service accounts and machine identities handled for RHDH integrations?"
+"A43
+
+Which Entra ID app registration will RHDH use, and who owns and approves it?"
+"A44
+
+Will authentication use the OIDC authorisation-code flow with PKCE, and which redirect URIs are required?"
+"A45
+
+What are the access and refresh token lifetimes, and what session length should RHDH enforce?"
+"A46
+
+How should the RHDH session cookie be scoped, and what security attributes are mandated?"
+"A47
+
+Which claim is the stable, immutable user identifier — oid, upn or email?"
+"A48
+
+How many groups does a typical user carry, and is the group claim at risk of overflow?"
+"A49
+
+Will Microsoft Graph be used to ingest users and groups, and which API permissions must be granted?"
+"A50
+
+What is the size of the user and group ingestion, and what refresh frequency is acceptable?"
+"A51
+
+Are guest or B2B accounts present, and should they be filtered out of ingestion?"
+"A52
+
+How will RHDH authenticate to each downstream system, and how are those credentials rotated?"
+"A53
+
+Is step-up authentication required for privileged actions such as RBAC changes?"
+"A54
+
+What happens to catalogue ownership when an Entra group is renamed, merged or deleted?"

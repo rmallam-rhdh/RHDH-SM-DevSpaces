@@ -1,0 +1,52 @@
+﻿Sticky
+"M28
+
+What is the expected mesh topology — single mesh, multi-tenant, or mesh per environment?"
+"M29
+
+Which control plane topology — single control plane for multiple namespaces, dedicated per namespace, or multi-control-plane multi-cluster?"
+"M30
+
+Is multi-cluster mesh in scope?"
+"M31
+
+Single mesh now, separate for payments later — what is the trigger for splitting?"
+"M32
+
+Could namespace isolation plus authorisation policy achieve payment separation without a second mesh?"
+"M33
+
+Is the mesh spanning on-prem and ARO, or are meshes independent per environment?"
+"M34
+
+Does mesh traffic add to the cloud egress costs already influencing ARO placement?"
+"M35
+
+How does the mesh behave during the single-DC failover described?"
+"M36
+
+Are VMs or workloads outside OpenShift in scope, and what security isolation is required?"
+"A251
+
+Which namespaces belong to the mesh, and what is the process to add one?"
+"A252
+
+How many meshes in total across the two data centres plus ARO?"
+"A253
+
+If cross-cluster traffic uses gateways, what is the failure behaviour when the remote gateway is unavailable?"
+"A254
+
+Is locality-aware routing or failover required, and how is locality labelled?"
+"A255
+
+What is the trust domain naming convention across clusters and environments?"
+"A256
+
+If meshes are federated later, what root of trust would be shared?"
+"A257
+
+How is the mesh separated between non-prod and prod, and can configuration be promoted between them?"
+"A258
+
+What is the blast radius of a control plane failure, and is it contained to one cluster?"

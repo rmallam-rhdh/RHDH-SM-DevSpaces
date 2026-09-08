@@ -1,0 +1,91 @@
+---
+# ZTunnel Healer — a CronJob that periodically restarts any ztunnel pods that are
+# not in Running state. In ambient mode, a stuck ztunnel pod breaks mTLS for the
+# whole node. This healer is a safety net for transient CRI-O / RHCOS race conditions.
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ztunnel-healer
+  namespace: istio-mesh-tools
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: ztunnel-healer
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ztunnel-healer
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: ztunnel-healer
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list", "delete"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: ztunnel-healer
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: ztunnel-healer
+subjects:
+  - kind: ServiceAccount
+    name: ztunnel-healer
+    namespace: istio-mesh-tools
+roleRef:
+  kind: ClusterRole
+  name: ztunnel-healer
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: ztunnel-healer
+  namespace: istio-mesh-tools
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: ztunnel-healer
+spec:
+  schedule: "*/5 * * * *"   # every 5 minutes
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: ztunnel-healer
+          restartPolicy: OnFailure
+          containers:
+            - name: healer
+              image: registry.redhat.io/openshift4/ose-cli:latest
+              command:
+                - /bin/bash
+                - -c
+                - |
+                  set -euo pipefail
+                  NAMESPACE="ztunnel"
+                  echo "=== ZTunnel Healer $(date) ==="
+                  # Find ztunnel pods not in Running state
+                  STUCK=$(kubectl get pods -n "$NAMESPACE" \
+                    --field-selector=status.phase!=Running \
+                    -o jsonpath='{.items[*].metadata.name}')
+                  if [[ -z "$STUCK" ]]; then
+                    echo "All ztunnel pods are healthy."
+                    exit 0
+                  fi
+                  for POD in $STUCK; do
+                    echo "Deleting stuck ztunnel pod: $POD"
+                    kubectl delete pod "$POD" -n "$NAMESPACE" --grace-period=0 --force || true
+                  done
+                  echo "Done."
+              resources:
+                requests:
+                  cpu: 50m
+                  memory: 64Mi
+                limits:
+                  cpu: 200m
+                  memory: 128Mi

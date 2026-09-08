@@ -1,0 +1,14 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: nonprod-dc2-acme-prod
+  description: Production namespace on Non-Prod DC-2 (pre-prod validation)
+  annotations:
+    acme.io/cluster: nonprod-dc2
+    acme.io/environment: prod
+    acme.io/openshift-api: https://api.nonprod-dc2.CLUSTER_BASE_DOMAIN:6443
+spec:
+  type: kubernetes-namespace
+  owner: group:platform-team
+  system: acme-platform

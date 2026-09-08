@@ -1,0 +1,55 @@
+﻿Sticky
+"M37
+
+Is OpenShift Service Mesh already deployed anywhere, and at what version?"
+"M38
+
+Is the target OSSM 2.x (Istio operator) or OSSM 3.x (Sail / upstream Istio)?"
+"M39
+
+Which version of OSSM is preferred?"
+"M40
+
+Which OpenShift version will the mesh run on, and does that match the fleet upgrade plan?"
+"M41
+
+What is the mesh upgrade path and cadence?"
+"M42
+
+Will canary control plane upgrades be used?"
+"M43
+
+Which CNI exactly is in use, and is it validated for ambient mode in OSSM?"
+"M44
+
+Is ambient GA in the OSSM version you will run, or still Tech Preview?"
+"A259
+
+Will OSSM be installed via the Operator, and in which namespace does the control plane run?"
+"A260
+
+How many control plane replicas, and what resource requests and limits?"
+"A261
+
+Where are the mesh images sourced from in a proxied or disconnected environment?"
+"A262
+
+What is the supported-version matrix between OSSM, OpenShift and the CNI, and does the roadmap stay inside it?"
+"A263
+
+What is the tested upgrade sequence — CNI, control plane, then data plane?"
+"A264
+
+During a canary control plane upgrade, how are workloads moved between revisions, and by whom?"
+"A265
+
+What is the rollback procedure for a failed mesh upgrade?"
+"A266
+
+What is the maintenance window for mesh upgrades, and what user impact is acceptable?"
+"A267
+
+How will mesh CRDs be managed, and what happens to them on uninstall?"
+"A268
+
+Are Kiali, Jaeger/Tempo and the OpenTelemetry collector deployed by the OSSM operator, or separately?"

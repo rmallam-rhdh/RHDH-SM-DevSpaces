@@ -1,0 +1,37 @@
+﻿Sticky
+"A211
+
+Is user-workload monitoring enabled, and where will RHDH metrics be scraped to?"
+"A212
+
+Which dashboards are required, and will they be Grafana or Perses?"
+"A213
+
+Which alerts are required, and to which on-call rota do they route?"
+"A214
+
+Which SLIs sit behind the RHDH SLO — availability, latency, template success rate?"
+"A215
+
+What log level and format should RHDH emit, and how are logs forwarded to Splunk?"
+"A216
+
+Is a separate audit log stream required, and what retention applies?"
+"A217
+
+Is distributed tracing required for RHDH itself, and to which backend?"
+"A218
+
+Which runbooks must exist at go-live, and who writes them?"
+"A219
+
+What is the incident severity matrix for RHDH, and what are the response and resolution targets?"
+"A220
+
+How will catalogue processing errors and failed entity refreshes be surfaced and actioned?"
+"A221
+
+What is the escalation path to Red Hat support, and who is authorised to raise cases?"
+"A222
+
+How will capacity be monitored, reviewed and forecast?"

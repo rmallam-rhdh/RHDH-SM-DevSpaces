@@ -1,0 +1,64 @@
+﻿Sticky
+"M62
+
+Is strict mTLS required mesh-wide, or permissive during migration?"
+"M63
+
+What is the scope of mTLS — cluster-wide, namespace, workload-specific, or port-level?"
+"M64
+
+Is mTLS to be a standard for Digi 2.0 workloads?"
+"M65
+
+How does mesh mTLS interact with certificates issued by the existing PKI?"
+"M66
+
+Does mesh mTLS use the existing PKI or Istio self-signed — and who decided?"
+"M67
+
+How are certificates managed in OpenShift today — is cert-manager in use?"
+"M68
+
+What is the wider certificate management process?"
+"M69
+
+What are the service identities, and how are they derived?"
+"M70
+
+How will callers still outside the mesh be detected before switching mTLS to strict?"
+"M71
+
+What is the date or trigger for moving from permissive to strict mTLS?"
+"M72
+
+What compliance requirements apply — SOC 2, encryption in transit?"
+"A291
+
+Which CA will issue the mesh intermediate — the existing PKI, cert-manager, or Istio's self-signed root?"
+"A292
+
+What are the certificate lifetimes for the root, intermediate and workload certificates?"
+"A293
+
+How is the mesh root or intermediate rotated, and what is the impact on running workloads?"
+"A294
+
+Where is the mesh signing key stored, and does it need HSM or CyberArk protection?"
+"A295
+
+What is the SPIFFE identity format, and does it map to anything the security team already recognises?"
+"A296
+
+How is a service account mapped to a workload identity, and is service account sprawl a concern?"
+"A297
+
+What is the plan for workloads that cannot present a mesh identity — legacy or external callers?"
+"A298
+
+How is mTLS verified and evidenced for the encryption-in-transit compliance requirement?"
+"A299
+
+What monitoring will detect plaintext traffic once strict mTLS is targeted?"
+"A300
+
+Does the existing PKI support the certificate volume and issuance rate the mesh will generate?"

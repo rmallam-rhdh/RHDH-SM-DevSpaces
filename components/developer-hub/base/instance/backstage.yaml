@@ -1,0 +1,50 @@
+---
+# Backstage CR — apiVersion v1alpha5 matches RHDH 1.9 operator.
+# The operator creates: Deployment, Service, Route, ServiceAccount, PVC, etc.
+# Service name pattern: backstage-<CR-name>  e.g. backstage-acme
+apiVersion: rhdh.redhat.com/v1alpha5
+kind: Backstage
+metadata:
+  name: acme
+  namespace: rhdh
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: developer-hub
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  application:
+    appConfig:
+      configMaps:
+        - name: app-config-rhdh
+        - name: app-config-rhdh-branding
+        - name: rhdh-catalog-info
+      mountPath: /opt/app-root/src
+    dynamicPluginsConfigMapName: dynamic-plugins-rhdh
+    extraEnvs:
+      envs:
+        - name: NODE_TLS_REJECT_UNAUTHORIZED
+          value: "0"
+      secrets:
+        - name: rhdh-secrets
+    extraFiles:
+      mountPath: /opt/app-root/src
+    route:
+      enabled: true
+  database:
+    enableLocalDb: true     # switch to false + external PostgreSQL for HA
+  # Use deployment.patch to inject pod-level settings (v1alpha5 pattern).
+  # No Istio sidecar annotation needed — ambient mode handles mTLS transparently.
+  deployment:
+    patch:
+      spec:
+        replicas: 2
+        template:
+          metadata:
+            labels:
+              # Waypoint proxy uses this label to select pods for L7 policy
+              app.kubernetes.io/name: backstage
+              # Kubernetes plugin uses this to link catalog entities to live resources.
+              # The catalog-info.yaml annotation backstage.io/kubernetes-id must match.
+              backstage.io/kubernetes-id: developer-hub

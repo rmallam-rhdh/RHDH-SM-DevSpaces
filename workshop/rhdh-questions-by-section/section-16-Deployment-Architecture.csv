@@ -1,0 +1,49 @@
+﻿Sticky
+"A153
+
+Will RHDH be installed via the Operator or the Helm chart, and what drives that choice?"
+"A154
+
+Which RHDH version is targeted, and how does it align to the OpenShift version roadmap?"
+"A155
+
+Which subscription channel and update approval strategy will be used — automatic or manual?"
+"A156
+
+How will RHDH images be mirrored for a proxied or disconnected environment, and to which registry?"
+"A157
+
+Is an ImageDigestMirrorSet or ImageContentSourcePolicy already in place?"
+"A158
+
+Which namespaces will host RHDH, and what is the namespace request and approval process?"
+"A159
+
+How many replicas, and what CPU and memory requests and limits per pod?"
+"A160
+
+Is a PodDisruptionBudget required, and what minimum availability?"
+"A161
+
+Is the RHDH backend safe to run as multiple replicas in this configuration, and how is catalogue processing coordinated between them?"
+"A162
+
+What pod anti-affinity or topology spread is required across nodes and data centres?"
+"A163
+
+What startup, liveness and readiness probe settings apply, and what startup time is acceptable?"
+"A164
+
+Will the RHDH deployment itself be managed by Argo CD from Git, or applied manually?"
+"A165
+
+What is the rollback procedure for a failed RHDH upgrade?"
+"A166
+
+Is a canary or blue/green approach required for RHDH upgrades and plugin changes?"
+"A167
+
+Which security context constraint will RHDH run under?"
+"A168
+
+What is the target topology across the two data centres — active/active, or active/passive?"

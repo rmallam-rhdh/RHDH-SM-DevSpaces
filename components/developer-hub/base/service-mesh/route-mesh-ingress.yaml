@@ -1,0 +1,27 @@
+---
+# OpenShift Route → Istio ingressgateway (istio-system).
+# Passthrough: router does NOT terminate TLS; browser sees corporate cert from Envoy.
+# Corporate cert Secret: istio-system/istio-ingressgateway-certs (ingress-tls-externalsecret.yaml).
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: rhdh-mesh-ingress
+  namespace: istio-system
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: developer-hub
+  annotations:
+    haproxy.router.openshift.io/timeout: 60s
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  host: rhdh.apps.${CLUSTER_BASE_DOMAIN}   # override per environment in overlay
+  to:
+    kind: Service
+    name: istio-ingressgateway
+    weight: 100
+  port:
+    targetPort: https
+  tls:
+    termination: passthrough
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None

@@ -1,0 +1,12 @@
+---
+# rhdh namespace — joined to the ambient mesh via label (no sidecar injection needed).
+# The ztunnel DaemonSet handles transparent L4 mTLS for all pods in this namespace.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rhdh
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    # Enrol this namespace into OSSM3 ambient mesh:
+    # ztunnel will transparently mTLS all pod-to-pod traffic.
+    istio.io/dataplane-mode: ambient

@@ -1,0 +1,397 @@
+﻿Section,ID,Question,Source
+Why / Strategy / Scope,1,"Why an IDP, and why now? What specifically is broken today?","R1, R2"
+Why / Strategy / Scope,2,What is the cost of the status quo — what happens if nothing changes?,R2
+Why / Strategy / Scope,3,Who is the executive sponsor and what outcome are they accountable for?,R2
+Why / Strategy / Scope,4,"Is this funded as a project with an end date, or as an ongoing product?",R2
+Why / Strategy / Scope,5,What are the expectations and success criteria for the engagement?,"R1, R2"
+Why / Strategy / Scope,6,What are the outcomes and deliverables?,R1
+Why / Strategy / Scope,7,"What does success look like at the end of the pilot, versus at scale?",R2
+Why / Strategy / Scope,8,"What are the pilot exit criteria, and who signs them off?",R2
+Why / Strategy / Scope,9,"Which teams are the pilot candidates, and why those?",R2
+Why / Strategy / Scope,10,"Which parts of CLIENT are in scope, and which are explicitly out?",R2
+Why / Strategy / Scope,11,What is explicitly out of scope for this engagement?,R2
+Why / Strategy / Scope,12,Which decisions are already made and not open for discussion?,R2
+Why / Strategy / Scope,13,"Is adoption mandated, incentivised, or opt-in?",R2
+Why / Strategy / Scope,14,"What is the big picture — where does Developer Hub sit relative to Service Mesh, OpenShift and the existing toolchain?","R1, R2"
+Why / Strategy / Scope,15,Has a previous platform or portal attempt been made at CLIENT? What happened?,R2
+Why / Strategy / Scope,16,"Is there an existing developer portal or IDP in place, even partially?","R1, R2"
+Why / Strategy / Scope,17,How can we make developers use the IDP over their existing flow? What is the driver?,R1
+Why / Strategy / Scope,18,What developer journeys are the highest priority for Dev Hub? (marked: to be completed offline),WS
+Why / Strategy / Scope,A1,"Is there an architecture decision record (ADR) process, and will RHDH design decisions be recorded in it?",Additional
+Why / Strategy / Scope,A2,"What is the target state at 12 and 24 months — how many services, teams and templates in the catalogue?",Additional
+Why / Strategy / Scope,A3,Is there an existing platform-engineering strategy or enterprise architecture standard this design must conform to?,Additional
+Why / Strategy / Scope,A4,"Who holds design-authority sign-off, and which artefacts do they require — HLD, LLD, security pattern?",Additional
+Why / Strategy / Scope,A5,"What is the architecture review board cadence, and the lead time to secure approval?",Additional
+Why / Strategy / Scope,A6,What is the appetite for customisation versus staying close to product defaults?,Additional
+Why / Strategy / Scope,A7,Are there prior Backstage or portal proofs-of-concept whose learnings or assets apply?,Additional
+Why / Strategy / Scope,A8,"Is RHDH intended to be the single engineering entry point, or one portal among several?",Additional
+Why / Strategy / Scope,A9,Which discovery items must be closed before detailed design can begin?,Additional
+Why / Strategy / Scope,A10,"What is the definition of done for the design phase, and who accepts it?",Additional
+"Teams, Users & Scale",19,How many developers will be onboarded in the pilot?,"R1, R2"
+"Teams, Users & Scale",20,Number of initial teams — what is the scaling plan?,WS
+"Teams, Users & Scale",21,Ownership model if more than one team — app / services / APIs / environments?,WS
+"Teams, Users & Scale",22,What is the team's skill level in OpenShift?,R1
+"Teams, Users & Scale",23,What are the three things developers complain about most?,R2
+"Teams, Users & Scale",24,What is the expected concurrent user load on RHDH?,R2
+"Teams, Users & Scale",25,Development ecosystems — languages / services / team skills in those languages and OCP?,WS
+"Teams, Users & Scale",A11,"What is the expected peak concurrent user count at pilot, at 12 months and at full scale?",Additional
+"Teams, Users & Scale",A12,"Where are users located, and are offshore or partner users in scope?",Additional
+"Teams, Users & Scale",A13,"Will contractors, vendors or partners need access, and under which identity source?",Additional
+"Teams, Users & Scale",A14,"What is the expected API request volume against the RHDH backend, and the read/write ratio?",Additional
+"Teams, Users & Scale",A15,"How many catalogue entities are expected at pilot, at 12 months and at steady state?",Additional
+"Teams, Users & Scale",A16,How many template executions per week are expected?,Additional
+"Teams, Users & Scale",A17,What accessibility standard must RHDH meet — WCAG 2.1 AA or other?,Additional
+"Teams, Users & Scale",A18,"Which browsers and versions must be supported, and is there a managed browser policy?",Additional
+"Teams, Users & Scale",A19,"Are there device constraints — VDI, locked-down laptops, or mobile access?",Additional
+"Teams, Users & Scale",A20,Which languages or locales must the interface support?,Additional
+"Platform, Infrastructure & Sizing",26,How many OpenShift clusters will Dev Hub interact with?,"WS, R1"
+"Platform, Infrastructure & Sizing",27,"How many clusters, and where does each RHDH instance run?",R2
+"Platform, Infrastructure & Sizing",28,Number of clusters — PE Sandbox or e-dev? Prod instance in a non-prod cluster?,R1
+"Platform, Infrastructure & Sizing",29,Is running the production RHDH instance in a non-prod cluster acceptable to risk and security?,R2
+"Platform, Infrastructure & Sizing",30,What OpenShift version will Dev Hub be installed on?,WS
+"Platform, Infrastructure & Sizing",31,"Is the environment connected, proxied or disconnected?",R2
+"Platform, Infrastructure & Sizing",32,Will RHDH provision dev workspaces?,WS
+"Platform, Infrastructure & Sizing",33,Are there any dependent systems yet to be operational?,WS
+"Platform, Infrastructure & Sizing",34,What blockers may prevent Dev Hub deployment?,WS
+"Platform, Infrastructure & Sizing",35,"What network, firewall or proxy changes will be needed, and what is the lead time?",R2
+"Platform, Infrastructure & Sizing",36,Which integrations need network egress or firewall changes?,R2
+"Platform, Infrastructure & Sizing",37,"How will RHDH be reached — internal only, VPN, VDI, or internet-facing?",R2
+"Platform, Infrastructure & Sizing",A21,"What is the node topology, and on which worker pool should RHDH be scheduled?",Additional
+"Platform, Infrastructure & Sizing",A22,"Are there taints, tolerations, node selectors or dedicated infrastructure nodes RHDH must use?",Additional
+"Platform, Infrastructure & Sizing",A23,What resource quotas and limit ranges apply in the target namespace?,Additional
+"Platform, Infrastructure & Sizing",A24,"Which pod security admission profile applies, and can RHDH and all its plugins run under restricted-v2?",Additional
+"Platform, Infrastructure & Sizing",A25,"Which storage classes are available, and which support ReadWriteMany?",Additional
+"Platform, Infrastructure & Sizing",A26,"Is ODF the only object storage, and what is the process to provision a bucket and credentials?",Additional
+"Platform, Infrastructure & Sizing",A27,"What is the ingress capacity, and is per-route rate limiting applied?",Additional
+"Platform, Infrastructure & Sizing",A28,Is automatic sidecar injection enabled anywhere that would affect the RHDH namespace?,Additional
+"Platform, Infrastructure & Sizing",A29,"What is the cluster autoscaling behaviour, and could it evict RHDH pods?",Additional
+"Platform, Infrastructure & Sizing",A30,What maintenance windows and node reboot patterns must RHDH tolerate?,Additional
+"Platform, Infrastructure & Sizing",A31,What API server and etcd load budget applies — could the Kubernetes plugin's polling be a concern?,Additional
+"Platform, Infrastructure & Sizing",A32,"Is ARO a candidate host for RHDH, or is it on-premises only?",Additional
+"Database, HA, DR & Service Levels",38,What is the storage/database for RHDH?,R1
+"Database, HA, DR & Service Levels",39,External PostgreSQL — endpoint and URL? Is the external pgsql HA?,R1
+"Database, HA, DR & Service Levels",40,"What is the external PostgreSQL endpoint, and is it HA?",R2
+"Database, HA, DR & Service Levels",41,Is there an external DB service to leverage?,WS
+"Database, HA, DR & Service Levels",42,What are the latency requirements on the database? (raised by CLIENT),WS
+"Database, HA, DR & Service Levels",43,What storage and database sizing does RHDH need?,R2
+"Database, HA, DR & Service Levels",44,How will the RHDH PostgreSQL database be backed up and restored — and is restore tested?,R2
+"Database, HA, DR & Service Levels",45,What are the HA requirements for RHDH?,"R1, R2"
+"Database, HA, DR & Service Levels",46,What SLA / SLO will RHDH commit to?,"R1, R2"
+"Database, HA, DR & Service Levels",47,"What is the DR requirement for RHDH, and what are the RTO and RPO?","R1, R2"
+"Database, HA, DR & Service Levels",48,Is a non-production RHDH instance needed to test upgrades and plugin changes?,R2
+"Database, HA, DR & Service Levels",49,"What is the RHDH upgrade cadence, and who owns it?",R2
+"Database, HA, DR & Service Levels",A33,"Which PostgreSQL version and extensions are available, and do they meet the RHDH supported matrix?",Additional
+"Database, HA, DR & Service Levels",A34,"Will the database be operator-managed in-cluster or external, and what drives that decision?",Additional
+"Database, HA, DR & Service Levels",A35,"What connection limits, pooling behaviour and TLS mode apply to the database?",Additional
+"Database, HA, DR & Service Levels",A36,"What is the expected database growth rate, and what headroom is required?",Additional
+"Database, HA, DR & Service Levels",A37,"What is the backup schedule and retention, and who executes a restore?",Additional
+"Database, HA, DR & Service Levels",A38,"Has a full restore been tested end to end, and what RTO was measured?",Additional
+"Database, HA, DR & Service Levels",A39,"Is the database replicated across data centres, and is failover automatic or manual?",Additional
+"Database, HA, DR & Service Levels",A40,"If the database is lost, can the catalogue be rebuilt from Git — and what would not be recoverable?",Additional
+"Database, HA, DR & Service Levels",A41,"What is the database patching window, and can RHDH tolerate that outage?",Additional
+"Database, HA, DR & Service Levels",A42,"Are there separate databases per RHDH environment, and how are credentials rotated?",Additional
+"Identity, Authentication & Authorisation",50,How will users authenticate into Developer Hub?,"R1, R2"
+"Identity, Authentication & Authorisation",51,"What is the RHDH authentication and authorisation model — RBAC plugin, or custom?","R1, R2"
+"Identity, Authentication & Authorisation",52,"Which Entra ID OIDC claims are available, and which will drive authorisation?","R1, R2"
+"Identity, Authentication & Authorisation",53,What are the personas for the permission model?,"R1, R2"
+"Identity, Authentication & Authorisation",54,"Are there existing Entra ID groups matching those personas, or must new ones be created?","R1, R2"
+"Identity, Authentication & Authorisation",55,"How are Entra ID group names structured, and can they map to catalogue ownership?",R2
+"Identity, Authentication & Authorisation",56,"Is group membership synchronised into RHDH, and at what frequency?",R2
+"Identity, Authentication & Authorisation",57,"Should users see only their own components, or the entire catalogue?",R2
+"Identity, Authentication & Authorisation",58,"Is MFA required for Developer Hub access, and for which actions?",R2
+"Identity, Authentication & Authorisation",59,"Who approves access, and does it integrate with the joiner–mover–leaver process?",R2
+"Identity, Authentication & Authorisation",60,"Is access recertification required, and at what frequency?",R2
+"Identity, Authentication & Authorisation",61,How are service accounts and machine identities handled for RHDH integrations?,R2
+"Identity, Authentication & Authorisation",A43,"Which Entra ID app registration will RHDH use, and who owns and approves it?",Additional
+"Identity, Authentication & Authorisation",A44,"Will authentication use the OIDC authorisation-code flow with PKCE, and which redirect URIs are required?",Additional
+"Identity, Authentication & Authorisation",A45,"What are the access and refresh token lifetimes, and what session length should RHDH enforce?",Additional
+"Identity, Authentication & Authorisation",A46,"How should the RHDH session cookie be scoped, and what security attributes are mandated?",Additional
+"Identity, Authentication & Authorisation",A47,"Which claim is the stable, immutable user identifier — oid, upn or email?",Additional
+"Identity, Authentication & Authorisation",A48,"How many groups does a typical user carry, and is the group claim at risk of overflow?",Additional
+"Identity, Authentication & Authorisation",A49,"Will Microsoft Graph be used to ingest users and groups, and which API permissions must be granted?",Additional
+"Identity, Authentication & Authorisation",A50,"What is the size of the user and group ingestion, and what refresh frequency is acceptable?",Additional
+"Identity, Authentication & Authorisation",A51,"Are guest or B2B accounts present, and should they be filtered out of ingestion?",Additional
+"Identity, Authentication & Authorisation",A52,"How will RHDH authenticate to each downstream system, and how are those credentials rotated?",Additional
+"Identity, Authentication & Authorisation",A53,Is step-up authentication required for privileged actions such as RBAC changes?,Additional
+"Identity, Authentication & Authorisation",A54,"What happens to catalogue ownership when an Entra group is renamed, merged or deleted?",Additional
+Software Catalogue & Ownership,62,What is the initial set of apps / systems to appear in Developer Hub?,"R1, R2"
+Software Catalogue & Ownership,63,"For the initial set of apps, what is the app architecture? (intent: capture component relationships)",R1
+Software Catalogue & Ownership,64,"How will the catalogue be populated — discovery, registration, or bulk import?","R1, R2"
+Software Catalogue & Ownership,65,Who owns catalogue items?,R1
+Software Catalogue & Ownership,66,"What is the unit of ownership — service, application, product, or system?",R2
+Software Catalogue & Ownership,67,"Will the catalogue be authoritative, or a view over an existing system of record?",R2
+Software Catalogue & Ownership,68,"Is there an existing application inventory or CMDB, and how accurate is it?",R2
+Software Catalogue & Ownership,69,What metadata must every catalogue component carry?,R2
+Software Catalogue & Ownership,70,How will catalogue entries be kept accurate as services change?,R2
+Software Catalogue & Ownership,71,"Should the catalogue include systems not on OpenShift — VMs, mainframe, SaaS?",R2
+Software Catalogue & Ownership,A55,"Which entity kinds will be used — Component, System, Domain, API, Resource, Group, User?",Additional
+Software Catalogue & Ownership,A56,"What is the CLIENT definition of a System, and of a Domain?",Additional
+Software Catalogue & Ownership,A57,"What is the entity naming convention, and does an existing service-naming standard apply?",Additional
+Software Catalogue & Ownership,A58,"Will the catalogue use namespaces, and along which axis — team, domain or environment?",Additional
+Software Catalogue & Ownership,A59,"Which component types are permitted — service, website, library, mobile-app?",Additional
+Software Catalogue & Ownership,A60,"Which lifecycle values are permitted, and who is authorised to set them?",Additional
+Software Catalogue & Ownership,A61,"Will APIs be catalogued, and what is the source of truth — API Connect, or OpenAPI in the repository?",Additional
+Software Catalogue & Ownership,A62,"Will infrastructure resources — databases, queues, buckets — be catalogued, and by whom?",Additional
+Software Catalogue & Ownership,A63,"Which standard annotations must every component carry — Jira project, Jenkins job, SonarQube key, Argo CD app, workload selector?",Additional
+Software Catalogue & Ownership,A64,"Which catalogue providers will be used — Bitbucket discovery, Microsoft Graph, static locations?",Additional
+Software Catalogue & Ownership,A65,"What is the catalogue refresh interval, and what load does discovery place on Bitbucket?",Additional
+Software Catalogue & Ownership,A66,"Where must catalog-info.yaml live in a repository, and is that enforced by template?",Additional
+Software Catalogue & Ownership,A67,"What happens when catalog-info.yaml is invalid or missing — who is notified, and how?",Additional
+Software Catalogue & Ownership,A68,Are custom entity processors or validators required to enforce mandatory metadata?,Additional
+Software Catalogue & Ownership,A69,"Will the catalogue be seeded by bulk import, and from which source?",Additional
+Software Catalogue & Ownership,A70,Is a two-way sync with a CMDB or ServiceNow required?,Additional
+Software Catalogue & Ownership,A71,"How will systems not on OpenShift — VMs, mainframe, SaaS — be modelled in practice?",Additional
+Software Catalogue & Ownership,A72,"What is the process to retire an entity, and who arbitrates ownership disputes?",Additional
+Software Catalogue & Ownership,A73,How will unowned or orphaned entities be detected and chased?,Additional
+"Current State — SDLC, CI/CD & Source Control",72,Walk through the current release flow / SDLC for Java (MBPM).,"R1, R2"
+"Current State — SDLC, CI/CD & Source Control",73,Walk through the current release flow / SDLC for Node (MBPM).,"R1, R2"
+"Current State — SDLC, CI/CD & Source Control",74,"Walk through the existing microservices lifecycle end to end, from dev to prod.","R1, R2"
+"Current State — SDLC, CI/CD & Source Control",75,"What is the current CI/CD setup, and how many separate instances exist?","R1, R2"
+"Current State — SDLC, CI/CD & Source Control",76,"Which source control system is authoritative — Git, Bitbucket, or both?","R1, R2"
+"Current State — SDLC, CI/CD & Source Control",77,Confirm the application archetypes — Java Spring Boot and Node. Anything else in the estate?,"R1, R2"
+"Current State — SDLC, CI/CD & Source Control",78,"Which Spring Boot and Node versions are supported, and who decides upgrades?",R2
+"Current State — SDLC, CI/CD & Source Control",79,Confirm the full tool inventory and the version of each.,"R1, R2"
+"Current State — SDLC, CI/CD & Source Control",80,Who maintains Jenkins pipeline definitions today — central team or each app team?,R2
+"Current State — SDLC, CI/CD & Source Control",81,"Are pipelines standardised, or copied per team?",R2
+"Current State — SDLC, CI/CD & Source Control",82,"Is Jenkins staying, or is Tekton / OpenShift Pipelines in scope?",R2
+"Current State — SDLC, CI/CD & Source Control",83,"How is a new namespace or environment requested today, and how long does it take?",R2
+"Current State — SDLC, CI/CD & Source Control",84,How long does it take to go from a new repo to running in production today?,R2
+"Current State — SDLC, CI/CD & Source Control",85,How long before a new developer makes their first production commit?,R2
+"Current State — SDLC, CI/CD & Source Control",86,"Where do build dependencies come from — internet, Artifactory proxy, or air-gapped mirror?",R2
+"Current State — SDLC, CI/CD & Source Control",87,Is GitOps in use — Argo CD or Flux — and at what maturity?,R2
+"Current State — SDLC, CI/CD & Source Control",88,"Helm, Kustomize, or both?",R2
+"Current State — SDLC, CI/CD & Source Control",89,"Will application config live with the code, or in a separate repo?",R2
+"Current State — SDLC, CI/CD & Source Control",90,How are database schema migrations handled during deployment?,R2
+"Current State — SDLC, CI/CD & Source Control",91,How are secrets managed and injected into workloads today?,R2
+"Current State — SDLC, CI/CD & Source Control",92,What environments exist between a developer laptop and production?,R2
+"Current State — SDLC, CI/CD & Source Control",93,"What triggers promotion between environments — automatic, approval, or scheduled?",R2
+"Current State — SDLC, CI/CD & Source Control",94,"Who approves a production deployment, and can it be automated?",R2
+"Current State — SDLC, CI/CD & Source Control",95,"What is the rollback strategy, and has it been tested?",R2
+"Current State — SDLC, CI/CD & Source Control",A74,"Which Bitbucket product and version is in use — Cloud, Server or Data Center?",Additional
+"Current State — SDLC, CI/CD & Source Control",A75,"What API rate limits and token types apply to Bitbucket, and can webhooks be registered?",Additional
+"Current State — SDLC, CI/CD & Source Control",A76,"What is the branching model, and is it consistent across teams?",Additional
+"Current State — SDLC, CI/CD & Source Control",A77,What is the Bitbucket project and repository naming structure?,Additional
+"Current State — SDLC, CI/CD & Source Control",A78,"Which Jenkins version and plugin set is in use, and is it multi-master?",Additional
+"Current State — SDLC, CI/CD & Source Control",A79,"How does Jenkins authenticate to OpenShift, Artifactory and Bitbucket today?",Additional
+"Current State — SDLC, CI/CD & Source Control",A80,"Are build agents ephemeral on OpenShift, or static VMs?",Additional
+"Current State — SDLC, CI/CD & Source Control",A81,"What artefact types are produced, and what versioning scheme applies?",Additional
+"Current State — SDLC, CI/CD & Source Control",A82,"Which registries hold images, and what is the promotion path between them?",Additional
+"Current State — SDLC, CI/CD & Source Control",A83,"How are base images sourced, patched and approved?",Additional
+"Current State — SDLC, CI/CD & Source Control",A84,What are the average and p95 build durations today?,Additional
+"Current State — SDLC, CI/CD & Source Control",A85,"Which pipeline stages are manual approvals, and who approves them?",Additional
+Plugins & Integrations,96,"Confirm required plugins — Jenkins, Kubernetes, SonarQube, Snyk, Jira, Artifactory, Git.",R1
+Plugins & Integrations,97,Is an API Connect plugin needed?,R1
+Plugins & Integrations,98,Which plugins are required at launch versus aspirational?,R2
+Plugins & Integrations,99,"Is the Jenkins plugin required, and what should it surface?",R2
+Plugins & Integrations,100,"Is the Jira plugin required, and scoped to which projects?",R2
+Plugins & Integrations,101,Is SonarQube integration required on the component page?,R2
+Plugins & Integrations,102,"Is Snyk integration required, and who acts on the findings shown?",R2
+Plugins & Integrations,103,Is Artifactory integration required for artefact visibility?,R2
+Plugins & Integrations,104,Is the Kubernetes / OpenShift plugin required to show workload status?,R2
+Plugins & Integrations,105,"Are any required plugins community-only, unsupported, or absent?",R2
+Plugins & Integrations,106,"Is custom plugin or custom action development in scope, and who maintains it?",R2
+Plugins & Integrations,107,How will RHDH be branded and themed for CLIENT?,R2
+Plugins & Integrations,A86,"For each integration, what is the endpoint, authentication method, service account and owning team?",Additional
+Plugins & Integrations,A87,"What should the Jenkins plugin surface on a component page — latest status only, or full build history?",Additional
+Plugins & Integrations,A88,"Does the Kubernetes plugin need access to every cluster, and by what authentication method?",Additional
+Plugins & Integrations,A89,Which label convention links a running workload to its catalogue component?,Additional
+Plugins & Integrations,A90,"Is Argo CD integration required, and against which instances?",Additional
+Plugins & Integrations,A91,Is Tekton / OpenShift Pipelines integration required in addition to Jenkins?,Additional
+Plugins & Integrations,A92,Is ServiceNow or another change-management integration required?,Additional
+Plugins & Integrations,A93,Is Confluence or another wiki integration required alongside TechDocs?,Additional
+Plugins & Integrations,A94,"Is API Connect the source of truth for APIs, and does it expose a consumable API?",Additional
+Plugins & Integrations,A95,Should Dynatrace or Splunk data be surfaced on the component page?,Additional
+Plugins & Integrations,A96,"What is the availability, rate limit and maintenance window of each upstream system?",Additional
+Plugins & Integrations,A97,What should the user see when an integration is unavailable?,Additional
+Golden Paths / Software Templates,108,"Which software templates are needed at launch, beyond Java Spring Boot and Node?",R2
+Golden Paths / Software Templates,109,"What should a template create — repo, pipeline, namespace, catalogue entry, or all of them?",R2
+Golden Paths / Software Templates,110,What must a new service have on day one to be compliant?,R2
+Golden Paths / Software Templates,111,Are there mandated internal libraries or SDKs that templates must include?,R2
+Golden Paths / Software Templates,112,What default security guardrails go into templates?,WS
+Golden Paths / Software Templates,113,Who owns and maintains templates once they exist?,R2
+Golden Paths / Software Templates,114,How will template changes reach services already generated from them?,R2
+Golden Paths / Software Templates,115,"May teams deviate from a golden path, and through what process?",R2
+Golden Paths / Software Templates,116,Are there existing reference apps or starter repos to build templates from?,R2
+Golden Paths / Software Templates,117,How will template usage be measured?,R2
+Golden Paths / Software Templates,A98,What is the full sequence of steps a template must perform for the Java Spring Boot archetype?,Additional
+Golden Paths / Software Templates,A99,What is the full sequence of steps a template must perform for the Node archetype?,Additional
+Golden Paths / Software Templates,A100,"Which Git service account creates repositories, and what permissions does it hold?",Additional
+Golden Paths / Software Templates,A101,"How are repository ownership, branch protection and required reviewers set at creation time?",Additional
+Golden Paths / Software Templates,A102,"Should the template create the Jenkins job or folder, and by what mechanism?",Additional
+Golden Paths / Software Templates,A103,"Should the template create the namespace, resource quota and network policy?",Additional
+Golden Paths / Software Templates,A104,Should the template register the Argo CD application?,Additional
+Golden Paths / Software Templates,A105,Should the template raise a Jira ticket or a change record?,Additional
+Golden Paths / Software Templates,A106,"Which parameters must the user supply, and which are derived or looked up from another system?",Additional
+Golden Paths / Software Templates,A107,How are the credentials used during scaffolding supplied and protected?,Additional
+Golden Paths / Software Templates,A108,"How will templates be tested, and is there a CI pipeline for the templates themselves?",Additional
+Golden Paths / Software Templates,A109,"How are templates versioned, and may a team pin to an earlier version?",Additional
+Golden Paths / Software Templates,A110,What is the expected — and maximum acceptable — end-to-end scaffolding duration?,Additional
+Golden Paths / Software Templates,A111,"What happens on partial failure: is scaffolding idempotent, or is manual cleanup required?",Additional
+Documentation / TechDocs,118,Where are TechDocs stored and rendered from?,"R1, R2"
+Documentation / TechDocs,119,"Is object storage available for the TechDocs backend, and is it in scope?",R2
+Documentation / TechDocs,120,"Where does documentation live today, and will it migrate?",R2
+Documentation / TechDocs,121,Who owns documentation quality and keeps it current?,R2
+Documentation / TechDocs,122,Will docs-as-code be mandatory for services in the catalogue?,R2
+Documentation / TechDocs,A112,"Will TechDocs use the local builder, or an external build-and-publish pipeline?",Additional
+Documentation / TechDocs,A113,"Which bucket will hold generated documentation, and what lifecycle policy applies?",Additional
+Documentation / TechDocs,A114,"May the mkdocs build reach the internet for plugins and themes, or must these be mirrored?",Additional
+Documentation / TechDocs,A115,What documentation structure and template must a new service follow?,Additional
+Documentation / TechDocs,A116,"Will architecture diagrams be embedded, and in which format?",Additional
+Documentation / TechDocs,A117,"Who reviews documentation, and is it part of the definition of done?",Additional
+Documentation / TechDocs,A118,"How much Confluence content is in scope for migration, and who owns that migration?",Additional
+"Security, Compliance & Governance",123,What security controls are currently in place for applications?,"R1, R2"
+"Security, Compliance & Governance",124,"What controls does the security team enforce, and where are they enforced?","R1, R2"
+"Security, Compliance & Governance",125,What new security controls are desired?,R2
+"Security, Compliance & Governance",126,Which quality and security gates must every build pass?,R2
+"Security, Compliance & Governance",127,What vulnerability thresholds block a build or a deployment?,R2
+"Security, Compliance & Governance",128,"Can a gate be overridden, by whom, and is it logged?",R2
+"Security, Compliance & Governance",129,Is image signing or SBOM generation required?,R2
+"Security, Compliance & Governance",130,"How is segregation of duties defined between build, approve and deploy?",R2
+"Security, Compliance & Governance",131,"Which regulations apply — RBNZ, Privacy Act 2020, PCI DSS, ISO 27001?",R2
+"Security, Compliance & Governance",132,Are there data residency requirements constraining where workloads and data may sit?,R2
+"Security, Compliance & Governance",133,"Does every production change require a change record, and can it be raised automatically?",R2
+"Security, Compliance & Governance",134,"Is there an approved tooling list, and how long does approval take for anything new?",R2
+"Security, Compliance & Governance",A119,Has a threat model or security architecture review been scheduled for RHDH?,Additional
+"Security, Compliance & Governance",A120,"Is penetration testing required before go-live, and what is the lead time to book it?",Additional
+"Security, Compliance & Governance",A121,"What data classification applies to catalogue metadata, TechDocs and audit records?",Additional
+"Security, Compliance & Governance",A122,Must the RHDH image come from a trusted registry with signature verification enforced?,Additional
+"Security, Compliance & Governance",A123,"Will RHACS policies apply to the RHDH namespace, in inform or enforce mode?",Additional
+"Security, Compliance & Governance",A124,Which network policies are required into and out of the RHDH namespace?,Additional
+"Security, Compliance & Governance",A125,"Is audit log immutability or SIEM forwarding required, and to which system?",Additional
+"Security, Compliance & Governance",A126,What secrets scanning applies to repositories created by templates?,Additional
+"Security, Compliance & Governance",A127,What is the vulnerability remediation SLA for the RHDH platform itself?,Additional
+"Security, Compliance & Governance",A128,Are there regulatory constraints on where identity and audit data may reside?,Additional
+Operating Model & People,135,"Who owns Developer Hub (and the mesh) after go-live, as a named team?",R2
+Operating Model & People,136,"Does that team exist, or must it be formed or hired?",R2
+Operating Model & People,137,"How many engineers, at what seniority, will run the platform?",R2
+Operating Model & People,138,What is the support model and on-call arrangement for RHDH and the mesh?,R2
+Operating Model & People,139,"Will the platform have a product owner and roadmap, or take tickets?",R2
+Operating Model & People,140,How will platform capability requests be raised and prioritised?,R2
+Operating Model & People,141,Who will champion the platform inside each area?,R2
+Operating Model & People,142,What training and enablement will developers receive?,R2
+Operating Model & People,143,How will developer feedback be gathered and acted on?,R2
+Operating Model & People,144,"What skills exist today, and what gaps must be filled before handover?",R2
+Operating Model & People,145,"What existing tools will be decommissioned, and who decides?",R2
+Operating Model & People,146,"Will existing services be migrated onto the platform, or only new ones?",R2
+Operating Model & People,A129,"What is the RACI across platform, security, identity, network and application teams for RHDH?",Additional
+Operating Model & People,A130,"What are the L1, L2 and L3 support tiers, and who staffs each?",Additional
+Operating Model & People,A131,What are the handover acceptance criteria from Red Hat to CLIENT?,Additional
+Operating Model & People,A132,"Which documentation set must exist at handover — HLD, LLD, runbooks, operational guide?",Additional
+Operating Model & People,A133,What is the knowledge-transfer plan and schedule?,Additional
+Operating Model & People,A134,"Which Red Hat subscriptions and entitlements are in place, and do they cover the target user count?",Additional
+Operating Model & People,A135,What is the product lifecycle and support window for the target RHDH version?,Additional
+Operating Model & People,A136,"What is the process to onboard a new team onto the platform, and how long should it take?",Additional
+Operating Model & People,A137,"Which activities are self-service, and which require the platform team?",Additional
+Metrics & Outcomes,147,"Are DORA metrics measured today, and from what baseline?",R2
+Metrics & Outcomes,148,"How will developer satisfaction be measured, and against what baseline?",R2
+Metrics & Outcomes,149,"Who reports these metrics, to whom, and how often?",R2
+Metrics & Outcomes,150,What single metric determines whether this succeeded?,R2
+Metrics & Outcomes,151,What is the target time from idea to production for a new service?,R2
+Metrics & Outcomes,152,"What adoption level is expected, by when — teams, services, percentage?",R2
+Metrics & Outcomes,A138,What baseline measurements will be taken before the pilot begins?,Additional
+Metrics & Outcomes,A139,"Which metrics are collected automatically, and which require a survey?",Additional
+Metrics & Outcomes,A140,"What is the reporting cadence, and who is the audience?",Additional
+Metrics & Outcomes,A141,What is the target ratio of template-created services to manually created ones?,Additional
+Metrics & Outcomes,A142,"How will cognitive load be measured, given it is named in the problem statement?",Additional
+"Risks, Dependencies & Timeline",153,"What are the immovable dates, and what drives them?",R2
+"Risks, Dependencies & Timeline",154,What dependencies exist on other teams or programmes?,R2
+"Risks, Dependencies & Timeline",155,Is there a change freeze calendar the platform must respect?,R2
+"Risks, Dependencies & Timeline",156,"What could stop this initiative, and how likely is it?",R2
+"Risks, Dependencies & Timeline",157,Who else should we be talking to that we have not yet met?,R2
+"Risks, Dependencies & Timeline",158,What have we not asked that we should have?,R2
+"Risks, Dependencies & Timeline",A143,"What is the dependency on the Safe Secure identity stream, and its committed delivery date?",Additional
+"Risks, Dependencies & Timeline",A144,"What is the dependency on ARO environment readiness, and what is the fallback?",Additional
+"Risks, Dependencies & Timeline",A145,"What is the dependency on the hardware order, and what happens if it slips?",Additional
+"Risks, Dependencies & Timeline",A146,"Which decisions are currently blocking design, and by when are they needed?",Additional
+"Risks, Dependencies & Timeline",A147,What is the contingency if the internal PostgreSQL service is withdrawn?,Additional
+RHDH ↔ Service Mesh Boundary,159,"What is the expectation for RHDH and Service Mesh integration, concretely? (e.g. do we expect resilience configuration to be created when the app is created?)","R1, R2"
+RHDH ↔ Service Mesh Boundary,160,Should the mesh service graph be surfaced inside Developer Hub?,R2
+RHDH ↔ Service Mesh Boundary,161,Should a template also register the service into the mesh?,R2
+RHDH ↔ Service Mesh Boundary,162,"Which applications go into the mesh first, and is that the same set as the RHDH pilot?",R2
+RHDH ↔ Service Mesh Boundary,163,Should data-plane configs be baked into golden-path templates?,R2
+RHDH ↔ Service Mesh Boundary,164,Should applications include their required HTTPRoutes when RHDH templates are hydrated?,R2
+RHDH ↔ Service Mesh Boundary,A148,Should mesh objects such as gateways and waypoints be modelled as catalogue Resources?,Additional
+RHDH ↔ Service Mesh Boundary,A149,"Should Kiali be embedded as a plugin, or linked to externally?",Additional
+RHDH ↔ Service Mesh Boundary,A150,"Is mesh onboarding a template parameter, or a separate workflow?",Additional
+RHDH ↔ Service Mesh Boundary,A151,"Should templates generate mesh policy — AuthorizationPolicy, PeerAuthentication, HTTPRoute?",Additional
+RHDH ↔ Service Mesh Boundary,A152,Who owns mesh configuration after a template has generated it?,Additional
+Deployment Architecture & Installation,A153,"Will RHDH be installed via the Operator or the Helm chart, and what drives that choice?",Additional
+Deployment Architecture & Installation,A154,"Which RHDH version is targeted, and how does it align to the OpenShift version roadmap?",Additional
+Deployment Architecture & Installation,A155,Which subscription channel and update approval strategy will be used — automatic or manual?,Additional
+Deployment Architecture & Installation,A156,"How will RHDH images be mirrored for a proxied or disconnected environment, and to which registry?",Additional
+Deployment Architecture & Installation,A157,Is an ImageDigestMirrorSet or ImageContentSourcePolicy already in place?,Additional
+Deployment Architecture & Installation,A158,"Which namespaces will host RHDH, and what is the namespace request and approval process?",Additional
+Deployment Architecture & Installation,A159,"How many replicas, and what CPU and memory requests and limits per pod?",Additional
+Deployment Architecture & Installation,A160,"Is a PodDisruptionBudget required, and what minimum availability?",Additional
+Deployment Architecture & Installation,A161,"Is the RHDH backend safe to run as multiple replicas in this configuration, and how is catalogue processing coordinated between them?",Additional
+Deployment Architecture & Installation,A162,What pod anti-affinity or topology spread is required across nodes and data centres?,Additional
+Deployment Architecture & Installation,A163,"What startup, liveness and readiness probe settings apply, and what startup time is acceptable?",Additional
+Deployment Architecture & Installation,A164,"Will the RHDH deployment itself be managed by Argo CD from Git, or applied manually?",Additional
+Deployment Architecture & Installation,A165,What is the rollback procedure for a failed RHDH upgrade?,Additional
+Deployment Architecture & Installation,A166,Is a canary or blue/green approach required for RHDH upgrades and plugin changes?,Additional
+Deployment Architecture & Installation,A167,Which security context constraint will RHDH run under?,Additional
+Deployment Architecture & Installation,A168,"What is the target topology across the two data centres — active/active, or active/passive?",Additional
+"Networking, Ingress, TLS & Certificates",A169,"Will RHDH be exposed by an OpenShift Route, an Ingress, or through the external load balancer?",Additional
+"Networking, Ingress, TLS & Certificates",A170,"What is the target FQDN, and who owns the DNS record and its change process?",Additional
+"Networking, Ingress, TLS & Certificates",A171,"Is TLS terminated at the edge, re-encrypted, or passed through to the pod?",Additional
+"Networking, Ingress, TLS & Certificates",A172,"Which CA issues the RHDH certificate, and is cert-manager available for renewal?",Additional
+"Networking, Ingress, TLS & Certificates",A173,What is the certificate request and renewal lead time?,Additional
+"Networking, Ingress, TLS & Certificates",A174,"Which proxy settings are required for RHDH egress, and what belongs in NO_PROXY?",Additional
+"Networking, Ingress, TLS & Certificates",A175,"Which outbound destinations must be allow-listed — Bitbucket, Jenkins, Jira, Artifactory, Entra, Graph, npm?",Additional
+"Networking, Ingress, TLS & Certificates",A176,Is there a TLS-inspecting proxy whose CA must be injected into the RHDH trust store?,Additional
+"Networking, Ingress, TLS & Certificates",A177,How is the cluster-wide trust bundle injected into RHDH pods?,Additional
+"Networking, Ingress, TLS & Certificates",A178,Is session affinity required at the load balancer when running multiple replicas?,Additional
+"Networking, Ingress, TLS & Certificates",A179,"Do any plugins require WebSocket or server-sent events, and does the ingress path support them?",Additional
+"Networking, Ingress, TLS & Certificates",A180,"What are the ingress idle and request timeouts, and are they sufficient for long-running template executions?",Additional
+Configuration & Secrets Management,A181,"How will app-config be structured across environments — a base plus overlays, or a file per environment?",Additional
+Configuration & Secrets Management,A182,"Will RHDH configuration live in Git and be delivered by Argo CD, or applied manually?",Additional
+Configuration & Secrets Management,A183,"Which configuration values are secrets, and where will they be held — Vault, CyberArk, External Secrets, sealed secrets?",Additional
+Configuration & Secrets Management,A184,"How are integration credentials rotated, and does rotation require an RHDH restart?",Additional
+Configuration & Secrets Management,A185,"Who is authorised to change RHDH configuration, and under what change process?",Additional
+Configuration & Secrets Management,A186,How will configuration drift be detected and corrected?,Additional
+Configuration & Secrets Management,A187,Are there environment-specific feature flags or differing plugin sets?,Additional
+Configuration & Secrets Management,A188,"How will the homepage, sidebar, theme and branding be configured and version-controlled?",Additional
+Configuration & Secrets Management,A189,What is the process to add a new integration or plugin to a running instance?,Additional
+Configuration & Secrets Management,A190,How and where will configuration changes be tested before reaching production?,Additional
+Dynamic Plugins & Extensibility,A191,"Which required plugins are Red Hat supported, which are community, and which must be built?",Additional
+Dynamic Plugins & Extensibility,A192,"How will dynamic plugins be packaged and served — from an OCI registry, or an internal npm mirror?",Additional
+Dynamic Plugins & Extensibility,A193,"Can Artifactory proxy npmjs for plugin dependencies, and is that approved?",Additional
+Dynamic Plugins & Extensibility,A194,"How will plugin versions be pinned, and what regression testing applies to an upgrade?",Additional
+Dynamic Plugins & Extensibility,A195,What security review must a community plugin pass before it is enabled?,Additional
+Dynamic Plugins & Extensibility,A196,Who owns and maintains custom plugins and custom scaffolder actions?,Additional
+Dynamic Plugins & Extensibility,A197,What is the build and release pipeline for a custom plugin?,Additional
+Dynamic Plugins & Extensibility,A198,What is the blast radius if a plugin fails to load — does RHDH still start?,Additional
+Dynamic Plugins & Extensibility,A199,"Do any plugins require elevated cluster permissions, and is that acceptable to security?",Additional
+Dynamic Plugins & Extensibility,A200,How will the enabled plugin set and its configuration be documented for support handover?,Additional
+RBAC & Permissions Design,A201,Will the RBAC plugin be enabled from day one?,Additional
+RBAC & Permissions Design,A202,"Will permission policies be held in a file in Git, or in the database and edited through the UI?",Additional
+RBAC & Permissions Design,A203,"Which roles are required, and what does each permit?",Additional
+RBAC & Permissions Design,A204,Which Entra groups map to which RHDH roles?,Additional
+RBAC & Permissions Design,A205,"Are conditional policies required — for example, a user may only run templates for systems their group owns?",Additional
+RBAC & Permissions Design,A206,Who may register and unregister catalogue entities?,Additional
+RBAC & Permissions Design,A207,"Who may execute each template, and are any restricted to specific teams?",Additional
+RBAC & Permissions Design,A208,"Who administers RBAC, and is that separated from platform administration?",Additional
+RBAC & Permissions Design,A209,"Are permission changes audited, and where do those records go?",Additional
+RBAC & Permissions Design,A210,"What is the default posture for a user with no explicit role — read-only, or no access?",Additional
+"Observability, Operations & Support of RHDH",A211,"Is user-workload monitoring enabled, and where will RHDH metrics be scraped to?",Additional
+"Observability, Operations & Support of RHDH",A212,"Which dashboards are required, and will they be Grafana or Perses?",Additional
+"Observability, Operations & Support of RHDH",A213,"Which alerts are required, and to which on-call rota do they route?",Additional
+"Observability, Operations & Support of RHDH",A214,"Which SLIs sit behind the RHDH SLO — availability, latency, template success rate?",Additional
+"Observability, Operations & Support of RHDH",A215,"What log level and format should RHDH emit, and how are logs forwarded to Splunk?",Additional
+"Observability, Operations & Support of RHDH",A216,"Is a separate audit log stream required, and what retention applies?",Additional
+"Observability, Operations & Support of RHDH",A217,"Is distributed tracing required for RHDH itself, and to which backend?",Additional
+"Observability, Operations & Support of RHDH",A218,"Which runbooks must exist at go-live, and who writes them?",Additional
+"Observability, Operations & Support of RHDH",A219,"What is the incident severity matrix for RHDH, and what are the response and resolution targets?",Additional
+"Observability, Operations & Support of RHDH",A220,How will catalogue processing errors and failed entity refreshes be surfaced and actioned?,Additional
+"Observability, Operations & Support of RHDH",A221,"What is the escalation path to Red Hat support, and who is authorised to raise cases?",Additional
+"Observability, Operations & Support of RHDH",A222,"How will capacity be monitored, reviewed and forecast?",Additional
+"Testing, Acceptance & Cutover",A223,"Which RHDH environments are needed for testing, and are they funded and scheduled?",Additional
+"Testing, Acceptance & Cutover",A224,"What is the non-functional test plan — load, soak and failover?",Additional
+"Testing, Acceptance & Cutover",A225,"What load profile will be simulated, and against which acceptance thresholds?",Additional
+"Testing, Acceptance & Cutover",A226,"Will a DR failover test be performed before go-live, and who signs it off?",Additional
+"Testing, Acceptance & Cutover",A227,"What are the UAT scenarios, and who performs them?",Additional
+"Testing, Acceptance & Cutover",A228,"What are the go-live criteria, and which forum gives go/no-go?",Additional
+"Testing, Acceptance & Cutover",A229,"What is the cutover plan, and what is the fallback if it fails?",Additional
+"Testing, Acceptance & Cutover",A230,What is the communications and enablement plan for users at launch?,Additional
+"Testing, Acceptance & Cutover",A231,"Which existing tools or portals are decommissioned at cutover, and on what date?",Additional
+"Testing, Acceptance & Cutover",A232,"What is the post-go-live hypercare period, and who staffs it?",Additional

@@ -1,0 +1,221 @@
+---
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: acme-nodejs-app
+  title: Acme Node.js Application
+  description: >
+    Creates a production-ready Node.js microservice with:
+    - Express / Fastify framework (Node.js 20 LTS)
+    - Tekton CI pipeline (build → test → SonarQube → Quay push → Cosign sign)
+    - ArgoCD GitOps deployment (dev → prod promotion)
+    - Service Mesh enrolment (ambient mode, Istio mTLS)
+    - OpenAPI spec scaffold + Swagger UI
+    - Backstage catalog-info.yaml pre-wired
+  tags:
+    - nodejs
+    - javascript
+    - typescript
+    - recommended
+    - golden-path
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  owner: group:platform-team
+  type: service
+
+  parameters:
+    - title: Application Details
+      required: [appName, appDescription, nodeFramework]
+      properties:
+        appName:
+          title: Application Name
+          type: string
+          description: Lowercase kebab-case name (e.g. notification-service)
+          pattern: '^[a-z][a-z0-9-]{2,48}[a-z0-9]$'
+          ui:autofocus: true
+        appDescription:
+          title: Description
+          type: string
+        nodeVersion:
+          title: Node.js Version
+          type: string
+          default: "20"
+          enum: ["22", "20", "18"]
+          enumNames: ["Node 22 (latest)", "Node 20 (LTS - recommended)", "Node 18 (LTS)"]
+        nodeFramework:
+          title: Framework
+          type: string
+          default: fastify
+          enum: [fastify, express, nestjs]
+          enumNames:
+            - "Fastify (high performance, recommended)"
+            - "Express (battle-tested)"
+            - "NestJS (enterprise, TypeScript-first)"
+        useTypeScript:
+          title: Use TypeScript
+          type: boolean
+          default: true
+        packageManager:
+          title: Package Manager
+          type: string
+          default: npm
+          enum: [npm, pnpm, yarn]
+
+    - title: Runtime & Deployment
+      required: [targetNamespace, replicas]
+      properties:
+        targetNamespace:
+          title: Target Namespace (dev)
+          type: string
+          default: acme-dev
+        replicas:
+          title: Replicas (dev)
+          type: integer
+          default: 2
+          minimum: 1
+          maximum: 10
+        port:
+          title: Application Port
+          type: integer
+          default: 3000
+        cpuRequest:
+          title: CPU Request
+          type: string
+          default: "100m"
+        memoryRequest:
+          title: Memory Request
+          type: string
+          default: "256Mi"
+        cpuLimit:
+          title: CPU Limit
+          type: string
+          default: "500m"
+        memoryLimit:
+          title: Memory Limit
+          type: string
+          default: "512Mi"
+        enrollInMesh:
+          title: Enrol in Service Mesh (ambient mTLS)
+          type: boolean
+          default: true
+
+    - title: API Definition
+      properties:
+        exposeOpenApi:
+          title: Expose OpenAPI / Swagger UI
+          type: boolean
+          default: true
+        apiTitle:
+          title: API Title
+          type: string
+          description: Human-readable name for the OpenAPI spec
+        apiVersion:
+          title: API Version
+          type: string
+          default: v1
+
+    - title: Source Control
+      required: [repoOwner]
+      properties:
+        repoOwner:
+          title: GitLab Group / GitHub Org
+          type: string
+          default: acme
+        repoVisibility:
+          title: Repo Visibility
+          type: string
+          default: private
+          enum: [private, internal, public]
+
+    - title: CI/CD & Quality
+      properties:
+        sonarProject:
+          title: SonarQube Project Key
+          type: string
+        enableTekton:
+          title: Enable Tekton CI Pipeline
+          type: boolean
+          default: true
+        enableCosign:
+          title: Sign images with Cosign
+          type: boolean
+          default: true
+
+  steps:
+    - id: fetch-template
+      name: Fetch Node.js Skeleton
+      action: fetch:template
+      input:
+        url: ./skeleton
+        values:
+          appName: ${{ parameters.appName }}
+          appDescription: ${{ parameters.appDescription }}
+          nodeVersion: ${{ parameters.nodeVersion }}
+          nodeFramework: ${{ parameters.nodeFramework }}
+          useTypeScript: ${{ parameters.useTypeScript }}
+          packageManager: ${{ parameters.packageManager }}
+          targetNamespace: ${{ parameters.targetNamespace }}
+          replicas: ${{ parameters.replicas }}
+          port: ${{ parameters.port }}
+          cpuRequest: ${{ parameters.cpuRequest }}
+          memoryRequest: ${{ parameters.memoryRequest }}
+          cpuLimit: ${{ parameters.cpuLimit }}
+          memoryLimit: ${{ parameters.memoryLimit }}
+          enrollInMesh: ${{ parameters.enrollInMesh }}
+          exposeOpenApi: ${{ parameters.exposeOpenApi }}
+          apiTitle: ${{ parameters.apiTitle or parameters.appName }}
+          apiVersion: ${{ parameters.apiVersion }}
+          repoOwner: ${{ parameters.repoOwner }}
+          sonarProject: ${{ parameters.sonarProject or parameters.appName }}
+          enableCosign: ${{ parameters.enableCosign }}
+
+    - id: publish-source
+      name: Publish Source to GitLab
+      action: publish:gitlab
+      input:
+        repoUrl: gitlab-gitlab.apps.${{ env.CLUSTER_BASE_DOMAIN }}?owner=${{ parameters.repoOwner }}&repo=${{ parameters.appName }}
+        description: ${{ parameters.appDescription }}
+        defaultBranch: main
+        repoVisibility: ${{ parameters.repoVisibility }}
+        sourcePath: .
+
+    - id: publish-gitops
+      name: Publish GitOps Manifests to GitLab
+      action: publish:gitlab
+      input:
+        repoUrl: gitlab-gitlab.apps.${{ env.CLUSTER_BASE_DOMAIN }}?owner=${{ parameters.repoOwner }}&repo=${{ parameters.appName }}-gitops
+        description: GitOps manifests for ${{ parameters.appName }}
+        defaultBranch: main
+        repoVisibility: ${{ parameters.repoVisibility }}
+        sourcePath: ./gitops
+
+    - id: create-argocd-app
+      name: Create ArgoCD Application (dev)
+      action: argocd:create-resources
+      input:
+        appName: ${{ parameters.appName }}-dev
+        argoInstance: acme-argocd
+        namespace: ${{ parameters.targetNamespace }}
+        repoUrl: https://gitlab-gitlab.apps.${{ env.CLUSTER_BASE_DOMAIN }}/${{ parameters.repoOwner }}/${{ parameters.appName }}-gitops.git
+        path: overlays/dev
+        labelValue: ${{ parameters.appName }}
+
+    - id: register
+      name: Register in Backstage Catalog
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps['publish-source'].output.repoContentsUrl }}
+        catalogInfoPath: /catalog-info.yaml
+
+  output:
+    links:
+      - title: Source Repository
+        url: ${{ steps['publish-source'].output.remoteUrl }}
+        icon: github
+      - title: GitOps Repository
+        url: ${{ steps['publish-gitops'].output.remoteUrl }}
+        icon: github
+      - title: Open in Catalog
+        icon: catalog
+        entityRef: ${{ steps['register'].output.entityRef }}

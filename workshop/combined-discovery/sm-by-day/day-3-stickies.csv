@@ -1,0 +1,451 @@
+﻿Sticky
+"M1 | §23 Drivers, Scope & Adoption
+
+Why Service Mesh — what problem is it solving that OpenShift networking does not?"
+"M2 | §23 Drivers, Scope & Adoption
+
+What are the primary business drivers for adopting Service Mesh — zero-trust and compliance, dynamic traffic routing, end-to-end observability, resilience?"
+"M3 | §23 Drivers, Scope & Adoption
+
+Which of mTLS, traffic management, observability or policy is the primary driver?"
+"M4 | §23 Drivers, Scope & Adoption
+
+What are the most important outcomes, and what are the priorities?"
+"M5 | §23 Drivers, Scope & Adoption
+
+What are the challenges of the current application without a service mesh?"
+"M6 | §23 Drivers, Scope & Adoption
+
+Are there particular production issues that require Service Mesh to solve?"
+"M7 | §23 Drivers, Scope & Adoption
+
+Which applications go into the mesh first, and is that the same set as the RHDH pilot?"
+"M8 | §23 Drivers, Scope & Adoption
+
+Is mesh adoption mandatory for new services, or opt-in?"
+"M9 | §23 Drivers, Scope & Adoption
+
+Does a service get enrolled into the mesh automatically at creation, or opt in later?"
+"M10 | §23 Drivers, Scope & Adoption
+
+Has the ambient preference been tested with the Digi 2.0 workloads specifically?"
+"M11 | §23 Drivers, Scope & Adoption
+
+Which existing workloads will be onboarded beyond Digi 2.0, and on what timeline?"
+"A233 | §23 Drivers, Scope & Adoption
+
+Which specific capability gaps does the mesh close that the API Gateway and OpenShift Routes cannot?"
+"A234 | §23 Drivers, Scope & Adoption
+
+Is there a documented business case for the mesh, separate from the RHDH business case?"
+"A235 | §23 Drivers, Scope & Adoption
+
+What is the target percentage of workloads in the mesh at 6, 12 and 24 months?"
+"A236 | §23 Drivers, Scope & Adoption
+
+Which workloads are explicitly excluded from the mesh, and why?"
+"A237 | §23 Drivers, Scope & Adoption
+
+What is the minimum viable mesh capability set for Digi 2.0 drop 1?"
+"A238 | §23 Drivers, Scope & Adoption
+
+Is there an agreed definition of ""mesh-onboarded"" that a service must meet?"
+"A239 | §23 Drivers, Scope & Adoption
+
+Who owns the decision to enrol a namespace into the mesh?"
+"A240 | §23 Drivers, Scope & Adoption
+
+What is the exit strategy if the mesh does not deliver — can workloads be removed cleanly?"
+"M12 | §24 Current State — Applications, Traffic & Topology
+
+What is the current application doing?"
+"M13 | §24 Current State — Applications, Traffic & Topology
+
+What is the current application architecture?"
+"M14 | §24 Current State — Applications, Traffic & Topology
+
+What is the microservices inventory?"
+"M15 | §24 Current State — Applications, Traffic & Topology
+
+Are the microservices run across namespaces?"
+"M16 | §24 Current State — Applications, Traffic & Topology
+
+How many replicas per service?"
+"M17 | §24 Current State — Applications, Traffic & Topology
+
+What throughput does the current application support?"
+"M18 | §24 Current State — Applications, Traffic & Topology
+
+What is the approximate pod density per cluster?"
+"M19 | §24 Current State — Applications, Traffic & Topology
+
+How many OpenShift clusters are there, and at what version?"
+"M20 | §24 Current State — Applications, Traffic & Topology
+
+Is an application contained in one OpenShift cluster in one data centre?"
+"M21 | §24 Current State — Applications, Traffic & Topology
+
+Is sticky session required to pin a session to a specific replica?"
+"M22 | §24 Current State — Applications, Traffic & Topology
+
+Are any non-HTTP protocols used between services — messaging, TCP, gRPC?"
+"M23 | §24 Current State — Applications, Traffic & Topology
+
+Do any applications use protocols the mesh handles poorly — long-lived TCP, gRPC streaming, databases?"
+"M24 | §24 Current State — Applications, Traffic & Topology
+
+Is a distributed cache used?"
+"M25 | §24 Current State — Applications, Traffic & Topology
+
+Is connection pooling implemented today?"
+"M26 | §24 Current State — Applications, Traffic & Topology
+
+Are there retry or timeout patterns between microservices now, and what values are used?"
+"M27 | §24 Current State — Applications, Traffic & Topology
+
+What levers are currently used for incident management within containerised applications?"
+"A241 | §24 Current State — Applications, Traffic & Topology
+
+What are the current and projected request rate and p99 latency for the Digi 2.0 services?"
+"A242 | §24 Current State — Applications, Traffic & Topology
+
+What is the east-west to north-south traffic ratio?"
+"A243 | §24 Current State — Applications, Traffic & Topology
+
+How many distinct services will communicate inside the mesh at drop 1, and at scale?"
+"A244 | §24 Current State — Applications, Traffic & Topology
+
+Which services call out to mainframe, third-party or partner systems?"
+"A245 | §24 Current State — Applications, Traffic & Topology
+
+Which services are latency-sensitive enough that an extra proxy hop is a concern?"
+"A246 | §24 Current State — Applications, Traffic & Topology
+
+Are there workloads using host networking, or requiring NET_ADMIN, that constrain mesh onboarding?"
+"A247 | §24 Current State — Applications, Traffic & Topology
+
+Are there StatefulSets, batch jobs or Kubernetes Jobs that need special mesh handling?"
+"A248 | §24 Current State — Applications, Traffic & Topology
+
+Do any services rely on acme IP visibility, and how is that preserved through the mesh?"
+"A249 | §24 Current State — Applications, Traffic & Topology
+
+Are there VM or non-OpenShift workloads that must join the mesh?"
+"A250 | §24 Current State — Applications, Traffic & Topology
+
+How are services discovered and addressed today — Kubernetes Service DNS, or something else?"
+"M28 | §25 Mesh Topology & Multi-Cluster
+
+What is the expected mesh topology — single mesh, multi-tenant, or mesh per environment?"
+"M29 | §25 Mesh Topology & Multi-Cluster
+
+Which control plane topology — single control plane for multiple namespaces, dedicated per namespace, or multi-control-plane multi-cluster?"
+"M30 | §25 Mesh Topology & Multi-Cluster
+
+Is multi-cluster mesh in scope?"
+"M31 | §25 Mesh Topology & Multi-Cluster
+
+Single mesh now, separate for payments later — what is the trigger for splitting?"
+"M32 | §25 Mesh Topology & Multi-Cluster
+
+Could namespace isolation plus authorisation policy achieve payment separation without a second mesh?"
+"M33 | §25 Mesh Topology & Multi-Cluster
+
+Is the mesh spanning on-prem and ARO, or are meshes independent per environment?"
+"M34 | §25 Mesh Topology & Multi-Cluster
+
+Does mesh traffic add to the cloud egress costs already influencing ARO placement?"
+"M35 | §25 Mesh Topology & Multi-Cluster
+
+How does the mesh behave during the single-DC failover described?"
+"M36 | §25 Mesh Topology & Multi-Cluster
+
+Are VMs or workloads outside OpenShift in scope, and what security isolation is required?"
+"A251 | §25 Mesh Topology & Multi-Cluster
+
+Which namespaces belong to the mesh, and what is the process to add one?"
+"A252 | §25 Mesh Topology & Multi-Cluster
+
+How many meshes in total across the two data centres plus ARO?"
+"A253 | §25 Mesh Topology & Multi-Cluster
+
+If cross-cluster traffic uses gateways, what is the failure behaviour when the remote gateway is unavailable?"
+"A254 | §25 Mesh Topology & Multi-Cluster
+
+Is locality-aware routing or failover required, and how is locality labelled?"
+"A255 | §25 Mesh Topology & Multi-Cluster
+
+What is the trust domain naming convention across clusters and environments?"
+"A256 | §25 Mesh Topology & Multi-Cluster
+
+If meshes are federated later, what root of trust would be shared?"
+"A257 | §25 Mesh Topology & Multi-Cluster
+
+How is the mesh separated between non-prod and prod, and can configuration be promoted between them?"
+"A258 | §25 Mesh Topology & Multi-Cluster
+
+What is the blast radius of a control plane failure, and is it contained to one cluster?"
+"M37 | §26 OSSM Deployment, Version & Lifecycle
+
+Is OpenShift Service Mesh already deployed anywhere, and at what version?"
+"M38 | §26 OSSM Deployment, Version & Lifecycle
+
+Is the target OSSM 2.x (Istio operator) or OSSM 3.x (Sail / upstream Istio)?"
+"M39 | §26 OSSM Deployment, Version & Lifecycle
+
+Which version of OSSM is preferred?"
+"M40 | §26 OSSM Deployment, Version & Lifecycle
+
+Which OpenShift version will the mesh run on, and does that match the fleet upgrade plan?"
+"M41 | §26 OSSM Deployment, Version & Lifecycle
+
+What is the mesh upgrade path and cadence?"
+"M42 | §26 OSSM Deployment, Version & Lifecycle
+
+Will canary control plane upgrades be used?"
+"M43 | §26 OSSM Deployment, Version & Lifecycle
+
+Which CNI exactly is in use, and is it validated for ambient mode in OSSM?"
+"M44 | §26 OSSM Deployment, Version & Lifecycle
+
+Is ambient GA in the OSSM version you will run, or still Tech Preview?"
+"A259 | §26 OSSM Deployment, Version & Lifecycle
+
+Will OSSM be installed via the Operator, and in which namespace does the control plane run?"
+"A260 | §26 OSSM Deployment, Version & Lifecycle
+
+How many control plane replicas, and what resource requests and limits?"
+"A261 | §26 OSSM Deployment, Version & Lifecycle
+
+Where are the mesh images sourced from in a proxied or disconnected environment?"
+"A262 | §26 OSSM Deployment, Version & Lifecycle
+
+What is the supported-version matrix between OSSM, OpenShift and the CNI, and does the roadmap stay inside it?"
+"A263 | §26 OSSM Deployment, Version & Lifecycle
+
+What is the tested upgrade sequence — CNI, control plane, then data plane?"
+"A264 | §26 OSSM Deployment, Version & Lifecycle
+
+During a canary control plane upgrade, how are workloads moved between revisions, and by whom?"
+"A265 | §26 OSSM Deployment, Version & Lifecycle
+
+What is the rollback procedure for a failed mesh upgrade?"
+"A266 | §26 OSSM Deployment, Version & Lifecycle
+
+What is the maintenance window for mesh upgrades, and what user impact is acceptable?"
+"A267 | §26 OSSM Deployment, Version & Lifecycle
+
+How will mesh CRDs be managed, and what happens to them on uninstall?"
+"A268 | §26 OSSM Deployment, Version & Lifecycle
+
+Are Kiali, Jaeger/Tempo and the OpenTelemetry collector deployed by the OSSM operator, or separately?"
+"M45 | §27 Sidecar vs Ambient & Data Plane
+
+Sidecar or ambient mode?"
+"M46 | §27 Sidecar vs Ambient & Data Plane
+
+Ambient gives mTLS and L4 authz via ztunnel — which policies need an L7 waypoint?"
+"M47 | §27 Sidecar vs Ambient & Data Plane
+
+What is the resource budget for ztunnel per node, and for waypoints per namespace?"
+"M48 | §27 Sidecar vs Ambient & Data Plane
+
+Session stickiness needs consistent-hash load balancing, which is L7 — does that force waypoints for those applications?"
+"M49 | §27 Sidecar vs Ambient & Data Plane
+
+At 250 pods per cluster, what does ambient save versus sidecar in practice?"
+"M50 | §27 Sidecar vs Ambient & Data Plane
+
+What is the fallback if ambient does not meet a requirement — can sidecar and ambient be mixed?"
+"M51 | §27 Sidecar vs Ambient & Data Plane
+
+How will applications be onboarded into the mesh — namespace label, per-workload, or template?"
+"A269 | §27 Sidecar vs Ambient & Data Plane
+
+Which OSSM release makes ambient generally available, and does that timeline align with Digi 2.0 drop 1?"
+"A270 | §27 Sidecar vs Ambient & Data Plane
+
+Is ambient mode supported by Red Hat on OVN-Kubernetes in the target version?"
+"A271 | §27 Sidecar vs Ambient & Data Plane
+
+Which namespaces will need an L7 waypoint on day one, and for which capabilities?"
+"A272 | §27 Sidecar vs Ambient & Data Plane
+
+How is waypoint capacity sized and scaled — per namespace, or per service account?"
+"A273 | §27 Sidecar vs Ambient & Data Plane
+
+What is the ztunnel resource footprint per node at 250 pods, and is that budgeted?"
+"A274 | §27 Sidecar vs Ambient & Data Plane
+
+How does ambient interact with the existing default-deny NetworkPolicy?"
+"A275 | §27 Sidecar vs Ambient & Data Plane
+
+Is there a migration path from ambient to sidecar, or the reverse, for an individual namespace?"
+"A276 | §27 Sidecar vs Ambient & Data Plane
+
+How is the mesh data plane restarted or drained during node maintenance?"
+"A277 | §27 Sidecar vs Ambient & Data Plane
+
+What is the pod startup impact — must applications tolerate proxy readiness ordering?"
+"A278 | §27 Sidecar vs Ambient & Data Plane
+
+How is traffic captured for pods that start before ztunnel is ready on a node?"
+"M52 | §28 Ingress, Gateways & North-South
+
+What is the current north-south ingress — OpenShift Routes, F5, or an API gateway?"
+"M53 | §28 Ingress, Gateways & North-South
+
+Who owns north-south — the existing external API Gateway, or the Istio gateway?"
+"M54 | §28 Ingress, Gateways & North-South
+
+Does the Istio ingress gateway sit behind, beside, or instead of the API Gateway?"
+"M55 | §28 Ingress, Gateways & North-South
+
+Will the Istio ingress gateway replace existing ingress, or coexist with it?"
+"M56 | §28 Ingress, Gateways & North-South
+
+Is Gateway API the target, or classic Istio Gateway plus VirtualService?"
+"M57 | §28 Ingress, Gateways & North-South
+
+How does MetalLB allocate a VIP to the Istio gateway, and who manages that pool?"
+"M58 | §28 Ingress, Gateways & North-South
+
+Which bespoke ingress controllers are in use, and are they being retired?"
+"M59 | §28 Ingress, Gateways & North-South
+
+Where is SSL terminated for the application today?"
+"M60 | §28 Ingress, Gateways & North-South
+
+Passthrough Routes bypass mesh termination — which applications use passthrough, and why?"
+"M61 | §28 Ingress, Gateways & North-South
+
+What is the migration plan from edge and re-encrypt Routes to Gateway API?"
+"A279 | §28 Ingress, Gateways & North-South
+
+What is the target north-south path, hop by hop, from acme to pod?"
+"A280 | §28 Ingress, Gateways & North-South
+
+Which Gateway API implementation and version will be used, and is it supported in the target OSSM?"
+"A281 | §28 Ingress, Gateways & North-South
+
+How many gateway deployments are needed — shared, per namespace, or per application?"
+"A282 | §28 Ingress, Gateways & North-South
+
+Who owns Gateway resources versus HTTPRoute resources, and what is the delegation model?"
+"A283 | §28 Ingress, Gateways & North-South
+
+How are gateway certificates provisioned and renewed, and by which CA?"
+"A284 | §28 Ingress, Gateways & North-South
+
+What is the MetalLB address pool for gateways, and who approves allocations from it?"
+"A285 | §28 Ingress, Gateways & North-South
+
+Are external DNS records created automatically for gateway hostnames, or manually?"
+"A286 | §28 Ingress, Gateways & North-South
+
+What WAF, rate limiting or bot protection exists north-south today, and does it stay where it is?"
+"A287 | §28 Ingress, Gateways & North-South
+
+Do any applications require mutual TLS from external clients at the edge?"
+"A288 | §28 Ingress, Gateways & North-South
+
+What timeout, retry and body-size configuration is required at the gateway?"
+"A289 | §28 Ingress, Gateways & North-South
+
+How is the existing API Gateway's authentication and authorisation reconciled with mesh policy?"
+"A290 | §28 Ingress, Gateways & North-South
+
+Is a dedicated egress gateway required, or is direct pod egress acceptable?"
+"M62 | §29 mTLS, Certificates & Service Identity
+
+Is strict mTLS required mesh-wide, or permissive during migration?"
+"M63 | §29 mTLS, Certificates & Service Identity
+
+What is the scope of mTLS — cluster-wide, namespace, workload-specific, or port-level?"
+"M64 | §29 mTLS, Certificates & Service Identity
+
+Is mTLS to be a standard for Digi 2.0 workloads?"
+"M65 | §29 mTLS, Certificates & Service Identity
+
+How does mesh mTLS interact with certificates issued by the existing PKI?"
+"M66 | §29 mTLS, Certificates & Service Identity
+
+Does mesh mTLS use the existing PKI or Istio self-signed — and who decided?"
+"M67 | §29 mTLS, Certificates & Service Identity
+
+How are certificates managed in OpenShift today — is cert-manager in use?"
+"M68 | §29 mTLS, Certificates & Service Identity
+
+What is the wider certificate management process?"
+"M69 | §29 mTLS, Certificates & Service Identity
+
+What are the service identities, and how are they derived?"
+"M70 | §29 mTLS, Certificates & Service Identity
+
+How will callers still outside the mesh be detected before switching mTLS to strict?"
+"M71 | §29 mTLS, Certificates & Service Identity
+
+What is the date or trigger for moving from permissive to strict mTLS?"
+"M72 | §29 mTLS, Certificates & Service Identity
+
+What compliance requirements apply — SOC 2, encryption in transit?"
+"A291 | §29 mTLS, Certificates & Service Identity
+
+Which CA will issue the mesh intermediate — the existing PKI, cert-manager, or Istio's self-signed root?"
+"A292 | §29 mTLS, Certificates & Service Identity
+
+What are the certificate lifetimes for the root, intermediate and workload certificates?"
+"A293 | §29 mTLS, Certificates & Service Identity
+
+How is the mesh root or intermediate rotated, and what is the impact on running workloads?"
+"A294 | §29 mTLS, Certificates & Service Identity
+
+Where is the mesh signing key stored, and does it need HSM or CyberArk protection?"
+"A295 | §29 mTLS, Certificates & Service Identity
+
+What is the SPIFFE identity format, and does it map to anything the security team already recognises?"
+"A296 | §29 mTLS, Certificates & Service Identity
+
+How is a service account mapped to a workload identity, and is service account sprawl a concern?"
+"A297 | §29 mTLS, Certificates & Service Identity
+
+What is the plan for workloads that cannot present a mesh identity — legacy or external callers?"
+"A298 | §29 mTLS, Certificates & Service Identity
+
+How is mTLS verified and evidenced for the encryption-in-transit compliance requirement?"
+"A299 | §29 mTLS, Certificates & Service Identity
+
+What monitoring will detect plaintext traffic once strict mTLS is targeted?"
+"A300 | §29 mTLS, Certificates & Service Identity
+
+Does the existing PKI support the certificate volume and issuance rate the mesh will generate?"
+"M95 | §32 Egress & External Connectivity
+
+How will egress from the mesh to external systems be controlled?"
+"M96 | §32 Egress & External Connectivity
+
+Is egress control required?"
+"A322 | §32 Egress & External Connectivity
+
+Which external endpoints must mesh workloads reach, and will they be registered as ServiceEntries?"
+"A323 | §32 Egress & External Connectivity
+
+Will an egress gateway be used to give a stable source IP for firewall allow-listing?"
+"A324 | §32 Egress & External Connectivity
+
+How does mesh egress interact with the corporate proxy and TLS inspection?"
+"A325 | §32 Egress & External Connectivity
+
+Is TLS origination at the egress gateway required, or does the application originate TLS?"
+"A326 | §32 Egress & External Connectivity
+
+How are external service certificates validated, and where is that trust bundle held?"
+"A327 | §32 Egress & External Connectivity
+
+What is the policy for undeclared egress — blocked, or allowed and logged?"
+"A328 | §32 Egress & External Connectivity
+
+Who approves a new external destination, and how long does it take?"
+"A329 | §32 Egress & External Connectivity
+
+How is egress traffic metered, given the ARO cloud egress cost concern?"

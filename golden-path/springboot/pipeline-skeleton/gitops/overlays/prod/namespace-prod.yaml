@@ -1,0 +1,13 @@
+---
+# Production namespace — acme.io/env=prod triggers stricter Kyverno policies:
+# - require-image-digest-in-prod (enforced)
+# - require-cosign-signature (enforced)
+# - require-jira-ticket-annotation (audit, promoted to enforced post-pilot)
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ${{ values.prodNamespace }}
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    acme.io/mesh-enroll: "true"
+    acme.io/env: prod                   # triggers stricter release-gate policies

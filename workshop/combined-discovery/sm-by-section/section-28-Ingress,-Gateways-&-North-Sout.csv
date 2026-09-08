@@ -1,0 +1,67 @@
+﻿Sticky
+"M52
+
+What is the current north-south ingress — OpenShift Routes, F5, or an API gateway?"
+"M53
+
+Who owns north-south — the existing external API Gateway, or the Istio gateway?"
+"M54
+
+Does the Istio ingress gateway sit behind, beside, or instead of the API Gateway?"
+"M55
+
+Will the Istio ingress gateway replace existing ingress, or coexist with it?"
+"M56
+
+Is Gateway API the target, or classic Istio Gateway plus VirtualService?"
+"M57
+
+How does MetalLB allocate a VIP to the Istio gateway, and who manages that pool?"
+"M58
+
+Which bespoke ingress controllers are in use, and are they being retired?"
+"M59
+
+Where is SSL terminated for the application today?"
+"M60
+
+Passthrough Routes bypass mesh termination — which applications use passthrough, and why?"
+"M61
+
+What is the migration plan from edge and re-encrypt Routes to Gateway API?"
+"A279
+
+What is the target north-south path, hop by hop, from acme to pod?"
+"A280
+
+Which Gateway API implementation and version will be used, and is it supported in the target OSSM?"
+"A281
+
+How many gateway deployments are needed — shared, per namespace, or per application?"
+"A282
+
+Who owns Gateway resources versus HTTPRoute resources, and what is the delegation model?"
+"A283
+
+How are gateway certificates provisioned and renewed, and by which CA?"
+"A284
+
+What is the MetalLB address pool for gateways, and who approves allocations from it?"
+"A285
+
+Are external DNS records created automatically for gateway hostnames, or manually?"
+"A286
+
+What WAF, rate limiting or bot protection exists north-south today, and does it stay where it is?"
+"A287
+
+Do any applications require mutual TLS from external clients at the edge?"
+"A288
+
+What timeout, retry and body-size configuration is required at the gateway?"
+"A289
+
+How is the existing API Gateway's authentication and authorisation reconciled with mesh policy?"
+"A290
+
+Is a dedicated egress gateway required, or is direct pod egress acceptable?"

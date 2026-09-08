@@ -1,0 +1,1207 @@
+﻿"Day","Frame","Block","Section","Question_ID","Title","Description","Sticky_Text","Source","Tags","Color"
+"Day 1","DH-D1 · Kick-off & landscape","Success & adoption","§00 Actions","ACT-4","Outstanding: priority journeys","Highest-priority developer journeys for Dev Hub — complete offline.","ACT-4: Highest-priority developer journeys for Dev Hub — complete offline.
+
+— Day 1 · Success & adoption · WS","WS","RHDH;Day 1","light_yellow"
+"Day 1","DH · Problem statement","Context","§00 Context","CTX-1","Problem statement (Russell)","Development tooling is fragmented across multiple platforms, resulting in high cognitive load, inconsistent onboarding, no golden paths, and limited governance.","CTX-1: Development tooling is fragmented across multiple platforms, resulting in high cognitive load, inconsistent onboarding, no golden paths, and limited governance.
+
+— Day 1 · Context · WS","WS","RHDH;Day 1","white"
+"Day 1","DH · Problem statement","Context","§00 Context","CTX-2","Opportunity","Unified developer portal; self-service provisioning; faster onboarding; embedded guardrails; alignment with platform engineering.","CTX-2: Unified developer portal; self-service provisioning; faster onboarding; embedded guardrails; alignment with platform engineering.
+
+— Day 1 · Context · WS","WS","RHDH;Day 1","white"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","1","1 | Why / Strategy / Scope","Why an IDP, and why now? What specifically is broken today?","1: Why an IDP, and why now? What specifically is broken today?
+
+— Day 1 · Kick-off / Success / Strategy · R1, R2","R1, R2","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","2","2 | Why / Strategy / Scope","What is the cost of the status quo — what happens if nothing changes?","2: What is the cost of the status quo — what happens if nothing changes?
+
+— Day 1 · Kick-off / Success / Strategy · R2","R2","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","3","3 | Why / Strategy / Scope","Who is the executive sponsor and what outcome are they accountable for?","3: Who is the executive sponsor and what outcome are they accountable for?
+
+— Day 1 · Kick-off / Success / Strategy · R2","R2","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","4","4 | Why / Strategy / Scope","Is this funded as a project with an end date, or as an ongoing product?","4: Is this funded as a project with an end date, or as an ongoing product?
+
+— Day 1 · Kick-off / Success / Strategy · R2","R2","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","5","5 | Why / Strategy / Scope","What are the expectations and success criteria for the engagement?","5: What are the expectations and success criteria for the engagement?
+
+— Day 1 · Kick-off / Success / Strategy · R1, R2","R1, R2","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","6","6 | Why / Strategy / Scope","What are the outcomes and deliverables?","6: What are the outcomes and deliverables?
+
+— Day 1 · Kick-off / Success / Strategy · R1","R1","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","7","7 | Why / Strategy / Scope","What does success look like at the end of the pilot, versus at scale?","7: What does success look like at the end of the pilot, versus at scale?
+
+— Day 1 · Kick-off / Success / Strategy · R2","R2","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","8","8 | Why / Strategy / Scope","What are the pilot exit criteria, and who signs them off?","8: What are the pilot exit criteria, and who signs them off?
+
+— Day 1 · Kick-off / Success / Strategy · R2","R2","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","9","9 | Why / Strategy / Scope","Which teams are the pilot candidates, and why those?","9: Which teams are the pilot candidates, and why those?
+
+— Day 1 · Kick-off / Success / Strategy · R2","R2","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","10","10 | Why / Strategy / Scope","Which parts of CLIENT are in scope, and which are explicitly out?","10: Which parts of CLIENT are in scope, and which are explicitly out?
+
+— Day 1 · Kick-off / Success / Strategy · R2","R2","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","11","11 | Why / Strategy / Scope","What is explicitly out of scope for this engagement?","11: What is explicitly out of scope for this engagement?
+
+— Day 1 · Kick-off / Success / Strategy · R2","R2","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","12","12 | Why / Strategy / Scope","Which decisions are already made and not open for discussion?","12: Which decisions are already made and not open for discussion?
+
+— Day 1 · Kick-off / Success / Strategy · R2","R2","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","13","13 | Why / Strategy / Scope","Is adoption mandated, incentivised, or opt-in?","13: Is adoption mandated, incentivised, or opt-in?
+
+— Day 1 · Kick-off / Success / Strategy · R2","R2","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","14","14 | Why / Strategy / Scope","What is the big picture — where does Developer Hub sit relative to Service Mesh, OpenShift and the existing toolchain?","14: What is the big picture — where does Developer Hub sit relative to Service Mesh, OpenShift and the existing toolchain?
+
+— Day 1 · Kick-off / Success / Strategy · R1, R2","R1, R2","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","15","15 | Why / Strategy / Scope","Has a previous platform or portal attempt been made at CLIENT? What happened?","15: Has a previous platform or portal attempt been made at CLIENT? What happened?
+
+— Day 1 · Kick-off / Success / Strategy · R2","R2","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","16","16 | Why / Strategy / Scope","Is there an existing developer portal or IDP in place, even partially?","16: Is there an existing developer portal or IDP in place, even partially?
+
+— Day 1 · Kick-off / Success / Strategy · R1, R2","R1, R2","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","17","17 | Why / Strategy / Scope","How can we make developers use the IDP over their existing flow? What is the driver?","17: How can we make developers use the IDP over their existing flow? What is the driver?
+
+— Day 1 · Kick-off / Success / Strategy · R1","R1","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","18","18 | Why / Strategy / Scope","What developer journeys are the highest priority for Dev Hub? (marked: to be completed offline)","18: What developer journeys are the highest priority for Dev Hub? (marked: to be completed offline)
+
+— Day 1 · Kick-off / Success / Strategy · WS","WS","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","A1","A1 | Why / Strategy / Scope","Is there an architecture decision record (ADR) process, and will RHDH design decisions be recorded in it?","A1: Is there an architecture decision record (ADR) process, and will RHDH design decisions be recorded in it?
+
+— Day 1 · Kick-off / Success / Strategy · Additional","Additional","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","A2","A2 | Why / Strategy / Scope","What is the target state at 12 and 24 months — how many services, teams and templates in the catalogue?","A2: What is the target state at 12 and 24 months — how many services, teams and templates in the catalogue?
+
+— Day 1 · Kick-off / Success / Strategy · Additional","Additional","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","A9","A9 | Why / Strategy / Scope","Which discovery items must be closed before detailed design can begin?","A9: Which discovery items must be closed before detailed design can begin?
+
+— Day 1 · Kick-off / Success / Strategy · Additional","Additional","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Kick-off / Success / Strategy","§01 Why / Strategy / Scope","A10","A10 | Why / Strategy / Scope","What is the definition of done for the design phase, and who accepts it?","A10: What is the definition of done for the design phase, and who accepts it?
+
+— Day 1 · Kick-off / Success / Strategy · Additional","Additional","RHDH;Day 1;§01","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§02 Teams, Users & Scale","19","19 | Teams, Users & Scale","How many developers will be onboarded in the pilot?","19: How many developers will be onboarded in the pilot?
+
+— Day 1 · Digi 2.0 landscape · R1, R2","R1, R2","RHDH;Day 1;§02","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§02 Teams, Users & Scale","20","20 | Teams, Users & Scale","Number of initial teams — what is the scaling plan?","20: Number of initial teams — what is the scaling plan?
+
+— Day 1 · Digi 2.0 landscape · WS","WS","RHDH;Day 1;§02","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§02 Teams, Users & Scale","21","21 | Teams, Users & Scale","Ownership model if more than one team — app / services / APIs / environments?","21: Ownership model if more than one team — app / services / APIs / environments?
+
+— Day 1 · Digi 2.0 landscape · WS","WS","RHDH;Day 1;§02","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§02 Teams, Users & Scale","22","22 | Teams, Users & Scale","What is the team's skill level in OpenShift?","22: What is the team's skill level in OpenShift?
+
+— Day 1 · Digi 2.0 landscape · R1","R1","RHDH;Day 1;§02","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§02 Teams, Users & Scale","23","23 | Teams, Users & Scale","What are the three things developers complain about most?","23: What are the three things developers complain about most?
+
+— Day 1 · Digi 2.0 landscape · R2","R2","RHDH;Day 1;§02","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§02 Teams, Users & Scale","24","24 | Teams, Users & Scale","What is the expected concurrent user load on RHDH?","24: What is the expected concurrent user load on RHDH?
+
+— Day 1 · Digi 2.0 landscape · R2","R2","RHDH;Day 1;§02","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§02 Teams, Users & Scale","25","25 | Teams, Users & Scale","Development ecosystems — languages / services / team skills in those languages and OCP?","25: Development ecosystems — languages / services / team skills in those languages and OCP?
+
+— Day 1 · Digi 2.0 landscape · WS","WS","RHDH;Day 1;§02","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§02 Teams, Users & Scale","A11","A11 | Teams, Users & Scale","What is the expected peak concurrent user count at pilot, at 12 months and at full scale?","A11: What is the expected peak concurrent user count at pilot, at 12 months and at full scale?
+
+— Day 1 · Digi 2.0 landscape · Additional","Additional","RHDH;Day 1;§02","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§02 Teams, Users & Scale","A12","A12 | Teams, Users & Scale","Where are users located, and are offshore or partner users in scope?","A12: Where are users located, and are offshore or partner users in scope?
+
+— Day 1 · Digi 2.0 landscape · Additional","Additional","RHDH;Day 1;§02","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§02 Teams, Users & Scale","A13","A13 | Teams, Users & Scale","Will contractors, vendors or partners need access, and under which identity source?","A13: Will contractors, vendors or partners need access, and under which identity source?
+
+— Day 1 · Digi 2.0 landscape · Additional","Additional","RHDH;Day 1;§02","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§02 Teams, Users & Scale","A14","A14 | Teams, Users & Scale","What is the expected API request volume against the RHDH backend, and the read/write ratio?","A14: What is the expected API request volume against the RHDH backend, and the read/write ratio?
+
+— Day 1 · Digi 2.0 landscape · Additional","Additional","RHDH;Day 1;§02","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§02 Teams, Users & Scale","A15","A15 | Teams, Users & Scale","How many catalogue entities are expected at pilot, at 12 months and at steady state?","A15: How many catalogue entities are expected at pilot, at 12 months and at steady state?
+
+— Day 1 · Digi 2.0 landscape · Additional","Additional","RHDH;Day 1;§02","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§02 Teams, Users & Scale","A16","A16 | Teams, Users & Scale","How many template executions per week are expected?","A16: How many template executions per week are expected?
+
+— Day 1 · Digi 2.0 landscape · Additional","Additional","RHDH;Day 1;§02","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§02 Teams, Users & Scale","A17","A17 | Teams, Users & Scale","What accessibility standard must RHDH meet — WCAG 2.1 AA or other?","A17: What accessibility standard must RHDH meet — WCAG 2.1 AA or other?
+
+— Day 1 · Digi 2.0 landscape · Additional","Additional","RHDH;Day 1;§02","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§02 Teams, Users & Scale","A18","A18 | Teams, Users & Scale","Which browsers and versions must be supported, and is there a managed browser policy?","A18: Which browsers and versions must be supported, and is there a managed browser policy?
+
+— Day 1 · Digi 2.0 landscape · Additional","Additional","RHDH;Day 1;§02","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§02 Teams, Users & Scale","A19","A19 | Teams, Users & Scale","Are there device constraints — VDI, locked-down laptops, or mobile access?","A19: Are there device constraints — VDI, locked-down laptops, or mobile access?
+
+— Day 1 · Digi 2.0 landscape · Additional","Additional","RHDH;Day 1;§02","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§02 Teams, Users & Scale","A20","A20 | Teams, Users & Scale","Which languages or locales must the interface support?","A20: Which languages or locales must the interface support?
+
+— Day 1 · Digi 2.0 landscape · Additional","Additional","RHDH;Day 1;§02","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§06 Software Catalogue & Ownership","62","62 | Software Catalogue & Ownership","What is the initial set of apps / systems to appear in Developer Hub?","62: What is the initial set of apps / systems to appear in Developer Hub?
+
+— Day 1 · Digi 2.0 landscape · R1, R2","R1, R2","RHDH;Day 1;§06","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§06 Software Catalogue & Ownership","63","63 | Software Catalogue & Ownership","For the initial set of apps, what is the app architecture? (intent: capture component relationships)","63: For the initial set of apps, what is the app architecture? (intent: capture component relationships)
+
+— Day 1 · Digi 2.0 landscape · R1","R1","RHDH;Day 1;§06","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§06 Software Catalogue & Ownership","66","66 | Software Catalogue & Ownership","What is the unit of ownership — service, application, product, or system?","66: What is the unit of ownership — service, application, product, or system?
+
+— Day 1 · Digi 2.0 landscape · R2","R2","RHDH;Day 1;§06","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§06 Software Catalogue & Ownership","67","67 | Software Catalogue & Ownership","Will the catalogue be authoritative, or a view over an existing system of record?","67: Will the catalogue be authoritative, or a view over an existing system of record?
+
+— Day 1 · Digi 2.0 landscape · R2","R2","RHDH;Day 1;§06","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Digi 2.0 landscape","§06 Software Catalogue & Ownership","68","68 | Software Catalogue & Ownership","Is there an existing application inventory or CMDB, and how accurate is it?","68: Is there an existing application inventory or CMDB, and how accurate is it?
+
+— Day 1 · Digi 2.0 landscape · R2","R2","RHDH;Day 1;§06","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","72","72 | Current State — SDLC, CI/CD & Source Control","Walk through the current release flow / SDLC for Java (MBPM).","72: Walk through the current release flow / SDLC for Java (MBPM).
+
+— Day 1 · SCM & CI/CD · R1, R2","R1, R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","73","73 | Current State — SDLC, CI/CD & Source Control","Walk through the current release flow / SDLC for Node (MBPM).","73: Walk through the current release flow / SDLC for Node (MBPM).
+
+— Day 1 · SCM & CI/CD · R1, R2","R1, R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","74","74 | Current State — SDLC, CI/CD & Source Control","Walk through the existing microservices lifecycle end to end, from dev to prod.","74: Walk through the existing microservices lifecycle end to end, from dev to prod.
+
+— Day 1 · SCM & CI/CD · R1, R2","R1, R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","75","75 | Current State — SDLC, CI/CD & Source Control","What is the current CI/CD setup, and how many separate instances exist?","75: What is the current CI/CD setup, and how many separate instances exist?
+
+— Day 1 · SCM & CI/CD · R1, R2","R1, R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","76","76 | Current State — SDLC, CI/CD & Source Control","Which source control system is authoritative — Git, Bitbucket, or both?","76: Which source control system is authoritative — Git, Bitbucket, or both?
+
+— Day 1 · SCM & CI/CD · R1, R2","R1, R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","77","77 | Current State — SDLC, CI/CD & Source Control","Confirm the application archetypes — Java Spring Boot and Node. Anything else in the estate?","77: Confirm the application archetypes — Java Spring Boot and Node. Anything else in the estate?
+
+— Day 1 · SCM & CI/CD · R1, R2","R1, R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","78","78 | Current State — SDLC, CI/CD & Source Control","Which Spring Boot and Node versions are supported, and who decides upgrades?","78: Which Spring Boot and Node versions are supported, and who decides upgrades?
+
+— Day 1 · SCM & CI/CD · R2","R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","79","79 | Current State — SDLC, CI/CD & Source Control","Confirm the full tool inventory and the version of each.","79: Confirm the full tool inventory and the version of each.
+
+— Day 1 · SCM & CI/CD · R1, R2","R1, R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","80","80 | Current State — SDLC, CI/CD & Source Control","Who maintains Jenkins pipeline definitions today — central team or each app team?","80: Who maintains Jenkins pipeline definitions today — central team or each app team?
+
+— Day 1 · SCM & CI/CD · R2","R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","81","81 | Current State — SDLC, CI/CD & Source Control","Are pipelines standardised, or copied per team?","81: Are pipelines standardised, or copied per team?
+
+— Day 1 · SCM & CI/CD · R2","R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","82","82 | Current State — SDLC, CI/CD & Source Control","Is Jenkins staying, or is Tekton / OpenShift Pipelines in scope?","82: Is Jenkins staying, or is Tekton / OpenShift Pipelines in scope?
+
+— Day 1 · SCM & CI/CD · R2","R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","83","83 | Current State — SDLC, CI/CD & Source Control","How is a new namespace or environment requested today, and how long does it take?","83: How is a new namespace or environment requested today, and how long does it take?
+
+— Day 1 · SCM & CI/CD · R2","R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","84","84 | Current State — SDLC, CI/CD & Source Control","How long does it take to go from a new repo to running in production today?","84: How long does it take to go from a new repo to running in production today?
+
+— Day 1 · SCM & CI/CD · R2","R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","85","85 | Current State — SDLC, CI/CD & Source Control","How long before a new developer makes their first production commit?","85: How long before a new developer makes their first production commit?
+
+— Day 1 · SCM & CI/CD · R2","R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","86","86 | Current State — SDLC, CI/CD & Source Control","Where do build dependencies come from — internet, Artifactory proxy, or air-gapped mirror?","86: Where do build dependencies come from — internet, Artifactory proxy, or air-gapped mirror?
+
+— Day 1 · SCM & CI/CD · R2","R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","87","87 | Current State — SDLC, CI/CD & Source Control","Is GitOps in use — Argo CD or Flux — and at what maturity?","87: Is GitOps in use — Argo CD or Flux — and at what maturity?
+
+— Day 1 · SCM & CI/CD · R2","R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","88","88 | Current State — SDLC, CI/CD & Source Control","Helm, Kustomize, or both?","88: Helm, Kustomize, or both?
+
+— Day 1 · SCM & CI/CD · R2","R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","89","89 | Current State — SDLC, CI/CD & Source Control","Will application config live with the code, or in a separate repo?","89: Will application config live with the code, or in a separate repo?
+
+— Day 1 · SCM & CI/CD · R2","R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","90","90 | Current State — SDLC, CI/CD & Source Control","How are database schema migrations handled during deployment?","90: How are database schema migrations handled during deployment?
+
+— Day 1 · SCM & CI/CD · R2","R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","91","91 | Current State — SDLC, CI/CD & Source Control","How are secrets managed and injected into workloads today?","91: How are secrets managed and injected into workloads today?
+
+— Day 1 · SCM & CI/CD · R2","R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","92","92 | Current State — SDLC, CI/CD & Source Control","What environments exist between a developer laptop and production?","92: What environments exist between a developer laptop and production?
+
+— Day 1 · SCM & CI/CD · R2","R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","93","93 | Current State — SDLC, CI/CD & Source Control","What triggers promotion between environments — automatic, approval, or scheduled?","93: What triggers promotion between environments — automatic, approval, or scheduled?
+
+— Day 1 · SCM & CI/CD · R2","R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","94","94 | Current State — SDLC, CI/CD & Source Control","Who approves a production deployment, and can it be automated?","94: Who approves a production deployment, and can it be automated?
+
+— Day 1 · SCM & CI/CD · R2","R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","95","95 | Current State — SDLC, CI/CD & Source Control","What is the rollback strategy, and has it been tested?","95: What is the rollback strategy, and has it been tested?
+
+— Day 1 · SCM & CI/CD · R2","R2","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","A74","A74 | Current State — SDLC, CI/CD & Source Control","Which Bitbucket product and version is in use — Cloud, Server or Data Center?","A74: Which Bitbucket product and version is in use — Cloud, Server or Data Center?
+
+— Day 1 · SCM & CI/CD · Additional","Additional","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","A75","A75 | Current State — SDLC, CI/CD & Source Control","What API rate limits and token types apply to Bitbucket, and can webhooks be registered?","A75: What API rate limits and token types apply to Bitbucket, and can webhooks be registered?
+
+— Day 1 · SCM & CI/CD · Additional","Additional","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","A76","A76 | Current State — SDLC, CI/CD & Source Control","What is the branching model, and is it consistent across teams?","A76: What is the branching model, and is it consistent across teams?
+
+— Day 1 · SCM & CI/CD · Additional","Additional","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","A77","A77 | Current State — SDLC, CI/CD & Source Control","What is the Bitbucket project and repository naming structure?","A77: What is the Bitbucket project and repository naming structure?
+
+— Day 1 · SCM & CI/CD · Additional","Additional","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","A78","A78 | Current State — SDLC, CI/CD & Source Control","Which Jenkins version and plugin set is in use, and is it multi-master?","A78: Which Jenkins version and plugin set is in use, and is it multi-master?
+
+— Day 1 · SCM & CI/CD · Additional","Additional","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","A79","A79 | Current State — SDLC, CI/CD & Source Control","How does Jenkins authenticate to OpenShift, Artifactory and Bitbucket today?","A79: How does Jenkins authenticate to OpenShift, Artifactory and Bitbucket today?
+
+— Day 1 · SCM & CI/CD · Additional","Additional","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","A80","A80 | Current State — SDLC, CI/CD & Source Control","Are build agents ephemeral on OpenShift, or static VMs?","A80: Are build agents ephemeral on OpenShift, or static VMs?
+
+— Day 1 · SCM & CI/CD · Additional","Additional","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","A81","A81 | Current State — SDLC, CI/CD & Source Control","What artefact types are produced, and what versioning scheme applies?","A81: What artefact types are produced, and what versioning scheme applies?
+
+— Day 1 · SCM & CI/CD · Additional","Additional","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","A82","A82 | Current State — SDLC, CI/CD & Source Control","Which registries hold images, and what is the promotion path between them?","A82: Which registries hold images, and what is the promotion path between them?
+
+— Day 1 · SCM & CI/CD · Additional","Additional","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","A83","A83 | Current State — SDLC, CI/CD & Source Control","How are base images sourced, patched and approved?","A83: How are base images sourced, patched and approved?
+
+— Day 1 · SCM & CI/CD · Additional","Additional","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","A84","A84 | Current State — SDLC, CI/CD & Source Control","What are the average and p95 build durations today?","A84: What are the average and p95 build durations today?
+
+— Day 1 · SCM & CI/CD · Additional","Additional","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","SCM & CI/CD","§07 Current State — SDLC, CI/CD & Source Control","A85","A85 | Current State — SDLC, CI/CD & Source Control","Which pipeline stages are manual approvals, and who approves them?","A85: Which pipeline stages are manual approvals, and who approves them?
+
+— Day 1 · SCM & CI/CD · Additional","Additional","RHDH;Day 1;§07","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Success & adoption","§13 Metrics & Outcomes","147","147 | Metrics & Outcomes","Are DORA metrics measured today, and from what baseline?","147: Are DORA metrics measured today, and from what baseline?
+
+— Day 1 · Success & adoption · R2","R2","RHDH;Day 1;§13","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Success & adoption","§13 Metrics & Outcomes","148","148 | Metrics & Outcomes","How will developer satisfaction be measured, and against what baseline?","148: How will developer satisfaction be measured, and against what baseline?
+
+— Day 1 · Success & adoption · R2","R2","RHDH;Day 1;§13","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Success & adoption","§13 Metrics & Outcomes","149","149 | Metrics & Outcomes","Who reports these metrics, to whom, and how often?","149: Who reports these metrics, to whom, and how often?
+
+— Day 1 · Success & adoption · R2","R2","RHDH;Day 1;§13","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Success & adoption","§13 Metrics & Outcomes","150","150 | Metrics & Outcomes","What single metric determines whether this succeeded?","150: What single metric determines whether this succeeded?
+
+— Day 1 · Success & adoption · R2","R2","RHDH;Day 1;§13","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Success & adoption","§13 Metrics & Outcomes","151","151 | Metrics & Outcomes","What is the target time from idea to production for a new service?","151: What is the target time from idea to production for a new service?
+
+— Day 1 · Success & adoption · R2","R2","RHDH;Day 1;§13","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Success & adoption","§13 Metrics & Outcomes","152","152 | Metrics & Outcomes","What adoption level is expected, by when — teams, services, percentage?","152: What adoption level is expected, by when — teams, services, percentage?
+
+— Day 1 · Success & adoption · R2","R2","RHDH;Day 1;§13","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Success & adoption","§13 Metrics & Outcomes","A138","A138 | Metrics & Outcomes","What baseline measurements will be taken before the pilot begins?","A138: What baseline measurements will be taken before the pilot begins?
+
+— Day 1 · Success & adoption · Additional","Additional","RHDH;Day 1;§13","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Success & adoption","§13 Metrics & Outcomes","A139","A139 | Metrics & Outcomes","Which metrics are collected automatically, and which require a survey?","A139: Which metrics are collected automatically, and which require a survey?
+
+— Day 1 · Success & adoption · Additional","Additional","RHDH;Day 1;§13","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Success & adoption","§13 Metrics & Outcomes","A140","A140 | Metrics & Outcomes","What is the reporting cadence, and who is the audience?","A140: What is the reporting cadence, and who is the audience?
+
+— Day 1 · Success & adoption · Additional","Additional","RHDH;Day 1;§13","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Success & adoption","§13 Metrics & Outcomes","A141","A141 | Metrics & Outcomes","What is the target ratio of template-created services to manually created ones?","A141: What is the target ratio of template-created services to manually created ones?
+
+— Day 1 · Success & adoption · Additional","Additional","RHDH;Day 1;§13","light_blue"
+"Day 1","DH-D1 · Kick-off & landscape","Success & adoption","§13 Metrics & Outcomes","A142","A142 | Metrics & Outcomes","How will cognitive load be measured, given it is named in the problem statement?","A142: How will cognitive load be measured, given it is named in the problem statement?
+
+— Day 1 · Success & adoption · Additional","Additional","RHDH;Day 1;§13","light_blue"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","96","96 | Plugins & Integrations","Confirm required plugins — Jenkins, Kubernetes, SonarQube, Snyk, Jira, Artifactory, Git.","96: Confirm required plugins — Jenkins, Kubernetes, SonarQube, Snyk, Jira, Artifactory, Git.
+
+— Day 2 · Integration priorities / Plugins · R1","R1","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","97","97 | Plugins & Integrations","Is an API Connect plugin needed?","97: Is an API Connect plugin needed?
+
+— Day 2 · Integration priorities / Plugins · R1","R1","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","98","98 | Plugins & Integrations","Which plugins are required at launch versus aspirational?","98: Which plugins are required at launch versus aspirational?
+
+— Day 2 · Integration priorities / Plugins · R2","R2","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","99","99 | Plugins & Integrations","Is the Jenkins plugin required, and what should it surface?","99: Is the Jenkins plugin required, and what should it surface?
+
+— Day 2 · Integration priorities / Plugins · R2","R2","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","100","100 | Plugins & Integrations","Is the Jira plugin required, and scoped to which projects?","100: Is the Jira plugin required, and scoped to which projects?
+
+— Day 2 · Integration priorities / Plugins · R2","R2","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","101","101 | Plugins & Integrations","Is SonarQube integration required on the component page?","101: Is SonarQube integration required on the component page?
+
+— Day 2 · Integration priorities / Plugins · R2","R2","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","102","102 | Plugins & Integrations","Is Snyk integration required, and who acts on the findings shown?","102: Is Snyk integration required, and who acts on the findings shown?
+
+— Day 2 · Integration priorities / Plugins · R2","R2","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","103","103 | Plugins & Integrations","Is Artifactory integration required for artefact visibility?","103: Is Artifactory integration required for artefact visibility?
+
+— Day 2 · Integration priorities / Plugins · R2","R2","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","104","104 | Plugins & Integrations","Is the Kubernetes / OpenShift plugin required to show workload status?","104: Is the Kubernetes / OpenShift plugin required to show workload status?
+
+— Day 2 · Integration priorities / Plugins · R2","R2","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","105","105 | Plugins & Integrations","Are any required plugins community-only, unsupported, or absent?","105: Are any required plugins community-only, unsupported, or absent?
+
+— Day 2 · Integration priorities / Plugins · R2","R2","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","106","106 | Plugins & Integrations","Is custom plugin or custom action development in scope, and who maintains it?","106: Is custom plugin or custom action development in scope, and who maintains it?
+
+— Day 2 · Integration priorities / Plugins · R2","R2","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","107","107 | Plugins & Integrations","How will RHDH be branded and themed for CLIENT?","107: How will RHDH be branded and themed for CLIENT?
+
+— Day 2 · Integration priorities / Plugins · R2","R2","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","A86","A86 | Plugins & Integrations","For each integration, what is the endpoint, authentication method, service account and owning team?","A86: For each integration, what is the endpoint, authentication method, service account and owning team?
+
+— Day 2 · Integration priorities / Plugins · Additional","Additional","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","A87","A87 | Plugins & Integrations","What should the Jenkins plugin surface on a component page — latest status only, or full build history?","A87: What should the Jenkins plugin surface on a component page — latest status only, or full build history?
+
+— Day 2 · Integration priorities / Plugins · Additional","Additional","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","A88","A88 | Plugins & Integrations","Does the Kubernetes plugin need access to every cluster, and by what authentication method?","A88: Does the Kubernetes plugin need access to every cluster, and by what authentication method?
+
+— Day 2 · Integration priorities / Plugins · Additional","Additional","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","A89","A89 | Plugins & Integrations","Which label convention links a running workload to its catalogue component?","A89: Which label convention links a running workload to its catalogue component?
+
+— Day 2 · Integration priorities / Plugins · Additional","Additional","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","A90","A90 | Plugins & Integrations","Is Argo CD integration required, and against which instances?","A90: Is Argo CD integration required, and against which instances?
+
+— Day 2 · Integration priorities / Plugins · Additional","Additional","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","A91","A91 | Plugins & Integrations","Is Tekton / OpenShift Pipelines integration required in addition to Jenkins?","A91: Is Tekton / OpenShift Pipelines integration required in addition to Jenkins?
+
+— Day 2 · Integration priorities / Plugins · Additional","Additional","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","A92","A92 | Plugins & Integrations","Is ServiceNow or another change-management integration required?","A92: Is ServiceNow or another change-management integration required?
+
+— Day 2 · Integration priorities / Plugins · Additional","Additional","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","A93","A93 | Plugins & Integrations","Is Confluence or another wiki integration required alongside TechDocs?","A93: Is Confluence or another wiki integration required alongside TechDocs?
+
+— Day 2 · Integration priorities / Plugins · Additional","Additional","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","A94","A94 | Plugins & Integrations","Is API Connect the source of truth for APIs, and does it expose a consumable API?","A94: Is API Connect the source of truth for APIs, and does it expose a consumable API?
+
+— Day 2 · Integration priorities / Plugins · Additional","Additional","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","A95","A95 | Plugins & Integrations","Should Dynatrace or Splunk data be surfaced on the component page?","A95: Should Dynatrace or Splunk data be surfaced on the component page?
+
+— Day 2 · Integration priorities / Plugins · Additional","Additional","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","A96","A96 | Plugins & Integrations","What is the availability, rate limit and maintenance window of each upstream system?","A96: What is the availability, rate limit and maintenance window of each upstream system?
+
+— Day 2 · Integration priorities / Plugins · Additional","Additional","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Integration priorities / Plugins","§08 Plugins & Integrations","A97","A97 | Plugins & Integrations","What should the user see when an integration is unavailable?","A97: What should the user see when an integration is unavailable?
+
+— Day 2 · Integration priorities / Plugins · Additional","Additional","RHDH;Day 2;§08","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","108","108 | Golden Paths / Software Templates","Which software templates are needed at launch, beyond Java Spring Boot and Node?","108: Which software templates are needed at launch, beyond Java Spring Boot and Node?
+
+— Day 2 · Golden Paths · R2","R2","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","109","109 | Golden Paths / Software Templates","What should a template create — repo, pipeline, namespace, catalogue entry, or all of them?","109: What should a template create — repo, pipeline, namespace, catalogue entry, or all of them?
+
+— Day 2 · Golden Paths · R2","R2","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","110","110 | Golden Paths / Software Templates","What must a new service have on day one to be compliant?","110: What must a new service have on day one to be compliant?
+
+— Day 2 · Golden Paths · R2","R2","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","111","111 | Golden Paths / Software Templates","Are there mandated internal libraries or SDKs that templates must include?","111: Are there mandated internal libraries or SDKs that templates must include?
+
+— Day 2 · Golden Paths · R2","R2","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","112","112 | Golden Paths / Software Templates","What default security guardrails go into templates?","112: What default security guardrails go into templates?
+
+— Day 2 · Golden Paths · WS","WS","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","113","113 | Golden Paths / Software Templates","Who owns and maintains templates once they exist?","113: Who owns and maintains templates once they exist?
+
+— Day 2 · Golden Paths · R2","R2","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","114","114 | Golden Paths / Software Templates","How will template changes reach services already generated from them?","114: How will template changes reach services already generated from them?
+
+— Day 2 · Golden Paths · R2","R2","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","115","115 | Golden Paths / Software Templates","May teams deviate from a golden path, and through what process?","115: May teams deviate from a golden path, and through what process?
+
+— Day 2 · Golden Paths · R2","R2","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","116","116 | Golden Paths / Software Templates","Are there existing reference apps or starter repos to build templates from?","116: Are there existing reference apps or starter repos to build templates from?
+
+— Day 2 · Golden Paths · R2","R2","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","117","117 | Golden Paths / Software Templates","How will template usage be measured?","117: How will template usage be measured?
+
+— Day 2 · Golden Paths · R2","R2","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","A98","A98 | Golden Paths / Software Templates","What is the full sequence of steps a template must perform for the Java Spring Boot archetype?","A98: What is the full sequence of steps a template must perform for the Java Spring Boot archetype?
+
+— Day 2 · Golden Paths · Additional","Additional","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","A99","A99 | Golden Paths / Software Templates","What is the full sequence of steps a template must perform for the Node archetype?","A99: What is the full sequence of steps a template must perform for the Node archetype?
+
+— Day 2 · Golden Paths · Additional","Additional","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","A100","A100 | Golden Paths / Software Templates","Which Git service account creates repositories, and what permissions does it hold?","A100: Which Git service account creates repositories, and what permissions does it hold?
+
+— Day 2 · Golden Paths · Additional","Additional","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","A101","A101 | Golden Paths / Software Templates","How are repository ownership, branch protection and required reviewers set at creation time?","A101: How are repository ownership, branch protection and required reviewers set at creation time?
+
+— Day 2 · Golden Paths · Additional","Additional","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","A102","A102 | Golden Paths / Software Templates","Should the template create the Jenkins job or folder, and by what mechanism?","A102: Should the template create the Jenkins job or folder, and by what mechanism?
+
+— Day 2 · Golden Paths · Additional","Additional","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","A103","A103 | Golden Paths / Software Templates","Should the template create the namespace, resource quota and network policy?","A103: Should the template create the namespace, resource quota and network policy?
+
+— Day 2 · Golden Paths · Additional","Additional","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","A104","A104 | Golden Paths / Software Templates","Should the template register the Argo CD application?","A104: Should the template register the Argo CD application?
+
+— Day 2 · Golden Paths · Additional","Additional","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","A105","A105 | Golden Paths / Software Templates","Should the template raise a Jira ticket or a change record?","A105: Should the template raise a Jira ticket or a change record?
+
+— Day 2 · Golden Paths · Additional","Additional","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","A106","A106 | Golden Paths / Software Templates","Which parameters must the user supply, and which are derived or looked up from another system?","A106: Which parameters must the user supply, and which are derived or looked up from another system?
+
+— Day 2 · Golden Paths · Additional","Additional","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","A107","A107 | Golden Paths / Software Templates","How are the credentials used during scaffolding supplied and protected?","A107: How are the credentials used during scaffolding supplied and protected?
+
+— Day 2 · Golden Paths · Additional","Additional","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","A108","A108 | Golden Paths / Software Templates","How will templates be tested, and is there a CI pipeline for the templates themselves?","A108: How will templates be tested, and is there a CI pipeline for the templates themselves?
+
+— Day 2 · Golden Paths · Additional","Additional","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","A109","A109 | Golden Paths / Software Templates","How are templates versioned, and may a team pin to an earlier version?","A109: How are templates versioned, and may a team pin to an earlier version?
+
+— Day 2 · Golden Paths · Additional","Additional","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","A110","A110 | Golden Paths / Software Templates","What is the expected — and maximum acceptable — end-to-end scaffolding duration?","A110: What is the expected — and maximum acceptable — end-to-end scaffolding duration?
+
+— Day 2 · Golden Paths · Additional","Additional","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Golden Paths","§09 Golden Paths / Software Templates","A111","A111 | Golden Paths / Software Templates","What happens on partial failure: is scaffolding idempotent, or is manual cleanup required?","A111: What happens on partial failure: is scaffolding idempotent, or is manual cleanup required?
+
+— Day 2 · Golden Paths · Additional","Additional","RHDH;Day 2;§09","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","ACS & Supply chain","§11 Security, Compliance & Governance","123","123 | Security, Compliance & Governance","What security controls are currently in place for applications?","123: What security controls are currently in place for applications?
+
+— Day 2 · ACS & Supply chain · R1, R2","R1, R2","RHDH;Day 2;§11","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","ACS & Supply chain","§11 Security, Compliance & Governance","124","124 | Security, Compliance & Governance","What controls does the security team enforce, and where are they enforced?","124: What controls does the security team enforce, and where are they enforced?
+
+— Day 2 · ACS & Supply chain · R1, R2","R1, R2","RHDH;Day 2;§11","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","ACS & Supply chain","§11 Security, Compliance & Governance","125","125 | Security, Compliance & Governance","What new security controls are desired?","125: What new security controls are desired?
+
+— Day 2 · ACS & Supply chain · R2","R2","RHDH;Day 2;§11","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","ACS & Supply chain","§11 Security, Compliance & Governance","126","126 | Security, Compliance & Governance","Which quality and security gates must every build pass?","126: Which quality and security gates must every build pass?
+
+— Day 2 · ACS & Supply chain · R2","R2","RHDH;Day 2;§11","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","ACS & Supply chain","§11 Security, Compliance & Governance","127","127 | Security, Compliance & Governance","What vulnerability thresholds block a build or a deployment?","127: What vulnerability thresholds block a build or a deployment?
+
+— Day 2 · ACS & Supply chain · R2","R2","RHDH;Day 2;§11","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","ACS & Supply chain","§11 Security, Compliance & Governance","128","128 | Security, Compliance & Governance","Can a gate be overridden, by whom, and is it logged?","128: Can a gate be overridden, by whom, and is it logged?
+
+— Day 2 · ACS & Supply chain · R2","R2","RHDH;Day 2;§11","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","ACS & Supply chain","§11 Security, Compliance & Governance","129","129 | Security, Compliance & Governance","Is image signing or SBOM generation required?","129: Is image signing or SBOM generation required?
+
+— Day 2 · ACS & Supply chain · R2","R2","RHDH;Day 2;§11","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","ACS & Supply chain","§11 Security, Compliance & Governance","130","130 | Security, Compliance & Governance","How is segregation of duties defined between build, approve and deploy?","130: How is segregation of duties defined between build, approve and deploy?
+
+— Day 2 · ACS & Supply chain · R2","R2","RHDH;Day 2;§11","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","ACS & Supply chain","§11 Security, Compliance & Governance","A126","A126 | Security, Compliance & Governance","What secrets scanning applies to repositories created by templates?","A126: What secrets scanning applies to repositories created by templates?
+
+— Day 2 · ACS & Supply chain · Additional","Additional","RHDH;Day 2;§11","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Mesh boundary","§15 RHDH ↔ Service Mesh Boundary","159","159 | RHDH ↔ Service Mesh Boundary","What is the expectation for RHDH and Service Mesh integration, concretely? (e.g. do we expect resilience configuration to be created when the app is created?)","159: What is the expectation for RHDH and Service Mesh integration, concretely? (e.g. do we expect resilience configuration to be created when the app is created?)
+
+— Day 2 · Mesh boundary · R1, R2","R1, R2","RHDH;Day 2;§15","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Mesh boundary","§15 RHDH ↔ Service Mesh Boundary","160","160 | RHDH ↔ Service Mesh Boundary","Should the mesh service graph be surfaced inside Developer Hub?","160: Should the mesh service graph be surfaced inside Developer Hub?
+
+— Day 2 · Mesh boundary · R2","R2","RHDH;Day 2;§15","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Mesh boundary","§15 RHDH ↔ Service Mesh Boundary","161","161 | RHDH ↔ Service Mesh Boundary","Should a template also register the service into the mesh?","161: Should a template also register the service into the mesh?
+
+— Day 2 · Mesh boundary · R2","R2","RHDH;Day 2;§15","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Mesh boundary","§15 RHDH ↔ Service Mesh Boundary","162","162 | RHDH ↔ Service Mesh Boundary","Which applications go into the mesh first, and is that the same set as the RHDH pilot?","162: Which applications go into the mesh first, and is that the same set as the RHDH pilot?
+
+— Day 2 · Mesh boundary · R2","R2","RHDH;Day 2;§15","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Mesh boundary","§15 RHDH ↔ Service Mesh Boundary","163","163 | RHDH ↔ Service Mesh Boundary","Should data-plane configs be baked into golden-path templates?","163: Should data-plane configs be baked into golden-path templates?
+
+— Day 2 · Mesh boundary · R2","R2","RHDH;Day 2;§15","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Mesh boundary","§15 RHDH ↔ Service Mesh Boundary","164","164 | RHDH ↔ Service Mesh Boundary","Should applications include their required HTTPRoutes when RHDH templates are hydrated?","164: Should applications include their required HTTPRoutes when RHDH templates are hydrated?
+
+— Day 2 · Mesh boundary · R2","R2","RHDH;Day 2;§15","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Mesh boundary","§15 RHDH ↔ Service Mesh Boundary","A148","A148 | RHDH ↔ Service Mesh Boundary","Should mesh objects such as gateways and waypoints be modelled as catalogue Resources?","A148: Should mesh objects such as gateways and waypoints be modelled as catalogue Resources?
+
+— Day 2 · Mesh boundary · Additional","Additional","RHDH;Day 2;§15","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Mesh boundary","§15 RHDH ↔ Service Mesh Boundary","A149","A149 | RHDH ↔ Service Mesh Boundary","Should Kiali be embedded as a plugin, or linked to externally?","A149: Should Kiali be embedded as a plugin, or linked to externally?
+
+— Day 2 · Mesh boundary · Additional","Additional","RHDH;Day 2;§15","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Mesh boundary","§15 RHDH ↔ Service Mesh Boundary","A150","A150 | RHDH ↔ Service Mesh Boundary","Is mesh onboarding a template parameter, or a separate workflow?","A150: Is mesh onboarding a template parameter, or a separate workflow?
+
+— Day 2 · Mesh boundary · Additional","Additional","RHDH;Day 2;§15","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Mesh boundary","§15 RHDH ↔ Service Mesh Boundary","A151","A151 | RHDH ↔ Service Mesh Boundary","Should templates generate mesh policy — AuthorizationPolicy, PeerAuthentication, HTTPRoute?","A151: Should templates generate mesh policy — AuthorizationPolicy, PeerAuthentication, HTTPRoute?
+
+— Day 2 · Mesh boundary · Additional","Additional","RHDH;Day 2;§15","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Mesh boundary","§15 RHDH ↔ Service Mesh Boundary","A152","A152 | RHDH ↔ Service Mesh Boundary","Who owns mesh configuration after a template has generated it?","A152: Who owns mesh configuration after a template has generated it?
+
+— Day 2 · Mesh boundary · Additional","Additional","RHDH;Day 2;§15","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Plugins deep dive","§19 Dynamic Plugins & Extensibility","A191","A191 | Dynamic Plugins & Extensibility","Which required plugins are Red Hat supported, which are community, and which must be built?","A191: Which required plugins are Red Hat supported, which are community, and which must be built?
+
+— Day 2 · Plugins deep dive · Additional","Additional","RHDH;Day 2;§19","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Plugins deep dive","§19 Dynamic Plugins & Extensibility","A192","A192 | Dynamic Plugins & Extensibility","How will dynamic plugins be packaged and served — from an OCI registry, or an internal npm mirror?","A192: How will dynamic plugins be packaged and served — from an OCI registry, or an internal npm mirror?
+
+— Day 2 · Plugins deep dive · Additional","Additional","RHDH;Day 2;§19","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Plugins deep dive","§19 Dynamic Plugins & Extensibility","A193","A193 | Dynamic Plugins & Extensibility","Can Artifactory proxy npmjs for plugin dependencies, and is that approved?","A193: Can Artifactory proxy npmjs for plugin dependencies, and is that approved?
+
+— Day 2 · Plugins deep dive · Additional","Additional","RHDH;Day 2;§19","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Plugins deep dive","§19 Dynamic Plugins & Extensibility","A194","A194 | Dynamic Plugins & Extensibility","How will plugin versions be pinned, and what regression testing applies to an upgrade?","A194: How will plugin versions be pinned, and what regression testing applies to an upgrade?
+
+— Day 2 · Plugins deep dive · Additional","Additional","RHDH;Day 2;§19","light_green"
+"Day 2","DH-D2 · Golden paths & integrations","Plugins deep dive","§19 Dynamic Plugins & Extensibility","A195","A195 | Dynamic Plugins & Extensibility","What security review must a community plugin pass before it is enabled?","A195: What security review must a community plugin pass before it is enabled?
+
+— Day 2 · Plugins deep dive · Additional","Additional","RHDH;Day 2;§19","light_green"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Close-out","§00 Actions","ACT-1","Outstanding: capability matrix","Acme org to share capability matrix (drop-1 goals).","ACT-1: Acme org to share capability matrix (drop-1 goals).
+
+— Day 7 · Close-out · WS","WS","RHDH;Day 7","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Close-out","§00 Actions","ACT-2","Outstanding: environment diagram","Acme org to provide diagram of environments.","ACT-2: Acme org to provide diagram of environments.
+
+— Day 7 · Close-out · WS","WS","RHDH;Day 7","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Close-out","§00 Actions","ACT-3","Outstanding: PostgreSQL future","Acme org to confirm future of internal PostgreSQL service (VMware).","ACT-3: Acme org to confirm future of internal PostgreSQL service (VMware).
+
+— Day 7 · Close-out · WS","WS","RHDH;Day 7","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Why / Strategy / Scope","§01 Why / Strategy / Scope","A3","A3 | Why / Strategy / Scope","Is there an existing platform-engineering strategy or enterprise architecture standard this design must conform to?","A3: Is there an existing platform-engineering strategy or enterprise architecture standard this design must conform to?
+
+— Day 7 · Why / Strategy / Scope · Additional","Additional","RHDH;Day 7;§01","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Why / Strategy / Scope","§01 Why / Strategy / Scope","A4","A4 | Why / Strategy / Scope","Who holds design-authority sign-off, and which artefacts do they require — HLD, LLD, security pattern?","A4: Who holds design-authority sign-off, and which artefacts do they require — HLD, LLD, security pattern?
+
+— Day 7 · Why / Strategy / Scope · Additional","Additional","RHDH;Day 7;§01","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Why / Strategy / Scope","§01 Why / Strategy / Scope","A5","A5 | Why / Strategy / Scope","What is the architecture review board cadence, and the lead time to secure approval?","A5: What is the architecture review board cadence, and the lead time to secure approval?
+
+— Day 7 · Why / Strategy / Scope · Additional","Additional","RHDH;Day 7;§01","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Why / Strategy / Scope","§01 Why / Strategy / Scope","A6","A6 | Why / Strategy / Scope","What is the appetite for customisation versus staying close to product defaults?","A6: What is the appetite for customisation versus staying close to product defaults?
+
+— Day 7 · Why / Strategy / Scope · Additional","Additional","RHDH;Day 7;§01","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Why / Strategy / Scope","§01 Why / Strategy / Scope","A7","A7 | Why / Strategy / Scope","Are there prior Backstage or portal proofs-of-concept whose learnings or assets apply?","A7: Are there prior Backstage or portal proofs-of-concept whose learnings or assets apply?
+
+— Day 7 · Why / Strategy / Scope · Additional","Additional","RHDH;Day 7;§01","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Why / Strategy / Scope","§01 Why / Strategy / Scope","A8","A8 | Why / Strategy / Scope","Is RHDH intended to be the single engineering entry point, or one portal among several?","A8: Is RHDH intended to be the single engineering entry point, or one portal among several?
+
+— Day 7 · Why / Strategy / Scope · Additional","Additional","RHDH;Day 7;§01","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","26","26 | Platform, Infrastructure & Sizing","How many OpenShift clusters will Dev Hub interact with?","26: How many OpenShift clusters will Dev Hub interact with?
+
+— Day 7 · Architecture & exposure · WS, R1","WS, R1","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","27","27 | Platform, Infrastructure & Sizing","How many clusters, and where does each RHDH instance run?","27: How many clusters, and where does each RHDH instance run?
+
+— Day 7 · Architecture & exposure · R2","R2","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","28","28 | Platform, Infrastructure & Sizing","Number of clusters — PE Sandbox or e-dev? Prod instance in a non-prod cluster?","28: Number of clusters — PE Sandbox or e-dev? Prod instance in a non-prod cluster?
+
+— Day 7 · Architecture & exposure · R1","R1","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","29","29 | Platform, Infrastructure & Sizing","Is running the production RHDH instance in a non-prod cluster acceptable to risk and security?","29: Is running the production RHDH instance in a non-prod cluster acceptable to risk and security?
+
+— Day 7 · Architecture & exposure · R2","R2","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","30","30 | Platform, Infrastructure & Sizing","What OpenShift version will Dev Hub be installed on?","30: What OpenShift version will Dev Hub be installed on?
+
+— Day 7 · Architecture & exposure · WS","WS","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","31","31 | Platform, Infrastructure & Sizing","Is the environment connected, proxied or disconnected?","31: Is the environment connected, proxied or disconnected?
+
+— Day 7 · Architecture & exposure · R2","R2","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","32","32 | Platform, Infrastructure & Sizing","Will RHDH provision dev workspaces?","32: Will RHDH provision dev workspaces?
+
+— Day 7 · Architecture & exposure · WS","WS","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","33","33 | Platform, Infrastructure & Sizing","Are there any dependent systems yet to be operational?","33: Are there any dependent systems yet to be operational?
+
+— Day 7 · Architecture & exposure · WS","WS","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","34","34 | Platform, Infrastructure & Sizing","What blockers may prevent Dev Hub deployment?","34: What blockers may prevent Dev Hub deployment?
+
+— Day 7 · Architecture & exposure · WS","WS","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","35","35 | Platform, Infrastructure & Sizing","What network, firewall or proxy changes will be needed, and what is the lead time?","35: What network, firewall or proxy changes will be needed, and what is the lead time?
+
+— Day 7 · Architecture & exposure · R2","R2","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","36","36 | Platform, Infrastructure & Sizing","Which integrations need network egress or firewall changes?","36: Which integrations need network egress or firewall changes?
+
+— Day 7 · Architecture & exposure · R2","R2","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","37","37 | Platform, Infrastructure & Sizing","How will RHDH be reached — internal only, VPN, VDI, or internet-facing?","37: How will RHDH be reached — internal only, VPN, VDI, or internet-facing?
+
+— Day 7 · Architecture & exposure · R2","R2","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","A21","A21 | Platform, Infrastructure & Sizing","What is the node topology, and on which worker pool should RHDH be scheduled?","A21: What is the node topology, and on which worker pool should RHDH be scheduled?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","A22","A22 | Platform, Infrastructure & Sizing","Are there taints, tolerations, node selectors or dedicated infrastructure nodes RHDH must use?","A22: Are there taints, tolerations, node selectors or dedicated infrastructure nodes RHDH must use?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","A23","A23 | Platform, Infrastructure & Sizing","What resource quotas and limit ranges apply in the target namespace?","A23: What resource quotas and limit ranges apply in the target namespace?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","A24","A24 | Platform, Infrastructure & Sizing","Which pod security admission profile applies, and can RHDH and all its plugins run under restricted-v2?","A24: Which pod security admission profile applies, and can RHDH and all its plugins run under restricted-v2?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","A25","A25 | Platform, Infrastructure & Sizing","Which storage classes are available, and which support ReadWriteMany?","A25: Which storage classes are available, and which support ReadWriteMany?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","A26","A26 | Platform, Infrastructure & Sizing","Is ODF the only object storage, and what is the process to provision a bucket and credentials?","A26: Is ODF the only object storage, and what is the process to provision a bucket and credentials?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","A27","A27 | Platform, Infrastructure & Sizing","What is the ingress capacity, and is per-route rate limiting applied?","A27: What is the ingress capacity, and is per-route rate limiting applied?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","A28","A28 | Platform, Infrastructure & Sizing","Is automatic sidecar injection enabled anywhere that would affect the RHDH namespace?","A28: Is automatic sidecar injection enabled anywhere that would affect the RHDH namespace?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","A29","A29 | Platform, Infrastructure & Sizing","What is the cluster autoscaling behaviour, and could it evict RHDH pods?","A29: What is the cluster autoscaling behaviour, and could it evict RHDH pods?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","A30","A30 | Platform, Infrastructure & Sizing","What maintenance windows and node reboot patterns must RHDH tolerate?","A30: What maintenance windows and node reboot patterns must RHDH tolerate?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","A31","A31 | Platform, Infrastructure & Sizing","What API server and etcd load budget applies — could the Kubernetes plugin's polling be a concern?","A31: What API server and etcd load budget applies — could the Kubernetes plugin's polling be a concern?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§03 Platform, Infrastructure & Sizing","A32","A32 | Platform, Infrastructure & Sizing","Is ARO a candidate host for RHDH, or is it on-premises only?","A32: Is ARO a candidate host for RHDH, or is it on-premises only?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§03","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","38","38 | Database, HA, DR & Service Levels","What is the storage/database for RHDH?","38: What is the storage/database for RHDH?
+
+— Day 7 · HA & resilience · R1","R1","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","39","39 | Database, HA, DR & Service Levels","External PostgreSQL — endpoint and URL? Is the external pgsql HA?","39: External PostgreSQL — endpoint and URL? Is the external pgsql HA?
+
+— Day 7 · HA & resilience · R1","R1","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","40","40 | Database, HA, DR & Service Levels","What is the external PostgreSQL endpoint, and is it HA?","40: What is the external PostgreSQL endpoint, and is it HA?
+
+— Day 7 · HA & resilience · R2","R2","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","41","41 | Database, HA, DR & Service Levels","Is there an external DB service to leverage?","41: Is there an external DB service to leverage?
+
+— Day 7 · HA & resilience · WS","WS","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","42","42 | Database, HA, DR & Service Levels","What are the latency requirements on the database? (raised by CLIENT)","42: What are the latency requirements on the database? (raised by CLIENT)
+
+— Day 7 · HA & resilience · WS","WS","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","43","43 | Database, HA, DR & Service Levels","What storage and database sizing does RHDH need?","43: What storage and database sizing does RHDH need?
+
+— Day 7 · HA & resilience · R2","R2","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","44","44 | Database, HA, DR & Service Levels","How will the RHDH PostgreSQL database be backed up and restored — and is restore tested?","44: How will the RHDH PostgreSQL database be backed up and restored — and is restore tested?
+
+— Day 7 · HA & resilience · R2","R2","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","45","45 | Database, HA, DR & Service Levels","What are the HA requirements for RHDH?","45: What are the HA requirements for RHDH?
+
+— Day 7 · HA & resilience · R1, R2","R1, R2","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","46","46 | Database, HA, DR & Service Levels","What SLA / SLO will RHDH commit to?","46: What SLA / SLO will RHDH commit to?
+
+— Day 7 · HA & resilience · R1, R2","R1, R2","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","47","47 | Database, HA, DR & Service Levels","What is the DR requirement for RHDH, and what are the RTO and RPO?","47: What is the DR requirement for RHDH, and what are the RTO and RPO?
+
+— Day 7 · HA & resilience · R1, R2","R1, R2","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","48","48 | Database, HA, DR & Service Levels","Is a non-production RHDH instance needed to test upgrades and plugin changes?","48: Is a non-production RHDH instance needed to test upgrades and plugin changes?
+
+— Day 7 · HA & resilience · R2","R2","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","49","49 | Database, HA, DR & Service Levels","What is the RHDH upgrade cadence, and who owns it?","49: What is the RHDH upgrade cadence, and who owns it?
+
+— Day 7 · HA & resilience · R2","R2","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","A33","A33 | Database, HA, DR & Service Levels","Which PostgreSQL version and extensions are available, and do they meet the RHDH supported matrix?","A33: Which PostgreSQL version and extensions are available, and do they meet the RHDH supported matrix?
+
+— Day 7 · HA & resilience · Additional","Additional","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","A34","A34 | Database, HA, DR & Service Levels","Will the database be operator-managed in-cluster or external, and what drives that decision?","A34: Will the database be operator-managed in-cluster or external, and what drives that decision?
+
+— Day 7 · HA & resilience · Additional","Additional","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","A35","A35 | Database, HA, DR & Service Levels","What connection limits, pooling behaviour and TLS mode apply to the database?","A35: What connection limits, pooling behaviour and TLS mode apply to the database?
+
+— Day 7 · HA & resilience · Additional","Additional","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","A36","A36 | Database, HA, DR & Service Levels","What is the expected database growth rate, and what headroom is required?","A36: What is the expected database growth rate, and what headroom is required?
+
+— Day 7 · HA & resilience · Additional","Additional","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","A37","A37 | Database, HA, DR & Service Levels","What is the backup schedule and retention, and who executes a restore?","A37: What is the backup schedule and retention, and who executes a restore?
+
+— Day 7 · HA & resilience · Additional","Additional","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","A38","A38 | Database, HA, DR & Service Levels","Has a full restore been tested end to end, and what RTO was measured?","A38: Has a full restore been tested end to end, and what RTO was measured?
+
+— Day 7 · HA & resilience · Additional","Additional","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","A39","A39 | Database, HA, DR & Service Levels","Is the database replicated across data centres, and is failover automatic or manual?","A39: Is the database replicated across data centres, and is failover automatic or manual?
+
+— Day 7 · HA & resilience · Additional","Additional","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","A40","A40 | Database, HA, DR & Service Levels","If the database is lost, can the catalogue be rebuilt from Git — and what would not be recoverable?","A40: If the database is lost, can the catalogue be rebuilt from Git — and what would not be recoverable?
+
+— Day 7 · HA & resilience · Additional","Additional","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","A41","A41 | Database, HA, DR & Service Levels","What is the database patching window, and can RHDH tolerate that outage?","A41: What is the database patching window, and can RHDH tolerate that outage?
+
+— Day 7 · HA & resilience · Additional","Additional","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","HA & resilience","§04 Database, HA, DR & Service Levels","A42","A42 | Database, HA, DR & Service Levels","Are there separate databases per RHDH environment, and how are credentials rotated?","A42: Are there separate databases per RHDH environment, and how are credentials rotated?
+
+— Day 7 · HA & resilience · Additional","Additional","RHDH;Day 7;§04","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","50","50 | Identity, Authentication & Authorisation","How will users authenticate into Developer Hub?","50: How will users authenticate into Developer Hub?
+
+— Day 7 · IAM & RBAC · R1, R2","R1, R2","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","51","51 | Identity, Authentication & Authorisation","What is the RHDH authentication and authorisation model — RBAC plugin, or custom?","51: What is the RHDH authentication and authorisation model — RBAC plugin, or custom?
+
+— Day 7 · IAM & RBAC · R1, R2","R1, R2","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","52","52 | Identity, Authentication & Authorisation","Which Entra ID OIDC claims are available, and which will drive authorisation?","52: Which Entra ID OIDC claims are available, and which will drive authorisation?
+
+— Day 7 · IAM & RBAC · R1, R2","R1, R2","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","53","53 | Identity, Authentication & Authorisation","What are the personas for the permission model?","53: What are the personas for the permission model?
+
+— Day 7 · IAM & RBAC · R1, R2","R1, R2","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","54","54 | Identity, Authentication & Authorisation","Are there existing Entra ID groups matching those personas, or must new ones be created?","54: Are there existing Entra ID groups matching those personas, or must new ones be created?
+
+— Day 7 · IAM & RBAC · R1, R2","R1, R2","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","55","55 | Identity, Authentication & Authorisation","How are Entra ID group names structured, and can they map to catalogue ownership?","55: How are Entra ID group names structured, and can they map to catalogue ownership?
+
+— Day 7 · IAM & RBAC · R2","R2","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","56","56 | Identity, Authentication & Authorisation","Is group membership synchronised into RHDH, and at what frequency?","56: Is group membership synchronised into RHDH, and at what frequency?
+
+— Day 7 · IAM & RBAC · R2","R2","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","57","57 | Identity, Authentication & Authorisation","Should users see only their own components, or the entire catalogue?","57: Should users see only their own components, or the entire catalogue?
+
+— Day 7 · IAM & RBAC · R2","R2","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","58","58 | Identity, Authentication & Authorisation","Is MFA required for Developer Hub access, and for which actions?","58: Is MFA required for Developer Hub access, and for which actions?
+
+— Day 7 · IAM & RBAC · R2","R2","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","59","59 | Identity, Authentication & Authorisation","Who approves access, and does it integrate with the joiner–mover–leaver process?","59: Who approves access, and does it integrate with the joiner–mover–leaver process?
+
+— Day 7 · IAM & RBAC · R2","R2","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","60","60 | Identity, Authentication & Authorisation","Is access recertification required, and at what frequency?","60: Is access recertification required, and at what frequency?
+
+— Day 7 · IAM & RBAC · R2","R2","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","61","61 | Identity, Authentication & Authorisation","How are service accounts and machine identities handled for RHDH integrations?","61: How are service accounts and machine identities handled for RHDH integrations?
+
+— Day 7 · IAM & RBAC · R2","R2","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","A43","A43 | Identity, Authentication & Authorisation","Which Entra ID app registration will RHDH use, and who owns and approves it?","A43: Which Entra ID app registration will RHDH use, and who owns and approves it?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","A44","A44 | Identity, Authentication & Authorisation","Will authentication use the OIDC authorisation-code flow with PKCE, and which redirect URIs are required?","A44: Will authentication use the OIDC authorisation-code flow with PKCE, and which redirect URIs are required?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","A45","A45 | Identity, Authentication & Authorisation","What are the access and refresh token lifetimes, and what session length should RHDH enforce?","A45: What are the access and refresh token lifetimes, and what session length should RHDH enforce?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","A46","A46 | Identity, Authentication & Authorisation","How should the RHDH session cookie be scoped, and what security attributes are mandated?","A46: How should the RHDH session cookie be scoped, and what security attributes are mandated?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","A47","A47 | Identity, Authentication & Authorisation","Which claim is the stable, immutable user identifier — oid, upn or email?","A47: Which claim is the stable, immutable user identifier — oid, upn or email?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","A48","A48 | Identity, Authentication & Authorisation","How many groups does a typical user carry, and is the group claim at risk of overflow?","A48: How many groups does a typical user carry, and is the group claim at risk of overflow?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","A49","A49 | Identity, Authentication & Authorisation","Will Microsoft Graph be used to ingest users and groups, and which API permissions must be granted?","A49: Will Microsoft Graph be used to ingest users and groups, and which API permissions must be granted?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","A50","A50 | Identity, Authentication & Authorisation","What is the size of the user and group ingestion, and what refresh frequency is acceptable?","A50: What is the size of the user and group ingestion, and what refresh frequency is acceptable?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","A51","A51 | Identity, Authentication & Authorisation","Are guest or B2B accounts present, and should they be filtered out of ingestion?","A51: Are guest or B2B accounts present, and should they be filtered out of ingestion?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","A52","A52 | Identity, Authentication & Authorisation","How will RHDH authenticate to each downstream system, and how are those credentials rotated?","A52: How will RHDH authenticate to each downstream system, and how are those credentials rotated?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","A53","A53 | Identity, Authentication & Authorisation","Is step-up authentication required for privileged actions such as RBAC changes?","A53: Is step-up authentication required for privileged actions such as RBAC changes?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§05 Identity, Authentication & Authorisation","A54","A54 | Identity, Authentication & Authorisation","What happens to catalogue ownership when an Entra group is renamed, merged or deleted?","A54: What happens to catalogue ownership when an Entra group is renamed, merged or deleted?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§05","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","64","64 | Software Catalogue & Ownership","How will the catalogue be populated — discovery, registration, or bulk import?","64: How will the catalogue be populated — discovery, registration, or bulk import?
+
+— Day 7 · Architecture & catalogue · R1, R2","R1, R2","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","65","65 | Software Catalogue & Ownership","Who owns catalogue items?","65: Who owns catalogue items?
+
+— Day 7 · Architecture & catalogue · R1","R1","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","69","69 | Software Catalogue & Ownership","What metadata must every catalogue component carry?","69: What metadata must every catalogue component carry?
+
+— Day 7 · Architecture & catalogue · R2","R2","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","70","70 | Software Catalogue & Ownership","How will catalogue entries be kept accurate as services change?","70: How will catalogue entries be kept accurate as services change?
+
+— Day 7 · Architecture & catalogue · R2","R2","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","71","71 | Software Catalogue & Ownership","Should the catalogue include systems not on OpenShift — VMs, mainframe, SaaS?","71: Should the catalogue include systems not on OpenShift — VMs, mainframe, SaaS?
+
+— Day 7 · Architecture & catalogue · R2","R2","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","A55","A55 | Software Catalogue & Ownership","Which entity kinds will be used — Component, System, Domain, API, Resource, Group, User?","A55: Which entity kinds will be used — Component, System, Domain, API, Resource, Group, User?
+
+— Day 7 · Architecture & catalogue · Additional","Additional","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","A56","A56 | Software Catalogue & Ownership","What is the CLIENT definition of a System, and of a Domain?","A56: What is the CLIENT definition of a System, and of a Domain?
+
+— Day 7 · Architecture & catalogue · Additional","Additional","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","A57","A57 | Software Catalogue & Ownership","What is the entity naming convention, and does an existing service-naming standard apply?","A57: What is the entity naming convention, and does an existing service-naming standard apply?
+
+— Day 7 · Architecture & catalogue · Additional","Additional","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","A58","A58 | Software Catalogue & Ownership","Will the catalogue use namespaces, and along which axis — team, domain or environment?","A58: Will the catalogue use namespaces, and along which axis — team, domain or environment?
+
+— Day 7 · Architecture & catalogue · Additional","Additional","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","A59","A59 | Software Catalogue & Ownership","Which component types are permitted — service, website, library, mobile-app?","A59: Which component types are permitted — service, website, library, mobile-app?
+
+— Day 7 · Architecture & catalogue · Additional","Additional","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","A60","A60 | Software Catalogue & Ownership","Which lifecycle values are permitted, and who is authorised to set them?","A60: Which lifecycle values are permitted, and who is authorised to set them?
+
+— Day 7 · Architecture & catalogue · Additional","Additional","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","A61","A61 | Software Catalogue & Ownership","Will APIs be catalogued, and what is the source of truth — API Connect, or OpenAPI in the repository?","A61: Will APIs be catalogued, and what is the source of truth — API Connect, or OpenAPI in the repository?
+
+— Day 7 · Architecture & catalogue · Additional","Additional","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","A62","A62 | Software Catalogue & Ownership","Will infrastructure resources — databases, queues, buckets — be catalogued, and by whom?","A62: Will infrastructure resources — databases, queues, buckets — be catalogued, and by whom?
+
+— Day 7 · Architecture & catalogue · Additional","Additional","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","A63","A63 | Software Catalogue & Ownership","Which standard annotations must every component carry — Jira project, Jenkins job, SonarQube key, Argo CD app, workload selector?","A63: Which standard annotations must every component carry — Jira project, Jenkins job, SonarQube key, Argo CD app, workload selector?
+
+— Day 7 · Architecture & catalogue · Additional","Additional","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","A64","A64 | Software Catalogue & Ownership","Which catalogue providers will be used — Bitbucket discovery, Microsoft Graph, static locations?","A64: Which catalogue providers will be used — Bitbucket discovery, Microsoft Graph, static locations?
+
+— Day 7 · Architecture & catalogue · Additional","Additional","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","A65","A65 | Software Catalogue & Ownership","What is the catalogue refresh interval, and what load does discovery place on Bitbucket?","A65: What is the catalogue refresh interval, and what load does discovery place on Bitbucket?
+
+— Day 7 · Architecture & catalogue · Additional","Additional","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","A66","A66 | Software Catalogue & Ownership","Where must catalog-info.yaml live in a repository, and is that enforced by template?","A66: Where must catalog-info.yaml live in a repository, and is that enforced by template?
+
+— Day 7 · Architecture & catalogue · Additional","Additional","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","A67","A67 | Software Catalogue & Ownership","What happens when catalog-info.yaml is invalid or missing — who is notified, and how?","A67: What happens when catalog-info.yaml is invalid or missing — who is notified, and how?
+
+— Day 7 · Architecture & catalogue · Additional","Additional","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","A68","A68 | Software Catalogue & Ownership","Are custom entity processors or validators required to enforce mandatory metadata?","A68: Are custom entity processors or validators required to enforce mandatory metadata?
+
+— Day 7 · Architecture & catalogue · Additional","Additional","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","A69","A69 | Software Catalogue & Ownership","Will the catalogue be seeded by bulk import, and from which source?","A69: Will the catalogue be seeded by bulk import, and from which source?
+
+— Day 7 · Architecture & catalogue · Additional","Additional","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","A70","A70 | Software Catalogue & Ownership","Is a two-way sync with a CMDB or ServiceNow required?","A70: Is a two-way sync with a CMDB or ServiceNow required?
+
+— Day 7 · Architecture & catalogue · Additional","Additional","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","A71","A71 | Software Catalogue & Ownership","How will systems not on OpenShift — VMs, mainframe, SaaS — be modelled in practice?","A71: How will systems not on OpenShift — VMs, mainframe, SaaS — be modelled in practice?
+
+— Day 7 · Architecture & catalogue · Additional","Additional","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","A72","A72 | Software Catalogue & Ownership","What is the process to retire an entity, and who arbitrates ownership disputes?","A72: What is the process to retire an entity, and who arbitrates ownership disputes?
+
+— Day 7 · Architecture & catalogue · Additional","Additional","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & catalogue","§06 Software Catalogue & Ownership","A73","A73 | Software Catalogue & Ownership","How will unowned or orphaned entities be detected and chased?","A73: How will unowned or orphaned entities be detected and chased?
+
+— Day 7 · Architecture & catalogue · Additional","Additional","RHDH;Day 7;§06","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§10 Documentation / TechDocs","118","118 | Documentation / TechDocs","Where are TechDocs stored and rendered from?","118: Where are TechDocs stored and rendered from?
+
+— Day 7 · Architecture & exposure · R1, R2","R1, R2","RHDH;Day 7;§10","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§10 Documentation / TechDocs","119","119 | Documentation / TechDocs","Is object storage available for the TechDocs backend, and is it in scope?","119: Is object storage available for the TechDocs backend, and is it in scope?
+
+— Day 7 · Architecture & exposure · R2","R2","RHDH;Day 7;§10","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§10 Documentation / TechDocs","120","120 | Documentation / TechDocs","Where does documentation live today, and will it migrate?","120: Where does documentation live today, and will it migrate?
+
+— Day 7 · Architecture & exposure · R2","R2","RHDH;Day 7;§10","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§10 Documentation / TechDocs","121","121 | Documentation / TechDocs","Who owns documentation quality and keeps it current?","121: Who owns documentation quality and keeps it current?
+
+— Day 7 · Architecture & exposure · R2","R2","RHDH;Day 7;§10","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§10 Documentation / TechDocs","122","122 | Documentation / TechDocs","Will docs-as-code be mandatory for services in the catalogue?","122: Will docs-as-code be mandatory for services in the catalogue?
+
+— Day 7 · Architecture & exposure · R2","R2","RHDH;Day 7;§10","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§10 Documentation / TechDocs","A112","A112 | Documentation / TechDocs","Will TechDocs use the local builder, or an external build-and-publish pipeline?","A112: Will TechDocs use the local builder, or an external build-and-publish pipeline?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§10","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§10 Documentation / TechDocs","A113","A113 | Documentation / TechDocs","Which bucket will hold generated documentation, and what lifecycle policy applies?","A113: Which bucket will hold generated documentation, and what lifecycle policy applies?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§10","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§10 Documentation / TechDocs","A114","A114 | Documentation / TechDocs","May the mkdocs build reach the internet for plugins and themes, or must these be mirrored?","A114: May the mkdocs build reach the internet for plugins and themes, or must these be mirrored?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§10","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§10 Documentation / TechDocs","A115","A115 | Documentation / TechDocs","What documentation structure and template must a new service follow?","A115: What documentation structure and template must a new service follow?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§10","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§10 Documentation / TechDocs","A116","A116 | Documentation / TechDocs","Will architecture diagrams be embedded, and in which format?","A116: Will architecture diagrams be embedded, and in which format?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§10","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§10 Documentation / TechDocs","A117","A117 | Documentation / TechDocs","Who reviews documentation, and is it part of the definition of done?","A117: Who reviews documentation, and is it part of the definition of done?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§10","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§10 Documentation / TechDocs","A118","A118 | Documentation / TechDocs","How much Confluence content is in scope for migration, and who owns that migration?","A118: How much Confluence content is in scope for migration, and who owns that migration?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§10","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§11 Security, Compliance & Governance","131","131 | Security, Compliance & Governance","Which regulations apply — RBNZ, Privacy Act 2020, PCI DSS, ISO 27001?","131: Which regulations apply — RBNZ, Privacy Act 2020, PCI DSS, ISO 27001?
+
+— Day 7 · Security & governance · R2","R2","RHDH;Day 7;§11","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§11 Security, Compliance & Governance","132","132 | Security, Compliance & Governance","Are there data residency requirements constraining where workloads and data may sit?","132: Are there data residency requirements constraining where workloads and data may sit?
+
+— Day 7 · Security & governance · R2","R2","RHDH;Day 7;§11","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§11 Security, Compliance & Governance","133","133 | Security, Compliance & Governance","Does every production change require a change record, and can it be raised automatically?","133: Does every production change require a change record, and can it be raised automatically?
+
+— Day 7 · Security & governance · R2","R2","RHDH;Day 7;§11","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§11 Security, Compliance & Governance","134","134 | Security, Compliance & Governance","Is there an approved tooling list, and how long does approval take for anything new?","134: Is there an approved tooling list, and how long does approval take for anything new?
+
+— Day 7 · Security & governance · R2","R2","RHDH;Day 7;§11","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§11 Security, Compliance & Governance","A119","A119 | Security, Compliance & Governance","Has a threat model or security architecture review been scheduled for RHDH?","A119: Has a threat model or security architecture review been scheduled for RHDH?
+
+— Day 7 · Security & governance · Additional","Additional","RHDH;Day 7;§11","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§11 Security, Compliance & Governance","A120","A120 | Security, Compliance & Governance","Is penetration testing required before go-live, and what is the lead time to book it?","A120: Is penetration testing required before go-live, and what is the lead time to book it?
+
+— Day 7 · Security & governance · Additional","Additional","RHDH;Day 7;§11","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§11 Security, Compliance & Governance","A121","A121 | Security, Compliance & Governance","What data classification applies to catalogue metadata, TechDocs and audit records?","A121: What data classification applies to catalogue metadata, TechDocs and audit records?
+
+— Day 7 · Security & governance · Additional","Additional","RHDH;Day 7;§11","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§11 Security, Compliance & Governance","A122","A122 | Security, Compliance & Governance","Must the RHDH image come from a trusted registry with signature verification enforced?","A122: Must the RHDH image come from a trusted registry with signature verification enforced?
+
+— Day 7 · Security & governance · Additional","Additional","RHDH;Day 7;§11","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§11 Security, Compliance & Governance","A123","A123 | Security, Compliance & Governance","Will RHACS policies apply to the RHDH namespace, in inform or enforce mode?","A123: Will RHACS policies apply to the RHDH namespace, in inform or enforce mode?
+
+— Day 7 · Security & governance · Additional","Additional","RHDH;Day 7;§11","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§11 Security, Compliance & Governance","A124","A124 | Security, Compliance & Governance","Which network policies are required into and out of the RHDH namespace?","A124: Which network policies are required into and out of the RHDH namespace?
+
+— Day 7 · Security & governance · Additional","Additional","RHDH;Day 7;§11","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§11 Security, Compliance & Governance","A125","A125 | Security, Compliance & Governance","Is audit log immutability or SIEM forwarding required, and to which system?","A125: Is audit log immutability or SIEM forwarding required, and to which system?
+
+— Day 7 · Security & governance · Additional","Additional","RHDH;Day 7;§11","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§11 Security, Compliance & Governance","A127","A127 | Security, Compliance & Governance","What is the vulnerability remediation SLA for the RHDH platform itself?","A127: What is the vulnerability remediation SLA for the RHDH platform itself?
+
+— Day 7 · Security & governance · Additional","Additional","RHDH;Day 7;§11","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§11 Security, Compliance & Governance","A128","A128 | Security, Compliance & Governance","Are there regulatory constraints on where identity and audit data may reside?","A128: Are there regulatory constraints on where identity and audit data may reside?
+
+— Day 7 · Security & governance · Additional","Additional","RHDH;Day 7;§11","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","135","135 | Operating Model & People","Who owns Developer Hub (and the mesh) after go-live, as a named team?","135: Who owns Developer Hub (and the mesh) after go-live, as a named team?
+
+— Day 7 · PE / Operating model · R2","R2","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","136","136 | Operating Model & People","Does that team exist, or must it be formed or hired?","136: Does that team exist, or must it be formed or hired?
+
+— Day 7 · PE / Operating model · R2","R2","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","137","137 | Operating Model & People","How many engineers, at what seniority, will run the platform?","137: How many engineers, at what seniority, will run the platform?
+
+— Day 7 · PE / Operating model · R2","R2","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","138","138 | Operating Model & People","What is the support model and on-call arrangement for RHDH and the mesh?","138: What is the support model and on-call arrangement for RHDH and the mesh?
+
+— Day 7 · PE / Operating model · R2","R2","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","139","139 | Operating Model & People","Will the platform have a product owner and roadmap, or take tickets?","139: Will the platform have a product owner and roadmap, or take tickets?
+
+— Day 7 · PE / Operating model · R2","R2","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","140","140 | Operating Model & People","How will platform capability requests be raised and prioritised?","140: How will platform capability requests be raised and prioritised?
+
+— Day 7 · PE / Operating model · R2","R2","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","141","141 | Operating Model & People","Who will champion the platform inside each area?","141: Who will champion the platform inside each area?
+
+— Day 7 · PE / Operating model · R2","R2","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","142","142 | Operating Model & People","What training and enablement will developers receive?","142: What training and enablement will developers receive?
+
+— Day 7 · PE / Operating model · R2","R2","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","143","143 | Operating Model & People","How will developer feedback be gathered and acted on?","143: How will developer feedback be gathered and acted on?
+
+— Day 7 · PE / Operating model · R2","R2","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","144","144 | Operating Model & People","What skills exist today, and what gaps must be filled before handover?","144: What skills exist today, and what gaps must be filled before handover?
+
+— Day 7 · PE / Operating model · R2","R2","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","145","145 | Operating Model & People","What existing tools will be decommissioned, and who decides?","145: What existing tools will be decommissioned, and who decides?
+
+— Day 7 · PE / Operating model · R2","R2","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","146","146 | Operating Model & People","Will existing services be migrated onto the platform, or only new ones?","146: Will existing services be migrated onto the platform, or only new ones?
+
+— Day 7 · PE / Operating model · R2","R2","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","A129","A129 | Operating Model & People","What is the RACI across platform, security, identity, network and application teams for RHDH?","A129: What is the RACI across platform, security, identity, network and application teams for RHDH?
+
+— Day 7 · PE / Operating model · Additional","Additional","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","A130","A130 | Operating Model & People","What are the L1, L2 and L3 support tiers, and who staffs each?","A130: What are the L1, L2 and L3 support tiers, and who staffs each?
+
+— Day 7 · PE / Operating model · Additional","Additional","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","A131","A131 | Operating Model & People","What are the handover acceptance criteria from Red Hat to CLIENT?","A131: What are the handover acceptance criteria from Red Hat to CLIENT?
+
+— Day 7 · PE / Operating model · Additional","Additional","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","A132","A132 | Operating Model & People","Which documentation set must exist at handover — HLD, LLD, runbooks, operational guide?","A132: Which documentation set must exist at handover — HLD, LLD, runbooks, operational guide?
+
+— Day 7 · PE / Operating model · Additional","Additional","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","A133","A133 | Operating Model & People","What is the knowledge-transfer plan and schedule?","A133: What is the knowledge-transfer plan and schedule?
+
+— Day 7 · PE / Operating model · Additional","Additional","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","A134","A134 | Operating Model & People","Which Red Hat subscriptions and entitlements are in place, and do they cover the target user count?","A134: Which Red Hat subscriptions and entitlements are in place, and do they cover the target user count?
+
+— Day 7 · PE / Operating model · Additional","Additional","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","A135","A135 | Operating Model & People","What is the product lifecycle and support window for the target RHDH version?","A135: What is the product lifecycle and support window for the target RHDH version?
+
+— Day 7 · PE / Operating model · Additional","Additional","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","A136","A136 | Operating Model & People","What is the process to onboard a new team onto the platform, and how long should it take?","A136: What is the process to onboard a new team onto the platform, and how long should it take?
+
+— Day 7 · PE / Operating model · Additional","Additional","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Operating model","§12 Operating Model & People","A137","A137 | Operating Model & People","Which activities are self-service, and which require the platform team?","A137: Which activities are self-service, and which require the platform team?
+
+— Day 7 · PE / Operating model · Additional","Additional","RHDH;Day 7;§12","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Close-out","§14 Risks, Dependencies & Timeline","153","153 | Risks, Dependencies & Timeline","What are the immovable dates, and what drives them?","153: What are the immovable dates, and what drives them?
+
+— Day 7 · PE / Close-out · R2","R2","RHDH;Day 7;§14","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Close-out","§14 Risks, Dependencies & Timeline","154","154 | Risks, Dependencies & Timeline","What dependencies exist on other teams or programmes?","154: What dependencies exist on other teams or programmes?
+
+— Day 7 · PE / Close-out · R2","R2","RHDH;Day 7;§14","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Close-out","§14 Risks, Dependencies & Timeline","155","155 | Risks, Dependencies & Timeline","Is there a change freeze calendar the platform must respect?","155: Is there a change freeze calendar the platform must respect?
+
+— Day 7 · PE / Close-out · R2","R2","RHDH;Day 7;§14","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Close-out","§14 Risks, Dependencies & Timeline","156","156 | Risks, Dependencies & Timeline","What could stop this initiative, and how likely is it?","156: What could stop this initiative, and how likely is it?
+
+— Day 7 · PE / Close-out · R2","R2","RHDH;Day 7;§14","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Close-out","§14 Risks, Dependencies & Timeline","157","157 | Risks, Dependencies & Timeline","Who else should we be talking to that we have not yet met?","157: Who else should we be talking to that we have not yet met?
+
+— Day 7 · PE / Close-out · R2","R2","RHDH;Day 7;§14","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Close-out","§14 Risks, Dependencies & Timeline","158","158 | Risks, Dependencies & Timeline","What have we not asked that we should have?","158: What have we not asked that we should have?
+
+— Day 7 · PE / Close-out · R2","R2","RHDH;Day 7;§14","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Close-out","§14 Risks, Dependencies & Timeline","A143","A143 | Risks, Dependencies & Timeline","What is the dependency on the Safe Secure identity stream, and its committed delivery date?","A143: What is the dependency on the Safe Secure identity stream, and its committed delivery date?
+
+— Day 7 · PE / Close-out · Additional","Additional","RHDH;Day 7;§14","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Close-out","§14 Risks, Dependencies & Timeline","A144","A144 | Risks, Dependencies & Timeline","What is the dependency on ARO environment readiness, and what is the fallback?","A144: What is the dependency on ARO environment readiness, and what is the fallback?
+
+— Day 7 · PE / Close-out · Additional","Additional","RHDH;Day 7;§14","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Close-out","§14 Risks, Dependencies & Timeline","A145","A145 | Risks, Dependencies & Timeline","What is the dependency on the hardware order, and what happens if it slips?","A145: What is the dependency on the hardware order, and what happens if it slips?
+
+— Day 7 · PE / Close-out · Additional","Additional","RHDH;Day 7;§14","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Close-out","§14 Risks, Dependencies & Timeline","A146","A146 | Risks, Dependencies & Timeline","Which decisions are currently blocking design, and by when are they needed?","A146: Which decisions are currently blocking design, and by when are they needed?
+
+— Day 7 · PE / Close-out · Additional","Additional","RHDH;Day 7;§14","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","PE / Close-out","§14 Risks, Dependencies & Timeline","A147","A147 | Risks, Dependencies & Timeline","What is the contingency if the internal PostgreSQL service is withdrawn?","A147: What is the contingency if the internal PostgreSQL service is withdrawn?
+
+— Day 7 · PE / Close-out · Additional","Additional","RHDH;Day 7;§14","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§16 Deployment Architecture & Installation","A153","A153 | Deployment Architecture & Installation","Will RHDH be installed via the Operator or the Helm chart, and what drives that choice?","A153: Will RHDH be installed via the Operator or the Helm chart, and what drives that choice?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§16","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§16 Deployment Architecture & Installation","A154","A154 | Deployment Architecture & Installation","Which RHDH version is targeted, and how does it align to the OpenShift version roadmap?","A154: Which RHDH version is targeted, and how does it align to the OpenShift version roadmap?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§16","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§16 Deployment Architecture & Installation","A155","A155 | Deployment Architecture & Installation","Which subscription channel and update approval strategy will be used — automatic or manual?","A155: Which subscription channel and update approval strategy will be used — automatic or manual?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§16","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§16 Deployment Architecture & Installation","A156","A156 | Deployment Architecture & Installation","How will RHDH images be mirrored for a proxied or disconnected environment, and to which registry?","A156: How will RHDH images be mirrored for a proxied or disconnected environment, and to which registry?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§16","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§16 Deployment Architecture & Installation","A157","A157 | Deployment Architecture & Installation","Is an ImageDigestMirrorSet or ImageContentSourcePolicy already in place?","A157: Is an ImageDigestMirrorSet or ImageContentSourcePolicy already in place?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§16","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§16 Deployment Architecture & Installation","A158","A158 | Deployment Architecture & Installation","Which namespaces will host RHDH, and what is the namespace request and approval process?","A158: Which namespaces will host RHDH, and what is the namespace request and approval process?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§16","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§16 Deployment Architecture & Installation","A159","A159 | Deployment Architecture & Installation","How many replicas, and what CPU and memory requests and limits per pod?","A159: How many replicas, and what CPU and memory requests and limits per pod?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§16","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§16 Deployment Architecture & Installation","A160","A160 | Deployment Architecture & Installation","Is a PodDisruptionBudget required, and what minimum availability?","A160: Is a PodDisruptionBudget required, and what minimum availability?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§16","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§16 Deployment Architecture & Installation","A161","A161 | Deployment Architecture & Installation","Is the RHDH backend safe to run as multiple replicas in this configuration, and how is catalogue processing coordinated between them?","A161: Is the RHDH backend safe to run as multiple replicas in this configuration, and how is catalogue processing coordinated between them?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§16","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§16 Deployment Architecture & Installation","A162","A162 | Deployment Architecture & Installation","What pod anti-affinity or topology spread is required across nodes and data centres?","A162: What pod anti-affinity or topology spread is required across nodes and data centres?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§16","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§16 Deployment Architecture & Installation","A163","A163 | Deployment Architecture & Installation","What startup, liveness and readiness probe settings apply, and what startup time is acceptable?","A163: What startup, liveness and readiness probe settings apply, and what startup time is acceptable?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§16","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§16 Deployment Architecture & Installation","A164","A164 | Deployment Architecture & Installation","Will the RHDH deployment itself be managed by Argo CD from Git, or applied manually?","A164: Will the RHDH deployment itself be managed by Argo CD from Git, or applied manually?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§16","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§16 Deployment Architecture & Installation","A165","A165 | Deployment Architecture & Installation","What is the rollback procedure for a failed RHDH upgrade?","A165: What is the rollback procedure for a failed RHDH upgrade?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§16","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§16 Deployment Architecture & Installation","A166","A166 | Deployment Architecture & Installation","Is a canary or blue/green approach required for RHDH upgrades and plugin changes?","A166: Is a canary or blue/green approach required for RHDH upgrades and plugin changes?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§16","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§16 Deployment Architecture & Installation","A167","A167 | Deployment Architecture & Installation","Which security context constraint will RHDH run under?","A167: Which security context constraint will RHDH run under?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§16","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§16 Deployment Architecture & Installation","A168","A168 | Deployment Architecture & Installation","What is the target topology across the two data centres — active/active, or active/passive?","A168: What is the target topology across the two data centres — active/active, or active/passive?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§16","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§17 Networking, Ingress, TLS & Certificates","A169","A169 | Networking, Ingress, TLS & Certificates","Will RHDH be exposed by an OpenShift Route, an Ingress, or through the external load balancer?","A169: Will RHDH be exposed by an OpenShift Route, an Ingress, or through the external load balancer?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§17","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§17 Networking, Ingress, TLS & Certificates","A170","A170 | Networking, Ingress, TLS & Certificates","What is the target FQDN, and who owns the DNS record and its change process?","A170: What is the target FQDN, and who owns the DNS record and its change process?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§17","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§17 Networking, Ingress, TLS & Certificates","A171","A171 | Networking, Ingress, TLS & Certificates","Is TLS terminated at the edge, re-encrypted, or passed through to the pod?","A171: Is TLS terminated at the edge, re-encrypted, or passed through to the pod?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§17","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§17 Networking, Ingress, TLS & Certificates","A172","A172 | Networking, Ingress, TLS & Certificates","Which CA issues the RHDH certificate, and is cert-manager available for renewal?","A172: Which CA issues the RHDH certificate, and is cert-manager available for renewal?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§17","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§17 Networking, Ingress, TLS & Certificates","A173","A173 | Networking, Ingress, TLS & Certificates","What is the certificate request and renewal lead time?","A173: What is the certificate request and renewal lead time?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§17","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§17 Networking, Ingress, TLS & Certificates","A174","A174 | Networking, Ingress, TLS & Certificates","Which proxy settings are required for RHDH egress, and what belongs in NO_PROXY?","A174: Which proxy settings are required for RHDH egress, and what belongs in NO_PROXY?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§17","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§17 Networking, Ingress, TLS & Certificates","A175","A175 | Networking, Ingress, TLS & Certificates","Which outbound destinations must be allow-listed — Bitbucket, Jenkins, Jira, Artifactory, Entra, Graph, npm?","A175: Which outbound destinations must be allow-listed — Bitbucket, Jenkins, Jira, Artifactory, Entra, Graph, npm?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§17","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§17 Networking, Ingress, TLS & Certificates","A176","A176 | Networking, Ingress, TLS & Certificates","Is there a TLS-inspecting proxy whose CA must be injected into the RHDH trust store?","A176: Is there a TLS-inspecting proxy whose CA must be injected into the RHDH trust store?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§17","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§17 Networking, Ingress, TLS & Certificates","A177","A177 | Networking, Ingress, TLS & Certificates","How is the cluster-wide trust bundle injected into RHDH pods?","A177: How is the cluster-wide trust bundle injected into RHDH pods?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§17","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§17 Networking, Ingress, TLS & Certificates","A178","A178 | Networking, Ingress, TLS & Certificates","Is session affinity required at the load balancer when running multiple replicas?","A178: Is session affinity required at the load balancer when running multiple replicas?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§17","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§17 Networking, Ingress, TLS & Certificates","A179","A179 | Networking, Ingress, TLS & Certificates","Do any plugins require WebSocket or server-sent events, and does the ingress path support them?","A179: Do any plugins require WebSocket or server-sent events, and does the ingress path support them?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§17","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Architecture & exposure","§17 Networking, Ingress, TLS & Certificates","A180","A180 | Networking, Ingress, TLS & Certificates","What are the ingress idle and request timeouts, and are they sufficient for long-running template executions?","A180: What are the ingress idle and request timeouts, and are they sufficient for long-running template executions?
+
+— Day 7 · Architecture & exposure · Additional","Additional","RHDH;Day 7;§17","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§18 Configuration & Secrets Management","A181","A181 | Configuration & Secrets Management","How will app-config be structured across environments — a base plus overlays, or a file per environment?","A181: How will app-config be structured across environments — a base plus overlays, or a file per environment?
+
+— Day 7 · Security & governance · Additional","Additional","RHDH;Day 7;§18","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§18 Configuration & Secrets Management","A182","A182 | Configuration & Secrets Management","Will RHDH configuration live in Git and be delivered by Argo CD, or applied manually?","A182: Will RHDH configuration live in Git and be delivered by Argo CD, or applied manually?
+
+— Day 7 · Security & governance · Additional","Additional","RHDH;Day 7;§18","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§18 Configuration & Secrets Management","A183","A183 | Configuration & Secrets Management","Which configuration values are secrets, and where will they be held — Vault, CyberArk, External Secrets, sealed secrets?","A183: Which configuration values are secrets, and where will they be held — Vault, CyberArk, External Secrets, sealed secrets?
+
+— Day 7 · Security & governance · Additional","Additional","RHDH;Day 7;§18","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§18 Configuration & Secrets Management","A184","A184 | Configuration & Secrets Management","How are integration credentials rotated, and does rotation require an RHDH restart?","A184: How are integration credentials rotated, and does rotation require an RHDH restart?
+
+— Day 7 · Security & governance · Additional","Additional","RHDH;Day 7;§18","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§18 Configuration & Secrets Management","A185","A185 | Configuration & Secrets Management","Who is authorised to change RHDH configuration, and under what change process?","A185: Who is authorised to change RHDH configuration, and under what change process?
+
+— Day 7 · Security & governance · Additional","Additional","RHDH;Day 7;§18","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§18 Configuration & Secrets Management","A186","A186 | Configuration & Secrets Management","How will configuration drift be detected and corrected?","A186: How will configuration drift be detected and corrected?
+
+— Day 7 · Security & governance · Additional","Additional","RHDH;Day 7;§18","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§18 Configuration & Secrets Management","A187","A187 | Configuration & Secrets Management","Are there environment-specific feature flags or differing plugin sets?","A187: Are there environment-specific feature flags or differing plugin sets?
+
+— Day 7 · Security & governance · Additional","Additional","RHDH;Day 7;§18","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§18 Configuration & Secrets Management","A188","A188 | Configuration & Secrets Management","How will the homepage, sidebar, theme and branding be configured and version-controlled?","A188: How will the homepage, sidebar, theme and branding be configured and version-controlled?
+
+— Day 7 · Security & governance · Additional","Additional","RHDH;Day 7;§18","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§18 Configuration & Secrets Management","A189","A189 | Configuration & Secrets Management","What is the process to add a new integration or plugin to a running instance?","A189: What is the process to add a new integration or plugin to a running instance?
+
+— Day 7 · Security & governance · Additional","Additional","RHDH;Day 7;§18","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Security & governance","§18 Configuration & Secrets Management","A190","A190 | Configuration & Secrets Management","How and where will configuration changes be tested before reaching production?","A190: How and where will configuration changes be tested before reaching production?
+
+— Day 7 · Security & governance · Additional","Additional","RHDH;Day 7;§18","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Plugins deep dive","§19 Dynamic Plugins & Extensibility","A196","A196 | Dynamic Plugins & Extensibility","Who owns and maintains custom plugins and custom scaffolder actions?","A196: Who owns and maintains custom plugins and custom scaffolder actions?
+
+— Day 7 · Plugins deep dive · Additional","Additional","RHDH;Day 7;§19","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Plugins deep dive","§19 Dynamic Plugins & Extensibility","A197","A197 | Dynamic Plugins & Extensibility","What is the build and release pipeline for a custom plugin?","A197: What is the build and release pipeline for a custom plugin?
+
+— Day 7 · Plugins deep dive · Additional","Additional","RHDH;Day 7;§19","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Plugins deep dive","§19 Dynamic Plugins & Extensibility","A198","A198 | Dynamic Plugins & Extensibility","What is the blast radius if a plugin fails to load — does RHDH still start?","A198: What is the blast radius if a plugin fails to load — does RHDH still start?
+
+— Day 7 · Plugins deep dive · Additional","Additional","RHDH;Day 7;§19","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Plugins deep dive","§19 Dynamic Plugins & Extensibility","A199","A199 | Dynamic Plugins & Extensibility","Do any plugins require elevated cluster permissions, and is that acceptable to security?","A199: Do any plugins require elevated cluster permissions, and is that acceptable to security?
+
+— Day 7 · Plugins deep dive · Additional","Additional","RHDH;Day 7;§19","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Plugins deep dive","§19 Dynamic Plugins & Extensibility","A200","A200 | Dynamic Plugins & Extensibility","How will the enabled plugin set and its configuration be documented for support handover?","A200: How will the enabled plugin set and its configuration be documented for support handover?
+
+— Day 7 · Plugins deep dive · Additional","Additional","RHDH;Day 7;§19","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§20 RBAC & Permissions Design","A201","A201 | RBAC & Permissions Design","Will the RBAC plugin be enabled from day one?","A201: Will the RBAC plugin be enabled from day one?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§20","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§20 RBAC & Permissions Design","A202","A202 | RBAC & Permissions Design","Will permission policies be held in a file in Git, or in the database and edited through the UI?","A202: Will permission policies be held in a file in Git, or in the database and edited through the UI?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§20","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§20 RBAC & Permissions Design","A203","A203 | RBAC & Permissions Design","Which roles are required, and what does each permit?","A203: Which roles are required, and what does each permit?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§20","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§20 RBAC & Permissions Design","A204","A204 | RBAC & Permissions Design","Which Entra groups map to which RHDH roles?","A204: Which Entra groups map to which RHDH roles?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§20","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§20 RBAC & Permissions Design","A205","A205 | RBAC & Permissions Design","Are conditional policies required — for example, a user may only run templates for systems their group owns?","A205: Are conditional policies required — for example, a user may only run templates for systems their group owns?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§20","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§20 RBAC & Permissions Design","A206","A206 | RBAC & Permissions Design","Who may register and unregister catalogue entities?","A206: Who may register and unregister catalogue entities?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§20","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§20 RBAC & Permissions Design","A207","A207 | RBAC & Permissions Design","Who may execute each template, and are any restricted to specific teams?","A207: Who may execute each template, and are any restricted to specific teams?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§20","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§20 RBAC & Permissions Design","A208","A208 | RBAC & Permissions Design","Who administers RBAC, and is that separated from platform administration?","A208: Who administers RBAC, and is that separated from platform administration?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§20","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§20 RBAC & Permissions Design","A209","A209 | RBAC & Permissions Design","Are permission changes audited, and where do those records go?","A209: Are permission changes audited, and where do those records go?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§20","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","IAM & RBAC","§20 RBAC & Permissions Design","A210","A210 | RBAC & Permissions Design","What is the default posture for a user with no explicit role — read-only, or no access?","A210: What is the default posture for a user with no explicit role — read-only, or no access?
+
+— Day 7 · IAM & RBAC · Additional","Additional","RHDH;Day 7;§20","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Observability","§21 Observability, Operations & Support of RHDH","A211","A211 | Observability, Operations & Support of RHDH","Is user-workload monitoring enabled, and where will RHDH metrics be scraped to?","A211: Is user-workload monitoring enabled, and where will RHDH metrics be scraped to?
+
+— Day 7 · Observability · Additional","Additional","RHDH;Day 7;§21","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Observability","§21 Observability, Operations & Support of RHDH","A212","A212 | Observability, Operations & Support of RHDH","Which dashboards are required, and will they be Grafana or Perses?","A212: Which dashboards are required, and will they be Grafana or Perses?
+
+— Day 7 · Observability · Additional","Additional","RHDH;Day 7;§21","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Observability","§21 Observability, Operations & Support of RHDH","A213","A213 | Observability, Operations & Support of RHDH","Which alerts are required, and to which on-call rota do they route?","A213: Which alerts are required, and to which on-call rota do they route?
+
+— Day 7 · Observability · Additional","Additional","RHDH;Day 7;§21","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Observability","§21 Observability, Operations & Support of RHDH","A214","A214 | Observability, Operations & Support of RHDH","Which SLIs sit behind the RHDH SLO — availability, latency, template success rate?","A214: Which SLIs sit behind the RHDH SLO — availability, latency, template success rate?
+
+— Day 7 · Observability · Additional","Additional","RHDH;Day 7;§21","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Observability","§21 Observability, Operations & Support of RHDH","A215","A215 | Observability, Operations & Support of RHDH","What log level and format should RHDH emit, and how are logs forwarded to Splunk?","A215: What log level and format should RHDH emit, and how are logs forwarded to Splunk?
+
+— Day 7 · Observability · Additional","Additional","RHDH;Day 7;§21","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Observability","§21 Observability, Operations & Support of RHDH","A216","A216 | Observability, Operations & Support of RHDH","Is a separate audit log stream required, and what retention applies?","A216: Is a separate audit log stream required, and what retention applies?
+
+— Day 7 · Observability · Additional","Additional","RHDH;Day 7;§21","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Observability","§21 Observability, Operations & Support of RHDH","A217","A217 | Observability, Operations & Support of RHDH","Is distributed tracing required for RHDH itself, and to which backend?","A217: Is distributed tracing required for RHDH itself, and to which backend?
+
+— Day 7 · Observability · Additional","Additional","RHDH;Day 7;§21","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Observability","§21 Observability, Operations & Support of RHDH","A218","A218 | Observability, Operations & Support of RHDH","Which runbooks must exist at go-live, and who writes them?","A218: Which runbooks must exist at go-live, and who writes them?
+
+— Day 7 · Observability · Additional","Additional","RHDH;Day 7;§21","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Observability","§21 Observability, Operations & Support of RHDH","A219","A219 | Observability, Operations & Support of RHDH","What is the incident severity matrix for RHDH, and what are the response and resolution targets?","A219: What is the incident severity matrix for RHDH, and what are the response and resolution targets?
+
+— Day 7 · Observability · Additional","Additional","RHDH;Day 7;§21","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Observability","§21 Observability, Operations & Support of RHDH","A220","A220 | Observability, Operations & Support of RHDH","How will catalogue processing errors and failed entity refreshes be surfaced and actioned?","A220: How will catalogue processing errors and failed entity refreshes be surfaced and actioned?
+
+— Day 7 · Observability · Additional","Additional","RHDH;Day 7;§21","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Observability","§21 Observability, Operations & Support of RHDH","A221","A221 | Observability, Operations & Support of RHDH","What is the escalation path to Red Hat support, and who is authorised to raise cases?","A221: What is the escalation path to Red Hat support, and who is authorised to raise cases?
+
+— Day 7 · Observability · Additional","Additional","RHDH;Day 7;§21","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Observability","§21 Observability, Operations & Support of RHDH","A222","A222 | Observability, Operations & Support of RHDH","How will capacity be monitored, reviewed and forecast?","A222: How will capacity be monitored, reviewed and forecast?
+
+— Day 7 · Observability · Additional","Additional","RHDH;Day 7;§21","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Close-out","§22 Testing, Acceptance & Cutover","A223","A223 | Testing, Acceptance & Cutover","Which RHDH environments are needed for testing, and are they funded and scheduled?","A223: Which RHDH environments are needed for testing, and are they funded and scheduled?
+
+— Day 7 · Close-out · Additional","Additional","RHDH;Day 7;§22","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Close-out","§22 Testing, Acceptance & Cutover","A224","A224 | Testing, Acceptance & Cutover","What is the non-functional test plan — load, soak and failover?","A224: What is the non-functional test plan — load, soak and failover?
+
+— Day 7 · Close-out · Additional","Additional","RHDH;Day 7;§22","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Close-out","§22 Testing, Acceptance & Cutover","A225","A225 | Testing, Acceptance & Cutover","What load profile will be simulated, and against which acceptance thresholds?","A225: What load profile will be simulated, and against which acceptance thresholds?
+
+— Day 7 · Close-out · Additional","Additional","RHDH;Day 7;§22","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Close-out","§22 Testing, Acceptance & Cutover","A226","A226 | Testing, Acceptance & Cutover","Will a DR failover test be performed before go-live, and who signs it off?","A226: Will a DR failover test be performed before go-live, and who signs it off?
+
+— Day 7 · Close-out · Additional","Additional","RHDH;Day 7;§22","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Close-out","§22 Testing, Acceptance & Cutover","A227","A227 | Testing, Acceptance & Cutover","What are the UAT scenarios, and who performs them?","A227: What are the UAT scenarios, and who performs them?
+
+— Day 7 · Close-out · Additional","Additional","RHDH;Day 7;§22","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Close-out","§22 Testing, Acceptance & Cutover","A228","A228 | Testing, Acceptance & Cutover","What are the go-live criteria, and which forum gives go/no-go?","A228: What are the go-live criteria, and which forum gives go/no-go?
+
+— Day 7 · Close-out · Additional","Additional","RHDH;Day 7;§22","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Close-out","§22 Testing, Acceptance & Cutover","A229","A229 | Testing, Acceptance & Cutover","What is the cutover plan, and what is the fallback if it fails?","A229: What is the cutover plan, and what is the fallback if it fails?
+
+— Day 7 · Close-out · Additional","Additional","RHDH;Day 7;§22","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Close-out","§22 Testing, Acceptance & Cutover","A230","A230 | Testing, Acceptance & Cutover","What is the communications and enablement plan for users at launch?","A230: What is the communications and enablement plan for users at launch?
+
+— Day 7 · Close-out · Additional","Additional","RHDH;Day 7;§22","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Close-out","§22 Testing, Acceptance & Cutover","A231","A231 | Testing, Acceptance & Cutover","Which existing tools or portals are decommissioned at cutover, and on what date?","A231: Which existing tools or portals are decommissioned at cutover, and on what date?
+
+— Day 7 · Close-out · Additional","Additional","RHDH;Day 7;§22","light_yellow"
+"Day 7","DH-D7 · Architecture, IAM & close-out","Close-out","§22 Testing, Acceptance & Cutover","A232","A232 | Testing, Acceptance & Cutover","What is the post-go-live hypercare period, and who staffs it?","A232: What is the post-go-live hypercare period, and who staffs it?
+
+— Day 7 · Close-out · Additional","Additional","RHDH;Day 7;§22","light_yellow"

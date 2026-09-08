@@ -1,0 +1,37 @@
+---
+# Istio Gateway — prefer the shared platform gateway in istio-system for corporate TLS.
+# Traffic path: OpenShift Route (passthrough) → istio-ingressgateway → VirtualService → Backstage
+#
+# With corporate CA, TLS terminates at platform-ingressgateway (istio-system) using
+# Secret istio-ingressgateway-certs. This per-app Gateway is optional; VirtualService
+# should reference istio-system/platform-ingressgateway instead (see virtual-service.yaml).
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: rhdh-gateway
+  namespace: rhdh
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: developer-hub
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  selector:
+    istio: ingressgateway   # selects the istio-ingressgateway pod in istio-system
+  servers:
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      tls:
+        mode: PASSTHROUGH
+      hosts:
+        - "rhdh.apps.${CLUSTER_BASE_DOMAIN}"
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "rhdh.apps.${CLUSTER_BASE_DOMAIN}"
+      tls:
+        httpsRedirect: true

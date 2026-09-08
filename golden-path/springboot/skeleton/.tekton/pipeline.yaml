@@ -1,0 +1,157 @@
+---
+# Tekton PipelineRun trigger — fired by GitLab webhook on push to main.
+# Pipeline: clone → unit test → SonarQube scan → build image → push to Quay → sign with Cosign → update GitOps
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: ${{ values.appName }}-ci
+  namespace: ${{ values.targetNamespace }}-build
+  labels:
+    app.kubernetes.io/name: ${{ values.appName }}
+    app.kubernetes.io/part-of: acme-platform
+spec:
+  params:
+    - name: IMAGE
+      type: string
+      default: quay-registry.apps.${{ "${{" }} CLUSTER_BASE_DOMAIN {{ "}}" }}/acme/${{ values.appName }}
+    - name: GIT_URL
+      type: string
+    - name: GIT_REVISION
+      type: string
+      default: main
+
+  workspaces:
+    - name: source
+    - name: dockerconfig
+      optional: true
+
+  tasks:
+    # ── Clone ────────────────────────────────────────────────────────────────
+    - name: clone
+      taskRef:
+        resolver: cluster
+        params:
+          - name: kind
+            value: Task
+          - name: name
+            value: git-clone
+          - name: namespace
+            value: openshift-pipelines
+      params:
+        - name: url
+          value: $(params.GIT_URL)
+        - name: revision
+          value: $(params.GIT_REVISION)
+      workspaces:
+        - name: output
+          workspace: source
+
+    # ── Unit Tests ──────────────────────────────────────────────────────────
+    - name: unit-test
+      runAfter: [clone]
+      taskRef:
+        resolver: cluster
+        params:
+          - name: kind
+            value: Task
+          - name: name
+            value: gradle
+          - name: namespace
+            value: openshift-pipelines
+      params:
+        - name: GOALS
+          value: ["test", "--no-daemon"]
+      workspaces:
+        - name: source
+          workspace: source
+
+    # ── SonarQube Scan ──────────────────────────────────────────────────────
+    - name: sonarqube-scan
+      runAfter: [unit-test]
+      taskRef:
+        resolver: cluster
+        params:
+          - name: kind
+            value: Task
+          - name: name
+            value: sonarqube-scanner
+          - name: namespace
+            value: openshift-pipelines
+      params:
+        - name: SONAR_HOST_URL
+          value: https://sonarqube.$(params.CLUSTER_BASE_DOMAIN)
+        - name: SONAR_PROJECT_KEY
+          value: ${{ values.sonarProject }}
+      workspaces:
+        - name: source
+          workspace: source
+
+    # ── Build & Push Image ──────────────────────────────────────────────────
+    - name: build-push
+      runAfter: [sonarqube-scan]
+      taskRef:
+        resolver: cluster
+        params:
+          - name: kind
+            value: Task
+          - name: name
+            value: buildah
+          - name: namespace
+            value: openshift-pipelines
+      params:
+        - name: IMAGE
+          value: $(params.IMAGE):$(params.GIT_REVISION)
+        - name: DOCKERFILE
+          value: ./Dockerfile
+        - name: CONTEXT
+          value: .
+      workspaces:
+        - name: source
+          workspace: source
+        - name: dockerconfig
+          workspace: dockerconfig
+
+    {% if values.enableCosign %}
+    # ── Sign Image with Cosign ───────────────────────────────────────────────
+    - name: sign-image
+      runAfter: [build-push]
+      taskRef:
+        resolver: cluster
+        params:
+          - name: kind
+            value: Task
+          - name: name
+            value: cosign-sign
+          - name: namespace
+            value: openshift-pipelines
+      params:
+        - name: IMAGE
+          value: $(params.IMAGE):$(params.GIT_REVISION)
+    {% endif %}
+
+    # ── Update GitOps Repo (triggers ArgoCD sync) ────────────────────────────
+    - name: update-gitops
+      runAfter: [build-push]
+      taskRef:
+        resolver: cluster
+        params:
+          - name: kind
+            value: Task
+          - name: name
+            value: git-update-deployment
+          - name: namespace
+            value: openshift-pipelines
+      params:
+        - name: GIT_REPOSITORY
+          value: https://gitlab-gitlab.apps.${{ "${{" }} CLUSTER_BASE_DOMAIN {{ "}}" }}/${{ values.repoOwner }}/${{ values.appName }}-gitops.git
+        - name: CURRENT_IMAGE
+          value: $(params.IMAGE):latest
+        - name: NEW_IMAGE
+          value: $(params.IMAGE):$(params.GIT_REVISION)
+        - name: NEW_DIGEST
+          value: $(tasks.build-push.results.IMAGE_DIGEST)
+        - name: KUSTOMIZATION_PATH
+          value: overlays/dev
+      workspaces:
+        - name: workspace
+          workspace: source

@@ -1,0 +1,21 @@
+---
+# Platform-managed OpenShift namespaces — shown in scaffolder EntityPicker dropdowns.
+# Platform team adds entries here when a new team namespace is provisioned in a DC.
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: acme-kubernetes-namespaces
+  description: Approved Kubernetes namespaces for golden-path deployment targets
+  tags:
+    - golden-path
+    - kubernetes
+spec:
+  targets:
+    - ./namespaces/nonprod-dc1-acme-dev.yaml
+    - ./namespaces/nonprod-dc1-payments-dev.yaml
+    - ./namespaces/nonprod-dc1-lending-dev.yaml
+    - ./namespaces/nonprod-dc2-acme-dev.yaml
+    - ./namespaces/nonprod-dc2-payments-dev.yaml
+    - ./namespaces/nonprod-dc2-lending-dev.yaml
+    - ./namespaces/nonprod-dc1-acme-prod.yaml
+    - ./namespaces/nonprod-dc2-acme-prod.yaml

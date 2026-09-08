@@ -1,0 +1,31 @@
+﻿Sticky
+"A191
+
+Which required plugins are Red Hat supported, which are community, and which must be built?"
+"A192
+
+How will dynamic plugins be packaged and served — from an OCI registry, or an internal npm mirror?"
+"A193
+
+Can Artifactory proxy npmjs for plugin dependencies, and is that approved?"
+"A194
+
+How will plugin versions be pinned, and what regression testing applies to an upgrade?"
+"A195
+
+What security review must a community plugin pass before it is enabled?"
+"A196
+
+Who owns and maintains custom plugins and custom scaffolder actions?"
+"A197
+
+What is the build and release pipeline for a custom plugin?"
+"A198
+
+What is the blast radius if a plugin fails to load — does RHDH still start?"
+"A199
+
+Do any plugins require elevated cluster permissions, and is that acceptable to security?"
+"A200
+
+How will the enabled plugin set and its configuration be documented for support handover?"

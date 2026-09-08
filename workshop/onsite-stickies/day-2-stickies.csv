@@ -1,0 +1,78 @@
+﻿Sticky
+"Recap Day 1
+
+Review Day 1 decisions and open items before RHDH deep-dive."
+"App-code vs release-pipeline
+(Golden Paths)
+
+Separate golden paths for application code vs release pipeline — or combined?"
+"Secure-by-default
+(Golden Paths)
+
+What security guardrails must templates apply automatically (no manual attestation)?"
+"Quarkus template scope
+(Golden Paths)
+
+What does the Quarkus golden-path template create? (repo, pipeline, namespace, catalog, mesh?)"
+"NodeJS template scope
+(Golden Paths)
+
+What does the NodeJS golden-path template create?"
+"Template ownership
+(Golden Paths)
+
+Who owns and maintains templates after go-live?"
+"Template governance
+(ACS & Supply chain)
+
+Governance gate for template changes and who approves."
+"Registries & base images
+(ACS & Supply chain)
+
+Image registries, base image sourcing, patching, and promotion."
+"Scan gates
+(ACS & Supply chain)
+
+Cosign, Snyk, SonarQube, Xray — which gates block build/deploy?"
+"CVE process
+(ACS & Supply chain)
+
+Vulnerability thresholds and remediation SLA."
+"ACS ↔ Dev Hub template
+(ACS & Supply chain)
+
+Should ACS policy/vuln data integrate with Developer Hub templates?"
+"Plugin priority matrix
+(Integrations)
+
+Must / Should / Could for K8s, Jenkins, SonarQube, Snyk, Jira, Artifactory, Argo CD, API Connect, TechDocs."
+"Kubernetes plugin
+(Integrations)
+
+OpenShift/K8s plugin scope — which clusters, what workload visibility?"
+"CI & quality plugins
+(Integrations)
+
+Jenkins, SonarQube, Snyk — what surfaces on the component page?"
+"Argo CD & API Connect
+(Integrations)
+
+GitOps and API catalogue integration requirements."
+"Auth & permissions
+(Plugins deep dive)
+
+Bitbucket, Jenkins, K8s, SonarQube, Snyk, Jira, Artifactory — auth model and token scope. *(if time)*"
+"Extended integrations
+(Plugins deep dive)
+
+ServiceNow, Vault, Dynatrace, Splunk, DX, CloudBees, PagerDuty — in scope? *(if time)*"
+"RHDH ↔ Service Mesh
+(Mesh boundary)
+
+Should templates auto-enrol services in mesh? HTTPRoutes in golden path?"
+"Day 2 decisions
+
+Log decisions and items explicitly deferred to Day 7."
+"Parking lot
+
+Plugin or golden-path items for Day 7 or remote."

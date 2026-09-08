@@ -1,0 +1,34 @@
+﻿Sticky
+"159
+
+What is the expectation for RHDH and Service Mesh integration, concretely? (e.g. do we expect resilience configuration to be created when the app is created?)"
+"160
+
+Should the mesh service graph be surfaced inside Developer Hub?"
+"161
+
+Should a template also register the service into the mesh?"
+"162
+
+Which applications go into the mesh first, and is that the same set as the RHDH pilot?"
+"163
+
+Should data-plane configs be baked into golden-path templates?"
+"164
+
+Should applications include their required HTTPRoutes when RHDH templates are hydrated?"
+"A148
+
+Should mesh objects such as gateways and waypoints be modelled as catalogue Resources?"
+"A149
+
+Should Kiali be embedded as a plugin, or linked to externally?"
+"A150
+
+Is mesh onboarding a template parameter, or a separate workflow?"
+"A151
+
+Should templates generate mesh policy — AuthorizationPolicy, PeerAuthentication, HTTPRoute?"
+"A152
+
+Who owns mesh configuration after a template has generated it?"

@@ -1,0 +1,528 @@
+﻿Sticky
+"Agenda & ground rules
+(Kick-off)
+
+Set agenda, goals, attendees, and workshop ground rules for the full onsite week."
+"Decision owners
+(Kick-off)
+
+Name decision owners for platform, identity, security, app teams, and delivery sponsor."
+"6-month success
+(Success & adoption)
+
+What does success look like for Developer Hub and the platform in 6 months?"
+"Exec sponsor & adoption
+(Success & adoption)
+
+Who is the exec sponsor? Is adoption mandated, incentivised, or opt-in?"
+"Pain points
+(Success & adoption)
+
+Top developer and platform pain points driving this initiative."
+"Application architecture
+(Digi 2.0 landscape)
+
+High-level Digi 2.0 application architecture — services, systems, deployment patterns."
+"Scale & team topology
+(Digi 2.0 landscape)
+
+Number of services, teams, streams, and how platform onboarding works today."
+"Developer onboarding
+(Digi 2.0 landscape)
+
+How long does it take a new developer to become productive and deploy?"
+"Release overview
+(Digi 2.0 landscape)
+
+High-level development and release overview across the programme."
+"Pilot teams
+(Digi 2.0 landscape)
+
+Which teams are in scope for Phase 1 / pilot — and why those?"
+"Source control
+(SCM & CI/CD)
+
+Authoritative SCM — Git, Bitbucket, repos, branching model."
+"CI/CD tooling
+(SCM & CI/CD)
+
+Jenkins, Tekton, and other CI/CD tools used to build and deploy."
+"Release cadence
+(SCM & CI/CD)
+
+Current release frequency and friction points."
+"Deployment & promotion
+(SCM & CI/CD)
+
+Deployment method and environment promotion (eDev → Non-Prod → Prod)."
+"In scope / out of scope
+(Scope)
+
+What is in scope for this engagement — and explicitly out?"
+"RHDH + SM big picture
+(Scope)
+
+Where Developer Hub, Service Mesh, and OpenShift sit in the toolchain (MBPM context)."
+"Clusters in scope
+(Scope)
+
+Which OpenShift clusters and environments are in scope?"
+"Discovery exit criteria
+
+What must be decided before detailed design can start?"
+"Day 1 open items
+
+Capture open questions, owners, and offline actions before Day 2."
+"Parking lot
+
+Items deferred to later days or remote sessions."
+"Recap Day 1
+
+Review Day 1 decisions and open items before RHDH deep-dive."
+"App-code vs release-pipeline
+(Golden Paths)
+
+Separate golden paths for application code vs release pipeline — or combined?"
+"Secure-by-default
+(Golden Paths)
+
+What security guardrails must templates apply automatically (no manual attestation)?"
+"Quarkus template scope
+(Golden Paths)
+
+What does the Quarkus golden-path template create? (repo, pipeline, namespace, catalog, mesh?)"
+"NodeJS template scope
+(Golden Paths)
+
+What does the NodeJS golden-path template create?"
+"Template ownership
+(Golden Paths)
+
+Who owns and maintains templates after go-live?"
+"Template governance
+(ACS & Supply chain)
+
+Governance gate for template changes and who approves."
+"Registries & base images
+(ACS & Supply chain)
+
+Image registries, base image sourcing, patching, and promotion."
+"Scan gates
+(ACS & Supply chain)
+
+Cosign, Snyk, SonarQube, Xray — which gates block build/deploy?"
+"CVE process
+(ACS & Supply chain)
+
+Vulnerability thresholds and remediation SLA."
+"ACS ↔ Dev Hub template
+(ACS & Supply chain)
+
+Should ACS policy/vuln data integrate with Developer Hub templates?"
+"Plugin priority matrix
+(Integrations)
+
+Must / Should / Could for K8s, Jenkins, SonarQube, Snyk, Jira, Artifactory, Argo CD, API Connect, TechDocs."
+"Kubernetes plugin
+(Integrations)
+
+OpenShift/K8s plugin scope — which clusters, what workload visibility?"
+"CI & quality plugins
+(Integrations)
+
+Jenkins, SonarQube, Snyk — what surfaces on the component page?"
+"Argo CD & API Connect
+(Integrations)
+
+GitOps and API catalogue integration requirements."
+"Auth & permissions
+(Plugins deep dive)
+
+Bitbucket, Jenkins, K8s, SonarQube, Snyk, Jira, Artifactory — auth model and token scope. *(if time)*"
+"Extended integrations
+(Plugins deep dive)
+
+ServiceNow, Vault, Dynatrace, Splunk, DX, CloudBees, PagerDuty — in scope? *(if time)*"
+"RHDH ↔ Service Mesh
+(Mesh boundary)
+
+Should templates auto-enrol services in mesh? HTTPRoutes in golden path?"
+"Day 2 decisions
+
+Log decisions and items explicitly deferred to Day 7."
+"Parking lot
+
+Plugin or golden-path items for Day 7 or remote."
+"Recap Day 2
+
+Brief recap of RHDH Day 2 — mesh-relevant decisions only."
+"Architecture locked
+(DECIDED)
+
+Ambient · mTLS · Waypoint · shared ingress gateway · OSSM 3 — do not re-debate."
+"PoC learnings
+(Mesh topology)
+
+Preferences and learnings from the earlier Service Mesh PoC."
+"Namespace & tenancy
+(Mesh topology)
+
+Shared responsibility model between Platform Engineering and app teams."
+"Phase 1 namespaces
+(Rollout)
+
+Which services/namespaces enrol in Phase 1?"
+"Rollout sequence
+(Rollout)
+
+eDev → Non-Prod → Prod sequence and pilot app for validation."
+"Exclusion list
+(Rollout)
+
+Namespaces or workloads explicitly excluded from mesh."
+"Future expansion
+(Rollout)
+
+Single vs multiple control plane and data plane expansion plans."
+"mTLS posture
+(mTLS)
+
+STRICT scope — all traffic, east-west only, or selective namespaces."
+"Migration path
+(mTLS)
+
+PERMISSIVE → STRICT migration approach and timeline."
+"Certificate / PKI lifecycle
+(PKI)
+
+Mesh CA vs Vault vs cert-manager + enterprise CA (ADCS/EJBCA/Venafi)."
+"Rotation & ownership
+(PKI)
+
+Rotation periods, PKI inventory visibility, who owns CA ops."
+"Ingress model today
+(Ingress)
+
+Routes / NGINX / F5 / Istio GW / Gateway API — current state."
+"Shared gateway & TLS
+(Ingress)
+
+Keep Routes + mesh? TLS termination point; internal vs external exposure."
+"Egress policy level
+(Egress)
+
+Controlled egress required? All / selective (PCI) / none."
+"Egress controls
+(Egress)
+
+ServiceEntry allowlists, DNS filtering, TLS inspection, DLP, external endpoints."
+"Day 3 decisions
+
+Capture foundation decisions for Days 4–6."
+"Mesh GitOps
+(GitOps)
+
+Are mesh policies managed via OpenShift GitOps (Argo CD)?"
+"Parking lot
+
+Mesh topics deferred to design phase."
+"Recap Day 3
+
+Review PKI, ingress, egress, and Phase 1 rollout list."
+"Trust domain design
+(Trust domain)
+
+Single trust domain vs per-env vs per-cluster — InfoSec view."
+"Tenancy model
+(Tenancy)
+
+Hard deny-all vs soft vs hybrid tenancy between namespaces/teams."
+"Service identity (SPIFFE)
+(Identity)
+
+One ServiceAccount per service; SPIFFE format; identity in AuthZ policies."
+"Deny-all default?
+(AuthZ)
+
+Is deny-all the platform baseline for AuthorizationPolicy?"
+"Policy ownership
+(AuthZ)
+
+Platform-owned vs team-owned vs policy-as-code (Kyverno + team extensions)."
+"Policy granularity
+(AuthZ)
+
+Namespace-level vs service-level vs method/path-level rules."
+"Pilot app access matrix
+(Access matrix)
+
+For pilot app(s): who may call whom — source × destination grid."
+"Lateral movement walkthrough
+(Blast radius)
+
+Compromised frontend / API / batch job — what can it reach?"
+"Acceptable blast radius
+(Blast radius)
+
+Required policy granularity to limit lateral movement."
+"Impersonation mitigations
+(Governance)
+
+Strict K8s RBAC, Kyverno deny wrong SA, PSA restricted."
+"AuthZ change process
+(Governance)
+
+Who can change AuthZ? GitOps-only vs emergency change?"
+"Policy audit
+(Governance)
+
+Audit of policy changes — Splunk / Git / ticket evidence."
+"Governance RACI
+(Governance)
+
+Propose → approve → deploy → audit swimlane for mesh policies."
+"SA naming standard
+(Identity)
+
+Naming convention for ServiceAccounts — one per service, no shared default."
+"Kyverno baseline
+(Governance)
+
+Role of Kyverno policy-as-code alongside mesh AuthorizationPolicy."
+"Access & governance pack
+(Deliverable)
+
+End-of-day deliverable: signed access matrix + governance RACI."
+"Day 4 open items
+
+Open questions and owners before Day 5."
+"Parking lot
+
+AuthZ detail deferred to design phase."
+"Recap Day 4
+
+Review trust domain, AuthZ model, and access matrix."
+"Waypoint scope
+(Waypoint)
+
+Which Phase 1 namespaces get a waypoint? (not all)"
+"L7 requirements
+(L7)
+
+Path AuthZ, JWT, header routing — which apps need L7?"
+"L4 vs L7 decision
+(L7)
+
+Is L4 (ztunnel) enough for most apps, with waypoint only where needed?"
+"Traffic Phase 1 scope
+(Traffic)
+
+Retries, timeouts, canary — in Phase 1 or backlog?"
+"Resilience tooling
+(Traffic)
+
+Mesh-native weights vs Argo Rollouts / Flagger."
+"Patterns to prove
+(Traffic)
+
+Which traffic/resilience patterns to prove in Non-Prod first?"
+"Shared ingress gateway
+(Ingress)
+
+Confirm one shared gateway in istio-system; host-based routing."
+"Corp TLS
+(Ingress)
+
+Corporate TLS on ingress — termination and cert ownership."
+"Ingress catalogue
+(Ingress)
+
+App, hostname, TLS owner — catalogue of north-south entry points."
+"Prod vs Non-Prod baseline
+(Prod)
+
+Three-column table: eDev · Non-Prod · Prod mesh standards."
+"STRICT mTLS in Prod
+(Prod)
+
+Prod-only STRICT mTLS and tighter AuthZ."
+"PCI / APRA / NZISM
+(Compliance)
+
+Compliance notes affecting mesh config in Prod zones."
+"Multi-cluster stance
+(Multi-cluster)
+
+In scope now or Phase 2? Services spanning clusters?"
+"Rate limiting & mirroring
+(Traffic)
+
+Per-route rate limit and traffic mirroring — Phase 1 or backlog?"
+"SOC2 / zone isolation
+(Compliance)
+
+SOC2 and PCI zone isolation requirements for mesh boundaries."
+"Connectivity & readiness pack
+(Deliverable)
+
+End-of-day deliverable: waypoint list + Prod table + traffic backlog."
+"Day 5 open items
+
+Open questions before Day 6."
+"Parking lot
+
+Traffic/compliance items for Phase 2."
+"Recap Days 3–5
+
+Summary of mesh foundation, security, and connectivity decisions."
+"Kiali consumers
+(Observability)
+
+Who uses Kiali daily? Which namespaces visible per team?"
+"Service graph & metrics
+(Observability)
+
+Kiali graph, Prometheus/Grafana mesh metrics — who consumes?"
+"Tracing backend
+(Observability)
+
+Jaeger / Tempo / Zipkin / Datadog / Dynatrace / none for Phase 1."
+"Security logging events
+(Splunk)
+
+Access logs, AuthZ DENY, mTLS failures, policy-change audit, egress blocks."
+"HEC & retention
+(Splunk)
+
+Splunk HEC/index ownership and retention for mesh events."
+"Control plane ownership
+(Day-2)
+
+Who owns istiod, ztunnel, waypoint upgrades?"
+"On-call & runbooks
+(Day-2)
+
+On-call model and runbooks for mesh incidents."
+"Upgrade strategy
+(Day-2)
+
+Auto vs manual vs pinned upgrades for mesh components."
+"Developer model
+(Developer UX)
+
+Transparent vs aware vs full-owner of mesh config."
+"Golden-path auto-enrol
+(Developer UX)
+
+Should new namespaces auto-enrol in ambient via golden path?"
+"Risk register
+(Risks)
+
+Lateral movement, impersonation, egress, policy drift, non-enrolled workloads."
+"Assumptions & constraints
+(Risks)
+
+Security assumptions and design constraints to carry into build."
+"Evidence map
+(Splunk)
+
+Control → evidence mapping (Git, logs, ticket) for compliance."
+"Enrolment spec
+(Developer UX)
+
+Golden-path spec: labels and objects required to enrol a new namespace."
+"Consumer map
+(Observability)
+
+Who uses which tool (Kiali, Grafana, Splunk) and for what decision."
+"Namespace policy ownership
+(Day-2)
+
+Who owns namespace-level policies vs platform control plane."
+"Operating model
+(Deliverable)
+
+Day-2 RACI + observability model + evidence catalogue."
+"SM close-out
+
+Decision log, open items, owners, design phase kick-off — **SM discovery complete**."
+"Parking lot
+
+Mesh ops items for implementation phase."
+"Recap Day 2
+
+Review Day 2 RHDH decisions and outstanding plugin items."
+"Plugins deep dive
+(Plugins)
+
+Continue plugin auth, permissions, and integration endpoints if outstanding."
+"Exposure model
+(Architecture)
+
+Internal only vs external; domain, Route, and TLS approach."
+"TechDocs storage
+(Architecture)
+
+Local builder vs object storage; Confluence migration scope."
+"Catalog population
+(Architecture)
+
+Manual catalog-info, SCM discovery, or bulk import — ownership model."
+"Entra OIDC
+(IAM & RBAC)
+
+Authentication model, claims, and Entra app registration ownership."
+"Personas & groups
+(IAM & RBAC)
+
+Personas, Entra group mapping, MFA/session requirements."
+"Admin & break-glass
+(IAM & RBAC)
+
+RHDH admin access and break-glass when IdP is unavailable."
+"Plugin governance gate
+(Security)
+
+Who approves new plugins; security review for community plugins."
+"Secrets & token scope
+(Security)
+
+Vault/CyberArk/ESO; integration credential rotation; privilege escalation risk."
+"SLA & PostgreSQL
+(HA & resilience)
+
+Availability SLA; PostgreSQL choice (in-cluster vs bank service); HA approach."
+"Replicas & DR
+(HA & resilience)
+
+Replica count, sizing, DR RTO/RPO, upgrade test instance."
+"Branding & homepage
+(Branding & UX)
+
+Theming, homepage, dashboards, developer UX expectations."
+"RHDH monitoring
+(Observability)
+
+Audit logs, telemetry, monitoring, and Splunk forwarding for RHDH."
+"DevSpaces sizing
+(DevSpaces)
+
+Sizing and capacity planning for developer workspaces."
+"PE ownership & RAID
+(Operating model)
+
+Platform engineering ownership, RACI, risks, assumptions, dependencies."
+"Cluster placement
+(Architecture)
+
+Which cluster(s) host RHDH — dev, non-prod, prod topology."
+"Operator install
+(Architecture)
+
+RHDH Operator install model — GitOps-managed Backstage CR."
+"Dev Hub close-out
+
+Decisions, open questions, owners, next steps — **RHDH discovery complete**."
+"Parking lot
+
+RHDH items for design / implementation phase."

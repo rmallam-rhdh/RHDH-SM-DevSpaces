@@ -1,0 +1,85 @@
+---
+# ClusterRole — read-only k8s access for the RHDH backend.
+# Covers: core resources, Tekton, Routes, ArgoCD, Sail Operator / Istio mesh CRs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: rhdh-kubernetes-reader
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: developer-hub
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "services", "configmaps", "namespaces", "nodes",
+                "events", "resourcequotas", "limitranges", "serviceaccounts"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["apps"]
+    resources: ["deployments", "replicasets", "statefulsets", "daemonsets"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["batch"]
+    resources: ["jobs", "cronjobs"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["autoscaling"]
+    resources: ["horizontalpodautoscalers"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["networking.k8s.io"]
+    resources: ["ingresses", "networkpolicies"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["route.openshift.io"]
+    resources: ["routes"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["tekton.dev"]
+    resources: ["pipelineruns", "taskruns", "pipelines", "tasks"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["argoproj.io"]
+    resources: ["applications", "appprojects", "applicationsets"]
+    verbs: ["get", "list", "watch"]
+  # Sail Operator (OSSM3) mesh CRs
+  - apiGroups: ["sailoperator.io"]
+    resources: ["istios", "istiocnis", "ztunnels", "istiorevisions"]
+    verbs: ["get", "list", "watch"]
+  # Istio networking and security CRs
+  - apiGroups: ["networking.istio.io", "security.istio.io"]
+    resources: ["virtualservices", "destinationrules", "gateways",
+                "peerauthentications", "authorizationpolicies", "sidecars"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["operators.coreos.com"]
+    resources: ["subscriptions", "clusterserviceversions", "installplans"]
+    verbs: ["get", "list", "watch"]
+---
+# Bind the RHDH service account to the ClusterRole.
+# RHDH 1.9 operator creates the SA as: default-<CR-name>  or  <CR-name>-rhdh
+# The safe name to reference is "default" in the rhdh namespace (operator default SA).
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: rhdh-kubernetes-reader-binding
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: developer-hub
+subjects:
+  - kind: ServiceAccount
+    name: default         # RHDH operator uses the namespace default SA by default
+    namespace: rhdh
+roleRef:
+  kind: ClusterRole
+  name: rhdh-kubernetes-reader
+  apiGroup: rbac.authorization.k8s.io
+---
+# Allow Kiali (in istio-system) to read workload metadata from the rhdh namespace.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: rhdh-kiali-viewer
+  namespace: rhdh
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: developer-hub
+subjects:
+  - kind: ServiceAccount
+    name: kiali-service-account
+    namespace: istio-system
+roleRef:
+  kind: ClusterRole
+  name: view
+  apiGroup: rbac.authorization.k8s.io

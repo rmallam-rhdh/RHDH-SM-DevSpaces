@@ -1,0 +1,21 @@
+---
+# Grants the rhdh namespace default ServiceAccount cluster-admin rights so
+# RHDH can read all resource types via the Kubernetes plugin.
+# The reference cluster uses this pattern; scope to cluster-reader in hardened envs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: rhdh-default-sa-cluster-admin
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: developer-hub
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: rhdh
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io

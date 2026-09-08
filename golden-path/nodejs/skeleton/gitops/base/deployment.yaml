@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${{ values.appName }}
+  labels:
+    app.kubernetes.io/name: ${{ values.appName }}
+    app.kubernetes.io/part-of: acme-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ${{ values.appName }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: ${{ values.appName }}
+    spec:
+      containers:
+        - name: ${{ values.appName }}
+          image: quay-registry.apps.${{ "${{" }} CLUSTER_BASE_DOMAIN {{ "}}" }}/acme/${{ values.appName }}:latest
+          ports:
+            - name: http
+              containerPort: ${{ values.port }}
+          env:
+            - name: PORT
+              value: "${{ values.port }}"
+            - name: NODE_ENV
+              value: "production"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          resources:
+            requests:
+              cpu: "${{ values.cpuRequest }}"
+              memory: "${{ values.memoryRequest }}"
+            limits:
+              cpu: "${{ values.cpuLimit }}"
+              memory: "${{ values.memoryLimit }}"

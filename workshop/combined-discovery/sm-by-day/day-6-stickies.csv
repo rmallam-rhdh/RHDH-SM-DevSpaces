@@ -1,0 +1,217 @@
+﻿Sticky
+"M97 | §33 Observability, Tracing & Logging
+
+What observability does the mesh need — Kiali, distributed tracing, metrics — and where do they land?"
+"M98 | §33 Observability, Tracing & Logging
+
+Is Kiali a planned visualisation for observability?"
+"M99 | §33 Observability, Tracing & Logging
+
+Is tracing already in use, and which backend — Tempo, Jaeger, or a commercial APM?"
+"M100 | §33 Observability, Tracing & Logging
+
+What is required for distributed tracing — Envoy access logs, object storage?"
+"M101 | §33 Observability, Tracing & Logging
+
+Distributed tracing needs application-level context propagation — who instruments the applications?"
+"M102 | §33 Observability, Tracing & Logging
+
+Does Dynatrace already propagate trace headers, or is that new work?"
+"M103 | §33 Observability, Tracing & Logging
+
+Where do traces land, and what is the retention?"
+"M104 | §33 Observability, Tracing & Logging
+
+Envoy access logs are high volume — what is the Splunk ingest cost at full adoption?"
+"M105 | §33 Observability, Tracing & Logging
+
+Which system owns mesh telemetry — Splunk, Dynatrace, Grafana, or RHACM?"
+"M106 | §33 Observability, Tracing & Logging
+
+Does RHACM observability already collect Istio metrics, or is that additional?"
+"M107 | §33 Observability, Tracing & Logging
+
+What is required for application metrics and user workload monitoring?"
+"M108 | §33 Observability, Tracing & Logging
+
+Are there application custom metrics that need to be monitored?"
+"M109 | §33 Observability, Tracing & Logging
+
+Should Perses built-in custom dashboards be considered?"
+"M110 | §33 Observability, Tracing & Logging
+
+Is centralised observability required?"
+"M111 | §33 Observability, Tracing & Logging
+
+What central logging stack supports mesh observability?"
+"A330 | §33 Observability, Tracing & Logging
+
+Which mesh metrics will be retained, at what cardinality, and for how long?"
+"A331 | §33 Observability, Tracing & Logging
+
+Is Prometheus federation or RHACM observability the collection path for mesh metrics?"
+"A332 | §33 Observability, Tracing & Logging
+
+What sampling rate is required for distributed tracing, and is head or tail sampling used?"
+"A333 | §33 Observability, Tracing & Logging
+
+Which tracing backend is authoritative — Tempo, Jaeger or Dynatrace — and is there duplication?"
+"A334 | §33 Observability, Tracing & Logging
+
+Which trace header format will be standard — W3C traceparent or B3 — and does Dynatrace agree?"
+"A335 | §33 Observability, Tracing & Logging
+
+Which services must be instrumented for context propagation, and who does that work?"
+"A336 | §33 Observability, Tracing & Logging
+
+Will Envoy access logs be enabled everywhere, sampled, or only on demand?"
+"A337 | §33 Observability, Tracing & Logging
+
+What is the estimated Splunk ingest volume and cost from mesh logs at full adoption?"
+"A338 | §33 Observability, Tracing & Logging
+
+Which dashboards and alerts are required for mesh health, and who owns them?"
+"A339 | §33 Observability, Tracing & Logging
+
+Will Kiali be exposed to application teams, and with what authentication and RBAC?"
+"A340 | §33 Observability, Tracing & Logging
+
+What is the retention and storage sizing for mesh telemetry in ODF?"
+"A341 | §33 Observability, Tracing & Logging
+
+How will golden signals per service be surfaced to developers — in Kiali, Grafana, or RHDH?"
+"M112 | §34 Performance, Sizing & Capacity
+
+What is the acceptable latency and resource overhead from the mesh?"
+"M113 | §34 Performance, Sizing & Capacity
+
+What cluster storage is available for mesh telemetry?"
+"A342 | §34 Performance, Sizing & Capacity
+
+What latency budget is acceptable per proxy hop, and has it been measured?"
+"A343 | §34 Performance, Sizing & Capacity
+
+What CPU and memory overhead per pod or per node is budgeted for the data plane?"
+"A344 | §34 Performance, Sizing & Capacity
+
+What is the control plane sizing at the expected service and endpoint count?"
+"A345 | §34 Performance, Sizing & Capacity
+
+Has a baseline performance test been run before mesh onboarding, for comparison?"
+"A346 | §34 Performance, Sizing & Capacity
+
+What load test will validate the mesh under peak Digi 2.0 traffic?"
+"A347 | §34 Performance, Sizing & Capacity
+
+What is the impact on node capacity planning, given n-2 capacity is maintained?"
+"A348 | §34 Performance, Sizing & Capacity
+
+How will mesh resource consumption be monitored, and charged back if at all?"
+"A349 | §34 Performance, Sizing & Capacity
+
+How does the mesh behave under node pressure or eviction?"
+"M114 | §35 GitOps, Golden Paths & Mesh Configuration
+
+How will mesh configuration be managed — GitOps or manual?"
+"M115 | §35 GitOps, Golden Paths & Mesh Configuration
+
+What is the preferred Git structure for GitOps?"
+"M116 | §35 GitOps, Golden Paths & Mesh Configuration
+
+Should data-plane configs be baked into Golden Path templates?"
+"M117 | §35 GitOps, Golden Paths & Mesh Configuration
+
+Which mesh resources go into Golden Path templates — Gateway, VirtualService, AuthorizationPolicy?"
+"M118 | §35 GitOps, Golden Paths & Mesh Configuration
+
+How do template changes reach services already created from an older template?"
+"M119 | §35 GitOps, Golden Paths & Mesh Configuration
+
+Is GitOps continuous delivery orchestration — for example Argo Rollouts — required?"
+"A350 | §35 GitOps, Golden Paths & Mesh Configuration
+
+Which repository structure will hold mesh configuration — per team, per namespace, or central?"
+"A351 | §35 GitOps, Golden Paths & Mesh Configuration
+
+Who has write access to mesh configuration repositories, and what review is required?"
+"A352 | §35 GitOps, Golden Paths & Mesh Configuration
+
+Will Argo CD manage mesh resources, and in which project and with what sync policy?"
+"A353 | §35 GitOps, Golden Paths & Mesh Configuration
+
+How is drift between Git and cluster mesh configuration detected?"
+"A354 | §35 GitOps, Golden Paths & Mesh Configuration
+
+Which mesh resources are generated by RHDH templates, and which are hand-authored afterwards?"
+"A355 | §35 GitOps, Golden Paths & Mesh Configuration
+
+How are template-generated mesh resources kept in sync when the template changes?"
+"A356 | §35 GitOps, Golden Paths & Mesh Configuration
+
+Is there a validation or policy gate — Conftest, Kyverno, OPA — for mesh manifests before merge?"
+"A357 | §35 GitOps, Golden Paths & Mesh Configuration
+
+How are environment differences expressed — overlays, Helm values, or separate files?"
+"A358 | §35 GitOps, Golden Paths & Mesh Configuration
+
+What is the promotion path for a mesh configuration change from dev to prod?"
+"M120 | §36 Mesh Operations, Support & Skills
+
+Who operates the mesh control plane after go-live, and do they have Istio skills today?"
+"M121 | §36 Mesh Operations, Support & Skills
+
+What does a mesh-related production incident look like, and who is on call for it?"
+"A359 | §36 Mesh Operations, Support & Skills
+
+Which team operates the mesh, and is it the same team that operates RHDH?"
+"A360 | §36 Mesh Operations, Support & Skills
+
+What Istio skills exist today, and what training is planned before go-live?"
+"A361 | §36 Mesh Operations, Support & Skills
+
+What runbooks are required — control plane down, certificate expiry, policy blocking traffic, gateway failure?"
+"A362 | §36 Mesh Operations, Support & Skills
+
+What is the on-call rota and severity matrix for mesh incidents?"
+"A363 | §36 Mesh Operations, Support & Skills
+
+What diagnostic tooling and access will L1 and L2 support have?"
+"A364 | §36 Mesh Operations, Support & Skills
+
+What is the escalation path to Red Hat for mesh issues, and who may raise cases?"
+"A365 | §36 Mesh Operations, Support & Skills
+
+How will mesh configuration changes flow through the change management process?"
+"A366 | §36 Mesh Operations, Support & Skills
+
+What is the mesh capacity and health review cadence?"
+"A367 | §36 Mesh Operations, Support & Skills
+
+Which mesh subscriptions and entitlements are in place?"
+"A368 | §37 Mesh Testing, Migration & Cutover
+
+What is the phased onboarding plan — which namespaces, in what order, and over what period?"
+"A369 | §37 Mesh Testing, Migration & Cutover
+
+What is the rollback plan for a namespace that fails onboarding?"
+"A370 | §37 Mesh Testing, Migration & Cutover
+
+How will an application be validated as working correctly after mesh onboarding?"
+"A371 | §37 Mesh Testing, Migration & Cutover
+
+What non-functional tests are required before the first production namespace joins?"
+"A372 | §37 Mesh Testing, Migration & Cutover
+
+Will a data centre failover test be performed with the mesh in place?"
+"A373 | §37 Mesh Testing, Migration & Cutover
+
+What are the go/no-go criteria for enabling strict mTLS in production?"
+"A374 | §37 Mesh Testing, Migration & Cutover
+
+Which existing components are decommissioned as the mesh takes over, and when?"
+"A375 | §37 Mesh Testing, Migration & Cutover
+
+What is the communication and enablement plan for application teams?"
+"A376 | §37 Mesh Testing, Migration & Cutover
+
+What is the hypercare arrangement after the first production onboarding?"

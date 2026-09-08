@@ -1,0 +1,120 @@
+---
+# POLICY: require-image-digest
+# ─────────────────────────────────────────────────────────────────────────────
+# Production namespaces (acme.io/env=prod) must reference container images
+# by digest (sha256:...) not by mutable tag. This is a DevOps rollout gate:
+# the CI pipeline must pin the digest after pushing to Artifactory/Quay.
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-image-digest-in-prod
+  annotations:
+    policies.kyverno.io/title: Require Image Digest in Production
+    policies.kyverno.io/category: DevOps Release Gates
+    policies.kyverno.io/severity: high
+    policies.kyverno.io/description: >
+      In production namespaces, all container images must be referenced by
+      digest (sha256:...) rather than a mutable tag. The CI/CD pipeline
+      (Jenkins / Tekton) is responsible for pinning digests after the image
+      is pushed and signed with Cosign.
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: check-image-digest
+      match:
+        any:
+          - resources:
+              kinds: [Pod]
+              namespaceSelector:
+                matchLabels:
+                  acme.io/env: prod
+      validate:
+        message: >
+          Production pods must use image digests (sha256:...).
+          Tag: {{ images.containers.*.tag }} is not allowed in production.
+          Pin with: image@sha256:<digest>
+        foreach:
+          - list: request.object.spec.containers
+            pattern:
+              image: "*@sha256:*"
+---
+# POLICY: require-cosign-signature
+# ─────────────────────────────────────────────────────────────────────────────
+# All images deployed to production must be signed with Cosign via the
+# Red Hat Trusted Artifact Signer (RHTAS / Sigstore). Unsigned images are blocked.
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-cosign-signature
+  annotations:
+    policies.kyverno.io/title: Require Cosign Image Signature
+    policies.kyverno.io/category: DevOps Release Gates
+    policies.kyverno.io/severity: critical
+    policies.kyverno.io/description: >
+      Container images deployed to production must have a valid Cosign signature
+      verifiable against the Acme Sigstore transparency log (RHTAS).
+      The Jenkins/Tekton pipeline signs images as part of the release pipeline.
+spec:
+  validationFailureAction: Enforce
+  background: false
+  rules:
+    - name: verify-image-signature
+      match:
+        any:
+          - resources:
+              kinds: [Pod]
+              namespaceSelector:
+                matchLabels:
+                  acme.io/env: prod
+      verifyImages:
+        - imageReferences:
+            - "quay-registry.apps.*/acme/*"
+            - "${ARTIFACTORY_BASE_URL}/acme/*"
+          attestors:
+            - count: 1
+              entries:
+                - keyless:
+                    issuer: "https://rhtas.${CLUSTER_BASE_DOMAIN}"
+                    subject: "https://bitbucket.org/acme/*"
+                    rekor:
+                      url: "https://rhtas.${CLUSTER_BASE_DOMAIN}"
+---
+# POLICY: require-jira-ticket-annotation
+# ─────────────────────────────────────────────────────────────────────────────
+# Every Deployment in a production namespace must carry a Jira ticket annotation
+# referencing the change request that approved this deployment.
+# This is a DevOps integration gate: the release pipeline template injects this
+# annotation automatically from the Jira issue key.
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-jira-ticket-annotation
+  annotations:
+    policies.kyverno.io/title: Require Jira Change Ticket on Production Deployments
+    policies.kyverno.io/category: DevOps Release Gates
+    policies.kyverno.io/severity: medium
+    policies.kyverno.io/description: >
+      Production Deployments must have a acme.io/jira-change-ticket annotation
+      referencing the approved Jira change request. The release pipeline sets this
+      automatically. Manual deployments without a ticket are blocked.
+spec:
+  validationFailureAction: Audit
+  background: true
+  rules:
+    - name: check-jira-annotation
+      match:
+        any:
+          - resources:
+              kinds: [Deployment]
+              namespaceSelector:
+                matchLabels:
+                  acme.io/env: prod
+      validate:
+        message: >
+          Production Deployments must have annotation acme.io/jira-change-ticket
+          set to the approved Jira change request key (e.g. CHG-1234).
+        pattern:
+          metadata:
+            annotations:
+              acme.io/jira-change-ticket: "?*"

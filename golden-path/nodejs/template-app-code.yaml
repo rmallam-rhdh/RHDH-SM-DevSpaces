@@ -1,0 +1,207 @@
+---
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: acme-nodejs-app-code
+  title: "Node.js App — Application Code"
+  description: >
+    [Step 1 of 2] Creates the Node.js source code repository with:
+    - Node 20 LTS + Fastify/Express/NestJS skeleton
+    - devfile.yaml for OpenShift Dev Spaces (VS Code, Git, npm, quality-gate commands)
+    - pre-commit / pre-push hooks + Bitbucket PR template
+    - TypeScript support + ESLint + Prettier
+    - Dockerfile, .dockerignore, .nvmrc
+    - SonarQube + Snyk quality gates configured
+    - OpenAPI spec scaffold
+    - Backstage catalog-info.yaml pre-wired with Jira + Snyk annotations
+  tags:
+    - nodejs
+    - javascript
+    - typescript
+    - recommended
+    - golden-path
+    - app-code
+spec:
+  owner: group:platform-team
+  type: service
+
+  parameters:
+    - title: Application Details
+      required: [appName, appDescription, jiraProjectKey]
+      properties:
+        appName:
+          title: Application Name
+          type: string
+          pattern: '^[a-z][a-z0-9-]{2,48}[a-z0-9]$'
+          ui:autofocus: true
+        appDescription:
+          title: Description
+          type: string
+        nodeVersion:
+          title: Node.js Version
+          type: string
+          default: "20"
+          enum: ["22", "20", "18"]
+        nodeFramework:
+          title: Framework
+          type: string
+          default: fastify
+          enum: [fastify, express, nestjs]
+        useTypeScript:
+          title: Use TypeScript
+          type: boolean
+          default: true
+        jiraProjectKey:
+          title: Jira Project Key
+          type: string
+        snykOrgSlug:
+          title: Snyk Organisation Slug
+          type: string
+          default: acme
+        sonarProjectKey:
+          title: SonarQube Project Key
+          type: string
+        exposeOpenApi:
+          title: Expose OpenAPI spec
+          type: boolean
+          default: true
+
+    - title: Repository
+      required: [bitbucketWorkspace]
+      properties:
+        bitbucketWorkspace:
+          title: Bitbucket Workspace
+          type: string
+          default: acme
+        repoVisibility:
+          title: Visibility
+          type: string
+          default: private
+          enum: [private, public]
+
+    - title: Deployment Target
+      required: [targetCluster]
+      properties:
+        targetCluster:
+          title: Non-Prod data centre
+          type: string
+          default: nonprod-dc1
+          enum:
+            - nonprod-dc1
+            - nonprod-dc2
+          enumNames:
+            - "Non-Prod DC-1"
+            - "Non-Prod DC-2"
+        port:
+          title: Application Port
+          type: integer
+          default: 3000
+        enrollInMesh:
+          title: Enrol in Service Mesh
+          type: boolean
+          default: true
+      dependencies:
+        targetCluster:
+          oneOf:
+            - title: Non-Prod DC-1
+              properties:
+                targetCluster:
+                  enum: [nonprod-dc1]
+                targetNamespace:
+                  title: Target namespace
+                  type: string
+                  ui:field: EntityPicker
+                  ui:options:
+                    allowedKinds:
+                      - Resource
+                    catalogFilter:
+                      - kind: Resource
+                        spec.type: kubernetes-namespace
+                        metadata.annotations.acme.io/cluster: nonprod-dc1
+                        metadata.annotations.acme.io/environment: dev
+              required: [targetNamespace]
+            - title: Non-Prod DC-2
+              properties:
+                targetCluster:
+                  enum: [nonprod-dc2]
+                targetNamespace:
+                  title: Target namespace
+                  type: string
+                  ui:field: EntityPicker
+                  ui:options:
+                    allowedKinds:
+                      - Resource
+                    catalogFilter:
+                      - kind: Resource
+                        spec.type: kubernetes-namespace
+                        metadata.annotations.acme.io/cluster: nonprod-dc2
+                        metadata.annotations.acme.io/environment: dev
+              required: [targetNamespace]
+
+    - title: Dev Spaces
+      properties:
+        devSpacesBaseUrl:
+          title: OpenShift Dev Spaces URL
+          type: string
+          default: https://devspaces.apps.nonprod-dc1.CLUSTER_BASE_DOMAIN
+
+  steps:
+    - id: fetch-skeleton
+      name: Fetch Node.js Skeleton
+      action: fetch:template
+      input:
+        url: ./skeleton
+        values:
+          appName: ${{ parameters.appName }}
+          appDescription: ${{ parameters.appDescription }}
+          nodeVersion: ${{ parameters.nodeVersion }}
+          nodeFramework: ${{ parameters.nodeFramework }}
+          useTypeScript: ${{ parameters.useTypeScript }}
+          jiraProjectKey: ${{ parameters.jiraProjectKey }}
+          snykOrgSlug: ${{ parameters.snykOrgSlug }}
+          sonarProjectKey: ${{ parameters.sonarProjectKey or parameters.appName }}
+          bitbucketWorkspace: ${{ parameters.bitbucketWorkspace }}
+          targetCluster: ${{ parameters.targetCluster }}
+          targetNamespace: ${{ parameters.targetNamespace | parseEntityRef | pick('name') }}
+          port: ${{ parameters.port }}
+          enrollInMesh: ${{ parameters.enrollInMesh }}
+          exposeOpenApi: ${{ parameters.exposeOpenApi }}
+          devSpacesBaseUrl: ${{ parameters.devSpacesBaseUrl }}
+
+    - id: fetch-governance
+      name: Fetch pre-commit hooks and PR template
+      action: fetch:template
+      input:
+        url: ../_shared/governance
+        values: {}
+
+    - id: publish-bitbucket
+      name: Publish to Bitbucket
+      action: publish:bitbucketCloud
+      input:
+        repoUrl: "bitbucket.org?workspace=${{ parameters.bitbucketWorkspace }}&repo=${{ parameters.appName }}"
+        description: ${{ parameters.appDescription }}
+        defaultBranch: main
+        repoVisibility: ${{ parameters.repoVisibility }}
+
+    - id: register
+      name: Register in Backstage Catalog
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps['publish-bitbucket'].output.repoContentsUrl }}
+        catalogInfoPath: /catalog-info.yaml
+
+  output:
+    links:
+      - title: Source Repository (Bitbucket)
+        url: ${{ steps['publish-bitbucket'].output.remoteUrl }}
+        icon: github
+      - title: Open in Catalog
+        icon: catalog
+        entityRef: ${{ steps['register'].output.entityRef }}
+      - title: Open in OpenShift Dev Spaces
+        url: ${{ parameters.devSpacesBaseUrl }}/dashboard/#/load/workspace/factory?url=${{ steps['publish-bitbucket'].output.remoteUrl }}&devfilePath=devfile.yaml
+        icon: catalog
+      - title: "Next: Create Release Pipeline"
+        url: /create?filters[kind]=Template&filters[tags]=release-pipeline&filters[tags]=nodejs
+        icon: scaffolder

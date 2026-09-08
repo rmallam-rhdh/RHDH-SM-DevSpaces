@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+# Fallback hook when pre-commit CLI is not installed (see scripts/install-git-hooks.sh).
+set -e
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$ROOT"
+exec ./scripts/quality-gate.sh --lint-only

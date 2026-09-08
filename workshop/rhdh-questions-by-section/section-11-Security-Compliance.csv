@@ -1,0 +1,67 @@
+﻿Sticky
+"123
+
+What security controls are currently in place for applications?"
+"124
+
+What controls does the security team enforce, and where are they enforced?"
+"125
+
+What new security controls are desired?"
+"126
+
+Which quality and security gates must every build pass?"
+"127
+
+What vulnerability thresholds block a build or a deployment?"
+"128
+
+Can a gate be overridden, by whom, and is it logged?"
+"129
+
+Is image signing or SBOM generation required?"
+"130
+
+How is segregation of duties defined between build, approve and deploy?"
+"131
+
+Which regulations apply — RBNZ, Privacy Act 2020, PCI DSS, ISO 27001?"
+"132
+
+Are there data residency requirements constraining where workloads and data may sit?"
+"133
+
+Does every production change require a change record, and can it be raised automatically?"
+"134
+
+Is there an approved tooling list, and how long does approval take for anything new?"
+"A119
+
+Has a threat model or security architecture review been scheduled for RHDH?"
+"A120
+
+Is penetration testing required before go-live, and what is the lead time to book it?"
+"A121
+
+What data classification applies to catalogue metadata, TechDocs and audit records?"
+"A122
+
+Must the RHDH image come from a trusted registry with signature verification enforced?"
+"A123
+
+Will RHACS policies apply to the RHDH namespace, in inform or enforce mode?"
+"A124
+
+Which network policies are required into and out of the RHDH namespace?"
+"A125
+
+Is audit log immutability or SIEM forwarding required, and to which system?"
+"A126
+
+What secrets scanning applies to repositories created by templates?"
+"A127
+
+What is the vulnerability remediation SLA for the RHDH platform itself?"
+"A128
+
+Are there regulatory constraints on where identity and audit data may reside?"

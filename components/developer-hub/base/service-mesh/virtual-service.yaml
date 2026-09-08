@@ -1,0 +1,55 @@
+---
+# VirtualService — L7 routing + retry/timeout policies enforced by the waypoint proxy.
+# In ambient mode these rules are applied by the rhdh-waypoint Gateway (not sidecars).
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: backstage-vs
+  namespace: rhdh
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: developer-hub
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  hosts:
+    - "rhdh.apps.${CLUSTER_BASE_DOMAIN}"
+    - backstage-acme.rhdh.svc.cluster.local
+  gateways:
+    - istio-system/platform-ingressgateway   # shared corp-TLS gateway
+    - mesh
+  http:
+    - match:
+        - uri:
+            prefix: /healthcheck
+      route:
+        - destination:
+            host: backstage-acme.rhdh.svc.cluster.local
+            port:
+              number: 7007
+      timeout: 5s
+
+    - match:
+        - uri:
+            prefix: /api/
+      route:
+        - destination:
+            host: backstage-acme.rhdh.svc.cluster.local
+            port:
+              number: 7007
+      timeout: 60s
+      retries:
+        attempts: 3
+        perTryTimeout: 20s
+        retryOn: 5xx,gateway-error,reset,retriable-4xx
+
+    - route:
+        - destination:
+            host: backstage-acme.rhdh.svc.cluster.local
+            port:
+              number: 7007
+      timeout: 30s
+      retries:
+        attempts: 2
+        perTryTimeout: 15s
+        retryOn: 5xx,gateway-error,reset
