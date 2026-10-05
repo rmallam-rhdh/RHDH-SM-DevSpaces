@@ -69,12 +69,17 @@ spec:
         repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
         catalogInfoPath: /catalog-info.yaml
   output:
+    text:
+      - title: Dev Spaces
+        content: |
+          This opens Dev Spaces and creates a workspace from the new repo:
+          ${{ parameters.devSpacesBaseUrl }}/f?url=${{ steps['publish'].output.remoteUrl }}&new
     links:
       - title: Source repository
         url: ${{ steps['publish'].output.remoteUrl }}
         icon: github
       - title: Open in Dev Spaces
-        url: ${{ parameters.devSpacesBaseUrl }}/dashboard/#/load/workspace/factory?url=${{ steps['publish'].output.remoteUrl }}&devfilePath=devfile.yaml
+        url: ${{ parameters.devSpacesBaseUrl }}/f?url=${{ steps['publish'].output.remoteUrl }}&new
         icon: catalog
       - title: Open in catalog
         icon: catalog
