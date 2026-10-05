@@ -15,13 +15,12 @@ metadata:
 spec:
   components: {}
   devEnvironments:
-    defaultEditor: che-code
+    defaultEditor: che-incubator/che-code/latest
     defaultNamespace:
       autoProvision: true
-      template: openshift-devspaces-{userid}
+      template: <username>-devspaces
     disableContainerBuildCapabilities: false
     maxNumberOfWorkspacesPerUser: 3
-    storage:
-      pvc:
-        pvcStrategy: per-user
+    # pvcStrategy: set on CheCluster v2 via devEnvironments.pvcStrategy when supported by cluster CRD.
+    # Workshop clusters often manage storage via the platform CheCluster; avoid storage.pvc here — Argo diff fails on older CRDs.
   networking: {}

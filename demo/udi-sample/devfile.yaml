@@ -1,0 +1,57 @@
+schemaVersion: 2.2.2
+metadata:
+  name: udi-client-demo
+  displayName: UDI client demo
+  description: Client-facing Dev Spaces workspace on Red Hat Universal Developer Image (UDI)
+  tags:
+    - UDI
+    - Python
+    - Demo
+  attributes:
+    metadata.openshift.io/scopes: ['devspaces']
+
+# Tools container is UDI — Java, Node, Python, Go, Git, Maven, oc, etc. in one image.
+# Editor (che-code) is injected by CheCluster defaultEditor.
+components:
+  - name: tools
+    container:
+      image: registry.redhat.io/devspaces/udi-rhel9:3.30
+      memoryLimit: 3Gi
+      memoryRequest: 1Gi
+      cpuLimit: "2"
+      cpuRequest: 200m
+      mountSources: true
+      sourceMapping: /projects
+      endpoints:
+        - name: app
+          targetPort: 8080
+          exposure: public
+          protocol: http
+
+commands:
+  - id: show-udi-tooling
+    exec:
+      component: tools
+      workingDir: ${PROJECTS_ROOT}
+      commandLine: |
+        echo "=== Universal Developer Image toolchain ==="
+        echo "image user: $(id)"
+        python3 --version
+        node --version
+        java -version
+        git --version
+        mvn -version | head -1
+        command -v oc && oc version --client
+        command -v kubectl && kubectl version --client --short
+      group:
+        kind: run
+        isDefault: false
+
+  - id: run-demo
+    exec:
+      component: tools
+      workingDir: ${PROJECTS_ROOT}/udi-client-demo
+      commandLine: python3 app.py
+      group:
+        kind: run
+        isDefault: true

@@ -1,0 +1,15 @@
+{
+  "name": "acme-node-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Client-demo Node app on Red Hat UDI (no npm install required)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

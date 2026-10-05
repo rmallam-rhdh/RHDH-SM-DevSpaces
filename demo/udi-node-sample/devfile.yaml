@@ -1,0 +1,64 @@
+schemaVersion: 2.2.2
+metadata:
+  name: udi-node-demo
+  displayName: UDI Node developer demo
+  description: Simulate a golden-path Node developer on Red Hat UDI
+  tags:
+    - UDI
+    - Node
+    - Demo
+  attributes:
+    metadata.openshift.io/scopes: ['devspaces']
+    .vscode/extensions.json: |
+      {
+        "recommendations": [
+          "dbaeumer.vscode-eslint",
+          "esbenp.prettier-vscode",
+          "redhat.vscode-yaml",
+          "redhat.vscode-openshift-tools"
+        ]
+      }
+
+components:
+  - name: tools
+    container:
+      image: registry.redhat.io/devspaces/udi-rhel9:3.30
+      memoryLimit: 3Gi
+      memoryRequest: 1Gi
+      cpuLimit: "2"
+      cpuRequest: 200m
+      mountSources: true
+      sourceMapping: /projects
+      env:
+        - name: NODEJS_VERSION
+          value: "20"
+        - name: PORT
+          value: "3000"
+      endpoints:
+        - name: api
+          targetPort: 3000
+          exposure: public
+          protocol: http
+
+commands:
+  - id: show-node
+    exec:
+      component: tools
+      workingDir: ${PROJECTS_ROOT}/node-app
+      commandLine: node -v && npm -v && which node npm
+  - id: test
+    exec:
+      component: tools
+      workingDir: ${PROJECTS_ROOT}/node-app
+      commandLine: npm test
+      group:
+        kind: test
+        isDefault: true
+  - id: run
+    exec:
+      component: tools
+      workingDir: ${PROJECTS_ROOT}/node-app
+      commandLine: npm start
+      group:
+        kind: run
+        isDefault: true
