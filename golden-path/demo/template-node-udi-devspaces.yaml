@@ -46,7 +46,7 @@ spec:
       name: Fetch Node UDI skeleton
       action: fetch:template
       input:
-        url: ./skeleton-node-udi
+        url: https://github.com/rmallam/RHDH-SM-DevSpaces/tree/demo%2Fudi-devspaces/golden-path/demo/skeleton-node-udi
         values:
           appName: ${{ parameters.appName }}
           appDescription: ${{ parameters.appDescription }}
