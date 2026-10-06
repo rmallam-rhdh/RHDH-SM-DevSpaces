@@ -68,7 +68,9 @@ spec:
       action: github:repo:push
       input:
         repoUrl: github.com?owner=${{ parameters.githubOwner }}&repo=${{ parameters.component | parseEntityRef | pick('name') }}
-        branch: ${{ parameters.featureBranch }}
+        defaultBranch: ${{ parameters.featureBranch }}
+        protectDefaultBranch: false
+        protectEnforceAdmins: false
         gitCommitMessage: "chore: start ${{ parameters.featureBranch }}"
   output:
     text:
