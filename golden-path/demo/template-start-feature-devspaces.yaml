@@ -80,14 +80,17 @@ spec:
           https://github.com/${{ parameters.githubOwner }}/${{ parameters.component | parseEntityRef | pick('name') }}
 
           Dev Spaces (this branch, new workspace):
-          ${{ parameters.devSpacesBaseUrl }}/f?url=https://github.com/${{ parameters.githubOwner }}/${{ parameters.component | parseEntityRef | pick('name') }}&revision=${{ parameters.featureBranch }}&new
+          ${{ parameters.devSpacesBaseUrl }}#https://github.com/${{ parameters.githubOwner }}/${{ parameters.component | parseEntityRef | pick('name') }}/tree/${{ parameters.featureBranch }}?new&devfilePath=devfile.yaml
     links:
       - title: Feature branch on GitHub
         icon: github
         url: https://github.com/${{ parameters.githubOwner }}/${{ parameters.component | parseEntityRef | pick('name') }}/tree/${{ parameters.featureBranch }}
       - title: Open in Dev Spaces
         icon: catalog
-        url: ${{ parameters.devSpacesBaseUrl }}/f?url=https://github.com/${{ parameters.githubOwner }}/${{ parameters.component | parseEntityRef | pick('name') }}&revision=${{ parameters.featureBranch }}&new
+        url: ${{ parameters.devSpacesBaseUrl }}#https://github.com/${{ parameters.githubOwner }}/${{ parameters.component | parseEntityRef | pick('name') }}/tree/${{ parameters.featureBranch }}?new&devfilePath=devfile.yaml
+      - title: Dev Spaces dashboard
+        icon: catalog
+        url: ${{ parameters.devSpacesBaseUrl }}/dashboard/#/workspaces
       - title: Open in catalog
         icon: catalog
         entityRef: ${{ parameters.component }}

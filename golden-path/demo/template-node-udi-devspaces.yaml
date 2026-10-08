@@ -70,17 +70,31 @@ spec:
         catalogInfoPath: /catalog-info.yaml
   output:
     text:
-      - title: Dev Spaces
+      - title: What was created
         content: |
-          This opens Dev Spaces and creates a workspace from the new repo:
-          ${{ parameters.devSpacesBaseUrl }}/f?url=${{ steps['publish'].output.remoteUrl }}&new
+          **GitHub repository:** https://github.com/${{ parameters.githubOwner }}/${{ parameters.appName }}
+
+          `publish:github` created that public repo on `main` and pushed the Node.js UDI skeleton.
+          Catalog entity: `${{ steps['register'].output.entityRef }}`
+
+          | In Git | Path |
+          |---|---|
+          | catalog-info.yaml | `/catalog-info.yaml` |
+          | Devfile | `/devfile.yaml` |
+          | App | `/server.js` |
     links:
-      - title: Source repository
-        url: ${{ steps['publish'].output.remoteUrl }}
+      - title: GitHub repository
+        url: https://github.com/${{ parameters.githubOwner }}/${{ parameters.appName }}
         icon: github
-      - title: Open in Dev Spaces
-        url: ${{ parameters.devSpacesBaseUrl }}/f?url=${{ steps['publish'].output.remoteUrl }}&new
-        icon: catalog
+      - title: catalog-info.yaml
+        url: https://github.com/${{ parameters.githubOwner }}/${{ parameters.appName }}/blob/main/catalog-info.yaml
+        icon: github
       - title: Open in catalog
         icon: catalog
         entityRef: ${{ steps['register'].output.entityRef }}
+      - title: Open in Dev Spaces
+        url: ${{ parameters.devSpacesBaseUrl }}#https://github.com/${{ parameters.githubOwner }}/${{ parameters.appName }}?new&devfilePath=devfile.yaml
+        icon: catalog
+      - title: Dev Spaces dashboard
+        url: ${{ parameters.devSpacesBaseUrl }}/dashboard/#/workspaces
+        icon: catalog

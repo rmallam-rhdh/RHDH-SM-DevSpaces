@@ -7,7 +7,7 @@ metadata:
     github.com/project-slug: ${{ values.githubOwner }}/${{ values.appName }}
     acme.io/devfile-path: devfile.yaml
     acme.io/devspaces-url: ${{ values.devSpacesBaseUrl }}
-    acme.io/devspaces-factory-url: ${{ values.devSpacesBaseUrl }}/f?url=https://github.com/${{ values.githubOwner }}/${{ values.appName }}&new
+    acme.io/devspaces-factory-url: ${{ values.devSpacesBaseUrl }}#https://github.com/${{ values.githubOwner }}/${{ values.appName }}?new&devfilePath=devfile.yaml
   tags:
     - nodejs
     - udi
