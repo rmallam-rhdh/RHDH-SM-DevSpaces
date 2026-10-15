@@ -15,9 +15,12 @@ need() {
 T="$DIR/template-plugin-kitchen-sink.yaml"
 S="$DIR/skeleton-plugin-kitchen-sink/catalog-info.yaml"
 need "name: acme-plugin-kitchen-sink" "$T"
+need "title: GitHub repository name" "$T"
+need "required: [appName, githubOwner]" "$T"
 need "publish:github" "$T"
 need "catalog:register" "$T"
 need "steps['publish'].output.remoteUrl" "$T"
+need "steps['publish'].output.repoContentsUrl" "$T"
 need "/dashboard/#/load-factory?url=" "$T"
 need "title: GitHub repository" "$T"
 need "skeleton-plugin-kitchen-sink" "$T"
@@ -35,14 +38,20 @@ for ann in \
   "servicenow.com/entity-id" \
   "jfrog-artifactory/image-name" \
   "dynatrace.com/dynatrace-entity-id" \
-  "acme.io/devspaces-factory-url"
+  "acme.io/devspaces-factory-url" \
+  "backstage.io/source-location"
 do
   need "$ann" "$S"
 done
+need "jira/project-key: SCRUM" "$S"
 
 # Bitbucket must not be the publish target while that plugin is broken.
 if grep -q "publish:bitbucket" "$T"; then
   echo "FAIL template still publishes to Bitbucket"
+  fail=1
+fi
+if grep -E "remoteUrl \}\}/(blob|tree)/" "$T"; then
+  echo "FAIL file/dir links must use repoContentsUrl (remoteUrl includes .git and 404s on GitHub)"
   fail=1
 fi
 

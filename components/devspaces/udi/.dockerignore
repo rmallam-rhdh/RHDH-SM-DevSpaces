@@ -1,0 +1,6 @@
+README.md
+tests
+certs/README.md
+**/.DS_Store
+**/*.md
+!certs/.gitkeep

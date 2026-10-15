@@ -1,0 +1,137 @@
+# WNZL Digi 2.0 — custom Dev Spaces tools image (HLD §13.5 / DD-8 / DD-22)
+# Base: Red Hat Universal Developer Image (UDI) for OpenShift Dev Spaces
+#
+# Build (requires registry.redhat.io login):
+#   podman login registry.redhat.io
+#   podman build -t digi20-devspaces-udi:1.0.0 -f components/devspaces/udi/Containerfile components/devspaces/udi
+#
+# Push to Artifactory (example):
+#   podman tag digi20-devspaces-udi:1.0.0 <artifactory>/digi20/devspaces-udi:1.0.0
+#   podman push <artifactory>/digi20/devspaces-udi:1.0.0
+#
+# Reference from golden-path devfile tools.container.image.
+
+ARG UDI_BASE=registry.redhat.io/devspaces/udi-rhel9:3.30
+FROM ${UDI_BASE}
+
+LABEL name="digi20-devspaces-udi" \
+      summary="WNZL Digi 2.0 Dev Spaces UDI (Java 17/21, Node 20, Gradle, quality CLIs)" \
+      description="Custom UDI for Digi 2.0 greenfield workspaces — HLD §13.5" \
+      maintainer="Platform Engineering" \
+      io.k8s.description="Digi 2.0 custom Universal Developer Image for OpenShift Dev Spaces" \
+      io.openshift.tags="devspaces,udi,digi20"
+
+ARG JAVA_DEFAULT=21
+ARG NODE_VERSION=20
+ARG GRADLE_VERSION=8.10.2
+ARG SONAR_SCANNER_VERSION=6.2.1.4610
+ARG SNYK_VERSION=1.1295.0
+ARG YQ_VERSION=v4.44.3
+ARG PRE_COMMIT_VERSION=3.8.0
+
+ENV HOME=/home/user \
+    JAVA_HOME=/usr/lib/jvm/java-${JAVA_DEFAULT}-openjdk \
+    NODEJS_VERSION=${NODE_VERSION} \
+    GRADLE_HOME=/opt/gradle/gradle-${GRADLE_VERSION} \
+    SONAR_SCANNER_HOME=/opt/sonar-scanner \
+    PATH=/opt/gradle/gradle-${GRADLE_VERSION}/bin:/opt/sonar-scanner/bin:/home/user/.local/bin:${PATH}
+
+USER 0
+
+# CLI utilities (jq/openssl/curl/git usually present; reinstall for pin consistency)
+RUN microdnf -y update \
+ && microdnf -y install --setopt=install_weak_deps=0 \
+      git \
+      jq \
+      openssl \
+      curl \
+      tar \
+      gzip \
+      unzip \
+      which \
+      findutils \
+      python3 \
+      python3-pip \
+      java-17-openjdk-devel \
+      java-21-openjdk-devel \
+ && microdnf clean all \
+ && ln -sfn /usr/lib/jvm/java-${JAVA_DEFAULT}-openjdk "${JAVA_HOME}"
+
+# Node 20 LTS — prefer UDI-provided toolchain; install via modules if missing
+RUN set -e; \
+    if command -v node >/dev/null 2>&1; then \
+      echo "UDI already provides Node $(node -v)"; \
+    else \
+      microdnf -y module enable "nodejs:${NODE_VERSION}" || true; \
+      microdnf -y install nodejs npm || microdnf -y install nodejs; \
+      microdnf clean all; \
+    fi; \
+    command -v npm >/dev/null 2>&1 && npm install -g "npm@10" || true; \
+    node -v; npm -v
+
+# Gradle (pinned) — Quarkus / Spring golden path
+RUN mkdir -p /opt/gradle \
+ && curl -fsSL "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" -o /tmp/gradle.zip \
+ && unzip -q /tmp/gradle.zip -d /opt/gradle \
+ && rm -f /tmp/gradle.zip \
+ && ln -sfn "${GRADLE_HOME}/bin/gradle" /usr/local/bin/gradle \
+ && gradle -v
+
+# yq
+RUN curl -fsSL "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64" -o /usr/local/bin/yq \
+ && chmod 0755 /usr/local/bin/yq \
+ && yq --version
+
+# Sonar Scanner CLI (shift-left; full quality gate remains in Jenkins)
+RUN curl -fsSL "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux-x64.zip" -o /tmp/sonar.zip \
+ && unzip -q /tmp/sonar.zip -d /opt \
+ && mv "/opt/sonar-scanner-${SONAR_SCANNER_VERSION}-linux-x64" "${SONAR_SCANNER_HOME}" \
+ && rm -f /tmp/sonar.zip \
+ && ln -sfn "${SONAR_SCANNER_HOME}/bin/sonar-scanner" /usr/local/bin/sonar-scanner \
+ && sonar-scanner --version
+
+# Snyk CLI (pinned binary)
+RUN curl -fsSL "https://github.com/snyk/cli/releases/download/v${SNYK_VERSION}/snyk-linux" -o /usr/local/bin/snyk \
+ && chmod 0755 /usr/local/bin/snyk \
+ && snyk --version || true
+
+# pre-commit (avoid pip install on every workspace start)
+RUN python3 -m pip install --no-cache-dir "pre-commit==${PRE_COMMIT_VERSION}" \
+ && pre-commit --version
+
+# oc / kubectl — keep UDI copies if present; install kubectl fallback
+RUN if ! command -v kubectl >/dev/null 2>&1; then \
+      curl -fsSL "https://dl.k8s.io/release/$(curl -fsSL https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o /usr/local/bin/kubectl \
+      && chmod 0755 /usr/local/bin/kubectl; \
+    fi \
+ && (command -v oc >/dev/null 2>&1 || echo "WARN: oc not found in base UDI — cluster CLI may be injected by platform") \
+ && kubectl version --client=true
+
+# Corporate CA trust (drop PEM/CRT files into certs/ before build)
+COPY certs/ /tmp/corp-certs/
+RUN mkdir -p /etc/pki/ca-trust/source/anchors \
+ && if ls /tmp/corp-certs/*.[cC][rR][tT] /tmp/corp-certs/*.[pP][eE][mM] >/dev/null 2>&1; then \
+      cp -f /tmp/corp-certs/*.[cC][rR][tT] /tmp/corp-certs/*.[pP][eE][mM] /etc/pki/ca-trust/source/anchors/ 2>/dev/null || true; \
+      update-ca-trust extract; \
+      echo "Installed corporate CA certificates"; \
+    else \
+      echo "No corporate CA files in certs/ — add *.crt/*.pem for Bitbucket/Sonar/Artifactory trust"; \
+    fi \
+ && rm -rf /tmp/corp-certs
+
+# Artifactory-oriented npm defaults (override registry URL at runtime / CheCluster proxy)
+COPY config/npmrc /home/user/.npmrc
+COPY config/gradle.properties /home/user/.gradle/gradle.properties
+RUN chown -R 10001:0 /home/user \
+ && chmod -R g=u /home/user
+
+# Dev Spaces workspace user
+USER 10001
+WORKDIR /projects
+
+# Smoke labels for operators / ACS inventory
+LABEL digi20.tools.java="17,21" \
+      digi20.tools.node="${NODE_VERSION}" \
+      digi20.tools.gradle="${GRADLE_VERSION}" \
+      digi20.tools.sonar-scanner="${SONAR_SCANNER_VERSION}" \
+      digi20.tools.snyk="${SNYK_VERSION}"
