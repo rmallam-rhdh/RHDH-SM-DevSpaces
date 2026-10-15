@@ -1,28 +1,33 @@
 ---
+# RHDH Helm instance for ROSA rosa-rwx5g. Operator lives in openshift-operators.
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: openshift-developer-hub
+  name: developer-hub
   namespace: openshift-gitops
   labels:
     app.kubernetes.io/part-of: acme-platform
     app.kubernetes.io/component: developer-hub
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
+    environment: demo
   annotations:
-    argocd.argoproj.io/sync-wave: "2"   # deploy after operators are ready
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   project: default
   source:
-    repoURL: https://github.com/rmallam/RHDH-SM-DevSpaces   # <-- update to your repo URL
-    targetRevision: main
-    path: components/developer-hub/overlays/production
+    repoURL: https://github.com/rmallam/RHDH-SM-DevSpaces
+    targetRevision: demo/udi-devspaces
+    path: charts/developer-hub
+    helm:
+      valueFiles:
+        - values.yaml
+        - values-demo.yaml
+        - values-rosa-rwx5g.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: rhdh
   syncPolicy:
     automated:
-      prune: true
+      prune: false
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
@@ -33,3 +38,13 @@ spec:
       kind: Subscription
       jsonPointers:
         - /status
+    - group: rhdh.redhat.com
+      kind: Backstage
+      jqPathExpressions:
+        - .status
+    - group: ""
+      kind: Secret
+      name: rhdh-secrets
+      jsonPointers:
+        - /data
+        - /metadata

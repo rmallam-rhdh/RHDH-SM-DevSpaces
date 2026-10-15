@@ -45,6 +45,7 @@ check_file() {
     "backstage-community-plugin-vault" \
     "backstage-community-plugin-servicenow" \
     "backstage-community-plugin-dynatrace" \
+    "backstage-community-plugin-kiali" \
     "apic-backstage" \
     "backstage-plugin-techdocs" \
     "bs_1.49.4__2.5.10" \
@@ -89,6 +90,8 @@ grep -q "entity.page.jira" "$DEMO" || { echo "FAIL demo missing Jira entity tab 
 grep -q "title: Jira" "$DEMO" || { echo "FAIL demo missing Jira tab title"; fail=1; }
 grep -q "entity.page.dynatrace" "$DEMO" || { echo "FAIL demo missing Dynatrace entity tab mount"; fail=1; }
 grep -q "SERVICE-39720C1E0047A5C0" "$DEMO" || { echo "FAIL demo kitchen-sink must use a real Dynatrace SERVICE id"; fail=1; }
+grep -q "entity.page.kiali" "$DEMO" || { echo "FAIL demo missing Kiali entity tab mount"; fail=1; }
+grep -q "kiali.io/namespace: demo-dev" "$DEMO" || { echo "FAIL demo kitchen-sink missing kiali.io/namespace"; fail=1; }
 grep -q "dynatrace-access-token" "$DEMO" || { echo "FAIL demo ExternalSecret missing dynatrace-access-token"; fail=1; }
 grep -q "vault.io/secrets-path" "$DEMO" || { echo "FAIL demo missing vault annotation"; fail=1; }
 grep -q "name: rhdh-demo-catalog" "$PROD" && { echo "FAIL prod must not ship kitchen-sink ConfigMap"; fail=1; }

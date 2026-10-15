@@ -7,22 +7,20 @@ metadata:
   labels:
     app.kubernetes.io/part-of: acme-platform
     app.kubernetes.io/component: devspaces
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
   annotations:
     argocd.argoproj.io/sync-wave: "2"
 spec:
   project: default
   source:
     repoURL: https://github.com/rmallam/RHDH-SM-DevSpaces
-    targetRevision: main
+    targetRevision: demo/udi-devspaces
     path: components/devspaces/overlays/production
   destination:
     server: https://kubernetes.default.svc
     namespace: openshift-devspaces
   syncPolicy:
     automated:
-      prune: true
+      prune: false
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
@@ -33,3 +31,7 @@ spec:
       kind: Subscription
       jsonPointers:
         - /status
+    - group: org.eclipse.che
+      kind: CheCluster
+      jqPathExpressions:
+        - .status

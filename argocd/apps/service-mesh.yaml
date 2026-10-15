@@ -7,22 +7,20 @@ metadata:
   labels:
     app.kubernetes.io/part-of: acme-platform
     app.kubernetes.io/component: service-mesh
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd.argoproj.io/sync-wave: "1"   # operators first
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   project: default
   source:
-    repoURL: https://github.com/rmallam/RHDH-SM-DevSpaces   # <-- update to your repo URL
-    targetRevision: main
-    path: components/service-mesh/overlays/production
+    repoURL: https://github.com/rmallam/RHDH-SM-DevSpaces
+    targetRevision: demo/udi-devspaces
+    path: components/service-mesh/overlays/lab
   destination:
     server: https://kubernetes.default.svc
     namespace: openshift-operators
   syncPolicy:
     automated:
-      prune: true
+      prune: false
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
@@ -33,3 +31,15 @@ spec:
       kind: Subscription
       jsonPointers:
         - /status
+    - group: sailoperator.io
+      kind: Istio
+      jqPathExpressions:
+        - .status
+    - group: sailoperator.io
+      kind: IstioCNI
+      jqPathExpressions:
+        - .status
+    - group: sailoperator.io
+      kind: ZTunnel
+      jqPathExpressions:
+        - .status

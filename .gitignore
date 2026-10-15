@@ -1,4 +1,9 @@
 .DS_Store
+charts/developer-hub/values-cluster.yaml
+demo/creds.txt
+demo/.env
+demo/kubeconfig
+demo/**/kubeconfig
 *.swp
 *.swo
 .idea/

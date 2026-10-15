@@ -314,6 +314,13 @@ plugins:
     username: "${SERVICENOW_USERNAME}"
     password: "${SERVICENOW_PASSWORD}"
 
+  kiali:
+    enabled: true
+    frontendPackage: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-kiali:bs_1.49.4__1.50.2
+    backendPackage: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-kiali-backend:bs_1.49.4__1.29.1
+    url: "${KIALI_URL}"
+    skipTLSVerify: true
+
   dynatrace:
     enabled: true
     frontendPackage: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-dynatrace:bs_1.49.4__10.17.0
@@ -408,6 +415,7 @@ secrets:
     DYNATRACE_CLIENT_SECRET: dynatrace-client-secret
     DYNATRACE_ACCOUNT_URN: dynatrace-account-urn
     DYNATRACE_ACCESS_TOKEN: dynatrace-access-token
+    KIALI_URL: kiali-url
     APIC_BASE_URL: apic-base-url
     APIC_API_URL: apic-api-url
     APIC_API_KEY: apic-api-key
@@ -445,6 +453,7 @@ secrets:
     DYNATRACE_CLIENT_SECRET: placeholder
     DYNATRACE_ACCOUNT_URN: placeholder
     DYNATRACE_ACCESS_TOKEN: placeholder
+    KIALI_URL: https://kiali.example.invalid
     APIC_BASE_URL: https://apic.example.invalid
     APIC_API_URL: https://apic.example.invalid
     APIC_API_KEY: placeholder

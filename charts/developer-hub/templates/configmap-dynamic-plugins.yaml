@@ -259,6 +259,44 @@ data:
                         allOf:
                           - isDynatraceAvailable
 
+      - package: {{ .Values.plugins.kiali.backendPackage | quote }}
+        disabled: {{ not .Values.plugins.kiali.enabled }}
+        pluginConfig:
+          kiali:
+            providers:
+              - name: default
+                url: {{ .Values.plugins.kiali.url | quote }}
+                skipTLSVerify: {{ .Values.plugins.kiali.skipTLSVerify }}
+      - package: {{ .Values.plugins.kiali.frontendPackage | quote }}
+        disabled: {{ not .Values.plugins.kiali.enabled }}
+        pluginConfig:
+          dynamicPlugins:
+            frontend:
+              backstage-community.plugin-kiali:
+                entityTabs:
+                  - path: /kiali
+                    title: Kiali
+                    mountPoint: entity.page.kiali
+                mountPoints:
+                  - mountPoint: entity.page.kiali/cards
+                    importName: EntityKialiContent
+                    config:
+                      layout:
+                        gridColumn: 1 / -1
+                      if:
+                        anyOf:
+                          - hasAnnotation: kiali.io/namespace
+                          - hasAnnotation: backstage.io/kubernetes-namespace
+                  - mountPoint: entity.page.overview/cards
+                    importName: EntityKialiGraphCard
+                    config:
+                      layout:
+                        gridColumn: 1 / -1
+                      if:
+                        anyOf:
+                          - hasAnnotation: kiali.io/namespace
+                          - hasAnnotation: backstage.io/kubernetes-namespace
+
       - package: {{ .Values.plugins.apic.package | quote }}
         disabled: {{ not .Values.plugins.apic.enabled }}
         pluginConfig:

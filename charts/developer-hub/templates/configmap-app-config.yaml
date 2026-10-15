@@ -245,6 +245,13 @@ data:
       apiVersion: {{ .Values.plugins.jira.apiVersion }}
       {{- end }}
     {{- end }}
+    {{- if .Values.plugins.kiali.enabled }}
+    kiali:
+      providers:
+        - name: default
+          url: {{ .Values.plugins.kiali.url | quote }}
+          skipTLSVerify: {{ .Values.plugins.kiali.skipTLSVerify }}
+    {{- end }}
     {{- if .Values.plugins.artifactory.enabled }}
     artifactory:
       baseUrl: {{ .Values.plugins.artifactory.baseUrl | quote }}

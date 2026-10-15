@@ -1,0 +1,18 @@
+---
+# OpenShift GitOps (Argo CD). Easiest tool install: OLM Subscription in
+# openshift-operators. The operator creates namespace openshift-gitops and a
+# default ArgoCD named openshift-gitops.
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: openshift-gitops-operator
+  namespace: openshift-operators
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: gitops
+spec:
+  channel: latest
+  installPlanApproval: Automatic
+  name: openshift-gitops-operator
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace
