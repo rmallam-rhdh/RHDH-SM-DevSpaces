@@ -24,4 +24,4 @@ Entra app `rhdh-login` redirect (Azure, not GitOps):
 
 Squid is day-2 (`rhdh-platform-gitops/argocd/apps/squid.yaml`). Apply Secret `squid-htpasswd` before that Application is Ready; Hub uses it when `httpProxy.enabled` is true.
 
-Lab namespaces get default-deny NetworkPolicies from `components/network-isolation` (same namespace, OpenShift ingress, OpenShift monitoring). Tool namespaces also allow Hub. Not applied to `openshift-*`, `kube-*`, `istio-system`, or `openshift-devspaces`.
+Lab namespaces get default-deny NetworkPolicies from `components/network-isolation` (same namespace, OpenShift ingress, monitoring, Dev Spaces, Dev Workspace operator). Tool namespaces also allow Hub. A seeder CronJob applies that base set to any new non-system namespace. Che-managed `*-devspaces` namespaces are isolated by CheCluster `networking.networkPolicy` (day-2, already on). Not applied to `openshift-*`, `kube-*`, `istio-system`, or `openshift-devspaces`.

@@ -4,3 +4,5 @@ resources:
   - allow-from-same-namespace.yaml
   - allow-from-openshift-ingress.yaml
   - allow-from-openshift-monitoring.yaml
+  - allow-from-openshift-devspaces.yaml
+  - allow-from-devworkspace-operator.yaml

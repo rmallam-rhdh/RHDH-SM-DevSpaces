@@ -1,6 +1,8 @@
 # Default-deny cross-namespace ingress on lab namespaces.
-# Allows: same namespace, OpenShift ingress, OpenShift monitoring.
-# Tool namespaces also allow Hub (rhdh). Hub/Postgres also allow operators.
+# Allows: same namespace, OpenShift ingress, monitoring, Dev Spaces, DW operator.
+# Tool namespaces also allow Hub (rhdh). Hub/Postgres also allow CNPG operator.
+# Seeder CronJob stamps the same base policies on any new non-system namespace.
+# Che-managed *-devspaces namespaces are owned by CheCluster networkPolicy.
 # Not applied to openshift-*, kube-*, istio-system, or openshift-devspaces.
 apiVersion: argoproj.io/v1alpha1
 kind: Application
