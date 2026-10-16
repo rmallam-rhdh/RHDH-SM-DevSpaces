@@ -38,6 +38,7 @@ for ann in \
   "servicenow.com/entity-id" \
   "jfrog-artifactory/image-name" \
   "dynatrace.com/dynatrace-entity-id" \
+  "kiali.io/namespace" \
   "acme.io/devspaces-factory-url" \
   "backstage.io/source-location"
 do

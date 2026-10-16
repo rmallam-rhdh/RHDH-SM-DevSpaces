@@ -19,3 +19,4 @@ spec:
     - ./namespaces/nonprod-dc2-lending-dev.yaml
     - ./namespaces/nonprod-dc1-acme-prod.yaml
     - ./namespaces/nonprod-dc2-acme-prod.yaml
+    - ./namespaces/demo-dev.yaml

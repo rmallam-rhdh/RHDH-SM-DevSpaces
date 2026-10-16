@@ -48,7 +48,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: kiali-service-account
-    namespace: openshift-operators
+    namespace: istio-system
 ---
 # OSSMConsole — OpenShift console plugin that embeds the Kiali UI as a sidebar panel.
 apiVersion: kiali.io/v1alpha1

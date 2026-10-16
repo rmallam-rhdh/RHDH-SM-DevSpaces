@@ -27,6 +27,8 @@ spec:
       discoverySelectors:
         - matchLabels:
             istio.io/dataplane-mode: ambient
+        - matchLabels:
+            istio-discovery: enabled
     pilot:
       # OpenShift ambient profile deploys ztunnel into istio-system (not kube-system).
       trustedZtunnelNamespace: istio-system

@@ -28,6 +28,7 @@ metadata:
     argocd/app-namespace: openshift-gitops
     backstage.io/kubernetes-id: developer-hub
     backstage.io/kubernetes-namespace: rhdh
+    kiali.io/namespace: demo-dev
     vault.io/secrets-path: rhdh
     jira/project-key: SCRUM
     snyk.io/org-id: stub-org

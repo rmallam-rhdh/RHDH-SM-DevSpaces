@@ -5,6 +5,21 @@ metadata:
   description: Acme golden-path Dev Spaces workspace — VS Code, Git, Node ${{ values.nodeVersion }}
   attributes:
     metadata.openshift.io/scopes: ['devspaces']
+    # Example VS Code extensions — installed on che-code in the workspace (not local laptop).
+    # Platform may restrict Marketplace; swap IDs for your allowlisted set.
+    .vscode/extensions.json: |
+      {
+        "recommendations": [
+          "dbaeumer.vscode-eslint",
+          "esbenp.prettier-vscode",
+          "redhat.vscode-yaml",
+          "redhat.vscode-openshift-tools",
+          "ms-azuretools.vscode-docker",
+          "SonarSource.sonarlint-vscode",
+          "snyk-security.snyk-vulnerability-scanner",
+          "GitHub.copilot"
+        ]
+      }
 
 components:
   - name: che-code

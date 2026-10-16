@@ -13,7 +13,7 @@ metadata:
     - GitOps manifests repo (Kustomize: base + dev/prod overlays)
     - ArgoCD Application CR for dev + prod
     - Namespace creation with Kyverno auto-mesh-enrollment
-    - DevOps release gates (image digest, Cosign signing, Jira change ticket)
+    - DevOps release gates (image digest, Cosign signing, ServiceNow change number)
   tags:
     - java
     - spring-boot
@@ -175,10 +175,11 @@ spec:
 
     - title: Release Gates
       properties:
-        requireJiraTicket:
-          title: Require Jira change ticket for production deployments
+        requireSnowChangeNumber:
+          title: Require ServiceNow change number for production deployments
           type: boolean
           default: true
+          description: Kyverno require-snow-change-number — annotation acme.io/snow-change-number must match ^CHG[0-9]{7}$
         requireImageDigest:
           title: Require image digest pinning (enforced by Kyverno)
           type: boolean
@@ -208,7 +209,7 @@ spec:
           enableSnyk: ${{ parameters.enableSnyk }}
           enableCosign: ${{ parameters.enableCosign }}
           artifactoryRepo: ${{ parameters.artifactoryRepo }}
-          requireJiraTicket: ${{ parameters.requireJiraTicket }}
+          requireSnowChangeNumber: ${{ parameters.requireSnowChangeNumber }}
 
     - id: publish-gitops-repo
       name: Publish GitOps Manifests to Bitbucket

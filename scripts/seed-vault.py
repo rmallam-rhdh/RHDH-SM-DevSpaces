@@ -61,6 +61,7 @@ KEYS = {
     "DYNATRACE_CLIENT_SECRET": "dynatrace-client-secret",
     "DYNATRACE_ACCOUNT_URN": "dynatrace-account-urn",
     "DYNATRACE_ACCESS_TOKEN": "dynatrace-access-token",
+    "KIALI_URL": "kiali-url",
     "APIC_BASE_URL": "apic-base-url",
     "APIC_API_URL": "apic-api-url",
     "APIC_API_KEY": "apic-api-key",

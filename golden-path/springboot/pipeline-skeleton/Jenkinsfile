@@ -13,7 +13,7 @@
 //   7. Update GitOps Repo (dev)      (image digest pinned → Kyverno gate passes)
 //   8. Deploy to Dev via ArgoCD sync
 //   9. Integration Tests
-//  10. Promote to Prod               (requires Jira change ticket if requireJiraTicket=true)
+//  10. Promote to Prod               (requires ServiceNow CHG number if requireSnowChangeNumber=true)
 // ─────────────────────────────────────────────────────────────────────────────
 
 pipeline {
@@ -215,13 +215,6 @@ pipeline {
               # Pin image digest in dev overlay (satisfies require-image-digest Kyverno policy)
               sed -i "s|image:.*${APP_NAME}:.*|image: \${IMAGE_WITH_DIGEST}|g" overlays/dev/kustomization.yaml
 
-              # Inject Jira change ticket annotation if on main branch
-              if [[ "\${GIT_BRANCH}" == "main" || "\${GIT_BRANCH}" == "origin/main" ]]; then
-                JIRA_TICKET="\${JIRA_CHANGE_TICKET:-DEV-\${BUILD_NUMBER}}"
-                yq e ".patches[0].patch = \"- op: add\\n  path: /spec/template/metadata/annotations/acme.io~1jira-change-ticket\\n  value: \${JIRA_TICKET}\"" \
-                  -i overlays/dev/deployment-patch.yaml 2>/dev/null || true
-              fi
-
               git config user.email "jenkins@acme.example.com"
               git config user.name "Jenkins Release Pipeline"
               git add .
@@ -280,17 +273,21 @@ pipeline {
         message "Promote ${APP_NAME} ${IMAGE_TAG} to PRODUCTION?"
         parameters {
           string(
-            name: 'JIRA_CHANGE_TICKET',
-            description: 'Jira Change Request ticket (e.g. CHG-1234) — required by Kyverno policy',
+            name: 'SNOW_CHANGE_NUMBER',
+            description: 'ServiceNow Change Request number (CHG + 7 digits, e.g. CHG0001234) — required by Kyverno policy require-snow-change-number',
             defaultValue: ''
           )
         }
       }
       steps {
         script {
-          {% if values.requireJiraTicket %}
-          if (!env.JIRA_CHANGE_TICKET?.trim()) {
-            error "Production deployment requires a Jira change ticket (JIRA_CHANGE_TICKET is empty)"
+          {% if values.requireSnowChangeNumber %}
+          def snowChg = env.SNOW_CHANGE_NUMBER?.trim()
+          if (!snowChg) {
+            error "Production deployment requires a ServiceNow change number (SNOW_CHANGE_NUMBER is empty)"
+          }
+          if (!(snowChg ==~ /^CHG[0-9]{7}$/)) {
+            error "SNOW_CHANGE_NUMBER '${snowChg}' is not a ServiceNow Change Request number (expected CHG + 7 digits, e.g. CHG0001234)"
           }
           {% endif %}
         }
@@ -303,12 +300,12 @@ pipeline {
               # Pin digest in prod overlay
               sed -i "s|image:.*${APP_NAME}:.*|image: \${IMAGE_WITH_DIGEST}|g" overlays/prod/kustomization.yaml
 
-              # Inject required Jira change ticket annotation (enforced by Kyverno release-gate policy)
-              yq e ".patches[0].patch = \"- op: add\\n  path: /spec/template/metadata/annotations/acme.io~1jira-change-ticket\\n  value: \${JIRA_CHANGE_TICKET}\"" \
-                -i overlays/prod/deployment-patch.yaml 2>/dev/null || true
+              # Inject ServiceNow change number (enforced by Kyverno require-snow-change-number)
+              yq e -i ".metadata.annotations.\\"acme.io/snow-change-number\\" = \\"\${SNOW_CHANGE_NUMBER}\\"" \
+                overlays/prod/snow-change-annotation.yaml
 
               git add .
-              git commit -m "chore(prod): promote \${IMAGE_TAG} [\${JIRA_CHANGE_TICKET}]"
+              git commit -m "chore(prod): promote \${IMAGE_TAG} [\${SNOW_CHANGE_NUMBER}]"
               git push origin main
             """
           }
@@ -332,29 +329,6 @@ pipeline {
   }
 
   post {
-    success {
-      script {
-        // Notify Jira ticket that deployment succeeded
-        if (env.JIRA_CHANGE_TICKET) {
-          jiraComment(
-            site: 'acme-jira',
-            issueKey: env.JIRA_CHANGE_TICKET,
-            body: "✅ *${APP_NAME}* deployed to production successfully. Build: ${BUILD_URL} Image: ${IMAGE_WITH_DIGEST}"
-          )
-        }
-      }
-    }
-    failure {
-      script {
-        if (env.JIRA_CHANGE_TICKET) {
-          jiraComment(
-            site: 'acme-jira',
-            issueKey: env.JIRA_CHANGE_TICKET,
-            body: "❌ *${APP_NAME}* deployment FAILED. Build: ${BUILD_URL}"
-          )
-        }
-      }
-    }
     always {
       archiveArtifacts artifacts: 'image.env', allowEmptyArchive: true
       cleanWs()

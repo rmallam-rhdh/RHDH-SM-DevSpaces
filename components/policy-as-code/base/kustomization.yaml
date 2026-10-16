@@ -22,8 +22,9 @@ resources:
   # ── Policy-as-Code: DevOps Release Gates ───────────────────────────────────
   # require-image-digest-in-prod:  production images must be pinned by digest
   # require-cosign-signature:      production images must be Cosign-signed
-  # require-jira-ticket-annotation: production deploys need a change ticket
   - policies/release-gates.yaml
+  # require-snow-change-number:    production deploys need a ServiceNow CHG number
+  - policies/snow-change-number.yaml
 
 commonLabels:
   app.kubernetes.io/managed-by: openshift-gitops

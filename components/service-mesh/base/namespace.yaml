@@ -6,7 +6,7 @@ metadata:
   name: istio-system
   labels:
     app.kubernetes.io/part-of: acme-platform
-    istio-discovery: enabled   # required when discoverySelectors are set — istiod must see ztunnel pods
+    istio-discovery: enabled   # required when discoverySelectors are set — istiod must see this namespace
 ---
 # Istio CNI plugin namespace
 apiVersion: v1
@@ -23,3 +23,4 @@ metadata:
   name: ztunnel
   labels:
     app.kubernetes.io/part-of: acme-platform
+    istio.io/dataplane-mode: ambient

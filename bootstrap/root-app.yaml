@@ -1,5 +1,6 @@
 ---
-# Root "App of Apps" — apply once after OpenShift GitOps is installed.
+# Day-1 only (operators + lab tools). Day-2 CRs (Backstage, Istio, CheCluster,
+# CNPG Cluster) are https://github.com/rmallam/rhdh-platform-gitops.
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:

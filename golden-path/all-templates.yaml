@@ -43,5 +43,8 @@ spec:
     - ./nodejs/template-app-code.yaml
     - ./nodejs/template-release-pipeline.yaml
 
+    # ── Demo — feature branch + Dev Spaces E2E ───────────────────────────────
+    - ./demo/location.yaml
+
     # ── Catalog — namespace picker options for scaffolder forms ──────────────
     - ./catalog/location.yaml

@@ -8,9 +8,6 @@ metadata:
     app.kubernetes.io/part-of: acme-platform
     # ─── Required by Kyverno workload-governance policy ───────────────────────
     backstage.io/kubernetes-id: ${{ values.appName }}
-  annotations:
-    # ─── Required by Kyverno release-gate policy (set by Jenkins pipeline) ───
-    acme.io/jira-change-ticket: ""      # Jenkins injects the CHG-XXXX value
 spec:
   replicas: 1
   selector:

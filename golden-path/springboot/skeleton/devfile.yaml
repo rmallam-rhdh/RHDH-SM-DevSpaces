@@ -5,6 +5,21 @@ metadata:
   description: Acme golden-path Dev Spaces workspace — VS Code, Git, Java ${{ values.javaVersion }}, Gradle
   attributes:
     metadata.openshift.io/scopes: ['devspaces']
+    # Example VS Code extensions — installed on che-code in the workspace (not local laptop).
+    # Platform may restrict Marketplace; swap IDs for your allowlisted set.
+    .vscode/extensions.json: |
+      {
+        "recommendations": [
+          "vscjava.vscode-java-pack",
+          "vscjava.vscode-gradle",
+          "redhat.vscode-yaml",
+          "redhat.vscode-openshift-tools",
+          "ms-azuretools.vscode-docker",
+          "SonarSource.sonarlint-vscode",
+          "snyk-security.snyk-vulnerability-scanner",
+          "GitHub.copilot"
+        ]
+      }
 
 # VS Code in the browser (che-code) + universal tools image (git, gradle, java, sonar-scanner, snyk CLI)
 components:
@@ -41,7 +56,7 @@ projects:
         origin: https://bitbucket.org/${{ values.bitbucketWorkspace }}/${{ values.appName }}.git
       checkoutFrom:
         remote: origin
-        revision: main
+        revision: ${{ values.featureBranch | default('main') }}
 
 commands:
   - id: build

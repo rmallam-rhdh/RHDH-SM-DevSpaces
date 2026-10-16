@@ -63,11 +63,11 @@ check_file() {
 check_file "$PROD" "production"
 check_file "$DEMO" "demo"
 
-# Demo overlay: guest login + ESO (secrets live in Vault).
+# Demo overlay: guest login. Secret rhdh-secrets already exists on this cluster.
 grep -q "name: user:default/guest" "$DEMO" || { echo "FAIL demo missing guest admin object"; fail=1; }
-grep -q "kind: ExternalSecret" "$DEMO" || { echo "FAIL demo missing ExternalSecret"; fail=1; }
+grep -q "kind: ExternalSecret" "$DEMO" && { echo "FAIL demo must not emit ExternalSecret (secrets.mode=external)"; fail=1; }
 grep -q "kind: ExternalSecret" "$PROD" || { echo "FAIL production missing ExternalSecret"; fail=1; }
-grep -q "remoteRef:" "$DEMO" || { echo "FAIL demo ExternalSecret missing remoteRef"; fail=1; }
+grep -q "remoteRef:" "$PROD" || { echo "FAIL production ExternalSecret missing remoteRef"; fail=1; }
 grep -q "dangerouslyAllowOutsideDevelopment" "$DEMO" || { echo "FAIL demo missing guest provider"; fail=1; }
 grep -q "kubernetes.clusters.read" "$DEMO" || { echo "FAIL demo missing kubernetes.clusters.read"; fail=1; }
 grep -q "kubernetes.resources.read" "$DEMO" || { echo "FAIL demo missing kubernetes.resources.read"; fail=1; }
@@ -92,7 +92,7 @@ grep -q "entity.page.dynatrace" "$DEMO" || { echo "FAIL demo missing Dynatrace e
 grep -q "SERVICE-39720C1E0047A5C0" "$DEMO" || { echo "FAIL demo kitchen-sink must use a real Dynatrace SERVICE id"; fail=1; }
 grep -q "entity.page.kiali" "$DEMO" || { echo "FAIL demo missing Kiali entity tab mount"; fail=1; }
 grep -q "kiali.io/namespace: demo-dev" "$DEMO" || { echo "FAIL demo kitchen-sink missing kiali.io/namespace"; fail=1; }
-grep -q "dynatrace-access-token" "$DEMO" || { echo "FAIL demo ExternalSecret missing dynatrace-access-token"; fail=1; }
+grep -q "dynatrace-access-token" "$PROD" || { echo "FAIL production ExternalSecret missing dynatrace-access-token"; fail=1; }
 grep -q "vault.io/secrets-path" "$DEMO" || { echo "FAIL demo missing vault annotation"; fail=1; }
 grep -q "name: rhdh-demo-catalog" "$PROD" && { echo "FAIL prod must not ship kitchen-sink ConfigMap"; fail=1; }
 grep -q "/dynatrace:" "$PROD" && { echo "FAIL prod must not emit /dynatrace proxy without apiTarget"; fail=1; }
@@ -111,7 +111,7 @@ d = YAML.safe_load(unindented)
 pkgs = (d["plugins"] || []).map { |p| p["package"] }
 raise "no plugins" if pkgs.empty?
 disabled = (d["plugins"] || []).select { |p| p["disabled"] == true }
-allowed = disabled.select { |p| p["package"].to_s.match?(/msgraph|keycloak/) }
+allowed = disabled.select { |p| p["package"].to_s.match?(/msgraph|keycloak|snyk/) }
 unless disabled == allowed
   raise "unexpected disabled plugins: #{disabled.map { |p| p["package"] }}"
 end
@@ -124,7 +124,7 @@ raise "bitbucket should be enabled" if d["plugins"].find { |p| p["package"] == b
 oci = pkgs.select { |p| p.to_s.start_with?("oci://") }
 snyk = pkgs.find { |p| p.to_s.include?("rhdh-plugin-snyk") }
 raise "snyk package missing" unless snyk
-raise "snyk should be enabled" if d["plugins"].find { |p| p["package"] == snyk }["disabled"]
+raise "snyk should stay disabled (private GHCR)" unless d["plugins"].find { |p| p["package"] == snyk }["disabled"]
 puts "OK  #{pkgs.size} plugins (#{oci.size} OCI, #{disabled.size} disabled)"
 RUBY
 
@@ -137,11 +137,11 @@ inner = cm[/app-config\.yaml: \|\n(.*?)(\nkind: |\z)/m, 1]
 abort "empty app-config" if inner.nil? || inner.strip.empty?
 unindented = inner.lines.map { |l| l.sub(/^    /, "") }.join
 d = YAML.safe_load(unindented)
-%w[app auth catalog jenkins argocd kubernetes snyk permission].each do |k|
+%w[app auth catalog jenkins argocd kubernetes permission].each do |k|
   raise "missing app-config key #{k}" unless d.key?(k)
 end
 raise "guest missing" unless d.dig("auth", "providers", "guest")
-raise "snyk should be mocked in demo" unless d.dig("snyk", "mocked") == true
+raise "snyk app-config must be omitted when the plugin is disabled" if d.key?("snyk")
 jenkins_url = d.dig("jenkins", "instances", 0, "baseUrl")
 raise "demo jenkins url #{jenkins_url}" unless jenkins_url == "http://jenkins.jenkins.svc"
 sonar_url = d.dig("sonarqube", "baseUrl")

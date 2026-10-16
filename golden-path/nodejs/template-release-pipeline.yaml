@@ -6,7 +6,7 @@ metadata:
   title: "Node.js App — Release Pipeline"
   description: >
     [Step 2 of 2] Creates the Jenkins CI/CD pipeline + GitOps manifests for a Node.js app.
-    Includes Kyverno policy-driven namespace enrollment, image signing, and Jira release gates.
+    Includes Kyverno policy-driven namespace enrollment, image signing, and ServiceNow change-number gates.
   tags:
     - nodejs
     - recommended
@@ -160,10 +160,11 @@ spec:
           title: Artifactory Repository
           type: string
           default: acme-docker
-        requireJiraTicket:
-          title: Require Jira change ticket for production
+        requireSnowChangeNumber:
+          title: Require ServiceNow change number for production
           type: boolean
           default: true
+          description: Kyverno require-snow-change-number — annotation acme.io/snow-change-number must match ^CHG[0-9]{7}$
 
   steps:
     - id: fetch-pipeline-skeleton
@@ -190,7 +191,7 @@ spec:
           enableSnyk: ${{ parameters.enableSnyk }}
           enableCosign: ${{ parameters.enableCosign }}
           artifactoryRepo: ${{ parameters.artifactoryRepo }}
-          requireJiraTicket: ${{ parameters.requireJiraTicket }}
+          requireSnowChangeNumber: ${{ parameters.requireSnowChangeNumber }}
 
     - id: publish-gitops-repo
       name: Publish GitOps Manifests to Bitbucket

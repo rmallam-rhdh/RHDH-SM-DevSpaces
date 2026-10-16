@@ -5,7 +5,7 @@ apiVersion: kiali.io/v1alpha1
 kind: Kiali
 metadata:
   name: kiali
-  namespace: openshift-operators
+  namespace: istio-system
   labels:
     app.kubernetes.io/part-of: acme-platform
     app.kubernetes.io/component: service-mesh

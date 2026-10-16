@@ -221,13 +221,19 @@ pipeline {
       input {
         message "Promote ${APP_NAME} ${IMAGE_TAG} to PRODUCTION?"
         parameters {
-          string(name: 'JIRA_CHANGE_TICKET', description: 'Jira Change ticket (CHG-XXXX)', defaultValue: '')
+          string(name: 'SNOW_CHANGE_NUMBER', description: 'ServiceNow Change Request (CHG + 7 digits, e.g. CHG0001234)', defaultValue: '')
         }
       }
       steps {
         script {
-          if ('${{ values.requireJiraTicket }}' == 'true' && !env.JIRA_CHANGE_TICKET?.trim()) {
-            error "Production deployment requires a Jira change ticket"
+          if ('${{ values.requireSnowChangeNumber }}' == 'true') {
+            def snowChg = env.SNOW_CHANGE_NUMBER?.trim()
+            if (!snowChg) {
+              error "Production deployment requires a ServiceNow change number"
+            }
+            if (!(snowChg ==~ /^CHG[0-9]{7}$/)) {
+              error "SNOW_CHANGE_NUMBER '${snowChg}' is not a ServiceNow Change Request number (expected CHG + 7 digits, e.g. CHG0001234)"
+            }
           }
         }
         container('tools') {
@@ -235,7 +241,9 @@ pipeline {
             sh """
               cd gitops-repo && git pull origin main
               sed -i "s|image:.*${APP_NAME}:.*|image: \${IMAGE_WITH_DIGEST}|g" overlays/prod/kustomization.yaml
-              git add . && git commit -m "chore(prod): promote \${IMAGE_TAG} [\${JIRA_CHANGE_TICKET}]"
+              yq e -i ".metadata.annotations.\\"acme.io/snow-change-number\\" = \\"\${SNOW_CHANGE_NUMBER}\\"" \
+                overlays/prod/snow-change-annotation.yaml
+              git add . && git commit -m "chore(prod): promote \${IMAGE_TAG} [\${SNOW_CHANGE_NUMBER}]"
               git push origin main
             """
           }

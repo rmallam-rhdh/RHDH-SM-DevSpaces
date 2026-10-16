@@ -25,6 +25,7 @@ What each Developer Hub plugin needs to light up, on this ROSA lab and in a cust
 | [artifactory](artifactory.md) | partial | `jfrog-artifactory/image-name` | SaaS stub |
 | [servicenow](servicenow.md) | working | `servicenow.com/entity-id` | Demo stub returns INC tickets for `demo` |
 | [dynatrace](dynatrace.md) | working | `dynatrace.com/dynatrace-entity-id` | Playground `astroshop-frontend` (`SERVICE-39720C1E0047A5C0`); DQL still needs OAuth |
+| [kiali](kiali.md) | working | `kiali.io/namespace` | Lab Sail + Kiali; kitchen-sink uses `demo-dev` |
 | [apic](apic.md) | partial | plugin catalog sync | SaaS stub |
 | [techdocs](techdocs.md) | working | `backstage.io/techdocs-ref` | Local builder; needs `mkdocs.yml` |
 | [tekton](tekton.md) | partial | same `kubernetes-id` + PipelineRuns | No Pipelines operator on this lab |

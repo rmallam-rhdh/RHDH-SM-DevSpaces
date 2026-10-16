@@ -5,6 +5,7 @@ namespace: ${{ values.targetNamespace }}-prod
 resources:
   - ../../base
 patches:
+  - path: snow-change-annotation.yaml
   - target:
       kind: Deployment
       name: ${{ values.appName }}
