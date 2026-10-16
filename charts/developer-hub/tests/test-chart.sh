@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Unit: helm lint + template. System: rendered YAML must include the WNZL plugin set
+# Unit: helm lint + template. System: rendered YAML must include the Acme plugin set
 # with live OCI pins and a valid Backstage CR.
 set -euo pipefail
 CHART="$(cd "$(dirname "$0")/.." && pwd)"

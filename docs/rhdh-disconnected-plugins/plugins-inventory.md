@@ -1,8 +1,8 @@
-# Westpac plugin inventory
+# Acme plugin inventory
 
 `plugins-oci.txt` is the customer pin list (spreadsheet data.xls v.2) plus extras this platform loads. Kubernetes and LDAP **match the spreadsheet** but stay bundled in the RHDH image, so they are comments only. Everything else with an overlay is an `oci://` line.
 
-| Needed for WNZL (HLD) | Plugin | Pin | In `plugins-oci.txt`? |
+| Needed for Acme (HLD) | Plugin | Pin | In `plugins-oci.txt`? |
 |---|---|---|---|
 | Must — CI visibility | Jenkins / CloudBees FE + BE + scaffolder | 0.30.0 / 0.27.0 / 0.20.0 | Yes (3 OCI) |
 | Must — GitOps | Argo CD community UI + backend + scaffolder | 2.8.1 / 1.4.0 / 1.8.1 | Yes (3 OCI; sheet FE was 2.8.0) |

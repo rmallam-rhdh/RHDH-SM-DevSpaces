@@ -1,5 +1,5 @@
 # Digi 2.0 Dev Spaces — npm defaults (HLD §13.5)
-# Replace the registry URL with the WNZL Artifactory npm virtual repo before production use.
+# Replace the registry URL with the Acme Artifactory npm virtual repo before production use.
 # Example:
 #   registry=https://artifactory.example.com/artifactory/api/npm/npm-virtual/
 #   //artifactory.example.com/artifactory/api/npm/npm-virtual/:_authToken=${NPM_TOKEN}

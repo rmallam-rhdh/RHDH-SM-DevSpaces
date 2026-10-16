@@ -1,6 +1,6 @@
 # Corporate CA certificates
 
-Place WNZL corporate / intermediate CA files here before building:
+Place Acme corporate / intermediate CA files here before building:
 
 - `*.crt` or `*.pem` (PEM-encoded)
 

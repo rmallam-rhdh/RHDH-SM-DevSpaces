@@ -22,7 +22,7 @@ docs/rhdh-entra-ldap/
 
 - RHDH public URL (the Route), e.g. `https://backstage.apps.<cluster>/`
 - Entra **Tenant ID**
-- Entra **primary domain** (for `domainHint`), e.g. `westpac.co.nz`
+- Entra **primary domain** (for `domainHint`), e.g. `example.com`
 - LDAP host, port, TLS (ldaps vs ldap), **bind DN**, bind password, **user base DN**, **group base DN**, user/group filters
 - Which LDAP attribute is the **login email** (`mail` in the demo)
 - Which LDAP attribute is the **user id** (`uid` here → catalog name `user:default/<uid>`)

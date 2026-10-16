@@ -231,7 +231,7 @@ data:
         disabled: false
 
       # ════════════════════════════════════════════════════════════════════════
-      # VAULT — LIST-only K/V v2 (WNZL req 43)
+      # VAULT — LIST-only K/V v2 (Acme req 43)
       # ════════════════════════════════════════════════════════════════════════
       - package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-vault-backend:bs_1.49.4__0.31.0
         disabled: false
@@ -346,7 +346,7 @@ data:
           ibm:
             schedule: "0 * * * *"
             apic:
-              - name: wnzl-apic
+              - name: apic
                 url: ${APIC_API_URL}
                 clientId: ${APIC_CLIENT_ID}
                 clientSecret: ${APIC_SECRET}

@@ -1,4 +1,4 @@
-# WNZL Digi 2.0 — custom Dev Spaces tools image (HLD §13.5 / DD-8 / DD-22)
+# Acme Digi 2.0 — custom Dev Spaces tools image (HLD §13.5 / DD-8 / DD-22)
 # Base: Red Hat Universal Developer Image (UDI) for OpenShift Dev Spaces
 #
 # Build (requires registry.redhat.io login):
@@ -15,7 +15,7 @@ ARG UDI_BASE=registry.redhat.io/devspaces/udi-rhel9:3.30
 FROM ${UDI_BASE}
 
 LABEL name="digi20-devspaces-udi" \
-      summary="WNZL Digi 2.0 Dev Spaces UDI (Java 17/21, Node 20, Gradle, quality CLIs)" \
+      summary="Acme Digi 2.0 Dev Spaces UDI (Java 17/21, Node 20, Gradle, quality CLIs)" \
       description="Custom UDI for Digi 2.0 greenfield workspaces — HLD §13.5" \
       maintainer="Platform Engineering" \
       io.k8s.description="Digi 2.0 custom Universal Developer Image for OpenShift Dev Spaces" \

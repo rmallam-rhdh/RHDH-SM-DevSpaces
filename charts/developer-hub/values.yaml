@@ -338,7 +338,7 @@ plugins:
   apic:
     enabled: true
     package: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/apic-backstage:bs_1.49.4__1.0.3
-    name: wnzl-apic
+    name: apic
     url: "${APIC_API_URL}"
     clientId: "${APIC_CLIENT_ID}"
     clientSecret: "${APIC_SECRET}"
