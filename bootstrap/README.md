@@ -23,3 +23,5 @@ Entra app `rhdh-login` redirect (Azure, not GitOps):
 `https://backstage-developer-hub-rhdh.<clusterBaseDomain>/api/auth/microsoft/handler/frame`
 
 Squid is day-2 (`rhdh-platform-gitops/argocd/apps/squid.yaml`). Apply Secret `squid-htpasswd` before that Application is Ready; Hub uses it when `httpProxy.enabled` is true.
+
+Lab namespaces get default-deny NetworkPolicies from `components/network-isolation` (same namespace, OpenShift ingress, OpenShift monitoring). Tool namespaces also allow Hub. Not applied to `openshift-*`, `kube-*`, `istio-system`, or `openshift-devspaces`.

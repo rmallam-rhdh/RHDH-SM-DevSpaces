@@ -1,0 +1,30 @@
+# Default-deny cross-namespace ingress on lab namespaces.
+# Allows: same namespace, OpenShift ingress, OpenShift monitoring.
+# Tool namespaces also allow Hub (rhdh). Hub/Postgres also allow operators.
+# Not applied to openshift-*, kube-*, istio-system, or openshift-devspaces.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: network-isolation
+  namespace: openshift-gitops
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: network-isolation
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/rmallam/RHDH-SM-DevSpaces
+    targetRevision: main
+    path: components/network-isolation
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: openshift-gitops
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
+      - SkipDryRunOnMissingResource=true
