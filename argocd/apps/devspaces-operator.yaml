@@ -1,0 +1,29 @@
+---
+# Dev Spaces operator only. CheCluster is rhdh-platform-gitops Application devspaces.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: devspaces-operator
+  namespace: openshift-gitops
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: devspaces
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/rmallam/RHDH-SM-DevSpaces
+    targetRevision: demo/udi-devspaces
+    path: components/devspaces/operator
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: openshift-devspaces
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+      - SkipDryRunOnMissingResource=true

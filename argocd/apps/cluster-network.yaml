@@ -1,0 +1,27 @@
+---
+# Sets routingViaHost=true on the cluster Network CR (ROSA + OSSM3 ambient).
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cluster-network
+  namespace: openshift-gitops
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: cluster-network
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/rmallam/RHDH-SM-DevSpaces
+    targetRevision: demo/udi-devspaces
+    path: components/cluster-network/base
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: openshift-gitops
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true

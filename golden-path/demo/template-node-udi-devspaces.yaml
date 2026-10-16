@@ -41,13 +41,13 @@ spec:
         devSpacesBaseUrl:
           title: Dev Spaces URL
           type: string
-          default: https://devspaces.apps.rosa.rosa-89s85.bhg0.p3.openshiftapps.com
+          default: https://devspaces.apps.example.com
   steps:
     - id: fetch-skeleton
       name: Fetch Node UDI skeleton
       action: fetch:template
       input:
-        url: https://github.com/rmallam/RHDH-SM-DevSpaces/tree/rhdh-demo/golden-path/demo/skeleton-node-udi
+        url: https://github.com/rmallam/RHDH-SM-DevSpaces/tree/demo/udi-devspaces/golden-path/demo/skeleton-node-udi
         values:
           appName: ${{ parameters.appName }}
           appDescription: ${{ parameters.appDescription }}
@@ -93,8 +93,8 @@ spec:
         icon: catalog
         entityRef: ${{ steps['register'].output.entityRef }}
       - title: Open in Dev Spaces
-        url: https://devspaces.apps.rosa.rosa-89s85.bhg0.p3.openshiftapps.com/dashboard/#/load-factory?url=${{ steps['publish'].output.remoteUrl }}&devfilePath=devfile.yaml
+        url: ${{ parameters.devSpacesBaseUrl }}/dashboard/#/load-factory?url=${{ steps['publish'].output.remoteUrl }}&devfilePath=devfile.yaml
         icon: catalog
       - title: Dev Spaces dashboard
-        url: https://devspaces.apps.rosa.rosa-89s85.bhg0.p3.openshiftapps.com/dashboard/#/workspaces
+        url: ${{ parameters.devSpacesBaseUrl }}/dashboard/#/workspaces
         icon: catalog

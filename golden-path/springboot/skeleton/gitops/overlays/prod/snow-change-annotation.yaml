@@ -1,0 +1,9 @@
+---
+# Jenkins Promote stage sets this to the approved ServiceNow Change Request
+# number (CHG + 7 digits). Kyverno policy require-snow-change-number validates it.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${{ values.appName }}
+  annotations:
+    acme.io/snow-change-number: ""

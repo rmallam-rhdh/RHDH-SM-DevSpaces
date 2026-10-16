@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: payments-prod
+  labels:
+    acme.io/env: prod
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: payments-dev
+  labels:
+    acme.io/env: dev

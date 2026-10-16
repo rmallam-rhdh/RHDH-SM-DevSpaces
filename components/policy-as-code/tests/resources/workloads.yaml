@@ -1,0 +1,237 @@
+---
+# Valid ServiceNow Change Request number
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-api-valid
+  namespace: payments-prod
+  annotations:
+    acme.io/snow-change-number: "CHG0001234"
+  labels:
+    app.kubernetes.io/name: payments-api-valid
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payments-api-valid
+  template:
+    metadata:
+      labels:
+        app: payments-api-valid
+    spec:
+      containers:
+        - name: app
+          image: example.com/payments-api@sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
+---
+# Missing annotation
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-api-missing
+  namespace: payments-prod
+  labels:
+    app.kubernetes.io/name: payments-api-missing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payments-api-missing
+  template:
+    metadata:
+      labels:
+        app: payments-api-missing
+    spec:
+      containers:
+        - name: app
+          image: example.com/payments-api:latest
+---
+# Empty annotation
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-api-empty
+  namespace: payments-prod
+  annotations:
+    acme.io/snow-change-number: ""
+  labels:
+    app.kubernetes.io/name: payments-api-empty
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payments-api-empty
+  template:
+    metadata:
+      labels:
+        app: payments-api-empty
+    spec:
+      containers:
+        - name: app
+          image: example.com/payments-api:latest
+---
+# Jira-style key (hyphen) must be rejected
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-api-jira
+  namespace: payments-prod
+  annotations:
+    acme.io/snow-change-number: "CHG-1234"
+  labels:
+    app.kubernetes.io/name: payments-api-jira
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payments-api-jira
+  template:
+    metadata:
+      labels:
+        app: payments-api-jira
+    spec:
+      containers:
+        - name: app
+          image: example.com/payments-api:latest
+---
+# Lowercase prefix
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-api-lowercase
+  namespace: payments-prod
+  annotations:
+    acme.io/snow-change-number: "chg0001234"
+  labels:
+    app.kubernetes.io/name: payments-api-lowercase
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payments-api-lowercase
+  template:
+    metadata:
+      labels:
+        app: payments-api-lowercase
+    spec:
+      containers:
+        - name: app
+          image: example.com/payments-api:latest
+---
+# Incident number is not a change record
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-api-incident
+  namespace: payments-prod
+  annotations:
+    acme.io/snow-change-number: "INC0001234"
+  labels:
+    app.kubernetes.io/name: payments-api-incident
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payments-api-incident
+  template:
+    metadata:
+      labels:
+        app: payments-api-incident
+    spec:
+      containers:
+        - name: app
+          image: example.com/payments-api:latest
+---
+# Too few digits
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-api-short
+  namespace: payments-prod
+  annotations:
+    acme.io/snow-change-number: "CHG123"
+  labels:
+    app.kubernetes.io/name: payments-api-short
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payments-api-short
+  template:
+    metadata:
+      labels:
+        app: payments-api-short
+    spec:
+      containers:
+        - name: app
+          image: example.com/payments-api:latest
+---
+# Too many digits
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-api-long
+  namespace: payments-prod
+  annotations:
+    acme.io/snow-change-number: "CHG00012345"
+  labels:
+    app.kubernetes.io/name: payments-api-long
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payments-api-long
+  template:
+    metadata:
+      labels:
+        app: payments-api-long
+    spec:
+      containers:
+        - name: app
+          image: example.com/payments-api:latest
+---
+# Dev namespace is out of scope — no annotation required
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payments-api-dev
+  namespace: payments-dev
+  labels:
+    app.kubernetes.io/name: payments-api-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payments-api-dev
+  template:
+    metadata:
+      labels:
+        app: payments-api-dev
+    spec:
+      containers:
+        - name: app
+          image: example.com/payments-api:latest
+---
+# Valid format on StatefulSet
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: payments-db-valid
+  namespace: payments-prod
+  annotations:
+    acme.io/snow-change-number: "CHG9999999"
+  labels:
+    app.kubernetes.io/name: payments-db-valid
+spec:
+  serviceName: payments-db
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payments-db-valid
+  template:
+    metadata:
+      labels:
+        app: payments-db-valid
+    spec:
+      containers:
+        - name: db
+          image: example.com/payments-db@sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef

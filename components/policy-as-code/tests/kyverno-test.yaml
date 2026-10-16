@@ -1,0 +1,37 @@
+apiVersion: cli.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: require-snow-change-number
+policies:
+  - ../base/policies/snow-change-number.yaml
+resources:
+  - resources/workloads.yaml
+variables: values.yaml
+results:
+  - policy: require-snow-change-number
+    rule: check-snow-change-number
+    kind: Deployment
+    namespace: payments-prod
+    resources:
+      - payments-api-valid
+    result: pass
+  - policy: require-snow-change-number
+    rule: check-snow-change-number
+    kind: StatefulSet
+    namespace: payments-prod
+    resources:
+      - payments-db-valid
+    result: pass
+  - policy: require-snow-change-number
+    rule: check-snow-change-number
+    kind: Deployment
+    namespace: payments-prod
+    resources:
+      - payments-api-missing
+      - payments-api-empty
+      - payments-api-jira
+      - payments-api-lowercase
+      - payments-api-incident
+      - payments-api-short
+      - payments-api-long
+    result: fail

@@ -1,0 +1,18 @@
+---
+# Cluster-wide RHDH operator. The Backstage CR is day-2 (rhdh-platform-gitops).
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: rhdh
+  namespace: openshift-operators
+  labels:
+    app.kubernetes.io/part-of: acme-platform
+    app.kubernetes.io/component: developer-hub
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  channel: fast-1.10
+  installPlanApproval: Automatic
+  name: rhdh
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace

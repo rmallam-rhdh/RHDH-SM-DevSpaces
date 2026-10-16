@@ -53,77 +53,24 @@ acme/
 
 ## Initial Bootstrap
 
-### 1. Clone and configure
+Day-1 operators and lab tools. Day-2 CRs (Backstage, Istio, CheCluster, CNPG Cluster) are [rhdh-platform-gitops](https://github.com/rmallam/rhdh-platform-gitops).
+
+See [bootstrap/README.md](bootstrap/README.md) for the two-Application bring-up.
+
+### 1. Clone
 
 ```bash
 git clone https://github.com/rmallam/RHDH-SM-DevSpaces
-cd gitops-platform
+cd RHDH-SM-DevSpaces
+git checkout demo/udi-devspaces
 ```
 
-Update **all** `repoURL` fields in:
-- `bootstrap/root-app.yaml`
-- `argocd/apps/service-mesh.yaml`
-- `argocd/apps/developer-hub.yaml`
-
-### 2. Seal your secrets
+### 2. Point Argo CD at this repo, then at day-2
 
 ```bash
-# Create a plain secret file locally (never commit this):
-cat <<EOF > /tmp/rhdh-secrets-plain.yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: rhdh-secrets
-  namespace: rhdh
-stringData:
-  CLUSTER_BASE_DOMAIN: "apps.your-cluster.example.com"
-  GITHUB_OAUTH_CLIENT_ID: "your-client-id"
-  GITHUB_OAUTH_CLIENT_SECRET: "your-client-secret"
-  GITHUB_TOKEN: "ghp_..."
-  ARGOCD_TOKEN: "your-argocd-token"
-  KUBE_API_URL: "https://api.your-cluster.example.com:6443"
-  KUBE_SA_TOKEN: "your-sa-token"
-  KUBE_CA_DATA: "base64-encoded-ca"
-EOF
-
-# Seal it using your cluster's Sealed Secrets controller public key:
-kubeseal \
-  --controller-name=sealed-secrets \
-  --controller-namespace=sealed-secrets \
-  --format yaml \
-  < /tmp/rhdh-secrets-plain.yaml \
-  > components/developer-hub/base/instance/secret-env.yaml
-
-rm /tmp/rhdh-secrets-plain.yaml
-```
-
-### 3. Bootstrap ArgoCD
-
-```bash
-# Log in to your OpenShift cluster
-oc login --token=<token> --server=https://api.your-cluster.example.com:6443
-
-# Create the ArgoCD AppProject first
-oc apply -f argocd/projects/acme.yaml
-
-# Apply the root App of Apps
-oc apply -f bootstrap/root-app.yaml -n openshift-gitops
-```
-
-ArgoCD will now automatically sync and deploy:
-1. **Wave 1** — Service Mesh operators + control plane
-2. **Wave 2** — Developer Hub operator + Backstage instance
-
----
-
-## Validate Locally (dry-run)
-
-```bash
-# Validate service mesh overlay
-kustomize build components/service-mesh/overlays/production | kubectl apply --dry-run=acme -f -
-
-# Validate developer hub overlay
-kustomize build components/developer-hub/overlays/production | kubectl apply --dry-run=acme -f -
+oc apply -f bootstrap/root-app.yaml
+# After operator CSVs are Succeeded, apply Secret rhdh-secrets and
+# rhdh-platform-gitops argocd/app-of-apps.yaml — see bootstrap/README.md
 ```
 
 ---

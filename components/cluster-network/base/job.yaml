@@ -1,0 +1,27 @@
+---
+# OSSM3 ambient on ROSA needs host routing for node-local ztunnel.
+# Idempotent: safe if already true.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: set-routing-via-host
+  namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+spec:
+  ttlSecondsAfterFinished: 600
+  backoffLimit: 3
+  template:
+    spec:
+      restartPolicy: OnFailure
+      serviceAccountName: cluster-network-patcher
+      containers:
+        - name: patch
+          image: image-registry.openshift-image-registry.svc:5000/openshift/tools:latest
+          command:
+            - /bin/sh
+            - -c
+            - |
+              oc patch networks.operator.openshift.io cluster --type=merge -p \
+                '{"spec":{"defaultNetwork":{"ovnKubernetesConfig":{"gatewayConfig":{"routingViaHost":true}}}}}'

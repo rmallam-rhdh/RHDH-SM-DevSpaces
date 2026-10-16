@@ -1,0 +1,17 @@
+---
+description: Keep customer names out of files and commits
+alwaysApply: true
+---
+
+# No customer names
+
+Never write these strings into files, diffs, commit messages, docs, tests, comments, or examples:
+
+- `westpac` (any case), including `westpac.co.nz`
+- `wnzl` (any case), including `wnzl-apic`
+
+Use `customer`, `example.com`, `Acme`, `IDP`, and the catalog provider name `apic`.
+
+Before every commit, search the commit message and staged diff for those strings and remove them. Do not mention the local clone folder name in a commit message; use the GitHub repo name `RHDH-SM-DevSpaces`.
+
+The only file allowed to contain the denylist itself is this rule.

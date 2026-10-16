@@ -1,0 +1,15 @@
+---
+# Day-2 CRs (Istio, CheCluster, CNPG Cluster, Backstage) are cluster-scoped.
+# The default GitOps controller cannot create them without this binding.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: openshift-gitops-application-controller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: openshift-gitops-argocd-application-controller
+    namespace: openshift-gitops

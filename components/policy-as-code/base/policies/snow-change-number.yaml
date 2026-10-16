@@ -1,0 +1,51 @@
+---
+# POLICY: require-snow-change-number
+# ─────────────────────────────────────────────────────────────────────────────
+# Production Deployments/StatefulSets must carry a ServiceNow Change Request
+# number in annotation acme.io/snow-change-number (HLD §16 / §18.6).
+# ServiceNow is the system of record for Non-Prod and Prod promotions; Jira
+# remains story/traceability only and is not accepted here.
+#
+# Number format (ServiceNow OOTB change prefix + 7-digit sequence):
+#   ^CHG[0-9]{7}$    e.g. CHG0001234
+# Rejects Jira keys (CHG-1234), incidents (INC...), empty, and lowercase values.
+# Confirm digit length with the ServiceNow team if glide.sys.number.max_length
+# differs from the default of 7 — keep this regex and the Jenkins check in sync.
+#
+# Mode: Audit → Enforce (phased). Jenkins injects the annotation on promote.
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-snow-change-number
+  annotations:
+    policies.kyverno.io/title: Require ServiceNow Change Number on Production Workloads
+    policies.kyverno.io/category: DevOps Release Gates
+    policies.kyverno.io/severity: medium
+    policies.kyverno.io/description: >
+      Production Deployments and StatefulSets must have annotation
+      acme.io/snow-change-number set to a ServiceNow Change Request number
+      matching ^CHG[0-9]{7}$ (e.g. CHG0001234). Jira keys are not accepted.
+spec:
+  validationFailureAction: Audit
+  background: true
+  rules:
+    - name: check-snow-change-number
+      match:
+        any:
+          - resources:
+              kinds: [Deployment, StatefulSet]
+              namespaceSelector:
+                matchLabels:
+                  acme.io/env: prod
+      validate:
+        cel:
+          expressions:
+            - expression: >-
+                has(object.metadata.annotations) &&
+                'acme.io/snow-change-number' in object.metadata.annotations &&
+                object.metadata.annotations['acme.io/snow-change-number'].matches('^CHG[0-9]{7}$')
+              message: >-
+                Production workloads must set annotation acme.io/snow-change-number
+                to a ServiceNow Change Request number: CHG followed by exactly 7 digits
+                (e.g. CHG0001234). Jira keys (CHG-1234) and other SNOW prefixes
+                (INC, PRB, RITM) are not valid.

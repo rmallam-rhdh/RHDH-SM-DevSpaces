@@ -42,7 +42,7 @@ metadata:
     - url: https://github.com/${{ values.githubOwner }}/${{ values.appName }}/blob/main/Jenkinsfile
       title: Jenkinsfile
       icon: github
-    - url: https://jenkins-jenkins.apps.rosa.rosa-89s85.bhg0.p3.openshiftapps.com/job/demo/job/${{ values.appName }}/
+    - url: https://jenkins-jenkins.${{ values.clusterBaseDomain }}/job/demo/job/${{ values.appName }}/
       title: Jenkins CI
       icon: dashboard
 spec:
