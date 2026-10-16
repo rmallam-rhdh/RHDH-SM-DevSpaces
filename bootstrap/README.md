@@ -22,4 +22,4 @@ Entra app `rhdh-login` redirect (Azure, not GitOps):
 
 `https://backstage-developer-hub-rhdh.<clusterBaseDomain>/api/auth/microsoft/handler/frame`
 
-Squid is optional (`rhdh-platform-gitops/argocd/optional/squid.yaml`) and needs Vault + External Secrets.
+Squid is day-2 (`rhdh-platform-gitops/argocd/apps/squid.yaml`). Apply Secret `squid-htpasswd` before that Application is Ready; Hub uses it when `httpProxy.enabled` is true.
