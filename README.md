@@ -62,7 +62,7 @@ See [bootstrap/README.md](bootstrap/README.md) for the two-Application bring-up.
 ```bash
 git clone https://github.com/rmallam/RHDH-SM-DevSpaces
 cd RHDH-SM-DevSpaces
-git checkout demo/udi-devspaces
+git checkout main
 ```
 
 ### 2. Point Argo CD at this repo, then at day-2

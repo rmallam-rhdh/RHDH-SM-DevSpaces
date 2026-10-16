@@ -13,7 +13,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/rmallam/RHDH-SM-DevSpaces
-    targetRevision: demo/udi-devspaces
+    targetRevision: main
     path: components/policy-as-code/base
   destination:
     server: https://kubernetes.default.svc

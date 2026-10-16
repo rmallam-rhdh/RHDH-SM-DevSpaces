@@ -13,7 +13,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/rmallam/RHDH-SM-DevSpaces
-    targetRevision: demo/udi-devspaces
+    targetRevision: main
     path: demo/ldap
   destination:
     server: https://kubernetes.default.svc

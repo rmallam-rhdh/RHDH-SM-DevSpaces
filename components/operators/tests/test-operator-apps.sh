@@ -62,7 +62,7 @@ echo "== Argo apps =="
 for app in rhdh-operator service-mesh-operator devspaces-operator cluster-network; do
   f="$ROOT/argocd/apps/${app}.yaml"
   need "RHDH-SM-DevSpaces" "$f" "$app"
-  need "demo/udi-devspaces" "$f" "$app"
+  need "targetRevision: main" "$f" "$app"
 done
 need "components/developer-hub/operator" "$ROOT/argocd/apps/rhdh-operator.yaml" rhdh-app
 need "components/service-mesh/operator" "$ROOT/argocd/apps/service-mesh-operator.yaml" mesh-app

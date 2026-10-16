@@ -14,7 +14,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/rmallam/RHDH-SM-DevSpaces
-    targetRevision: demo/udi-devspaces
+    targetRevision: main
     path: components/cluster-network/base
   destination:
     server: https://kubernetes.default.svc
