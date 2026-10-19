@@ -10,7 +10,7 @@ metadata:
 spec:
   description: Acme Platform GitOps Project
   sourceRepos:
-    - https://github.com/rmallam/RHDH-SM-DevSpaces   # <-- update to your repo URL
+    - https://github.com/rmallam-rhdh/RHDH-SM-DevSpaces   # <-- update to your repo URL
     - https://charts.openshift.io
   destinations:
     - namespace: openshift-operators

@@ -160,16 +160,16 @@ data:
           rules:
             - allow: [Component, System, Resource]
         - type: url
-          target: https://github.com/rmallam/RHDH-SM-DevSpaces/blob/main/golden-path/all-templates.yaml
+          target: https://github.com/rmallam-rhdh/RHDH-SM-DevSpaces/blob/main/golden-path/all-templates.yaml
           rules:
             - allow: [Template]
         - type: url
-          target: https://github.com/rmallam/RHDH-SM-DevSpaces/blob/main/golden-path/catalog/location.yaml
+          target: https://github.com/rmallam-rhdh/RHDH-SM-DevSpaces/blob/main/golden-path/catalog/location.yaml
           rules:
             - allow: [Component, System, API]
         # Acme Golden Path Templates (Spring Boot + Node.js)
         - type: url
-          target: https://github.com/rmallam/RHDH-SM-DevSpaces/blob/main/golden-path/all-templates.yaml
+          target: https://github.com/rmallam-rhdh/RHDH-SM-DevSpaces/blob/main/golden-path/all-templates.yaml
           rules:
             - allow: [Template, Location, Resource]
         # IBM API Connect — import OpenAPI specs exported from APIC as YAML files

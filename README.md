@@ -53,14 +53,14 @@ acme/
 
 ## Initial Bootstrap
 
-Day-1 operators and lab tools. Day-2 CRs (Backstage, Istio, CheCluster, CNPG Cluster) are [rhdh-platform-gitops](https://github.com/rmallam/rhdh-platform-gitops).
+Day-1 operators and lab tools. Day-2 CRs (Backstage, Istio, CheCluster, CNPG Cluster) are [rhdh-platform-gitops](https://github.com/rmallam-rhdh/rhdh-platform-gitops).
 
 See [bootstrap/README.md](bootstrap/README.md) for the two-Application bring-up.
 
 ### 1. Clone
 
 ```bash
-git clone https://github.com/rmallam/RHDH-SM-DevSpaces
+git clone https://github.com/rmallam-rhdh/RHDH-SM-DevSpaces
 cd RHDH-SM-DevSpaces
 git checkout main
 ```

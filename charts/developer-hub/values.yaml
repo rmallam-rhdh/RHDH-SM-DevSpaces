@@ -100,10 +100,10 @@ catalog:
     enabled: false
   locations:
     - type: url
-      target: https://github.com/rmallam/RHDH-SM-DevSpaces/blob/main/golden-path/all-templates.yaml
+      target: https://github.com/rmallam-rhdh/RHDH-SM-DevSpaces/blob/main/golden-path/all-templates.yaml
       allow: [Template, Location, Resource]
     - type: url
-      target: https://github.com/rmallam/RHDH-SM-DevSpaces/blob/main/golden-path/catalog/location.yaml
+      target: https://github.com/rmallam-rhdh/RHDH-SM-DevSpaces/blob/main/golden-path/catalog/location.yaml
       allow: [Component, System, API]
 
 integrations:

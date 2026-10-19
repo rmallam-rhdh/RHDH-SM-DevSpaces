@@ -12,7 +12,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/rmallam/RHDH-SM-DevSpaces
+    repoURL: https://github.com/rmallam-rhdh/RHDH-SM-DevSpaces
     targetRevision: main
     path: components/vault/base
   destination:

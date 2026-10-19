@@ -80,7 +80,7 @@ shutil.copytree(src, dst, dirs_exist_ok=True)
 vals = {
     "appName": "demo-node-web",
     "appDescription": "test website",
-    "githubOwner": "rmallam",
+    "githubOwner": "rmallam-rhdh",
     "systemName": "acme-demo",
     "backendServiceRef": "component:default/demo-quarkus-gp",
     "backendServiceName": "demo-quarkus-gp",

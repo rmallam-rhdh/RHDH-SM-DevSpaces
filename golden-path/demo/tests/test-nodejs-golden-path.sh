@@ -105,7 +105,7 @@ shutil.copytree(src, dst, dirs_exist_ok=True)
 vals = {
     "appName": "demo-node-gp",
     "appDescription": "test render",
-    "githubOwner": "rmallam",
+    "githubOwner": "rmallam-rhdh",
     "port": "3000",
     "targetNamespace": "demo-dev",
     "clusterBaseDomain": "apps.example.test",

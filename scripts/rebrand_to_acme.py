@@ -7,14 +7,14 @@ ROOT = Path(__file__).resolve().parents[1]
 SKIP = {"gradle/wrapper"}
 
 REPLACEMENTS = [
-    ("https://github.com/client/gitops-platform", "https://github.com/rmallam/RHDH-SM-DevSpaces"),
+    ("https://github.com/client/gitops-platform", "https://github.com/rmallam-rhdh/RHDH-SM-DevSpaces"),
     (
         "https://github.com/client/backstage-templates/blob/main/all-templates.yaml",
-        "https://github.com/rmallam/RHDH-SM-DevSpaces/blob/main/golden-path/all-templates.yaml",
+        "https://github.com/rmallam-rhdh/RHDH-SM-DevSpaces/blob/main/golden-path/all-templates.yaml",
     ),
     (
         "https://github.com/client/service-catalog/blob/main/all-components.yaml",
-        "https://github.com/rmallam/RHDH-SM-DevSpaces/blob/main/golden-path/catalog/location.yaml",
+        "https://github.com/rmallam-rhdh/RHDH-SM-DevSpaces/blob/main/golden-path/catalog/location.yaml",
     ),
     ("client.io", "acme.io"),
     ("ClientSpace", "AcmeSpace"),
@@ -64,7 +64,7 @@ REPLACEMENTS = [
     ("description: Client ", "description: Acme "),
     ("Welcome to Client", "Welcome to Acme"),
     ("ClientNZ", "Acme"),
-    ("github.com/client/", "github.com/rmallam/RHDH-SM-DevSpaces/"),
+    ("github.com/client/", "github.com/rmallam-rhdh/RHDH-SM-DevSpaces/"),
     ("oc apply -f argocd/projects/client.yaml", "oc apply -f argocd/projects/acme.yaml"),
     ("└── client.yaml", "└── acme.yaml"),
     ("│   └── client.yaml", "│   └── acme.yaml"),

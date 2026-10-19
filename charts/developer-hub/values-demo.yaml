@@ -56,13 +56,13 @@ catalog:
     enabled: true
   locations:
     - type: url
-      target: https://raw.githubusercontent.com/rmallam/RHDH-SM-DevSpaces/refs/heads/main/golden-path/demo/template-node-udi-devspaces.yaml
+      target: https://raw.githubusercontent.com/rmallam-rhdh/RHDH-SM-DevSpaces/refs/heads/main/golden-path/demo/template-node-udi-devspaces.yaml
       allow: [Template]
     - type: url
-      target: https://raw.githubusercontent.com/rmallam/RHDH-SM-DevSpaces/refs/heads/main/golden-path/demo/template-start-feature-devspaces.yaml
+      target: https://raw.githubusercontent.com/rmallam-rhdh/RHDH-SM-DevSpaces/refs/heads/main/golden-path/demo/template-start-feature-devspaces.yaml
       allow: [Template]
     - type: url
-      target: https://raw.githubusercontent.com/rmallam/RHDH-SM-DevSpaces/refs/heads/main/golden-path/demo/template-open-devspaces-namespace.yaml
+      target: https://raw.githubusercontent.com/rmallam-rhdh/RHDH-SM-DevSpaces/refs/heads/main/golden-path/demo/template-open-devspaces-namespace.yaml
       allow: [Template]
     - type: url
       target: https://raw.githubusercontent.com/rmallam/RHDH/refs/heads/main/golden-path/demo/template-plugin-kitchen-sink.yaml

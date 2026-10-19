@@ -81,7 +81,7 @@ shutil.copytree(src, dst, dirs_exist_ok=True)
 vals = {
     "appName": "demo-quarkus-gp",
     "appDescription": "test render",
-    "githubOwner": "rmallam",
+    "githubOwner": "rmallam-rhdh",
     "systemName": "acme-demo",
     "systemDescription": "demo product",
     "port": "8080",

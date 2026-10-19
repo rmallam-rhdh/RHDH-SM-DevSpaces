@@ -1,6 +1,6 @@
 ---
 # Day-1 only (operators + lab tools). Day-2 CRs (Backstage, Istio, CheCluster,
-# CNPG Cluster) are https://github.com/rmallam/rhdh-platform-gitops.
+# CNPG Cluster) are https://github.com/rmallam-rhdh/rhdh-platform-gitops.
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -11,7 +11,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/rmallam/RHDH-SM-DevSpaces
+    repoURL: https://github.com/rmallam-rhdh/RHDH-SM-DevSpaces
     targetRevision: main
     path: argocd/apps
   destination:
