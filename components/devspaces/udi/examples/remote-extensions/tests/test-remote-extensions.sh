@@ -27,12 +27,17 @@ grep -q 'DEFAULT_EXTENSIONS' "${ROOT}/scripts/install-remote-extensions.sh" \
   || fail "install script must fall back to DEFAULT_EXTENSIONS"
 grep -q 'extensionsGallery' "${ROOT}/scripts/install-remote-extensions.sh" \
   || fail "install script must patch extensionsGallery in product.json"
+grep -q 'fetch_from_artifactory' "${ROOT}/scripts/install-remote-extensions.sh" \
+  || fail "install script must fetch .vsix and .sigzip from Artifactory"
+grep -q 'verify_and_unpack_vsix' "${ROOT}/scripts/install-remote-extensions.sh" \
+  || fail "install script must verify .sigzip with vsce-sign and unpack"
 
 echo "==> Unit: devfile postStart & Artifactory gallery config"
 grep -q 'postStart:' "${ROOT}/devfile.yaml" || fail "devfile must define postStart"
 grep -q 'install-remote-extensions' "${ROOT}/devfile.yaml" || fail "postStart must run installer"
 grep -q 'DEFAULT_EXTENSIONS' "${ROOT}/devfile.yaml" || fail "devfile should set DEFAULT_EXTENSIONS for che-code"
 grep -q 'ARTIFACTORY_MARKETPLACE_URL' "${ROOT}/devfile.yaml" || fail "devfile must configure ARTIFACTORY_MARKETPLACE_URL"
+grep -q 'ARTIFACTORY_DIRECT_SIGZIP_VERIFY' "${ROOT}/devfile.yaml" || fail "devfile must configure ARTIFACTORY_DIRECT_SIGZIP_VERIFY"
 grep -q 'REMOTE_EXTENSION_IDS' "${ROOT}/devfile.yaml" || fail "devfile must configure REMOTE_EXTENSION_IDS"
 
 echo "==> Unit: extensions manifest"
@@ -86,6 +91,7 @@ chmod +x "${commit_dir}/bin/remote-cli/code"
 
 if HOME="${home}" PATH="/usr/bin:/bin:$(dirname "$(command -v jq)")" \
    ARTIFACTORY_MARKETPLACE_URL="https://artifactory.corp.internal/artifactory/vscode-marketplace" \
+   ARTIFACTORY_DIRECT_SIGZIP_VERIFY="false" \
    REMOTE_EXTENSION_IDS="redhat.vscode-yaml;dbaeumer.vscode-eslint" \
    UDI_EXTENSIONS_DIR="${tmpdir}" \
    bash "${ROOT}/scripts/install-remote-extensions.sh"; then
@@ -104,6 +110,60 @@ else
   fail "batched CLI install test failed"
 fi
 rm -rf "${tmpdir}" "${home}"
+
+echo "==> System: direct Artifactory .vsix + .sigzip download, vsce-sign verify, and unpack"
+artifactory_mock="$(mktemp -d)"
+home="$(mktemp -d)"
+tmpdir="$(mktemp -d)"
+commit_dir="${home}/.vscode-server/bin/abc123commit"
+mkdir -p "${commit_dir}/bin/remote-cli" "${commit_dir}/node_modules/@vscode/vsce-sign/bin"
+
+cat <<'EOF' > "${commit_dir}/product.json"
+{"version": "1.95.0", "extensionsGallery": {}}
+EOF
+cat <<'EOF' > "${commit_dir}/bin/remote-cli/code"
+#!/usr/bin/env bash
+exit 0
+EOF
+cat <<'EOF' > "${commit_dir}/node_modules/@vscode/vsce-sign/bin/vsce-sign"
+#!/usr/bin/env bash
+printf '%s\n' "$*" > "${HOME}/vsce-sign-args.txt"
+exit 0
+EOF
+chmod +x "${commit_dir}/bin/remote-cli/code" "${commit_dir}/node_modules/@vscode/vsce-sign/bin/vsce-sign"
+
+# Build a minimal valid .vsix + .sigzip in the mock Artifactory directory
+pkg_build="$(mktemp -d)"
+mkdir -p "${pkg_build}/extension"
+cat <<'EOF' > "${pkg_build}/extension/package.json"
+{"publisher": "redhat", "name": "vscode-yaml", "version": "1.18.0"}
+EOF
+echo "<PackageManifest/>" > "${pkg_build}/extension.vsixmanifest"
+(cd "${pkg_build}" && zip -qr "${artifactory_mock}/redhat.vscode-yaml-1.18.0.vsix" extension extension.vsixmanifest)
+echo "mock-sigzip-payload" > "${artifactory_mock}/redhat.vscode-yaml-1.18.0.sigzip"
+rm -rf "${pkg_build}"
+
+if HOME="${home}" PATH="/usr/bin:/bin:$(dirname "$(command -v jq)")" \
+   ARTIFACTORY_VSIX_URL="file://${artifactory_mock}" \
+   ARTIFACTORY_DIRECT_SIGZIP_VERIFY="true" \
+   REMOTE_EXTENSION_IDS="redhat.vscode-yaml-1.18.0" \
+   UDI_EXTENSIONS_DIR="${tmpdir}" \
+   bash "${ROOT}/scripts/install-remote-extensions.sh"; then
+  if grep -q 'verify .*redhat\.vscode-yaml-1\.18\.0\.vsix .*redhat\.vscode-yaml-1\.18\.0\.sigzip' "${home}/vsce-sign-args.txt"; then
+    pass "downloaded .vsix + .sigzip from Artifactory and verified signature with vsce-sign"
+  else
+    fail "vsce-sign was not called with expected args: $(cat "${home}/vsce-sign-args.txt" 2>/dev/null || true)"
+  fi
+  if [[ -f "${home}/.vscode-server/extensions/redhat.vscode-yaml-1.18.0/package.json" ]] && \
+     jq -e '.[0].metadata.isSigned == true' "${home}/.vscode-server/extensions/extensions.json" >/dev/null; then
+    pass "unpacked verified extension into ~/.vscode-server/extensions with isSigned=true"
+  else
+    fail "extension was not unpacked or marked isSigned=true"
+  fi
+else
+  fail "direct Artifactory .vsix + .sigzip verification test failed"
+fi
+rm -rf "${artifactory_mock}" "${home}" "${tmpdir}"
 
 if [[ "${FAIL}" -ne 0 ]]; then
   echo "RESULT: FAIL (${FAIL})"

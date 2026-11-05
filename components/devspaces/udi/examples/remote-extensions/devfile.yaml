@@ -1,10 +1,10 @@
 # Sample DevWorkspace tooling: UDI + postStart installer for remote VS Code with Artifactory
-# gallery redirect (keeps extensions.verifySignature=true without 90s egress timeouts).
+# gallery & direct .vsix + .sigzip download (100% via Artifactory, keeps verifySignature=true).
 schemaVersion: 2.2.2
 metadata:
   name: udi-remote-extensions-demo
-  displayName: UDI remote extensions (Artifactory gallery + postStart)
-  description: Auto-installs VS Code extensions on postStart via Artifactory remote gallery without disabling signature verification
+  displayName: UDI remote extensions (Artifactory .vsix + .sigzip)
+  description: Auto-installs VS Code extensions on postStart strictly via Artifactory (.vsix + .sigzip) with vsce-sign verification
   attributes:
     metadata.openshift.io/scopes: ['devspaces']
 components:
@@ -18,11 +18,17 @@ components:
       mountSources: true
       sourceMapping: /projects
       env:
-        # Artifactory Remote Repository proxying VS Code Marketplace (used to patch product.json
-        # so verifySignature=true fetches .sigzip & resolves versions via Artifactory instead of timing out)
+        # Artifactory root & repo paths (all .vsix, .sigzip, and gallery queries go strictly through Artifactory)
+        - name: ARTIFACTORY_URL
+          value: "https://artifactory.example.com/artifactory"
+        - name: ARTIFACTORY_VSIX_REPO
+          value: "generic-release/vsix"
         - name: ARTIFACTORY_MARKETPLACE_URL
           value: "https://artifactory.example.com/artifactory/vscode-marketplace"
-        # Extension IDs resolved dynamically for the connected developer's VS Code version
+        # Explicitly download .vsix + .sigzip from Artifactory and verify with vsce-sign (never hits gallerycdn.vsassets.io)
+        - name: ARTIFACTORY_DIRECT_SIGZIP_VERIFY
+          value: "true"
+        # Extension IDs (resolved via Artifactory gallery) or explicit <id>-<version> coordinates in ARTIFACTORY_VSIX_REPO
         - name: REMOTE_EXTENSION_IDS
           value: "redhat.vscode-yaml;dbaeumer.vscode-eslint;esbenp.prettier-vscode;redhat.vscode-openshift-connector"
         # Wait in background if postStart fires before the developer connects from local VS Code
