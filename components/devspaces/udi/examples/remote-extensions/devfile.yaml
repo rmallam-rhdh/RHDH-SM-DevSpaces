@@ -1,0 +1,61 @@
+# Sample DevWorkspace tooling: UDI + postStart installer for remote VS Code with Artifactory
+# gallery redirect (keeps extensions.verifySignature=true without 90s egress timeouts).
+schemaVersion: 2.2.2
+metadata:
+  name: udi-remote-extensions-demo
+  displayName: UDI remote extensions (Artifactory gallery + postStart)
+  description: Auto-installs VS Code extensions on postStart via Artifactory remote gallery without disabling signature verification
+  attributes:
+    metadata.openshift.io/scopes: ['devspaces']
+components:
+  - name: tools
+    container:
+      image: registry.redhat.io/devspaces/udi-rhel9:3.30
+      memoryLimit: 3Gi
+      memoryRequest: 1Gi
+      cpuLimit: "2"
+      cpuRequest: 200m
+      mountSources: true
+      sourceMapping: /projects
+      env:
+        # Artifactory Remote Repository proxying VS Code Marketplace (used to patch product.json
+        # so verifySignature=true fetches .sigzip & resolves versions via Artifactory instead of timing out)
+        - name: ARTIFACTORY_MARKETPLACE_URL
+          value: "https://artifactory.example.com/artifactory/vscode-marketplace"
+        # Extension IDs resolved dynamically for the connected developer's VS Code version
+        - name: REMOTE_EXTENSION_IDS
+          value: "redhat.vscode-yaml;dbaeumer.vscode-eslint;esbenp.prettier-vscode;redhat.vscode-openshift-connector"
+        # Wait in background if postStart fires before the developer connects from local VS Code
+        - name: UDI_WAIT_FOR_VSCODE_SERVER
+          value: "true"
+        # Used by che-code (in-browser / Dev Spaces editor) and local .vsix fallback
+        - name: DEFAULT_EXTENSIONS
+          value: "/opt/udi-extensions/redhat.vscode-yaml-1.18.0.vsix;/opt/udi-extensions/dbaeumer.vscode-eslint-3.0.16.vsix"
+        - name: UDI_EXTENSIONS_DIR
+          value: /opt/udi-extensions
+commands:
+  - id: install-remote-extensions
+    exec:
+      component: tools
+      workingDir: ${PROJECTS_ROOT}
+      commandLine: |
+        set -euo pipefail
+        # Refresh DEFAULT_EXTENSIONS from the image if present (avoids hard-coding versions).
+        if [[ -f /etc/udi-default-extensions.env ]]; then
+          export DEFAULT_EXTENSIONS="$(cat /etc/udi-default-extensions.env)"
+          echo "DEFAULT_EXTENSIONS=${DEFAULT_EXTENSIONS}"
+        fi
+        # Fall back to repo-bundled VSIXs when running on stock UDI without /opt/udi-extensions baked in
+        REPO_EXT_DIR="${PROJECTS_ROOT}/RHDH-SM-DevSpaces/components/devspaces/udi/examples/remote-extensions"
+        if [[ ! -d "${UDI_EXTENSIONS_DIR:-/opt/udi-extensions}" && -d "${REPO_EXT_DIR}/vsix" ]]; then
+          export UDI_EXTENSIONS_DIR="${REPO_EXT_DIR}/vsix"
+        fi
+        # Prefer image-baked script if present, otherwise run directly from the checked-out repository
+        if [[ -x /usr/local/bin/install-remote-extensions.sh ]]; then
+          /usr/local/bin/install-remote-extensions.sh
+        elif [[ -f "${REPO_EXT_DIR}/scripts/install-remote-extensions.sh" ]]; then
+          bash "${REPO_EXT_DIR}/scripts/install-remote-extensions.sh"
+        fi
+events:
+  postStart:
+    - install-remote-extensions

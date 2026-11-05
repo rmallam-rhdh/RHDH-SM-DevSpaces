@@ -1,0 +1,49 @@
+# Example: bake VSIX into a UDI and install them for VS Code remote / che-code.
+#
+# Lab build (downloads sample extensions from OpenVSX into the build context first):
+#   ./scripts/fetch-vsix.sh
+#   podman build -t digi20-udi-remote-ext:demo \
+#     -f Containerfile .
+#
+# Air-gapped: copy approved .vsix into ./vsix/ then build (skip fetch).
+#
+# Workspace: point the tools component at this image and run install on postStart
+# (see devfile.yaml).
+
+ARG UDI_BASE=registry.redhat.io/devspaces/udi-rhel9:3.30
+FROM ${UDI_BASE}
+
+LABEL name="digi20-udi-remote-ext" \
+      summary="UDI example with pre-baked VSIX for remote VS Code" \
+      description="Demonstrates VSIX under /opt/udi-extensions + install script for postStart"
+
+USER 0
+
+ENV UDI_EXTENSIONS_DIR=/opt/udi-extensions
+
+RUN mkdir -p "${UDI_EXTENSIONS_DIR}" \
+ && chmod 0755 "${UDI_EXTENSIONS_DIR}"
+
+# Build context must contain at least one .vsix (run scripts/fetch-vsix.sh first).
+COPY vsix/*.vsix ${UDI_EXTENSIONS_DIR}/
+
+COPY scripts/install-remote-extensions.sh /usr/local/bin/install-remote-extensions.sh
+RUN chmod 0755 /usr/local/bin/install-remote-extensions.sh \
+ && chown -R 10001:0 "${UDI_EXTENSIONS_DIR}" \
+ && chmod -R g=u "${UDI_EXTENSIONS_DIR}"
+
+# Optional convenience for che-code: list paths at build time into an env file
+# that postStart can export. DEFAULT_EXTENSIONS is also set in the sample devfile.
+RUN set -euo pipefail; \
+    joined=""; \
+    for f in "${UDI_EXTENSIONS_DIR}"/*.vsix; do \
+      [ -e "$f" ] || continue; \
+      if [ -n "$joined" ]; then joined="${joined};${f}"; else joined="${f}"; fi; \
+    done; \
+    printf '%s\n' "$joined" > /etc/udi-default-extensions.env; \
+    chmod 0644 /etc/udi-default-extensions.env; \
+    echo "Baked DEFAULT_EXTENSIONS candidates: ${joined}"
+
+USER 10001
+WORKDIR /projects
+CMD ["tail", "-f", "/dev/null"]
