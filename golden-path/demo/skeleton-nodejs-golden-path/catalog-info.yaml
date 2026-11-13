@@ -27,6 +27,7 @@ metadata:
     snyk.io/org-name: stub-org
     snyk.io/project-ids: stub
     servicenow.com/entity-id: demo
+    servicenow.com/support-group: ${{ values.ownerGroup }}
     jfrog-artifactory/image-name: ${{ values.appName }}
     dynatrace.com/dynatrace-entity-id: SERVICE-39720C1E0047A5C0
     acme.io/devfile-path: devfile.yaml
