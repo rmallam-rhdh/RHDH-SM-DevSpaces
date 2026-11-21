@@ -8,6 +8,8 @@ metadata:
     - golden-path
     - jenkins
     - helm
+  labels:
+    servicenow.com/support-group: ${{ values.supportGroup }}
   annotations:
     backstage.io/techdocs-ref: dir:.
     backstage.io/source-location: url:https://github.com/${{ values.githubOwner }}/${{ values.appName }}/tree/main/
@@ -28,6 +30,7 @@ metadata:
     snyk.io/org-name: stub-org
     snyk.io/project-ids: stub
     servicenow.com/entity-id: demo
+    servicenow.com/support-group: ${{ values.supportGroup }}
     jfrog-artifactory/image-name: ${{ values.appName }}
     dynatrace.com/dynatrace-entity-id: SERVICE-39720C1E0047A5C0
     acme.io/devfile-path: devfile.yaml
