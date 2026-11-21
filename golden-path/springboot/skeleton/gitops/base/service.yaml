@@ -5,6 +5,7 @@ metadata:
   name: ${{ values.appName }}
   labels:
     app.kubernetes.io/name: ${{ values.appName }}
+    backstage.io/kubernetes-id: ${{ values.appName }}
 spec:
   selector:
     app.kubernetes.io/name: ${{ values.appName }}

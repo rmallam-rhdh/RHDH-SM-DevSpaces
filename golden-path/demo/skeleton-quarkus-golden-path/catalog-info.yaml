@@ -20,8 +20,9 @@ metadata:
     sonarqube.org/project-key: ${{ values.sonarProjectKey }}
     argocd/app-name: ${{ values.appName }}
     argocd/app-namespace: openshift-gitops
+    # Multi-cluster & multi-namespace discovery: omit backstage.io/kubernetes-namespace
+    # so RHDH discovers resources across clusters/environments by label selector.
     backstage.io/kubernetes-id: ${{ values.appName }}
-    backstage.io/kubernetes-namespace: ${{ values.targetNamespace }}
     kiali.io/namespace: ${{ values.targetNamespace }}
     vault.io/secrets-path: rhdh
     jira/project-key: SCRUM

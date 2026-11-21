@@ -12,7 +12,9 @@ metadata:
     sonarqube.org/project-key: ${{ values.sonarProject }}
     quay.io/repository-slug: acme/${{ values.appName }}
     acme.io/cluster: ${{ values.targetCluster }}
-    backstage.io/kubernetes-namespace: ${{ values.targetNamespace }}
+    # Multi-cluster & multi-namespace discovery: omit backstage.io/kubernetes-namespace
+    # so RHDH discovers resources across clusters/environments by label selector.
+    backstage.io/kubernetes-id: ${{ values.appName }}
     acme.io/devfile-path: devfile.yaml
     acme.io/devspaces-url: ${{ values.devSpacesBaseUrl }}
     acme.io/devspaces-factory-url: ${{ values.devSpacesBaseUrl }}/dashboard/#/load/workspace/factory?url=https://bitbucket.org/${{ values.bitbucketWorkspace }}/${{ values.appName }}&devfilePath=devfile.yaml

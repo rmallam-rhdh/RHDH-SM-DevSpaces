@@ -6,6 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: ${{ values.appName }}
     app.kubernetes.io/part-of: acme-platform
+    backstage.io/kubernetes-id: ${{ values.appName }}
 spec:
   replicas: 1
   selector:
@@ -15,6 +16,7 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: ${{ values.appName }}
+        backstage.io/kubernetes-id: ${{ values.appName }}
     spec:
       containers:
         - name: ${{ values.appName }}

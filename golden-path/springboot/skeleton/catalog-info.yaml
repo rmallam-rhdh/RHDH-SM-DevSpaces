@@ -12,7 +12,9 @@ metadata:
     sonarqube.org/project-key: ${{ values.sonarProject }}
     quay.io/repository-slug: acme/${{ values.appName }}
     acme.io/cluster: ${{ values.targetCluster }}
-    backstage.io/kubernetes-namespace: ${{ values.targetNamespace }}
+    # Multi-cluster & multi-namespace discovery: omit backstage.io/kubernetes-namespace
+    # so RHDH discovers resources across clusters/environments by label selector.
+    backstage.io/kubernetes-id: ${{ values.appName }}
     # OpenShift Dev Spaces — factory URL opens VS Code + Git workspace from repo devfile.yaml
     acme.io/devfile-path: devfile.yaml
     acme.io/devspaces-url: ${{ values.devSpacesBaseUrl }}
