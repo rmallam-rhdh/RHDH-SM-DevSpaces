@@ -36,8 +36,8 @@
       <credentialsId></credentialsId>
       <traits>
         <jenkins.scm.impl.trait.WildcardSCMSourceFilterTrait>
-          <includes>node* quarkus* *web*</includes>
-          <excludes></excludes>
+          <includes>*</includes>
+          <excludes>rhdh-platform-gitops RHDH-SM-DevSpaces RHDH</excludes>
         </jenkins.scm.impl.trait.WildcardSCMSourceFilterTrait>
         <org.jenkinsci.plugins.github__branch__source.BranchDiscoveryTrait>
           <strategyId>1</strategyId>

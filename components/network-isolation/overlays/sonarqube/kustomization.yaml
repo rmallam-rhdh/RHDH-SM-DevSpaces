@@ -3,5 +3,6 @@ kind: Kustomization
 namespace: sonarqube
 resources:
   - ../../base
+  - allow-from-jenkins.yaml
 components:
   - ../../components/allow-from-rhdh

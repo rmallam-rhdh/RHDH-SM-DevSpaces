@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - subscription.yaml
+  - networkpolicy-webhook.yaml
 labels:
   - pairs:
       app.kubernetes.io/part-of: acme-platform

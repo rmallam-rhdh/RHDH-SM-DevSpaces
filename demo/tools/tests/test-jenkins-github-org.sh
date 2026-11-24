@@ -15,7 +15,8 @@ need() {
 }
 need "jenkins.branch.OrganizationFolder" "$F"
 need "<repoOwner>rmallam-rhdh</repoOwner>" "$F"
-need "<includes>node* quarkus* *web*</includes>" "$F"
+need "<includes>*</includes>" "$F"
+need "<excludes>rhdh-platform-gitops RHDH-SM-DevSpaces RHDH</excludes>" "$F"
 need "<scriptPath>Jenkinsfile</scriptPath>" "$F"
 need "<credentialsId></credentialsId>" "$F"
 need "GitHubSCMNavigator" "$F"

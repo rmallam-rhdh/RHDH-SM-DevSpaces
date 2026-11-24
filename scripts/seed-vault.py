@@ -39,6 +39,8 @@ KEYS = {
     "JENKINS_BASIC_AUTH_B64": "jenkins-basic-auth-b64",
     "ARGOCD_URL": "argocd-url",
     "ARGOCD_TOKEN": "argocd-token",
+    "ARGOCD_ADMIN_PASSWORD": "argocd-admin-password",
+    "CLUSTER2_KUBE_TOKEN": "cluster2-kube-token",
     "SONARQUBE_BASE_URL": "sonarqube-base-url",
     "SONARQUBE_API_KEY": "sonarqube-api-key",
     "SNYK_ORG_SLUG": "snyk-org-slug",
