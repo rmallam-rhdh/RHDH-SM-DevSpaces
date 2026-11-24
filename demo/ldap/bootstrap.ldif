@@ -76,3 +76,43 @@ cn: app-owners
 description: Application owners (maps to Entra group app-owners)
 member: uid=carol,ou=people,dc=acme,dc=demo
 member: uid=alice,ou=people,dc=acme,dc=demo
+
+# --- Multi-team nested RBAC groups (Option 1: Parent Umbrella + Child RO/RW) ---
+
+dn: cn=team-payments-rw,ou=groups,dc=acme,dc=demo
+objectClass: groupOfNames
+cn: team-payments-rw
+description: Payments Team Read-Write Engineers (Alice)
+member: uid=alice,ou=people,dc=acme,dc=demo
+
+dn: cn=team-payments-ro,ou=groups,dc=acme,dc=demo
+objectClass: groupOfNames
+cn: team-payments-ro
+description: Payments Team Read-Only Viewers (Bob)
+member: uid=bob,ou=people,dc=acme,dc=demo
+
+dn: cn=team-payments,ou=groups,dc=acme,dc=demo
+objectClass: groupOfNames
+cn: team-payments
+description: Payments Team Umbrella Group (spec.owner for Payments catalog entities)
+member: cn=team-payments-rw,ou=groups,dc=acme,dc=demo
+member: cn=team-payments-ro,ou=groups,dc=acme,dc=demo
+
+dn: cn=team-retail-rw,ou=groups,dc=acme,dc=demo
+objectClass: groupOfNames
+cn: team-retail-rw
+description: Retail Team Read-Write Engineers (Carol)
+member: uid=carol,ou=people,dc=acme,dc=demo
+
+dn: cn=team-retail-ro,ou=groups,dc=acme,dc=demo
+objectClass: groupOfNames
+cn: team-retail-ro
+description: Retail Team Read-Only Viewers
+member: uid=carol,ou=people,dc=acme,dc=demo
+
+dn: cn=team-retail,ou=groups,dc=acme,dc=demo
+objectClass: groupOfNames
+cn: team-retail
+description: Retail Team Umbrella Group (spec.owner for Retail catalog entities)
+member: cn=team-retail-rw,ou=groups,dc=acme,dc=demo
+member: cn=team-retail-ro,ou=groups,dc=acme,dc=demo

@@ -17,6 +17,12 @@ need "uid=carol,ou=people,dc=acme,dc=demo"
 need "cn=developers,ou=groups,dc=acme,dc=demo"
 need "cn=platform-team,ou=groups,dc=acme,dc=demo"
 need "cn=app-owners,ou=groups,dc=acme,dc=demo"
+need "cn=team-payments,ou=groups,dc=acme,dc=demo"
+need "cn=team-payments-rw,ou=groups,dc=acme,dc=demo"
+need "cn=team-payments-ro,ou=groups,dc=acme,dc=demo"
+need "cn=team-retail,ou=groups,dc=acme,dc=demo"
+need "cn=team-retail-rw,ou=groups,dc=acme,dc=demo"
+need "cn=team-retail-ro,ou=groups,dc=acme,dc=demo"
 grep -q "mail: mallamrakesh@gmail.com" "$LDIF" || { echo "FAIL alice mail"; fail=1; }
 if [ "$fail" -ne 0 ]; then
   exit 1
