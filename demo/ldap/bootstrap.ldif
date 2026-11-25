@@ -56,6 +56,32 @@ homeDirectory: /home/carol
 loginShell: /bin/bash
 userPassword: CarolApp1!
 
+# Unonboarded corporate employee (NOT in cn=rhdh-users -> must NOT sync into RHDH Catalog!)
+dn: uid=dave,ou=people,dc=acme,dc=demo
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+cn: Dave Finance
+sn: Finance
+givenName: Dave
+uid: dave
+mail: dave@mallamrakeshgmail.onmicrosoft.com
+uidNumber: 10004
+gidNumber: 10000
+homeDirectory: /home/dave
+loginShell: /bin/bash
+userPassword: DaveFin1!
+
+# --- Standalone Flat Portal Login Group (Assigned ONCE on Entra App + LDAP userFilter) ---
+
+dn: cn=rhdh-users,ou=groups,dc=acme,dc=demo
+objectClass: groupOfNames
+cn: rhdh-users
+description: Flat Developer Hub Portal Login Group (direct user members only; excluded from RHDH Group sync)
+member: uid=alice,ou=people,dc=acme,dc=demo
+member: uid=bob,ou=people,dc=acme,dc=demo
+member: uid=carol,ou=people,dc=acme,dc=demo
+
 # --- groups (create these exact names as Entra security groups) ---
 
 dn: cn=developers,ou=groups,dc=acme,dc=demo

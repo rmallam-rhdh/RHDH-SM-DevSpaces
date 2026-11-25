@@ -14,6 +14,8 @@ need() {
 need "uid=alice,ou=people,dc=acme,dc=demo"
 need "uid=bob,ou=people,dc=acme,dc=demo"
 need "uid=carol,ou=people,dc=acme,dc=demo"
+need "uid=dave,ou=people,dc=acme,dc=demo"
+need "cn=rhdh-users,ou=groups,dc=acme,dc=demo"
 need "cn=developers,ou=groups,dc=acme,dc=demo"
 need "cn=platform-team,ou=groups,dc=acme,dc=demo"
 need "cn=app-owners,ou=groups,dc=acme,dc=demo"

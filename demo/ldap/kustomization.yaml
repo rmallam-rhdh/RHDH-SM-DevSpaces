@@ -9,6 +9,7 @@ resources:
 configMapGenerator:
   - name: openldap-bootstrap
     files:
+      - 00-memberof-groupofnames.ldif
       - bootstrap.ldif
     options:
       disableNameSuffixHash: true
